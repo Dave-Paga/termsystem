@@ -1,0 +1,88 @@
+/* You can add global styles to this file, and also import other style files */
+
+.btn1 {
+  color : rgb(49, 46, 46);
+  background-color: rgba(255, 255, 255, 0.96);
+  border: none;
+  font-size: 16px;
+  justify-content: flex-end;
+}
+
+.btn1:not([disabled]):hover {
+  /*background-color: rgba(107, 103, 91, 0.96);*/
+  color: rgb(255, 115, 115);
+}
+
+.btn1[disabled] {
+  color : rgb(187, 187, 187);
+  background-color: rgba(230, 230, 229, 0.96);
+}
+
+.specialBtn {
+  color : rgb(255, 255, 255);
+  background-color: rgb(255, 115, 115);
+  border-radius: 5px 5px 5px 5px;
+  border: none;
+  font-size: 16px;
+  justify-content: flex-end;  
+}
+
+.specialBtn:not([disabled]):hover {
+  background-color: rgba(107, 103, 91, 0.96);
+}
+
+.specialBtn[disabled] {
+  color : rgb(187, 187, 187);
+  background-color: rgba(230, 230, 229, 0.96);
+}
+
+  .h1{
+    position: absolute;
+  }
+
+.toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .content {
+    background-color: rgb(255, 232, 232);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 2500px;
+    max-height: 700px;
+    flex-direction: column;
+    align-items: center;
+        
+  }
+
+  .contentSignUp {
+    background-color: rgb(255, 232, 232);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 400px;
+    max-height: 700px;
+    flex-direction: column;
+    align-items: center;
+        
+  }
+
+  h1{
+    margin: 15px;
+    cursor:pointer;
+  }
+
+  
