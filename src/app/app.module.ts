@@ -8,11 +8,15 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 
+import { AuthService } from './services/auth.service';
+
 import { AngularFireModule } from "@angular/fire/compat";
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { FormsModule } from '@angular/forms';
+import { UserComponent } from './user/user.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -31,7 +35,8 @@ const config = {
     LoginComponent,
     SignupComponent,
     HomeComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,8 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, // storage
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

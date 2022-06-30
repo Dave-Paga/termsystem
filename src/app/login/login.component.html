@@ -2,28 +2,25 @@
 
 <div class="content" role="main">
 
+	<h2> LOGIN</h2>
 
-  <h2> LOGIN</h2>
+	<h4> (Or use your account)</h4>
 
-  <h4> (Or use your account)</h4>
+	<h4> Username</h4>
 
-  <h4> Username</h4>
+	<input type="text" placeholder="enter email" name="username" [(ngModel)]="email">
 
-  <input type="text" placeholder="enter username" name="username">
+	<h4> Password</h4>
 
-  <h4> Password</h4>
-  
-  <input type="text" placeholder="enter password" name="username">
+	<input type="text" placeholder="enter password" name="password" [(ngModel)]="password">
 
-  <h1></h1>
+	<h5>{{ errorMSG }}</h5>
+	<h1></h1>
 
-  <button md-button class="specialBtn"> Log In </button>
+	<button md-button class="specialBtn" (click)="checkLogin()"> Log In </button>
 
-  <h1></h1>
-
-  <button md-button class="specialBtn" routerLink="/signup"> Sign Up </button>
-
-  <h1></h1><h1></h1>
-  
+	<h1></h1>
+	<button md-button class="specialBtn" routerLink="/signup"> Sign Up </button>
+	<h1></h1><h1></h1>
 
 </div>

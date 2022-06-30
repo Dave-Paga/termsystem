@@ -4,25 +4,28 @@
 
   <h2> SIGN UP</h2>
 
-  <h5> First Name</h5>
-
-  <input type="text" placeholder="enter first name" name="first name">
-
-  <h5> Last Name </h5>
+  <h5> Full Name</h5>
   
-  <input type="text" placeholder="enter last name" name="last name">
+  <input type="text" placeholder="enter full name" name="full name" [(ngModel)]="fullName" required>
   
   <h5> Email Address </h5>
   
-  <input type="text" placeholder="enter email address" name="email">
-
+  <input type="text" placeholder="enter email address" name="email" [(ngModel)]="email" required>
+  
+  <h5> Phone Number</h5>
+  
+  <input type="text" placeholder="enter phone number" name="phone" [(ngModel)]="phone" required>
+  
   <h5> Password </h5>
   
-  <input type="text" placeholder="enter password" name="password">
-
+  <input type="text" placeholder="enter password" name="password" [(ngModel)]="password"
+        required>
   <h1></h1>
+  
+  <button md-button class="specialBtn" 
+    (click)="changeText()"> Create Account </button>
 
-  <button md-button class="specialBtn"> Create Account </button>
+  <h5>{{ errorMSG }}</h5>
 
   <h6> Already have an account? </h6>
 
