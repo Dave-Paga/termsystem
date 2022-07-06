@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   email: string = '';
   password: string = '';
-  errorMSG: string = '';
+  errorMSG: any;
 
   constructor(
     public authService: AuthService,
@@ -25,20 +25,23 @@ export class LoginComponent implements OnInit {
 
   checkLogin() {
     if (this.email && this.password) {
+      this.authService.SignIn(this.email, this.password);
+      this.errorMSG = this.authService.error;
+      this.router.navigate(['user']);
       //check if email exists
-      firebase.auth().fetchSignInMethodsForEmail(this.email)
-        .then((signInMethods) => {
-          //email exists
-          if (signInMethods.length) {
-            //sign in
-            this.authService.SignIn(this.email, this.password);
-            this.router.navigate(['/user']);
-          } else {
-            this.errorMSG = "Email or password is not recognized"
-          }
-        }).catch((error) => {
-          this.errorMSG = "Please enter valid Email"
-        });
+      // firebase.auth().fetchSignInMethodsForEmail(this.email)
+      //   .then((signInMethods) => {
+      //     //email exists
+      //     if (signInMethods.length) {
+      //       //sign in
+      //       this.authService.SignIn(this.email, this.password)
+      //       this.errorMSG = this.authService.error;
+      //     } else {
+      //       this.errorMSG = "Email or password is not recognized"
+      //     }
+      //   }).catch((error) => {
+      //     this.errorMSG = "Please enter valid Email"
+      //   });
     } else {
       this.errorMSG = "Please fill all fields"
     }
