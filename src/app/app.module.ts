@@ -17,6 +17,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
+import { ServiceComponentComponent } from './service-component/service-component.component';
+import { StaffComponent } from './staff/staff.component';
+import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -36,7 +39,10 @@ const config = {
     SignupComponent,
     HomeComponent,
     ToolbarComponent,
-    UserComponent
+    UserComponent,
+    ServiceComponentComponent,
+    StaffComponent,
+    HowsmyvehicleComponent
   ],
   imports: [
     BrowserModule,
