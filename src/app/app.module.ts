@@ -17,6 +17,11 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
+import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
+import { DiagnoseVehicleCredentialsComponent } from './diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
+import { DiagnoseVehicleProblemComponent } from './diagnose-vehicle-problem/diagnose-vehicle-problem.component';
+import { DiagnoseVehicleFindingsComponent } from './diagnose-vehicle-findings/diagnose-vehicle-findings.component';
+import { RepairHistoryComponent } from './repair-history/repair-history.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -36,7 +41,12 @@ const config = {
     SignupComponent,
     HomeComponent,
     ToolbarComponent,
-    UserComponent
+    UserComponent,
+    BookAppointmentComponent,
+    DiagnoseVehicleCredentialsComponent,
+    DiagnoseVehicleProblemComponent,
+    DiagnoseVehicleFindingsComponent,
+    RepairHistoryComponent
   ],
   imports: [
     BrowserModule,
