@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'RepairHistoryComponent', component: RepairHistoryComponent},
   { path: 'service', component: ServiceComponentComponent},
   { path: 'staff', component: StaffComponent},
-  { path: 'howsmy', component: HowsmyvehicleComponent}
+  { path: 'howsmy', component: HowsmyvehicleComponent},
   { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard]},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}
