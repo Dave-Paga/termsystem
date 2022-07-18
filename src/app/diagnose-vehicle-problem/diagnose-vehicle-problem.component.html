@@ -1,0 +1,17 @@
+<app-toolbar></app-toolbar>
+
+<div class="content" role="main">
+    <h2> DIAGNOSE VEHICLE </h2>
+    <h4> What are the current problems in your vehicle? </h4>
+
+    <h4> Please describe your problem in more detail so we can diagnose it more accurately.</h4>
+    <input type="text" placeholder="describe your problem" name="problem" [(ngModel)]="problem">
+
+    <h1></h1>
+    <button md-button class="specialBtn" routerLink="/diagnoseVehicleCredentials"> Back </button>
+ 
+    <h1></h1>
+    <button md-button class="specialBtn" routerLink="/DiagnoseVehicleFindingsComponent"> Next </button>
+    <h1></h1>
+
+</div>
