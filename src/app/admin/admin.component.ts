@@ -15,11 +15,17 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.testComponent()
   }
 
   logOut() {
     this.authService.SignOut();
+  }
+
+  testComponent() {
+    let data = this.authService.getUserData(this.authService.userData.uid);
+    data.subscribe((val) => { console.log(val.fullName) });
+    data.subscribe((val) => { console.log(val.permission) });
   }
 
 }

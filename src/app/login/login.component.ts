@@ -21,13 +21,15 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   checkLogin() {
     if (this.email && this.password) {
-      this.authService.SignIn(this.email, this.password);
+      this.authService.SignIn(this.email, this.password)
+        .then(() => this.login());
       this.errorMSG = this.authService.error;
-      this.router.navigate(['user']);
+
       //check if email exists
       // firebase.auth().fetchSignInMethodsForEmail(this.email)
       //   .then((signInMethods) => {
@@ -44,6 +46,31 @@ export class LoginComponent implements OnInit {
       //   });
     } else {
       this.errorMSG = "Please fill all fields"
+      this.errorMSG = this.authService.error;
+    }
+  }
+
+  login() {
+    let data = this.authService.getUserData(this.authService.userData.uid);
+    let perm;
+    data.subscribe((val) => { console.log(val.fullName) });
+    data.subscribe((val) => { perm = val.permission });
+
+    if (perm == 0) {
+      this.router.navigate(['user']);
+    } else if (perm == 1) {
+      this.router.navigate(['employee']);
+    } else {
+      this.router.navigate(['admin']);
+    }
+  }
+
+  checkUser() {
+    if (this.authService.isLoggedIn == true) {
+      this.login();
+    } else {
+
+      console.log("No user detected")
     }
   }
 

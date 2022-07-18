@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { AdminComponent } from './admin/admin.component';
+import { RedirectComponent } from './redirect/redirect.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -40,7 +41,8 @@ const config = {
     ToolbarComponent,
     UserComponent,
     EmployeeComponent,
-    AdminComponent
+    AdminComponent,
+    RedirectComponent
   ],
   imports: [
     BrowserModule,

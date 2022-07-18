@@ -28,10 +28,12 @@ export class AuthGuard implements CanActivate {
 
     return this.authService.getAuthenticated().pipe(
       map(user => {
-        this.authService.setUser(user);
         if (!user) {
           this.router.navigate(['']);
         }
+
+        this.authService.setUser(user);
+
         return user ? true : false;
       })
     )

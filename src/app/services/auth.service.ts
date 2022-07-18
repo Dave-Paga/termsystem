@@ -32,6 +32,7 @@ export class AuthService {
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
+        // let userD = this.getUserObj(user.uid)
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
@@ -51,11 +52,12 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['user']);
+          this.SetUserData(result.user);
+          this.setUser(result.user);
+          this.router.navigate(['login']);
         });
-
-        
         this.SetUserData(result.user);
+        this.setUser(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -80,6 +82,7 @@ export class AuthService {
           permission: perm
         }
         this.SetUserData(currentUser);
+        this.router.navigate(['login']);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -137,29 +140,17 @@ export class AuthService {
     return this.afAuth.user;
   }
 
-  get uid(): string {
-    const user = this.userData;
-    return user.uid
-  }
-
   get error(): string {
     return this.errorMSG;
   }
 
-  // Auth logic to run auth providers
-  AuthLogin(provider: any) {
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
-        });
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
+  get userPerm() {
+    let data = this.getUserData(this.userData.uid);
+    let permission;
+    data.subscribe((val) => { permission = val.permission });
+    return permission
   }
+
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
@@ -176,6 +167,20 @@ export class AuthService {
         }))
   }
 
+  setUserObj(id: any) {
+    let data = this.getUserData(id);
+    data.subscribe((val) => {
+      this.userData = {
+        uid: val.uid,
+        fullName: val.fullName,
+        email: val.email,
+        password: val.password,
+        phone: val.phone,
+        permission: val.permission
+      };
+    })
+  }
+
   SetUserData(user: any) {
     let userData: User = {
       uid: user.uid,
@@ -186,10 +191,10 @@ export class AuthService {
       permission: user.permission
     };
 
-
     let data = this.getUserData(user.uid);
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`);
+
     firebase.auth().fetchSignInMethodsForEmail(user.email)
       .then((signInMethods) => {
         //email exists
@@ -202,18 +207,10 @@ export class AuthService {
             userData.permission = val.permission});
           this.finalizeSet(userRef, userData);
           subscription.unsubscribe();
-        } 
+        }
       }).catch((error) => {
         this.errorMSG = "Please enter valid Email"
       });
-
-    
-
-
-    // return userRef.set(userData, {
-    //   merge: true,
-    // });
-    
   }
 
   finalizeSet(userRef: any, userData: any){
@@ -228,4 +225,5 @@ export class AuthService {
       this.router.navigate(['login']);
     });
   }
+
 }

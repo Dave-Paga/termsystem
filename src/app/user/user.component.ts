@@ -16,16 +16,9 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.authService.userData);
-    this.testComponent();
   }
 
   logOut() {
     this.authService.SignOut()
   }
-
-  testComponent() {
-    let data = this.authService.getUserData(this.authService.userData.uid);
-    data.subscribe((val) => { console.log(val.fullName)});
-  }
-
 }
