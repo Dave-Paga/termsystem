@@ -1,0 +1,44 @@
+<app-toolbar></app-toolbar>
+
+<div class="content" role="main">
+    <h2> BOOK A SCHEDULE </h2>
+    
+    <h4> Branch</h4>
+	<input type="text" placeholder="enter branch" name="branch" [(ngModel)]="branch">
+
+    <h4> Car Model </h4>
+	<input type="text" placeholder="enter car model" name="car model" [(ngModel)]="carModel">
+
+    <h4> Scheduled Date </h4>
+	<input type="text" placeholder="enter scheduled date" name="scheduled date" [(ngModel)]="scheduledDate">
+    
+    <h4> Time </h4>
+	<input type="text" placeholder="enter time" name="time" [(ngModel)]="time">
+
+    <h4> Fuel Type </h4>
+    <div><input type="radio" name="fuelType" value="gas">Gas</div>
+    <div><input type="radio" name="fuelType" value="diesel">Diesel</div>
+    
+    <h4> Service Type </h4>
+    <div><input type="radio" name="serviceType" value="carRepair">Car Repair</div>
+    <div><input type="radio" name="serviceType" value="tiresBrakes">Tires/Brakes</div>
+    <div><input type="radio" name="serviceType" value="oilChange">Oil Change</div>
+    <div><input type="radio" name="serviceType" value="maintenance">Maintenance</div>
+
+    <h1></h1>
+    <h4> Coupon: </h4>
+    <h4> P0.0 </h4>
+ 
+    <h4> Discount </h4>
+    <h4> P0.0 </h4>
+
+    <h4> Total </h4>
+    <h4> Php 0.0 </h4>
+
+    
+	<h1></h1>
+	<button md-button class="submitBtn" routerLink="/signup"> Submit </button>
+	<h1></h1><h1></h1>
+
+</div>
+

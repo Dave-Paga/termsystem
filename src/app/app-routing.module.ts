@@ -7,6 +7,14 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserComponent } from './user/user.component';
+import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
+import { DiagnoseVehicleCredentialsComponent } from './diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
+import { DiagnoseVehicleProblemComponent } from './diagnose-vehicle-problem/diagnose-vehicle-problem.component';
+import { DiagnoseVehicleFindingsComponent } from './diagnose-vehicle-findings/diagnose-vehicle-findings.component';
+import { RepairHistoryComponent } from './repair-history/repair-history.component';
+import { ServiceComponentComponent } from './service-component/service-component.component';
+import { StaffComponent } from './staff/staff.component';
+import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 import { AuthGuard } from './services/guard/auth.guard';
 import { PermissionGuard } from './services/permission.guard';
 import { AuthUserGuard } from './services/guard/auth-user.guard';
@@ -31,7 +39,19 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     canActivate: [AuthGuard]
-  }
+  },
+
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'bookingAppointment', component: BookAppointmentComponent },
+  { path: 'diagnoseVehicleCredentials', component: DiagnoseVehicleCredentialsComponent },
+  { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent },
+  { path: 'DiagnoseVehicleFindingsComponent', component: DiagnoseVehicleFindingsComponent },
+  { path: 'RepairHistoryComponent', component: RepairHistoryComponent },
+  { path: 'service', component: ServiceComponentComponent },
+  { path: 'staff', component: StaffComponent },
+  { path: 'howsmy', component: HowsmyvehicleComponent }
 
   // {
   //   path: '',

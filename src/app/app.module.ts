@@ -17,6 +17,14 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
+import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
+import { DiagnoseVehicleCredentialsComponent } from './diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
+import { DiagnoseVehicleProblemComponent } from './diagnose-vehicle-problem/diagnose-vehicle-problem.component';
+import { DiagnoseVehicleFindingsComponent } from './diagnose-vehicle-findings/diagnose-vehicle-findings.component';
+import { RepairHistoryComponent } from './repair-history/repair-history.component';
+import { ServiceComponentComponent } from './service-component/service-component.component';
+import { StaffComponent } from './staff/staff.component';
+import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { AdminComponent } from './admin/admin.component';
 import { RedirectComponent } from './redirect/redirect.component';
@@ -40,6 +48,14 @@ const config = {
     HomeComponent,
     ToolbarComponent,
     UserComponent,
+    BookAppointmentComponent,
+    DiagnoseVehicleCredentialsComponent,
+    DiagnoseVehicleProblemComponent,
+    DiagnoseVehicleFindingsComponent,
+    RepairHistoryComponent,
+    ServiceComponentComponent,
+    StaffComponent,
+    HowsmyvehicleComponent
     EmployeeComponent,
     AdminComponent,
     RedirectComponent
