@@ -1,6 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './admin/admin.component';
 import { AppComponent } from './app.component';
+import { EmployeeComponent } from './employee/employee.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -13,6 +15,7 @@ import { RepairHistoryComponent } from './repair-history/repair-history.componen
 import { ServiceComponentComponent } from './service-component/service-component.component';
 import { StaffComponent } from './staff/staff.component';
 import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
+import { AuthGuard } from './services/guard/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,10 +30,14 @@ const routes: Routes = [
   { path: 'service', component: ServiceComponentComponent},
   { path: 'staff', component: StaffComponent},
   { path: 'howsmy', component: HowsmyvehicleComponent}
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
+  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard]},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
