@@ -10,6 +10,9 @@ import { DiagnoseVehicleCredentialsComponent } from './diagnose-vehicle-credenti
 import { DiagnoseVehicleProblemComponent } from './diagnose-vehicle-problem/diagnose-vehicle-problem.component';
 import { DiagnoseVehicleFindingsComponent } from './diagnose-vehicle-findings/diagnose-vehicle-findings.component';
 import { RepairHistoryComponent } from './repair-history/repair-history.component';
+import { ServiceComponentComponent } from './service-component/service-component.component';
+import { StaffComponent } from './staff/staff.component';
+import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,8 +23,10 @@ const routes: Routes = [
   { path: 'diagnoseVehicleCredentials', component: DiagnoseVehicleCredentialsComponent},
   { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent},
   { path: 'DiagnoseVehicleFindingsComponent', component: DiagnoseVehicleFindingsComponent},
-  { path: 'RepairHistoryComponent', component: RepairHistoryComponent}
-
+  { path: 'RepairHistoryComponent', component: RepairHistoryComponent},
+  { path: 'service', component: ServiceComponentComponent},
+  { path: 'staff', component: StaffComponent},
+  { path: 'howsmy', component: HowsmyvehicleComponent}
 ];
 
 @NgModule({
