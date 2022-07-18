@@ -25,6 +25,8 @@ import { RepairHistoryComponent } from './repair-history/repair-history.componen
 import { ServiceComponentComponent } from './service-component/service-component.component';
 import { StaffComponent } from './staff/staff.component';
 import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { AdminComponent } from './admin/admin.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -53,6 +55,8 @@ const config = {
     ServiceComponentComponent,
     StaffComponent,
     HowsmyvehicleComponent
+    EmployeeComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
