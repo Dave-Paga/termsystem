@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepairHistoryComponent implements OnInit {
 
+  emailAddress: string= '';
+
   constructor() { }
 
   ngOnInit(): void {
