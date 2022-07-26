@@ -15,7 +15,10 @@ import { RepairHistoryComponent } from './repair-history/repair-history.componen
 import { ServiceComponentComponent } from './service-component/service-component.component';
 import { StaffComponent } from './staff/staff.component';
 import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
+import { AppointmentComponent } from './appointment/appointment.component';
+import { EditappointmentComponent } from './editappointment/editappointment.component';
 import { AuthGuard } from './services/guard/auth.guard';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -30,6 +33,8 @@ const routes: Routes = [
   { path: 'service', component: ServiceComponentComponent},
   { path: 'staff', component: StaffComponent},
   { path: 'howsmy', component: HowsmyvehicleComponent},
+  { path: 'appointment', component: AppointmentComponent},
+  { path:'editappointment', component: EditappointmentComponent},
   { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard]},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}

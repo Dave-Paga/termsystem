@@ -1,5 +1,4 @@
-<p>staff works!</p>
-<app-toolbar></app-toolbar>
+<app-toolbarstaff></app-toolbarstaff>
 <html>
   <head>
     <meta charset="utf-8">
@@ -7,21 +6,189 @@
     <link rel="stylesheet" href="staff.component.css" charset="utf-8" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
-  <body class="admin">
+  <body>
 
-    <nav class="admin__sidepanel">
-      <ul>
-        <li>
-          <i class="fa fa-car"></i>Current Vehicles 
-        </li>
-        <li>
-          <i class="fa fa-file-text-o"></i>Appointments
-        </li>
-        <li>
-          <i class="fa fa-pencil-square-o"></i>Edit Appointment
-        </li>
-      </ul>
-    </nav>
-
+   
+    <h1 class="mainHeader">Current Vehicles</h1>
+    <div class="section clearfix">
+        <h2 class="sectionHeader">In Service</h2>
+        <div class="cardBox">
+            <div class="car" id="veloster">
+                <h4>Hyundai Veloster</h4>
+                <img src="https://live.staticflickr.com/7181/6912099159_851159bcd1_b.jpg" width="320" height="160">
+                <table>
+                    <tr>
+                        <td>Make</td>
+                        <td>Hyundai</td>
+                    </tr>
+                    <tr>
+                        <td>Model</td>
+                        <td>Veloster</td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td>2016</td>
+                    </tr>
+                    <tr>
+                        <td>Service</td>
+                        <td>Repair</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="/editappointment" target="_blank">View Details</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="cardBox ">
+            <div class="car" id="fit">
+                <h4>Honda Fit</h4>
+                <img src="https://www.cstatic-images.com/car-pictures/xl/USC80HOC081D021001.jpg" width="320" height="160">
+                <table>
+                    <tr>
+                        <td>Make</td>
+                        <td>Honda</td>
+                    </tr>
+                    <tr>
+                        <td>Model</td>
+                        <td>Fit</td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td>2017</td>
+                    </tr>
+                    <tr>
+                        <td>Service</td>
+                        <td>Tires and Brakes</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="/editappointment" target="_blank">View Details</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="cardBox">
+            <div class="car" id="cruze">
+                <h4>Chevrolet Cruze</h4>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Chevrolet_Cruze_J300_sedan_China_2012-04-14.jpg" width="320" height="160">
+                <table>
+                    <tr>
+                        <td>Make</td>
+                        <td>Chevrolet</td>
+                    </tr>
+                    <tr>
+                        <td>Model</td>
+                        <td>Cruze</td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td>2017</td>
+                    </tr>
+                    <tr>
+                        <td>Service</td>
+                        <td>Maintenance</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="/editappointment" target="_blank">View Details</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="section clearfix">
+        
+        <div class="cardBox">
+            <div class="car" id="fortuner">
+                <h4>Toyota Fortuner</h4>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/2015_Toyota_Fortuner_%28New_Zealand%29.jpg" width="320" height="160">
+                <table>
+                    <tr>
+                        <td>Make</td>
+                        <td>Toyota</td>
+                    </tr>
+                    <tr>
+                        <td>Model</td>
+                        <td>Fortuner</td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td>2017</td>
+                    </tr>
+                    <tr>
+                        <td>Service</td>
+                        <td>Oil Change</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="/editappointment" target="_blank">View Details</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="cardBox">
+            <div class="car" id="tucson">
+                <h4>Hyundai Tucson</h4>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Hyundai_Tucson_2.0_CRDi_4WD_Premium_%28III%29_%E2%80%93_Frontansicht%2C_5._September_2015%2C_D%C3%BCsseldorf_%28colour_corrected%29.jpg" width="320" height="160">
+                <table>
+                    <tr>
+                        <td>Make</td>
+                        <td>Hyundai</td>
+                    </tr>
+                    <tr>
+                        <td>Model</td>
+                        <td>Tucson</td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td>2016</td>
+                    </tr>
+                    <tr>
+                      <td>Service</td>
+                      <td>Repair</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="/editappointment" target="_blank">View Details</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="cardBox">
+            <div class="car" id="rrSport">
+                <h4>Range Rover Sport</h4>
+                <img src="https://cdn.24.co.za/files/Cms/General/d/10385/d45299768fee4d099f9e4a6741cae46c.jpg" width="320" height="160">
+                <table>
+                    <tr>
+                        <td>Make</td>
+                        <td>Range Rover</td>
+                    </tr>
+                    <tr>
+                        <td>Model</td>
+                        <td>Sport</td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td>2017</td>
+                    </tr>
+                    <tr>
+                      <td>Service</td>
+                      <td>Repair</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <a href="/editappointment" target="_blank">View Details</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
   </body>
 </html>
