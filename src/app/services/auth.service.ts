@@ -13,13 +13,16 @@ import { resolve } from 'dns';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { AngularFireObject } from '@angular/fire/compat/database';
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  userData: any; // Save logged in user data
+  // userData: Observable<User | null | undefined>; // Save logged in user data
+  userData: any;
   errorMSG: string = '';
+  authState: any;
   private fireUser: any;
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
@@ -27,12 +30,12 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
-
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
+      this.authState = user;
+      this.SetUserData(user);
       if (user) {
-        // let userD = this.getUserObj(user.uid)
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
@@ -41,9 +44,8 @@ export class AuthService {
         JSON.parse(localStorage.getItem('user')!);
       }
     });
-    
-  }
 
+  }
 
 
   // Sign in with email/password
@@ -54,14 +56,14 @@ export class AuthService {
         this.ngZone.run(() => {
           this.SetUserData(result.user);
           this.setUser(result.user);
-          this.router.navigate(['login']);
+          this.router.navigate(['redirect']);
         });
         this.SetUserData(result.user);
         this.setUser(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
-        this.errorMSG = error.message;
+        // window.alert(error.message);
+        this.errorMSG = "Invalid Email or Password";
       });
   }
 
@@ -132,6 +134,23 @@ export class AuthService {
     return user !== null
   }
 
+  get currentUserId(): string {
+    return this.isAuthenticated ? this.authState.uid : null;
+  }
+
+  get isAuthenticated(): boolean {
+    return this.authState !== null;
+  }
+
+  async getPermission(id: any) {
+    let data = this.getUserData(id);
+    return await new Promise(async (resolve) => {
+      data.subscribe((val) => {
+        resolve(val.permission);
+      });
+    });
+  }
+
   setUser(user) {
     this.fireUser = user;
   }
@@ -139,17 +158,10 @@ export class AuthService {
   getAuthenticated(): Observable<any> {
     return this.afAuth.user;
   }
-
   get error(): string {
     return this.errorMSG;
   }
 
-  get userPerm() {
-    let data = this.getUserData(this.userData.uid);
-    let permission;
-    data.subscribe((val) => { permission = val.permission });
-    return permission
-  }
 
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
@@ -170,7 +182,7 @@ export class AuthService {
   setUserObj(id: any) {
     let data = this.getUserData(id);
     data.subscribe((val) => {
-      this.userData = {
+      this.userData= {
         uid: val.uid,
         fullName: val.fullName,
         email: val.email,

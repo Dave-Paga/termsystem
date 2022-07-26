@@ -22,9 +22,6 @@ export class AuthUserGuard implements CanActivate {
       // let data = this.authService.getUserData(this.authService.userData.uid);
       // data.subscribe((val) => { console.log(val.fullName) });
       // data.subscribe((val) => { console.log(val.permission) });
-      
-
-
       this.router.navigate(['user']);
       return false;
     }

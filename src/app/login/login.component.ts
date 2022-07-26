@@ -51,25 +51,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    let data = this.authService.getUserData(this.authService.userData.uid);
-    let perm;
-    data.subscribe((val) => { console.log(val.fullName) });
-    data.subscribe((val) => { perm = val.permission });
-
-    if (perm == 0) {
-      this.router.navigate(['user']);
-    } else if (perm == 1) {
-      this.router.navigate(['employee']);
-    } else {
-      this.router.navigate(['admin']);
-    }
+    this.router.navigate(['redirect']);
   }
 
   checkUser() {
     if (this.authService.isLoggedIn == true) {
       this.login();
     } else {
-
       console.log("No user detected")
     }
   }

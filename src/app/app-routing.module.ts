@@ -16,34 +16,21 @@ import { ServiceComponentComponent } from './service-component/service-component
 import { StaffComponent } from './staff/staff.component';
 import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 import { AuthGuard } from './services/guard/auth.guard';
-import { PermissionGuard } from './services/permission.guard';
+
 import { AuthUserGuard } from './services/guard/auth-user.guard';
+import { RedirectComponent } from './redirect/redirect.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
   { path: 'login', component: LoginComponent, canActivate: [AuthUserGuard] },
   { path: 'signup', component: SignupComponent, canActivate: [AuthUserGuard] },
-  {
-    path: 'user',
-    component: UserComponent,
-    canActivate: [AuthGuard]
-  },
 
-  {
-    path: 'employee',
-    component: EmployeeComponent,
-    canActivate: [AuthGuard]
-  },
 
-  {
-    path: 'admin',
-    component: AdminComponent,
-    canActivate: [AuthGuard]
-  },
+  { path: 'redirect', component: RedirectComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
 
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
   { path: 'bookingAppointment', component: BookAppointmentComponent },
   { path: 'diagnoseVehicleCredentials', component: DiagnoseVehicleCredentialsComponent },
   { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent },
@@ -52,33 +39,6 @@ const routes: Routes = [
   { path: 'service', component: ServiceComponentComponent },
   { path: 'staff', component: StaffComponent },
   { path: 'howsmy', component: HowsmyvehicleComponent }
-
-  // {
-  //   path: '',
-  //   children: [
-  //     {
-  //       path: 'user',
-  //       component: UserComponent,
-  //       canActivate: [PermissionGuard],
-  //       data: {permission: 0}
-  //     },
-
-  //     {
-  //       path: 'employee',
-  //       component: EmployeeComponent,
-  //       canActivate: [PermissionGuard],
-  //       data: { permission: 1}
-  //     },
-
-  //     {
-  //       path: 'admin',
-  //       component: AdminComponent,
-  //       canActivate: [PermissionGuard],
-  //       data: { permission: 2}
-  //     }
-  //   ],
-  //   canActivate: [AuthGuard]
-  // }
 ];
 
 @NgModule({

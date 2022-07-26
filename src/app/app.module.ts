@@ -55,7 +55,7 @@ const config = {
     RepairHistoryComponent,
     ServiceComponentComponent,
     StaffComponent,
-    HowsmyvehicleComponent
+    HowsmyvehicleComponent,
     EmployeeComponent,
     AdminComponent,
     RedirectComponent
