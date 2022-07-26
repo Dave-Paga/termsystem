@@ -22,6 +22,9 @@ import { DiagnoseVehicleCredentialsComponent } from './diagnose-vehicle-credenti
 import { DiagnoseVehicleProblemComponent } from './diagnose-vehicle-problem/diagnose-vehicle-problem.component';
 import { DiagnoseVehicleFindingsComponent } from './diagnose-vehicle-findings/diagnose-vehicle-findings.component';
 import { RepairHistoryComponent } from './repair-history/repair-history.component';
+import { ServiceComponentComponent } from './service-component/service-component.component';
+import { StaffComponent } from './staff/staff.component';
+import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -46,7 +49,10 @@ const config = {
     DiagnoseVehicleCredentialsComponent,
     DiagnoseVehicleProblemComponent,
     DiagnoseVehicleFindingsComponent,
-    RepairHistoryComponent
+    RepairHistoryComponent,
+    ServiceComponentComponent,
+    StaffComponent,
+    HowsmyvehicleComponent
   ],
   imports: [
     BrowserModule,
