@@ -17,6 +17,7 @@ import { StaffComponent } from './staff/staff.component';
 import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { EditappointmentComponent } from './editappointment/editappointment.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AuthGuard } from './services/guard/auth.guard';
 
 
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: 'staff', component: StaffComponent},
   { path: 'howsmy', component: HowsmyvehicleComponent},
   { path: 'appointment', component: AppointmentComponent},
-  { path:'editappointment', component: EditappointmentComponent},
+  { path: 'editappointment', component: EditappointmentComponent},
+  { path: 'adminpage', component: AdminpageComponent},
   { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard]},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}
