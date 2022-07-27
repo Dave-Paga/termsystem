@@ -84,7 +84,7 @@ export class AuthService {
           permission: perm
         }
         this.SetUserData(currentUser);
-        this.router.navigate(['login']);
+        this.router.navigate(['redirect']);
       })
       .catch((error) => {
         window.alert(error.message);
