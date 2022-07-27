@@ -37,6 +37,7 @@ import { SchedulingEmployeesViewComponent } from './scheduling-employees-view/sc
 import { SchedulingEmployeesEditComponent } from './scheduling-employees-edit/scheduling-employees-edit.component';
 import { TicketViewViewComponent } from './ticket-view-view/ticket-view-view.component';
 import { RedirectComponent } from './redirect/redirect.component';
+import { TicketeditComponent } from './ticketedit/ticketedit.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -76,7 +77,8 @@ const config = {
     SchedulingEmployeesViewComponent,
     SchedulingEmployeesEditComponent,
     TicketViewViewComponent,
-    RedirectComponent
+    RedirectComponent,
+    TicketeditComponent
   ],
   imports: [
     BrowserModule,

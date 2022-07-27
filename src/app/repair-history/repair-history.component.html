@@ -1,55 +1,53 @@
+<p>scheduling-employees-view works!</p>
 <app-toolbaruser></app-toolbaruser>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Staff Login</title>
-    <link rel="stylesheet" href="repair-history.component.css" charset="utf-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  </head>
-  <body class="admin">
 
+<div class="page">
+    <h1>Repair History</h1>
+    <table>
+        <thead>
+        <tr>            
+            <th>Ticket ID</th>
+            <th>Car</th>
+            <th>Date</th>
+            <th>Service Availed</th>
+            <th>Total Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr class="filtered-row">
+                <td ng-cloak ng-bind="repairhistoryID">20220700145</td>
+                <td ng-cloak ng-bind="carHistory">Honda City</td>
+                <td ng-cloak ng-bind="dateHistory">user@mail.com</td>
+                <td ng-cloak ng-bind="serviceHistory">Car Repair</td>
+                <td ng-cloak ng-bind="priceHistory">25,000PHP</td>
+            </tr>
+            <tr class="filtered-row">
+              <td ng-cloak ng-bind="repairhistoryID">20220700145</td>
+              <td ng-cloak ng-bind="carHistory">Honda City</td>
+              <td ng-cloak ng-bind="dateHistory">user@mail.com</td>
+              <td ng-cloak ng-bind="serviceHistory">Car Repair</td>
+              <td ng-cloak ng-bind="priceHistory">25,000PHP</td>
+            </tr>
+            <tr class="filtered-row">
+              <td ng-cloak ng-bind="repairhistoryID">20220700145</td>
+              <td ng-cloak ng-bind="carHistory">Honda City</td>
+              <td ng-cloak ng-bind="dateHistory">user@mail.com</td>
+              <td ng-cloak ng-bind="serviceHistory">Car Repair</td>
+              <td ng-cloak ng-bind="priceHistory">25,000PHP</td>
+            </tr>
+            <tr class="filtered-row">
+              <td ng-cloak ng-bind="repairhistoryID">20220700145</td>
+              <td ng-cloak ng-bind="carHistory">Honda City</td>
+              <td ng-cloak ng-bind="dateHistory">user@mail.com</td>
+              <td ng-cloak ng-bind="serviceHistory">Car Repair</td>
+              <td ng-cloak ng-bind="priceHistory">25,000PHP</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <div class="content" role="main">
-      <h1></h1>
+<h1></h1>
+<h1></h1>
 
-      <h1></h1>
-      
-    <h5>Ticket No. </h5>
+<button md-button class="specialBtn" routerLink="/"> Back to Home </button>
 
-    <h5>Service </h5>
-
-    <h5>Date </h5>
-
-    <h5>Description </h5>    
-
-    <h5>Price </h5>
-    
-    <h1></h1>
-
-    <button md-button class="specialBtn" routerLink="/RepairHistoryComponent"> Back to Home </button>
-    <h1></h1>
-  </div>
-
-    <div class="content" role="main">
-      <h1></h1>
-
-      <h1></h1>
-      
-    <h5>Ticket No. </h5>
-
-    <h5>Service </h5>
-
-    <h5>Date </h5>
-
-    <h5>Description </h5>    
-
-    <h5>Price </h5>
-    
-    <h1></h1>
-
-    <button md-button class="specialBtn" routerLink="/RepairHistoryComponent"> Back to Home </button>
-    <h1></h1>
-  </div>
-
-  </body>
-</html>
+</div>
