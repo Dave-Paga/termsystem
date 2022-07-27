@@ -31,13 +31,10 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
   { path: 'login', component: LoginComponent, canActivate: [AuthUserGuard] },
   { path: 'signup', component: SignupComponent, canActivate: [AuthUserGuard] },
-
-
   { path: 'redirect', component: RedirectComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
-
   { path: 'bookingAppointment', component: BookAppointmentComponent },
   { path: 'diagnoseVehicleCredentials', component: DiagnoseVehicleCredentialsComponent},
   { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent},
