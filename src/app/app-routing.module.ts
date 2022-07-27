@@ -19,6 +19,9 @@ import { AppointmentComponent } from './appointment/appointment.component';
 import { EditappointmentComponent } from './editappointment/editappointment.component';
 import { AdminpageComponent } from './adminpage/adminpage.component';
 import { AuthGuard } from './services/guard/auth.guard';
+import { SchedulingEmployeesViewComponent } from './scheduling-employees-view/scheduling-employees-view.component';
+import { SchedulingEmployeesEditComponent } from './scheduling-employees-edit/scheduling-employees-edit.component';
+import { TicketViewViewComponent } from './ticket-view-view/ticket-view-view.component';
 
 
 const routes: Routes = [
@@ -39,7 +42,10 @@ const routes: Routes = [
   { path: 'adminpage', component: AdminpageComponent},
   { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard]},
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]}
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  { path: 'SchedulingEmployeesViewComponent', component: SchedulingEmployeesViewComponent},
+  {path: 'SchedulingEmployeesEditComponent',component: SchedulingEmployeesEditComponent},
+  {path: 'TicketViewViewComponent',component: TicketViewViewComponent}
 ];
 
 @NgModule({
