@@ -31,6 +31,8 @@ import { EmployeeComponent } from './employee/employee.component';
 import { AdminComponent } from './admin/admin.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { EditappointmentComponent } from './editappointment/editappointment.component';
+import { ToolbaradminComponent } from './toolbaradmin/toolbaradmin.component';
+import { AdminpageComponent } from './adminpage/adminpage.component';
 
 
 const config = {
@@ -65,7 +67,9 @@ const config = {
     ToolbarstaffComponent,
     AppointmentComponent,
     EditappointmentComponent,
-    ToolbaruserComponent
+    ToolbaruserComponent,
+    ToolbaradminComponent,
+    AdminpageComponent
   ],
   imports: [
     BrowserModule,
