@@ -1,0 +1,99 @@
+<p>scheduling-employees-view works!</p>
+<app-toolbaradmin></app-toolbaradmin>
+
+<div class="page">
+    <h1>Ticket List</h1>
+
+    <h3>Filter by:</h3>
+
+    <input type="text" placeholder="ID">
+
+    <h3></h3>
+
+    <input type="text" placeholder="Mechanic">
+
+    <h3></h3>
+
+    <input type="text" placeholder="Date">
+
+    <h3></h3>
+
+    <table>
+        <thead>
+        <tr>            
+            <th>Ticket ID</th>
+            <th>Employee ID</th>
+            <th>UID</th>
+            <th>Date Issued</th>
+            <th>isDone</th>
+            <th>Update</th>
+            <th>Vehicle Problem</th>
+            <th>Vehicle Description</th>
+            <th>Other Description</th>
+            <th>Service</th>
+            <th>Total Amount</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+            <tr class="filtered-row">
+                <td ng-cloak ng-bind="item.Name">ticket.ID</td>
+                <td ng-cloak ng-bind="item.Type">employee.ID</td>
+                <td ng-cloak ng-bind="item.Start">UID</td>
+                <td ng-cloak ng-bind="item.End">date.Issued</td>
+                <td ng-cloak ng-bind="item.DOW">isDone</td>
+                <td ng-cloak ng-bind="item.Open">Update</td>
+                <td ng-cloak ng-bind="item.Type">vehicle.Problem</td>
+                <td ng-cloak ng-bind="item.Start">vehicle.Description</td>
+                <td ng-cloak ng-bind="item.End">other.Problem</td>
+                <td ng-cloak ng-bind="item.DOW">service</td>
+                <td ng-cloak ng-bind="item.Open">total.Amount</td>
+            </tr>
+            <tr class="filtered-row">
+                <td ng-cloak ng-bind="item.Name">ticket.ID</td>
+                <td ng-cloak ng-bind="item.Type">employee.ID</td>
+                <td ng-cloak ng-bind="item.Start">UID</td>
+                <td ng-cloak ng-bind="item.End">date.Issued</td>
+                <td ng-cloak ng-bind="item.DOW">isDone</td>
+                <td ng-cloak ng-bind="item.Open">Update</td>
+                <td ng-cloak ng-bind="item.Type">vehicle.Problem</td>
+                <td ng-cloak ng-bind="item.Start">vehicle.Description</td>
+                <td ng-cloak ng-bind="item.End">other.Problem</td>
+                <td ng-cloak ng-bind="item.DOW">service</td>
+                <td ng-cloak ng-bind="item.Open">total.Amount</td>
+            </tr>
+            <tr class="filtered-row">
+                <td ng-cloak ng-bind="item.Name">ticket.ID</td>
+                <td ng-cloak ng-bind="item.Type">employee.ID</td>
+                <td ng-cloak ng-bind="item.Start">UID</td>
+                <td ng-cloak ng-bind="item.End">date.Issued</td>
+                <td ng-cloak ng-bind="item.DOW">isDone</td>
+                <td ng-cloak ng-bind="item.Open">Update</td>
+                <td ng-cloak ng-bind="item.Type">vehicle.Problem</td>
+                <td ng-cloak ng-bind="item.Start">vehicle.Description</td>
+                <td ng-cloak ng-bind="item.End">other.Problem</td>
+                <td ng-cloak ng-bind="item.DOW">service</td>
+                <td ng-cloak ng-bind="item.Open">total.Amount</td>
+            </tr>
+            <tr class="filtered-row">
+                <td ng-cloak ng-bind="item.Name">ticket.ID</td>
+                <td ng-cloak ng-bind="item.Type">employee.ID</td>
+                <td ng-cloak ng-bind="item.Start">UID</td>
+                <td ng-cloak ng-bind="item.End">date.Issued</td>
+                <td ng-cloak ng-bind="item.DOW">isDone</td>
+                <td ng-cloak ng-bind="item.Open">Update</td>
+                <td ng-cloak ng-bind="item.Type">vehicle.Problem</td>
+                <td ng-cloak ng-bind="item.Start">vehicle.Description</td>
+                <td ng-cloak ng-bind="item.End">other.Problem</td>
+                <td ng-cloak ng-bind="item.DOW">service</td>
+                <td ng-cloak ng-bind="item.Open">total.Amount</td>
+            </tr>
+        </tbody>
+    </table>
+
+<h1></h1>
+<h1></h1>
+
+    <button data-button-type="submit" routerLink="/">Edit Ticket</button>
+
+</div>

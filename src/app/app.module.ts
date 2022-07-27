@@ -33,6 +33,9 @@ import { AppointmentComponent } from './appointment/appointment.component';
 import { EditappointmentComponent } from './editappointment/editappointment.component';
 import { ToolbaradminComponent } from './toolbaradmin/toolbaradmin.component';
 import { AdminpageComponent } from './adminpage/adminpage.component';
+import { SchedulingEmployeesViewComponent } from './scheduling-employees-view/scheduling-employees-view.component';
+import { SchedulingEmployeesEditComponent } from './scheduling-employees-edit/scheduling-employees-edit.component';
+import { TicketViewViewComponent } from './ticket-view-view/ticket-view-view.component';
 
 
 const config = {
@@ -69,7 +72,10 @@ const config = {
     EditappointmentComponent,
     ToolbaruserComponent,
     ToolbaradminComponent,
-    AdminpageComponent
+    AdminpageComponent,
+    SchedulingEmployeesViewComponent,
+    SchedulingEmployeesEditComponent,
+    TicketViewViewComponent
   ],
   imports: [
     BrowserModule,
