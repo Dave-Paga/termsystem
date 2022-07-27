@@ -26,7 +26,7 @@ body {
   }
   .page table th {
     background-color: #ddd;
-    text-align: left;
+    text-align: center;
     padding: .8rem;
   }
   .page table tr {
