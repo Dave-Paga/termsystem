@@ -54,6 +54,34 @@
     font-family: Arial, Helvetica, sans-serif;
   }
 
+  .toolbarstaff {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .toolbaruser {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
   .content {
     background-color: rgb(255, 232, 232);
     font-family: Arial, Helvetica, sans-serif;

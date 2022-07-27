@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ToolbarstaffComponent } from './toolbarstaff/toolbarstaff.component';
+import { ToolbaruserComponent } from './toolbaruser/toolbaruser.component';
 
 import { AuthService } from './services/auth.service';
 
@@ -27,6 +29,9 @@ import { StaffComponent } from './staff/staff.component';
 import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { AdminComponent } from './admin/admin.component';
+import { AppointmentComponent } from './appointment/appointment.component';
+import { EditappointmentComponent } from './editappointment/editappointment.component';
+
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -56,7 +61,11 @@ const config = {
     StaffComponent,
     HowsmyvehicleComponent,
     EmployeeComponent,
-    AdminComponent
+    AdminComponent,
+    ToolbarstaffComponent,
+    AppointmentComponent,
+    EditappointmentComponent,
+    ToolbaruserComponent
   ],
   imports: [
     BrowserModule,
