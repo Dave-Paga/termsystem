@@ -24,11 +24,20 @@ import { SchedulingEmployeesEditComponent } from './scheduling-employees-edit/sc
 import { TicketViewViewComponent } from './ticket-view-view/ticket-view-view.component';
 
 
+import { AuthUserGuard } from './services/guard/auth-user.guard';
+import { RedirectComponent } from './redirect/redirect.component';
+
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'user', component: UserComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthUserGuard] },
+  { path: 'signup', component: SignupComponent, canActivate: [AuthUserGuard] },
+
+
+  { path: 'redirect', component: RedirectComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+
   { path: 'bookingAppointment', component: BookAppointmentComponent },
   { path: 'diagnoseVehicleCredentials', component: DiagnoseVehicleCredentialsComponent},
   { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent},
@@ -44,8 +53,8 @@ const routes: Routes = [
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard]},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   { path: 'SchedulingEmployeesViewComponent', component: SchedulingEmployeesViewComponent},
-  {path: 'SchedulingEmployeesEditComponent',component: SchedulingEmployeesEditComponent},
-  {path: 'TicketViewViewComponent',component: TicketViewViewComponent}
+  { path: 'SchedulingEmployeesEditComponent',component: SchedulingEmployeesEditComponent},
+  { path: 'TicketViewViewComponent',component: TicketViewViewComponent}
 ];
 
 @NgModule({

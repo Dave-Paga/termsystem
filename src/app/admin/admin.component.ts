@@ -15,11 +15,20 @@ export class AdminComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.loginCheck()
   }
 
   logOut() {
     this.authService.SignOut();
+  }
+
+  loginCheck() {
+    this.authService.getPermission(this.authService.userData.uid).then(res => 
+      { 
+        if (res != 2) {
+          this.router.navigate(['redirect']);
+        }
+      });
   }
 
 }

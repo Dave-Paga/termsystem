@@ -13,13 +13,16 @@ import { resolve } from 'dns';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
+import { AngularFireObject } from '@angular/fire/compat/database';
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-  userData: any; // Save logged in user data
+  // userData: Observable<User | null | undefined>; // Save logged in user data
+  userData: any;
   errorMSG: string = '';
+  authState: any;
   private fireUser: any;
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
@@ -27,10 +30,11 @@ export class AuthService {
     public router: Router,
     public ngZone: NgZone // NgZone service to remove outside scope warning
   ) {
-
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
+      this.authState = user;
+      this.SetUserData(user);
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
@@ -40,9 +44,8 @@ export class AuthService {
         JSON.parse(localStorage.getItem('user')!);
       }
     });
-    
-  }
 
+  }
 
 
   // Sign in with email/password
@@ -51,15 +54,16 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['user']);
+          this.SetUserData(result.user);
+          this.setUser(result.user);
+          this.router.navigate(['redirect']);
         });
-
-        
         this.SetUserData(result.user);
+        this.setUser(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
-        this.errorMSG = error.message;
+        // window.alert(error.message);
+        this.errorMSG = "Invalid Email or Password";
       });
   }
 
@@ -80,6 +84,7 @@ export class AuthService {
           permission: perm
         }
         this.SetUserData(currentUser);
+        this.router.navigate(['redirect']);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -129,6 +134,23 @@ export class AuthService {
     return user !== null
   }
 
+  get currentUserId(): string {
+    return this.isAuthenticated ? this.authState.uid : null;
+  }
+
+  get isAuthenticated(): boolean {
+    return this.authState !== null;
+  }
+
+  async getPermission(id: any) {
+    let data = this.getUserData(id);
+    return await new Promise(async (resolve) => {
+      data.subscribe((val) => {
+        resolve(val.permission);
+      });
+    });
+  }
+
   setUser(user) {
     this.fireUser = user;
   }
@@ -136,30 +158,11 @@ export class AuthService {
   getAuthenticated(): Observable<any> {
     return this.afAuth.user;
   }
-
-  get uid(): string {
-    const user = this.userData;
-    return user.uid
-  }
-
   get error(): string {
     return this.errorMSG;
   }
 
-  // Auth logic to run auth providers
-  AuthLogin(provider: any) {
-    return this.afAuth
-      .signInWithPopup(provider)
-      .then((result) => {
-        this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
-        });
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
-  }
+
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
@@ -176,6 +179,20 @@ export class AuthService {
         }))
   }
 
+  setUserObj(id: any) {
+    let data = this.getUserData(id);
+    data.subscribe((val) => {
+      this.userData= {
+        uid: val.uid,
+        fullName: val.fullName,
+        email: val.email,
+        password: val.password,
+        phone: val.phone,
+        permission: val.permission
+      };
+    })
+  }
+
   SetUserData(user: any) {
     let userData: User = {
       uid: user.uid,
@@ -186,10 +203,10 @@ export class AuthService {
       permission: user.permission
     };
 
-
     let data = this.getUserData(user.uid);
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`);
+
     firebase.auth().fetchSignInMethodsForEmail(user.email)
       .then((signInMethods) => {
         //email exists
@@ -202,18 +219,10 @@ export class AuthService {
             userData.permission = val.permission});
           this.finalizeSet(userRef, userData);
           subscription.unsubscribe();
-        } 
+        }
       }).catch((error) => {
         this.errorMSG = "Please enter valid Email"
       });
-
-    
-
-
-    // return userRef.set(userData, {
-    //   merge: true,
-    // });
-    
   }
 
   finalizeSet(userRef: any, userData: any){
@@ -228,4 +237,5 @@ export class AuthService {
       this.router.navigate(['login']);
     });
   }
+
 }

@@ -42,7 +42,6 @@ export class SignupComponent implements OnInit {
           } else {
             // register user
             this.authService.SignUp(this.fullName, this.email, this.phone, this.password, permission);
-            this.router.navigate(['/login']);
           }
         }).catch((error) => {
           this.errorMSG = "Please enter valid Email"

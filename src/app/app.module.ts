@@ -29,6 +29,7 @@ import { StaffComponent } from './staff/staff.component';
 import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { AdminComponent } from './admin/admin.component';
+<<<<<<< HEAD
 import { AppointmentComponent } from './appointment/appointment.component';
 import { EditappointmentComponent } from './editappointment/editappointment.component';
 import { ToolbaradminComponent } from './toolbaradmin/toolbaradmin.component';
@@ -37,6 +38,10 @@ import { SchedulingEmployeesViewComponent } from './scheduling-employees-view/sc
 import { SchedulingEmployeesEditComponent } from './scheduling-employees-edit/scheduling-employees-edit.component';
 import { TicketViewViewComponent } from './ticket-view-view/ticket-view-view.component';
 
+||||||| 5c8339a
+=======
+import { RedirectComponent } from './redirect/redirect.component';
+>>>>>>> a732e9f4e31c93ac114e5c90e7322e3f0a9b1128
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
