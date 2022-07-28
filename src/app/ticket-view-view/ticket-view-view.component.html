@@ -18,15 +18,19 @@
         <tr>            
             <th>Ticket ID</th>
             <th>Employee ID</th>
-            <th>UID</th>
-            <th>Date Issued</th>
-            <th>isDone</th>
-            <th>Update</th>
-            <th>Vehicle Problem</th>
-            <th>Vehicle Description</th>
-            <th>Other Description</th>
-            <th>Service</th>
-            <th>Total Amount</th>
+            <th>Mechanic Name</th>
+            <th>Car Name</th>
+            <th>Transmission</th>
+            <th>Fuel Type</th>
+            <th>Problem</th>
+            <th>Solution</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+            <th>Customer Name</th>
+            <th>Customer Email</th>
+            <th>Customer Phone</th>
+            <th>Price</th>
             
         </tr>
         </thead>
@@ -34,54 +38,70 @@
             <tr class="filtered-row">
                 <td ng-cloak ng-bind="item.Name">ticket.ID</td>
                 <td ng-cloak ng-bind="item.Type">employee.ID</td>
-                <td ng-cloak ng-bind="item.Start">UID</td>
-                <td ng-cloak ng-bind="item.End">date.Issued</td>
-                <td ng-cloak ng-bind="item.DOW">isDone</td>
-                <td ng-cloak ng-bind="item.Open">Update</td>
-                <td ng-cloak ng-bind="item.Type">vehicle.Problem</td>
-                <td ng-cloak ng-bind="item.Start">vehicle.Description</td>
-                <td ng-cloak ng-bind="item.End">other.Problem</td>
-                <td ng-cloak ng-bind="item.DOW">service</td>
-                <td ng-cloak ng-bind="item.Open">total.Amount</td>
+                <td ng-cloak ng-bind="mechanicName">Juan Cruz</td>
+                <td ng-cloak ng-bind="carName">Toyota Vios</td>
+                <td ng-cloak ng-bind="transmission">Automatic</td>
+                <td ng-cloak ng-bind="fuel">Gas</td>
+                <td ng-cloak ng-bind="problem">Oil Change</td>
+                <td ng-cloak ng-bind="solution">change da oil</td>
+                <td ng-cloak ng-bind="date">7/22/2022</td>
+                <td ng-cloak ng-bind="time">6:31AM</td>
+                <td ng-cloak ng-bind="status">Pending Diagnosis</td>
+                <td ng-cloak ng-bind="custName">Tommy Shelby</td>
+                <td ng-cloak ng-bind="custMail">shelbycars@mail.com</td>
+                <td ng-cloak ng-bind="custPhone">9088540026</td>
+                <td ng-cloak ng-bind="price">5000</td>
             </tr>
             <tr class="filtered-row">
                 <td ng-cloak ng-bind="item.Name">ticket.ID</td>
                 <td ng-cloak ng-bind="item.Type">employee.ID</td>
-                <td ng-cloak ng-bind="item.Start">UID</td>
-                <td ng-cloak ng-bind="item.End">date.Issued</td>
-                <td ng-cloak ng-bind="item.DOW">isDone</td>
-                <td ng-cloak ng-bind="item.Open">Update</td>
-                <td ng-cloak ng-bind="item.Type">vehicle.Problem</td>
-                <td ng-cloak ng-bind="item.Start">vehicle.Description</td>
-                <td ng-cloak ng-bind="item.End">other.Problem</td>
-                <td ng-cloak ng-bind="item.DOW">service</td>
-                <td ng-cloak ng-bind="item.Open">total.Amount</td>
+                <td ng-cloak ng-bind="mechanicName">Juan Cruz</td>
+                <td ng-cloak ng-bind="carName">Toyota Vios</td>
+                <td ng-cloak ng-bind="transmission">Automatic</td>
+                <td ng-cloak ng-bind="fuel">Gas</td>
+                <td ng-cloak ng-bind="problem">Oil Change</td>
+                <td ng-cloak ng-bind="solution">change da oil</td>
+                <td ng-cloak ng-bind="date">7/22/2022</td>
+                <td ng-cloak ng-bind="time">6:31AM</td>
+                <td ng-cloak ng-bind="status">Pending Diagnosis</td>
+                <td ng-cloak ng-bind="custName">Tommy Shelby</td>
+                <td ng-cloak ng-bind="custMail">shelbycars@mail.com</td>
+                <td ng-cloak ng-bind="custPhone">9088540026</td>
+                <td ng-cloak ng-bind="price">5000</td>
             </tr>
             <tr class="filtered-row">
                 <td ng-cloak ng-bind="item.Name">ticket.ID</td>
                 <td ng-cloak ng-bind="item.Type">employee.ID</td>
-                <td ng-cloak ng-bind="item.Start">UID</td>
-                <td ng-cloak ng-bind="item.End">date.Issued</td>
-                <td ng-cloak ng-bind="item.DOW">isDone</td>
-                <td ng-cloak ng-bind="item.Open">Update</td>
-                <td ng-cloak ng-bind="item.Type">vehicle.Problem</td>
-                <td ng-cloak ng-bind="item.Start">vehicle.Description</td>
-                <td ng-cloak ng-bind="item.End">other.Problem</td>
-                <td ng-cloak ng-bind="item.DOW">service</td>
-                <td ng-cloak ng-bind="item.Open">total.Amount</td>
+                <td ng-cloak ng-bind="mechanicName">Juan Cruz</td>
+                <td ng-cloak ng-bind="carName">Toyota Vios</td>
+                <td ng-cloak ng-bind="transmission">Automatic</td>
+                <td ng-cloak ng-bind="fuel">Gas</td>
+                <td ng-cloak ng-bind="problem">Oil Change</td>
+                <td ng-cloak ng-bind="solution">change da oil</td>
+                <td ng-cloak ng-bind="date">7/22/2022</td>
+                <td ng-cloak ng-bind="time">6:31AM</td>
+                <td ng-cloak ng-bind="status">Pending Diagnosis</td>
+                <td ng-cloak ng-bind="custName">Tommy Shelby</td>
+                <td ng-cloak ng-bind="custMail">shelbycars@mail.com</td>
+                <td ng-cloak ng-bind="custPhone">9088540026</td>
+                <td ng-cloak ng-bind="price">5000</td>
             </tr>
             <tr class="filtered-row">
                 <td ng-cloak ng-bind="item.Name">ticket.ID</td>
                 <td ng-cloak ng-bind="item.Type">employee.ID</td>
-                <td ng-cloak ng-bind="item.Start">UID</td>
-                <td ng-cloak ng-bind="item.End">date.Issued</td>
-                <td ng-cloak ng-bind="item.DOW">isDone</td>
-                <td ng-cloak ng-bind="item.Open">Update</td>
-                <td ng-cloak ng-bind="item.Type">vehicle.Problem</td>
-                <td ng-cloak ng-bind="item.Start">vehicle.Description</td>
-                <td ng-cloak ng-bind="item.End">other.Problem</td>
-                <td ng-cloak ng-bind="item.DOW">service</td>
-                <td ng-cloak ng-bind="item.Open">total.Amount</td>
+                <td ng-cloak ng-bind="mechanicName">Juan Cruz</td>
+                <td ng-cloak ng-bind="carName">Toyota Vios</td>
+                <td ng-cloak ng-bind="transmission">Automatic</td>
+                <td ng-cloak ng-bind="fuel">Gas</td>
+                <td ng-cloak ng-bind="problem">Oil Change</td>
+                <td ng-cloak ng-bind="solution">change da oil</td>
+                <td ng-cloak ng-bind="date">7/22/2022</td>
+                <td ng-cloak ng-bind="time">6:31AM</td>
+                <td ng-cloak ng-bind="status">Pending Diagnosis</td>
+                <td ng-cloak ng-bind="custName">Tommy Shelby</td>
+                <td ng-cloak ng-bind="custMail">shelbycars@mail.com</td>
+                <td ng-cloak ng-bind="custPhone">9088540026</td>
+                <td ng-cloak ng-bind="price">5000</td>
             </tr>
         </tbody>
     </table>
@@ -89,6 +109,7 @@
 <h1></h1>
 <h1></h1>
 
-    <button data-button-type="submit" routerLink="/">Edit Ticket</button>
+<button md-button class="specialBtn" routerLink="/ticketedit">Edit Schedule</button>
+    
 
 </div>
