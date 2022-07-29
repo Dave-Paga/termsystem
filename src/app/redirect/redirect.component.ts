@@ -18,7 +18,6 @@ export class RedirectComponent implements OnInit {
     this.redirect();
   }
 
-
   logOut() {
     this.authService.SignOut()
   }
@@ -31,9 +30,9 @@ export class RedirectComponent implements OnInit {
       if (perm == 0) {
         this.router.navigate(['user']);
       } else if (perm == 1) {
-        this.router.navigate(['employee']);
+        this.router.navigate(['staff']);
       } else if (perm == 2) {
-        this.router.navigate(['admin']);
+        this.router.navigate(['adminpage']);
       }
     });
   }

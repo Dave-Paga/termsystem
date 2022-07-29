@@ -5,4 +5,6 @@ export interface User {
     password: string;
     phone: string;
     permission: number;
+    timeframe?: string;
+    days?: string;
 }

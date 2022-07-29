@@ -81,7 +81,9 @@ export class AuthService {
           email: mail,
           password: pass,
           phone: cellP,
-          permission: perm
+          permission: perm,
+          timeframe: "7am - 6pm",
+          days: "Mon - Fri"
         }
         this.SetUserData(currentUser);
         this.router.navigate(['redirect']);
@@ -91,42 +93,6 @@ export class AuthService {
         this.errorMSG = "Please enter valid Email"
       });
   }
-
-
-  // Check if user already exists during sign up
-  // CheckIfExisting(fullName: string, email: string, phone: string, pass: string, permission: number) {
-  //   firebase.auth().fetchSignInMethodsForEmail(email)
-  //     .then( (signInMethods) => {
-  //       //email exists
-  //       if (signInMethods.length) {
-  //         return 1
-  //       } else {
-  //         this.SignUp(fullName, email, phone, pass, permission);
-  //         return 0
-  //       }
-  //     })
-  // }
-
-  // ---------------- OPTIONAL FEATURES --------------------------//
-  // // Send email verfificaiton when new user sign up
-  // SendVerificationMail() {
-  //   return this.afAuth.currentUser
-  //     .then((u: any) => u.sendEmailVerification())
-  //     .then(() => {
-  //       this.router.navigate(['verify-email-address']);
-  //     });
-  // }
-  // // Reset Forggot password
-  // ForgotPassword(passwordResetEmail: string) {
-  //   return this.afAuth
-  //     .sendPasswordResetEmail(passwordResetEmail)
-  //     .then(() => {
-  //       window.alert('Password reset email sent, check your inbox.');
-  //     })
-  //     .catch((error) => {
-  //       window.alert(error);
-  //     });
-  // }
 
   // Returns true when user is logged in and email is verified
   get isLoggedIn(): boolean {
@@ -179,19 +145,7 @@ export class AuthService {
         }))
   }
 
-  setUserObj(id: any) {
-    let data = this.getUserData(id);
-    data.subscribe((val) => {
-      this.userData= {
-        uid: val.uid,
-        fullName: val.fullName,
-        email: val.email,
-        password: val.password,
-        phone: val.phone,
-        permission: val.permission
-      };
-    })
-  }
+
 
   SetUserData(user: any) {
     let userData: User = {
@@ -200,7 +154,9 @@ export class AuthService {
       email: user.email,
       password: user.password,
       phone: user.phone,
-      permission: user.permission
+      permission: user.permission,
+      timeframe: user.timeframe,
+      days: user.days
     };
 
     let data = this.getUserData(user.uid);
@@ -216,7 +172,10 @@ export class AuthService {
             userData.email = val.email,
             userData.password = val.password,
             userData.phone = val.phone,
-            userData.permission = val.permission});
+            userData.permission = val.permission,
+            userData.timeframe = val.timeframe,
+            userData.days = val.days
+          });
           this.finalizeSet(userRef, userData);
           subscription.unsubscribe();
         }

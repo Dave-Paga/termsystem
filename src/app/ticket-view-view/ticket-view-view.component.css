@@ -13,7 +13,7 @@ body {
   }
   h1 { font-size: 2em; }
   .page {
-    width: 400px;
+    width: 100%;
     margin: 2rem auto;
     color: #333;
   }

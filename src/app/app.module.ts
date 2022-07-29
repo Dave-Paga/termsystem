@@ -17,7 +17,7 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './user/user.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 import { DiagnoseVehicleCredentialsComponent } from './diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
@@ -37,6 +37,20 @@ import { SchedulingEmployeesViewComponent } from './scheduling-employees-view/sc
 import { SchedulingEmployeesEditComponent } from './scheduling-employees-edit/scheduling-employees-edit.component';
 import { TicketViewViewComponent } from './ticket-view-view/ticket-view-view.component';
 import { RedirectComponent } from './redirect/redirect.component';
+import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
+import { DataEmployeesComponent } from './data-employees/data-employees.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatInputModule } from '@angular/material/input'
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { DataTicketsAdminComponent } from './data-tickets-admin/data-tickets-admin.component';
+import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
+
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -76,18 +90,32 @@ const config = {
     SchedulingEmployeesViewComponent,
     SchedulingEmployeesEditComponent,
     TicketViewViewComponent,
-    RedirectComponent
+    RedirectComponent,
+    EditEmployeeComponent,
+    DataEmployeesComponent,
+    DataTicketsAdminComponent,
+    EditTicketComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(config),
-    AngularFirestoreModule, // firestore
-    AngularFireAuthModule, // auth
-    AngularFireStorageModule, // storage
-    FormsModule
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    FormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [EditEmployeeComponent, EditTicketComponent]
 })
 export class AppModule { }
