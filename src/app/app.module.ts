@@ -51,6 +51,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { DataTicketsAdminComponent } from './data-tickets-admin/data-tickets-admin.component';
 import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
 
+import { TicketeditComponent } from './ticketedit/ticketedit.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -94,7 +95,9 @@ const config = {
     EditEmployeeComponent,
     DataEmployeesComponent,
     DataTicketsAdminComponent,
-    EditTicketComponent
+    EditTicketComponent,
+    RedirectComponent,
+    TicketeditComponent
   ],
   imports: [
     BrowserModule,
