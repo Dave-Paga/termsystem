@@ -1,8 +1,55 @@
-<h2 mat-dialog-title>Ticket</h2>
+<h3 mat-dialog-title> Change Ticket</h3>
 
-<mat-dialog-content [formGroup]="form">
-    <p>Hello</p>
-</mat-dialog-content>
+<mat-form-field appearance="fill">
+    <mat-label>Customer Name</mat-label>
+    <input matInput placeholder="Customer Name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Car Name</mat-label>
+    <input matInput placeholder="Car Name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Phone</mat-label>
+    <input matInput="number" placeholder="Phone Number">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Mechanic</mat-label>
+    <input matInput placeholder="Mechanic Name">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Date</mat-label>
+    <input matInput placeholder="Date">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Time</mat-label>
+    <input matInput placeholder="Time">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Problem</mat-label>
+    <textarea matInput placeholder="Input Problem Details"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input matInput="number" placeholder="Price">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select>
+      <mat-option value="one">Pending Inquiry</mat-option>
+      <mat-option value="two">Pending Diagnosis</mat-option>
+      <mat-option value="three">Undergoing Diagnosis</mat-option>
+      <mat-option value="four">Undergoing Repair/Maintenance</mat-option>
+      <mat-option value="five">Pending Payment</mat-option>
+      <mat-option value="six">For Release</mat-option>
+    </mat-select>
 
 <mat-dialog-actions>
     <button class="mat-raised-button" (click)="close()">Close</button>
