@@ -52,7 +52,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   { path: 'SchedulingEmployeesViewComponent', component: SchedulingEmployeesViewComponent},
   { path: 'SchedulingEmployeesEditComponent',component: SchedulingEmployeesEditComponent},
-  { path: 'TicketViewViewComponent', component: TicketViewViewComponent, canActivate: [AuthGuard] },
+  { path: 'TicketViewViewComponent', component: TicketViewViewComponent},
   { path: 'ticketedit', component: TicketeditComponent}
 ];
 
