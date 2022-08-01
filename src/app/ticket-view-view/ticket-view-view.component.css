@@ -1,8 +1,9 @@
+/*Reset Style*/
 body {
     margin: 0;
-    padding-left: -900;
+    padding: 0;
     line-height: 1.4em;
-    word-spacing: px;
+    word-spacing: 1px;
     letter-spacing: 0.2px;
     font: 13px Arial, Helvetica,"Lucida Grande", serif;
     color: #000;
@@ -35,7 +36,6 @@ body {
   .page table td {
     padding: .8rem;
     margin: 0;
-    
   }
   
   

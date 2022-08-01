@@ -44,8 +44,8 @@ export class DataTicketsAdminComponent implements AfterViewInit {
     // dialogConfig.height = '300px';
 
     const dialogRef = this.dialog.open(EditTicketComponent, {
-      width: '500px',
-      height: '500px',
+      width: '600px',
+      height: '600px',
       data: data
     });
   }
