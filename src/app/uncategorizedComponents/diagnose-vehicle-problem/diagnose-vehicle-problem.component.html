@@ -1,17 +1,78 @@
 <app-toolbar></app-toolbar>
 
-<div class="content" role="main">
-    <h2> DIAGNOSE VEHICLE </h2>
-    <h4> What are the current problems in your vehicle? </h4>
+    <!--Diagnose Section-->
+    <section class="appointment-section">
+        <div class="container">
+            <div class="sec-title">
+                <div class="title">DIAGNOSE YOUR VEHICLE</div>
+              </div>
+              <div class="row clearfix">
+              
+                <!--Form Column-->
+                <div class="form-column col-md-8 col-sm-12 col-xs-12">
+                    <div class="inner-column">
+                        
+                          <!-- Default Form -->
+                          <div class="default-form">
+                                  
+                              <!--Contact Form-->
+                              <form method="" action="">
+                                  <div class="row clearfix">
+                                  
+                                      <div class="column col-md-6 col-sm-6 col-xs-12">
+                                                
+                                          <!--Form Group-->
+                                          <div class="form-group">
+                                              <select class="custom-select-box">
+                                                  <option>Common Problems</option>
+                                                  <option>There is team coming out of my vehicle</option>
+                                                  <option>There is a pinging noise related to the engine</option>
+                                                  <option>There is rough idling sounds with irregular RPM count?</option>
+                                                  <option>Others(then type below to descibe more the problem)</option>
+                                              </select>
+                                          </div>
 
-    <h4> Please describe your problem in more detail so we can diagnose it more accurately.</h4>
-    <input type="text" placeholder="describe your problem" name="problem" [(ngModel)]="problem">
+                                          <div class ="explainProblem">
+                                            <textarea id="story" name="story"
+                                            rows="20" cols="120">
+                                                Type here the exact details of everything related to your car problem...
+                                            </textarea>
+                                          </div>
+            
+                                      </div>
+                                  
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                          <button class="theme-btn appointment-btn" routerLink="/diagnoseVehicleCredentials">Back</button>
+                                      </div>
 
-    <h1></h1>
-    <button md-button class="specialBtn" routerLink="/diagnoseVehicleCredentials"> Back </button>
- 
-    <h1></h1>
-    <button md-button class="specialBtn" routerLink="/DiagnoseVehicleFindingsComponent"> Next </button>
-    <h1></h1>
-
-</div>
+                                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-group">
+                                        <button class="theme-btn appointment-btn" routerLink="/DiagnoseVehicleFindingsComponent">Next</button>
+                                    </div>
+                                      
+                                  </div>
+                              </form>
+                                  
+                          </div>
+                          <!--End Default Form -->
+                          
+                      </div>
+                  </div>
+                  
+                  <!--Form Column-->
+                <div class="schedule-column col-md-4 col-sm-12 col-xs-12">
+                    <div class="inner-outer">
+                          <div class="inner-column">
+                              <h2>Business Hours:</h2>
+                              <ul class="time-list">
+                                  <li>Monday - Friday 9.00 AM - 5.00 PM</li>
+                                  <li>Saturday 9.00 AM - 3.00 PM</li>
+                                  <li><strong>Sunday Closed</strong></li>
+                                  <li class="closed">* Every 2nd, 4th Staurday and all govt holidays are closed.</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                  
+              </div>
+          </div>
+      </section>
