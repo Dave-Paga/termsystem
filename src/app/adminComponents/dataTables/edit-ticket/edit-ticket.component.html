@@ -1,23 +1,13 @@
 <h3 mat-dialog-title> Change Ticket</h3>
+<mat-dialog-content [formGroup]="form">
 
-<mat-form-field appearance="fill">
-    <mat-label>Customer Name</mat-label>
-    <input matInput placeholder="Customer Name">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Car Name</mat-label>
-    <input matInput placeholder="Car Name">
-  </mat-form-field>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Phone</mat-label>
-    <input matInput="number" placeholder="Phone Number">
-  </mat-form-field>
-
+<!-- Display time, date, transmission, fuelType -->
+  <p>Mechanic ID: {{employeeID}}</p>
   <mat-form-field appearance="fill">
     <mat-label>Mechanic</mat-label>
-    <input matInput placeholder="Mechanic Name">
+    <mat-select [(value)]="employeeID">
+      <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
@@ -37,21 +27,18 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Price</mat-label>
-    <input matInput="number" placeholder="Price">
+    <input type="number" matInput="number" placeholder="Price">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
-    <mat-select>
-      <mat-option value="one">Pending Inquiry</mat-option>
-      <mat-option value="two">Pending Diagnosis</mat-option>
-      <mat-option value="three">Undergoing Diagnosis</mat-option>
-      <mat-option value="four">Undergoing Repair/Maintenance</mat-option>
-      <mat-option value="five">Pending Payment</mat-option>
-      <mat-option value="six">For Release</mat-option>
+    <mat-select [(value)]="status">
+      <mat-option [value]="option.value" *ngFor="let option of statusArray">{{ option.viewValue }}</mat-option>
     </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
 
 <mat-dialog-actions>
     <button class="mat-raised-button" (click)="close()">Close</button>
-    <button class="mat-raised-button mat-primary" (click)="updateData()">Save</button>
+    <button class="mat-raised-button mat-primary" (click)="test()">Save</button>
 </mat-dialog-actions>

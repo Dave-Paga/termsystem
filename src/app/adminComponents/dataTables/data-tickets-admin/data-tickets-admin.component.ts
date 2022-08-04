@@ -20,7 +20,7 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   dataSource!: DataTicketsAdminDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['ticketID', 'carName', 'customerName', 'customerPhone', 'dateTime', 'mechanicName', 'price', 'problem', 'status', 'edit'];
+  displayedColumns = ['ticketID', 'carName', 'customerName', 'customerPhone', 'date', 'time', 'mechanicName', 'price', 'problem', 'status', 'edit'];
   uid: string= 'test';
   perm: any= 1;
 
@@ -30,7 +30,6 @@ export class DataTicketsAdminComponent implements AfterViewInit {
 
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
       this.dataSource = new DataTicketsAdminDataSource(data, this.perm, this.uid);
-      console.log(data);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
       this.table.dataSource = this.dataSource;

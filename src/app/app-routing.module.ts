@@ -19,9 +19,9 @@ import { AppointmentComponent } from './uncategorizedComponents/appointment/appo
 import { EditappointmentComponent } from './uncategorizedComponents/editappointment/editappointment.component';
 import { AdminpageComponent } from './adminComponents/adminpage/adminpage.component';
 import { AuthGuard } from './services/guard/auth.guard';
-import { SchedulingEmployeesViewComponent } from './uncategorizedComponents/scheduling-employees-view/scheduling-employees-view.component';
+import { SchedulingEmployeesViewComponent } from './adminComponents/scheduling-employees-view/scheduling-employees-view.component';
 import { SchedulingEmployeesEditComponent } from './uncategorizedComponents/scheduling-employees-edit/scheduling-employees-edit.component';
-import { TicketViewViewComponent } from './uncategorizedComponents/ticket-view-view/ticket-view-view.component';
+import { TicketViewViewComponent } from './adminComponents/ticket-view-view/ticket-view-view.component';
 import { TicketeditComponent } from './uncategorizedComponents/ticketedit/ticketedit.component';
 import { EditpermissionsComponent } from './adminComponents/editpermissions/editpermissions.component';
 

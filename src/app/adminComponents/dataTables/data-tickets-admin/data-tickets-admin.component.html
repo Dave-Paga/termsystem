@@ -20,9 +20,14 @@
       <td mat-cell *matCellDef="let row">{{row.customerPhone}}</td>
     </ng-container>
     
-    <ng-container matColumnDef="dateTime">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date and Time</th>
-      <td mat-cell *matCellDef="let row">{{row.dateTime}}</td>
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let row">{{row.date}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="time">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
+      <td mat-cell *matCellDef="let row">{{row.time}}</td>
     </ng-container>
     
     <ng-container matColumnDef="mechanicName">

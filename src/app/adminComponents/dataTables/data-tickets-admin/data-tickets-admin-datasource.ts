@@ -11,8 +11,9 @@ export interface DataTicketsAdminItem {
   customerEmail: string;
   customerName: string;
   customerPhone: string;
-  dateTime: any;
   employeeID: string;
+  date: string;
+  time: string;
   fuelType: string;
   mechanicName: string;
   price: number;

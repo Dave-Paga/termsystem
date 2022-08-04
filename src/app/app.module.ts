@@ -33,9 +33,9 @@ import { AppointmentComponent } from './uncategorizedComponents/appointment/appo
 import { EditappointmentComponent } from './uncategorizedComponents/editappointment/editappointment.component';
 import { ToolbaradminComponent } from './adminComponents/toolbaradmin/toolbaradmin.component';
 import { AdminpageComponent } from './adminComponents/adminpage/adminpage.component';
-import { SchedulingEmployeesViewComponent } from './uncategorizedComponents/scheduling-employees-view/scheduling-employees-view.component';
+import { SchedulingEmployeesViewComponent } from './adminComponents/scheduling-employees-view/scheduling-employees-view.component';
 import { SchedulingEmployeesEditComponent } from './uncategorizedComponents/scheduling-employees-edit/scheduling-employees-edit.component';
-import { TicketViewViewComponent } from './uncategorizedComponents/ticket-view-view/ticket-view-view.component';
+import { TicketViewViewComponent } from './adminComponents/ticket-view-view/ticket-view-view.component';
 import { RedirectComponent } from './mainComponents/redirect/redirect.component';
 import { EditEmployeeComponent } from './adminComponents/dataTables/edit-employee/edit-employee.component';
 import { DataEmployeesComponent } from './adminComponents/dataTables/data-employees/data-employees.component';
