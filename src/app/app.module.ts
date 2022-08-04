@@ -19,23 +19,23 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './customerComponents/user/user.component';
-import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
-import { DiagnoseVehicleCredentialsComponent } from './diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
-import { DiagnoseVehicleProblemComponent } from './diagnose-vehicle-problem/diagnose-vehicle-problem.component';
-import { DiagnoseVehicleFindingsComponent } from './diagnose-vehicle-findings/diagnose-vehicle-findings.component';
-import { RepairHistoryComponent } from './repair-history/repair-history.component';
-import { ServiceComponentComponent } from './service-component/service-component.component';
+import { BookAppointmentComponent } from './uncategorizedComponents/book-appointment/book-appointment.component';
+import { DiagnoseVehicleCredentialsComponent } from './uncategorizedComponents/diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
+import { DiagnoseVehicleProblemComponent } from './uncategorizedComponents/diagnose-vehicle-problem/diagnose-vehicle-problem.component';
+import { DiagnoseVehicleFindingsComponent } from './uncategorizedComponents/diagnose-vehicle-findings/diagnose-vehicle-findings.component';
+import { RepairHistoryComponent } from './uncategorizedComponents/repair-history/repair-history.component';
+import { ServiceComponentComponent } from './uncategorizedComponents/service-component/service-component.component';
 import { StaffComponent } from './staffComponents/staff/staff.component';
-import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
+import { HowsmyvehicleComponent } from './uncategorizedComponents/howsmyvehicle/howsmyvehicle.component';
 import { EmployeeComponent } from './staffComponents/employee/employee.component';
 import { AdminComponent } from './adminComponents/admin/admin.component';
-import { AppointmentComponent } from './appointment/appointment.component';
-import { EditappointmentComponent } from './editappointment/editappointment.component';
+import { AppointmentComponent } from './uncategorizedComponents/appointment/appointment.component';
+import { EditappointmentComponent } from './uncategorizedComponents/editappointment/editappointment.component';
 import { ToolbaradminComponent } from './adminComponents/toolbaradmin/toolbaradmin.component';
 import { AdminpageComponent } from './adminComponents/adminpage/adminpage.component';
-import { SchedulingEmployeesViewComponent } from './scheduling-employees-view/scheduling-employees-view.component';
-import { SchedulingEmployeesEditComponent } from './scheduling-employees-edit/scheduling-employees-edit.component';
-import { TicketViewViewComponent } from './ticket-view-view/ticket-view-view.component';
+import { SchedulingEmployeesViewComponent } from './uncategorizedComponents/scheduling-employees-view/scheduling-employees-view.component';
+import { SchedulingEmployeesEditComponent } from './uncategorizedComponents/scheduling-employees-edit/scheduling-employees-edit.component';
+import { TicketViewViewComponent } from './uncategorizedComponents/ticket-view-view/ticket-view-view.component';
 import { RedirectComponent } from './mainComponents/redirect/redirect.component';
 import { EditEmployeeComponent } from './adminComponents/dataTables/edit-employee/edit-employee.component';
 import { DataEmployeesComponent } from './adminComponents/dataTables/data-employees/data-employees.component';
@@ -51,7 +51,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { DataTicketsAdminComponent } from './adminComponents/dataTables/data-tickets-admin/data-tickets-admin.component';
 import { EditTicketComponent } from './adminComponents/dataTables/edit-ticket/edit-ticket.component';
 
-import { TicketeditComponent } from './ticketedit/ticketedit.component';
+import { TicketeditComponent } from './uncategorizedComponents/ticketedit/ticketedit.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
