@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { HomeComponent } from './home/home.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { ToolbarstaffComponent } from './toolbarstaff/toolbarstaff.component';
-import { ToolbaruserComponent } from './toolbaruser/toolbaruser.component';
+import { LoginComponent } from './mainComponents/login/login.component';
+import { SignupComponent } from './mainComponents/signup/signup.component';
+import { HomeComponent } from './mainComponents/home/home.component';
+import { ToolbarComponent } from './mainComponents/toolbar/toolbar.component';
+import { ToolbarstaffComponent } from './staffComponents/toolbarstaff/toolbarstaff.component';
+import { ToolbaruserComponent } from './customerComponents/toolbaruser/toolbaruser.component';
 
 import { AuthService } from './services/auth.service';
 
@@ -18,27 +18,27 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UserComponent } from './user/user.component';
+import { UserComponent } from './customerComponents/user/user.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 import { DiagnoseVehicleCredentialsComponent } from './diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
 import { DiagnoseVehicleProblemComponent } from './diagnose-vehicle-problem/diagnose-vehicle-problem.component';
 import { DiagnoseVehicleFindingsComponent } from './diagnose-vehicle-findings/diagnose-vehicle-findings.component';
 import { RepairHistoryComponent } from './repair-history/repair-history.component';
 import { ServiceComponentComponent } from './service-component/service-component.component';
-import { StaffComponent } from './staff/staff.component';
+import { StaffComponent } from './staffComponents/staff/staff.component';
 import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
-import { EmployeeComponent } from './employee/employee.component';
-import { AdminComponent } from './admin/admin.component';
+import { EmployeeComponent } from './staffComponents/employee/employee.component';
+import { AdminComponent } from './adminComponents/admin/admin.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { EditappointmentComponent } from './editappointment/editappointment.component';
-import { ToolbaradminComponent } from './toolbaradmin/toolbaradmin.component';
-import { AdminpageComponent } from './adminpage/adminpage.component';
+import { ToolbaradminComponent } from './adminComponents/toolbaradmin/toolbaradmin.component';
+import { AdminpageComponent } from './adminComponents/adminpage/adminpage.component';
 import { SchedulingEmployeesViewComponent } from './scheduling-employees-view/scheduling-employees-view.component';
 import { SchedulingEmployeesEditComponent } from './scheduling-employees-edit/scheduling-employees-edit.component';
 import { TicketViewViewComponent } from './ticket-view-view/ticket-view-view.component';
-import { RedirectComponent } from './redirect/redirect.component';
-import { EditEmployeeComponent } from './edit-employee/edit-employee.component';
-import { DataEmployeesComponent } from './data-employees/data-employees.component';
+import { RedirectComponent } from './mainComponents/redirect/redirect.component';
+import { EditEmployeeComponent } from './adminComponents/dataTables/edit-employee/edit-employee.component';
+import { DataEmployeesComponent } from './adminComponents/dataTables/data-employees/data-employees.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatInputModule } from '@angular/material/input'
@@ -48,8 +48,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { DataTicketsAdminComponent } from './data-tickets-admin/data-tickets-admin.component';
-import { EditTicketComponent } from './edit-ticket/edit-ticket.component';
+import { DataTicketsAdminComponent } from './adminComponents/dataTables/data-tickets-admin/data-tickets-admin.component';
+import { EditTicketComponent } from './adminComponents/dataTables/edit-ticket/edit-ticket.component';
 
 import { TicketeditComponent } from './ticketedit/ticketedit.component';
 

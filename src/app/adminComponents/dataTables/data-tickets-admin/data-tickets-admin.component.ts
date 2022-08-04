@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { EditTicketComponent } from '../edit-ticket/edit-ticket.component';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { DataTicketsAdminDataSource, DataTicketsAdminItem } from './data-tickets-admin-datasource';
 
 @Component({

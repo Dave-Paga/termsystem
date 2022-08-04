@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { User } from '../services/users.model';
+import { User } from 'src/app/services/users.model';
 
 // TODO: Replace this with your own data model type
 export interface DataEmployeesItem {

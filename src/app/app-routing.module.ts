@@ -1,23 +1,23 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
+import { AdminComponent } from './adminComponents/admin/admin.component';
 import { AppComponent } from './app.component';
-import { EmployeeComponent } from './employee/employee.component';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { UserComponent } from './user/user.component';
+import { EmployeeComponent } from './staffComponents/employee/employee.component';
+import { HomeComponent } from './mainComponents/home/home.component';
+import { LoginComponent } from './mainComponents/login/login.component';
+import { SignupComponent } from './mainComponents/signup/signup.component';
+import { UserComponent } from './customerComponents/user/user.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 import { DiagnoseVehicleCredentialsComponent } from './diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
 import { DiagnoseVehicleProblemComponent } from './diagnose-vehicle-problem/diagnose-vehicle-problem.component';
 import { DiagnoseVehicleFindingsComponent } from './diagnose-vehicle-findings/diagnose-vehicle-findings.component';
 import { RepairHistoryComponent } from './repair-history/repair-history.component';
 import { ServiceComponentComponent } from './service-component/service-component.component';
-import { StaffComponent } from './staff/staff.component';
+import { StaffComponent } from './staffComponents/staff/staff.component';
 import { HowsmyvehicleComponent } from './howsmyvehicle/howsmyvehicle.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { EditappointmentComponent } from './editappointment/editappointment.component';
-import { AdminpageComponent } from './adminpage/adminpage.component';
+import { AdminpageComponent } from './adminComponents/adminpage/adminpage.component';
 import { AuthGuard } from './services/guard/auth.guard';
 import { SchedulingEmployeesViewComponent } from './scheduling-employees-view/scheduling-employees-view.component';
 import { SchedulingEmployeesEditComponent } from './scheduling-employees-edit/scheduling-employees-edit.component';
@@ -26,7 +26,7 @@ import { TicketeditComponent } from './ticketedit/ticketedit.component';
 
 
 import { AuthUserGuard } from './services/guard/auth-user.guard';
-import { RedirectComponent } from './redirect/redirect.component';
+import { RedirectComponent } from './mainComponents/redirect/redirect.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
