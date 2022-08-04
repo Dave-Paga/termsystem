@@ -36,7 +36,6 @@ const routes: Routes = [
   { path: 'redirect', component: RedirectComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   { path: 'bookingAppointment', component: BookAppointmentComponent },
   { path: 'diagnoseVehicleCredentials', component: DiagnoseVehicleCredentialsComponent},
   { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent},
