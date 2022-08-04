@@ -52,6 +52,7 @@ import { DataTicketsAdminComponent } from './adminComponents/dataTables/data-tic
 import { EditTicketComponent } from './adminComponents/dataTables/edit-ticket/edit-ticket.component';
 
 import { TicketeditComponent } from './uncategorizedComponents/ticketedit/ticketedit.component';
+import { EditpermissionsComponent } from './adminComponents/editpermissions/editpermissions.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -97,7 +98,8 @@ const config = {
     DataTicketsAdminComponent,
     EditTicketComponent,
     RedirectComponent,
-    TicketeditComponent
+    TicketeditComponent,
+    EditpermissionsComponent
   ],
   imports: [
     BrowserModule,

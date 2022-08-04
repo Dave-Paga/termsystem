@@ -23,6 +23,7 @@ import { SchedulingEmployeesViewComponent } from './uncategorizedComponents/sche
 import { SchedulingEmployeesEditComponent } from './uncategorizedComponents/scheduling-employees-edit/scheduling-employees-edit.component';
 import { TicketViewViewComponent } from './uncategorizedComponents/ticket-view-view/ticket-view-view.component';
 import { TicketeditComponent } from './uncategorizedComponents/ticketedit/ticketedit.component';
+import { EditpermissionsComponent } from './adminComponents/editpermissions/editpermissions.component';
 
 
 import { AuthUserGuard } from './services/guard/auth-user.guard';
@@ -53,7 +54,8 @@ const routes: Routes = [
   { path: 'SchedulingEmployeesViewComponent', component: SchedulingEmployeesViewComponent},
   { path: 'SchedulingEmployeesEditComponent',component: SchedulingEmployeesEditComponent},
   { path: 'TicketViewViewComponent', component: TicketViewViewComponent},
-  { path: 'ticketedit', component: TicketeditComponent}
+  { path: 'ticketedit', component: TicketeditComponent},
+  { path: 'editpermissions', component: EditpermissionsComponent}
 ];
 
 @NgModule({
