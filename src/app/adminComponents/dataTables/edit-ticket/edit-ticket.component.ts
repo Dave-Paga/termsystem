@@ -83,7 +83,8 @@ export class EditTicketComponent implements OnInit {
     let selection = this.employees.find(data => data.id == this.employeeID);
     this.mechanicName = selection?.name;
     let seeStatus = this.statusArray.find(data => data.value == this.status);
-    console.log(seeStatus)
+    console.log(this.date);
+    console.log(this.time);
   }
   updateData(): void {
     let selection = this.employees.find(data => data.id == this.employeeID);
