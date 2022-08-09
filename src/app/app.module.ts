@@ -53,6 +53,8 @@ import { EditTicketComponent } from './adminComponents/dataTables/edit-ticket/ed
 
 import { TicketeditComponent } from './uncategorizedComponents/ticketedit/ticketedit.component';
 import { EditpermissionsComponent } from './adminComponents/editpermissions/editpermissions.component';
+import { DataPermissionAdminComponent } from './adminComponents/dataTables/data-permission-admin/data-permission-admin.component';
+import { EditPermissionComponent } from './adminComponents/dataTables/edit-permission/edit-permission.component';
 
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
@@ -99,7 +101,9 @@ const config = {
     EditTicketComponent,
     RedirectComponent,
     TicketeditComponent,
-    EditpermissionsComponent
+    EditpermissionsComponent,
+    DataPermissionAdminComponent,
+    EditPermissionComponent
   ],
   imports: [
     BrowserModule,
@@ -121,6 +125,6 @@ const config = {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditEmployeeComponent, EditTicketComponent]
+  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent]
 })
 export class AppModule { }
