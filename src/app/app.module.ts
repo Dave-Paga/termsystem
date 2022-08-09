@@ -48,6 +48,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { DataTicketsAdminComponent } from './adminComponents/dataTables/data-tickets-admin/data-tickets-admin.component';
 import { EditTicketComponent } from './adminComponents/dataTables/edit-ticket/edit-ticket.component';
 
@@ -121,7 +123,9 @@ const config = {
     MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -3,32 +3,22 @@
 <mat-dialog-content [formGroup]="form">
     
     <mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="employeeName" placeholder="Full Name">
-      </mat-form-field>
+      <mat-label>Timeframe</mat-label>
+      <mat-select [(value)]="employeeTime">
+          <mat-option [value]="option.value" *ngFor="let option of timeframe">{{ option.viewValue }}</mat-option>
+      </mat-select>
+  </mat-form-field>
+  <br>
+     <!-- timepicker -->
+<mat-form-field appearance="fill">
+  <mat-label>Days</mat-label>
+  <mat-select [(value)]="employeeDay">
+      <mat-option [value]="option.value" *ngFor="let option of days">{{ option.viewValue }}</mat-option>
+  </mat-select>
+</mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Employee ID</mat-label>
-        <input matInput placeholder="Employee ID">
-      </mat-form-field>
 
-      <mat-form-field>
-        <input matInput [(ngModel)]="newEmail" placeholder="Email">
-    </mat-form-field>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Timeframe</mat-label>
-        <mat-select [(value)]="employeeTime">
-            <mat-option [value]="option.value" *ngFor="let option of timeframe">{{ option.viewValue }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Days</mat-label>
-        <mat-select [(value)]="employeeDay">
-            <mat-option [value]="option.value" *ngFor="let option of days">{{ option.viewValue }}</mat-option>
-        </mat-select>
-    </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions>
