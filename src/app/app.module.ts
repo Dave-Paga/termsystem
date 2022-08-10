@@ -57,6 +57,7 @@ import { TicketeditComponent } from './uncategorizedComponents/ticketedit/ticket
 import { EditpermissionsComponent } from './adminComponents/editpermissions/editpermissions.component';
 import { DataPermissionAdminComponent } from './adminComponents/dataTables/data-permission-admin/data-permission-admin.component';
 import { EditPermissionComponent } from './adminComponents/dataTables/edit-permission/edit-permission.component';
+import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 
 
 const config = {
@@ -106,7 +107,8 @@ const config = {
     TicketeditComponent,
     EditpermissionsComponent,
     DataPermissionAdminComponent,
-    EditPermissionComponent
+    EditPermissionComponent,
+    UserHomePageComponent
   ],
   imports: [
     BrowserModule,

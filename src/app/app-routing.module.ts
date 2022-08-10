@@ -25,9 +25,9 @@ import { TicketViewViewComponent } from './adminComponents/ticket-view-view/tick
 import { TicketeditComponent } from './uncategorizedComponents/ticketedit/ticketedit.component';
 import { EditpermissionsComponent } from './adminComponents/editpermissions/editpermissions.component';
 
-
 import { AuthUserGuard } from './services/guard/auth-user.guard';
 import { RedirectComponent } from './mainComponents/redirect/redirect.component';
+import { UserHomePageComponent } from './user-home-page/user-home-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
@@ -54,7 +54,8 @@ const routes: Routes = [
   { path: 'SchedulingEmployeesEditComponent',component: SchedulingEmployeesEditComponent},
   { path: 'TicketViewViewComponent', component: TicketViewViewComponent},
   { path: 'ticketedit', component: TicketeditComponent},
-  { path: 'editpermissions', component: EditpermissionsComponent}
+  { path: 'editpermissions', component: EditpermissionsComponent},
+  {path: 'UserHomePageComponent', component: UserHomePageComponent}
 ];
 
 @NgModule({
