@@ -65,8 +65,8 @@ export class DataPermissionAdminComponent implements AfterViewInit {
     // dialogConfig.height = '300px';
 
     const dialogRef = this.dialog.open(EditPermissionComponent, {
-      width: '500px',
-      height: '500px',
+      width: '300px',
+      height: '300px',
       data: data
     });
   }

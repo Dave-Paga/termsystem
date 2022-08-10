@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -21,6 +21,8 @@ export class EditPermissionComponent implements OnInit {
   userName: string = '';
   permission: string = '';
   form: FormGroup;
+
+  
 
   permArray: perms[] = [
     { value: 0, viewValue: 'Customer'},
