@@ -54,6 +54,7 @@ import { EditTicketComponent } from './adminComponents/dataTables/edit-ticket/ed
 import { TicketeditComponent } from './uncategorizedComponents/ticketedit/ticketedit.component';
 import { EditpermissionsComponent } from './adminComponents/editpermissions/editpermissions.component';
 
+
 const config = {
   apiKey: "AIzaSyDOxWGSZGp0-oXJZ12JOIuKVbjWAO4Rj_s",
   authDomain: "term-system.firebaseapp.com",
