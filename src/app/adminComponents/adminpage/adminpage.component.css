@@ -4,9 +4,10 @@ body {
   }
   
   .dashboard-cards {
-    position: relative;
+    position:relative;
+
     padding-bottom: 50px;
-    margin: 0 !important;
+    margin: 100px !important;
   }
   
   .dashboard-cards .card {

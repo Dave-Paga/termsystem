@@ -48,11 +48,15 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import { DataTicketsAdminComponent } from './adminComponents/dataTables/data-tickets-admin/data-tickets-admin.component';
 import { EditTicketComponent } from './adminComponents/dataTables/edit-ticket/edit-ticket.component';
 
 import { TicketeditComponent } from './uncategorizedComponents/ticketedit/ticketedit.component';
 import { EditpermissionsComponent } from './adminComponents/editpermissions/editpermissions.component';
+import { DataPermissionAdminComponent } from './adminComponents/dataTables/data-permission-admin/data-permission-admin.component';
+import { EditPermissionComponent } from './adminComponents/dataTables/edit-permission/edit-permission.component';
 
 
 const config = {
@@ -100,7 +104,9 @@ const config = {
     EditTicketComponent,
     RedirectComponent,
     TicketeditComponent,
-    EditpermissionsComponent
+    EditpermissionsComponent,
+    DataPermissionAdminComponent,
+    EditPermissionComponent
   ],
   imports: [
     BrowserModule,
@@ -118,10 +124,12 @@ const config = {
     MatInputModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditEmployeeComponent, EditTicketComponent]
+  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent]
 })
 export class AppModule { }
