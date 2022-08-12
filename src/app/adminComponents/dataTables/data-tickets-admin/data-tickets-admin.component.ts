@@ -7,6 +7,7 @@ import { MatTable } from '@angular/material/table';
 import { EditTicketComponent } from '../edit-ticket/edit-ticket.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataTicketsAdminDataSource, DataTicketsAdminItem } from './data-tickets-admin-datasource';
+import { ViewTicketDetailsAdminComponent } from '../view-ticket-details-admin/view-ticket-details-admin.component';
 
 @Component({
   selector: 'data-tickets-admin',
@@ -20,7 +21,7 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   dataSource!: DataTicketsAdminDataSource;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['ticketID', 'carName', 'customerName', 'customerPhone', 'date', 'time', 'mechanicName', 'price', 'problem', 'status', 'edit'];
+  displayedColumns = ['ticketID', 'carName', 'customerName', 'customerPhone', 'date', 'time', 'mechanicName', 'price', 'problem', 'status', 'edit', 'view'];
   uid: string= 'test';
   perm: any= 1;
 
@@ -45,6 +46,15 @@ export class DataTicketsAdminComponent implements AfterViewInit {
     const dialogRef = this.dialog.open(EditTicketComponent, {
       width: '600px',
       height: '600px',
+      data: data
+    });
+  }
+
+  viewDialog(data): void {
+
+    const dialogRef = this.dialog.open(ViewTicketDetailsAdminComponent, {
+      width: '600px',
+      height: '800px',
       data: data
     });
   }

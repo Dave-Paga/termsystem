@@ -27,7 +27,7 @@
 
     <ng-container matColumnDef="time">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Time</th>
-      <td mat-cell *matCellDef="let row">{{row.time}}</td>
+      <td mat-cell *matCellDef="let row">{{row.convTime}}</td>
     </ng-container>
     
     <ng-container matColumnDef="mechanicName">
@@ -48,6 +48,13 @@
     <ng-container matColumnDef="price">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
       <td mat-cell *matCellDef="let row">Php {{row.price}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="view">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>View More Details</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-raised-button color="primary" (click)="viewDialog(row)">View More</button>
+      </td>
     </ng-container>
     
     <ng-container matColumnDef="edit">

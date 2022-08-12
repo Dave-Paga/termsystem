@@ -6,6 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 interface employee {
   name: string;
   id: string;
+  schedule: number[];
 }
 
 interface valVar {
@@ -31,6 +32,22 @@ export class EditTicketComponent implements OnInit {
   transmission: string = '';
   ticketID: string = '';
   time: string = '';
+
+  timeframes = [
+    "7:00 AM",
+    "8:00 AM",
+    "9:00 AM",
+    "10:00 AM",
+    "11:00 AM",
+    "12:00 NN",
+    "1:00 PM",
+    "2:00 PM",
+    "3:00 PM",
+    "4:00 PM",
+    "5:00 PM",
+  ];
+
+  timeArray: string[] = [];
 
   form: FormGroup;
   employees: employee[] = [];
@@ -64,11 +81,24 @@ export class EditTicketComponent implements OnInit {
     this.afs.collection<any>('users').valueChanges().subscribe(result => {
       result.forEach(doc =>{
         if(doc.permission == 1) {
-          let obj = { name: doc.fullName, id: doc.uid};
+          let rawTime = doc.timeframe.replace(/pm|am/g,'');
+          let convertedArr = rawTime.split(' - ', 2).map(Number);
+          let obj = { name: doc.fullName, id: doc.uid, schedule: convertedArr};
           this.employees.push(obj);
+
+          if (doc.uid == this.employeeID) {
+            let start = convertedArr[0] - 7;
+            let end = (convertedArr[1] + 12)-7;
+            for (let i = start; i < end; i++) {
+              this.timeArray.push(this.timeframes[i]);
+              
+            }
+            console.log(this.timeArray);
+
+          }
+
         }
       });
-      
     })
 
     this.form = this.fb.group({
@@ -86,6 +116,7 @@ export class EditTicketComponent implements OnInit {
     console.log(this.date);
     console.log(this.time);
   }
+  
   updateData(): void {
     let selection = this.employees.find(data => data.id == this.employeeID);
     this.mechanicName = selection?.name;

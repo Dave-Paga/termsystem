@@ -21,6 +21,11 @@ export interface DataTicketsAdminItem {
   solution: string;
   transmission: string;
   status: string;
+  convTime?: string;
+}
+
+interface timeValue {
+  converted: string;
 }
 
 /**
@@ -32,6 +37,20 @@ export class DataTicketsAdminDataSource extends DataSource<DataTicketsAdminItem>
   data: DataTicketsAdminItem[];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
+  
+  timeframes = {
+    7: "7:00 AM",
+    8: "8:00 AM",
+    9: "9:00 AM",
+    10: "10:00 AM",
+    11: "11:00 AM",
+    12: "12:00 NN",
+    13: "1:00 PM",
+    14: "2:00 PM",
+    15: "3:00 PM",
+    16: "4:00 PM",
+    17: "5:00 PM",
+  }
 
   constructor(private array: any, private permission: any, private uid: any) {
     super();
@@ -39,6 +58,11 @@ export class DataTicketsAdminDataSource extends DataSource<DataTicketsAdminItem>
     console.log(`UID ${uid}`);
 
     this.data = array;
+    
+    this.data.forEach((value, index) => {
+      let converted = this.timeframes[this.data[index].time];
+      this.data[index].convTime = converted;
+    })
   }
 
   /**
