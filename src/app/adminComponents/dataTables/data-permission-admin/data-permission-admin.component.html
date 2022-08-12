@@ -28,7 +28,7 @@
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit Permission</th>
       <td mat-cell *matCellDef="let row">
-        <button mat-raised-button color="primary" (click)="openDialog(row)">Edit</button>
+        <button mat-raised-button color="primary" (click)="openDialog(row)" md-button class="specialBtn">Edit</button>
       </td>
     </ng-container>
 
