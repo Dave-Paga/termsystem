@@ -22,14 +22,12 @@ export class EditPermissionComponent implements OnInit {
   permission: string = '';
   form: FormGroup;
 
-  
-
   permArray: perms[] = [
     { value: 0, viewValue: 'Customer'},
     { value: 1, viewValue: 'Employee'},
     { value: 2, viewValue: 'Admin'}
   ];
-
+  
   constructor(private afs: AngularFirestore,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditPermissionComponent>,
