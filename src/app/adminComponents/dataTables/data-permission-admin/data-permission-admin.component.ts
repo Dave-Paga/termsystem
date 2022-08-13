@@ -42,6 +42,7 @@ export class DataPermissionAdminComponent implements AfterViewInit {
       this.table.dataSource = this.dataSource;
     })
   }
+  
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
@@ -71,3 +72,4 @@ export class DataPermissionAdminComponent implements AfterViewInit {
     });
   }
 }
+

@@ -2,3 +2,16 @@
     width: 500px;
     height: 200px;
   }
+
+  
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
