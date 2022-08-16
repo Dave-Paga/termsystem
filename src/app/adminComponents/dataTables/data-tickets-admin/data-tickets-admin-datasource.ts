@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { filter } from 'rxjs/operators';
 
 // TODO: Replace this with your own data model type
 export interface DataTicketsAdminItem {
@@ -54,8 +55,7 @@ export class DataTicketsAdminDataSource extends DataSource<DataTicketsAdminItem>
 
   constructor(private array: any, private permission: any, private uid: any) {
     super();
-    console.log(`permission ${permission}`);
-    console.log(`UID ${uid}`);
+
 
     this.data = array;
     

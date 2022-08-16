@@ -8,6 +8,13 @@ import { EditTicketComponent } from '../edit-ticket/edit-ticket.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataTicketsAdminDataSource, DataTicketsAdminItem } from './data-tickets-admin-datasource';
 import { ViewTicketDetailsAdminComponent } from '../view-ticket-details-admin/view-ticket-details-admin.component';
+import { MatTableDataSource } from '@angular/material/table';
+
+
+
+interface timeValue {
+  converted: string;
+}
 
 @Component({
   selector: 'data-tickets-admin',
@@ -18,22 +25,44 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
-  dataSource!: DataTicketsAdminDataSource;
+  dataSource = new MatTableDataSource<DataTicketsAdminItem>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['ticketID', 'carName', 'customerName', 'customerPhone', 'date', 'time', 'mechanicName', 'price', 'problem', 'status', 'edit', 'view'];
   uid: string= 'test';
   perm: any= 1;
 
+  timeframes = {
+    7: "7:00 AM",
+    8: "8:00 AM",
+    9: "9:00 AM",
+    10: "10:00 AM",
+    11: "11:00 AM",
+    12: "12:00 NN",
+    13: "1:00 PM",
+    14: "2:00 PM",
+    15: "3:00 PM",
+    16: "4:00 PM",
+    17: "5:00 PM",
+  }
+
   constructor(private afs: AngularFirestore, public dialog: MatDialog, public authService: AuthService) {
     // console.log(`UID ${this.authService.userData.uid}`);
     // this.perm = this.loginCheck();
 
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
-      this.dataSource = new DataTicketsAdminDataSource(data, this.perm, this.uid);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      this.table.dataSource = this.dataSource;
+      // this.dataSource = new DataTicketsAdminDataSource(data, this.perm, this.uid);
+      // this.dataSource.sort = this.sort;
+      // this.dataSource.paginator = this.paginator;
+      // this.table.dataSource = this.dataSource;
+      let arr = data
+      arr.forEach((value, index) => {
+        let converted = this.timeframes[arr[index].time];
+        arr[index].convTime = converted;
+      });
+
+      this.dataSource.data = arr as DataTicketsAdminItem[]
+  
     })
   }
 
@@ -48,6 +77,11 @@ export class DataTicketsAdminComponent implements AfterViewInit {
       height: '600px',
       data: data
     });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   viewDialog(data): void {
