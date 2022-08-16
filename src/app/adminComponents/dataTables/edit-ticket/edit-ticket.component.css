@@ -1,5 +1,11 @@
 .mat-dialog-content {
-  
-    overflow: hidden;
     
+    width: 700px;
+    height: auto;
+    overflow:scroll ;
   }  
+
+  .mat-dialog-actions
+  {
+    position:fixed;
+  }
