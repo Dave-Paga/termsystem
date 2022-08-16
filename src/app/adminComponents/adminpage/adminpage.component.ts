@@ -13,9 +13,10 @@ export class AdminpageComponent implements OnInit {
   constructor(private afs: AngularFirestore, public authService: AuthService) {
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
       // Ticket object array
-      this.ticketArray = data; 
+      this.ticketArray = data;
 
       // Perform data queries here
+      
     })
   }
 
