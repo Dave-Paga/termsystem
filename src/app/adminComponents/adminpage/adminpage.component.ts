@@ -16,6 +16,7 @@ export class AdminpageComponent implements OnInit {
 
   userArray:any;
   totalEmployees!: any;
+  totalUsers!: any;
 
   constructor(private afs: AngularFirestore, public authService: AuthService) {
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
@@ -32,7 +33,7 @@ export class AdminpageComponent implements OnInit {
     this.afs.collection<any>('users').valueChanges().subscribe(data => {
       this.userArray=data;
       this.totalEmployees = this.userArray.filter((x)=> x.permission === 1);
-
+      this.totalUsers = this.userArray.filter((x)=> x.permission === 0);
 
 
     })
