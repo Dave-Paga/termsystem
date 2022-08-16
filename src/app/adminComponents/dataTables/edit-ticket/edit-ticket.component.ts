@@ -1,6 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 interface employee {
@@ -10,7 +11,7 @@ interface employee {
 }
 
 interface valVar {
-  value: string;
+  value: any;
   viewValue: string;
 }
 
@@ -21,7 +22,7 @@ interface valVar {
 })
 export class EditTicketComponent implements OnInit {
   carName: string = '';
-  date: string = '';
+  date: FormControl;
   employeeID: string = '';
   fuelType: string = '';
   mechanicName?: string = '';
@@ -34,20 +35,20 @@ export class EditTicketComponent implements OnInit {
   time: string = '';
 
   timeframes = [
-    "7:00 AM",
-    "8:00 AM",
-    "9:00 AM",
-    "10:00 AM",
-    "11:00 AM",
-    "12:00 NN",
-    "1:00 PM",
-    "2:00 PM",
-    "3:00 PM",
-    "4:00 PM",
-    "5:00 PM",
+    { value: 7, viewValue: "7:00 AM" },
+    { value: 8, viewValue: "8:00 AM"},
+    { value: 9, viewValue: "9:00 AM"},
+    { value: 10, viewValue: "10:00 AM"},
+    { value: 11, viewValue: "11:00 AM"},
+    { value: 12, viewValue: "12:00 NN"},
+    { value: 13, viewValue: "1:00 PM"},
+    { value: 14, viewValue: "2:00 PM"},
+    { value: 15, viewValue: "3:00 PM"},
+    { value: 16, viewValue: "4:00 PM"},
+    { value: 17, viewValue: "5:00 PM"},
   ];
 
-  timeArray: string[] = [];
+  timeArray: valVar[] = [];
 
   form: FormGroup;
   employees: employee[] = [];
@@ -67,7 +68,7 @@ export class EditTicketComponent implements OnInit {
     
     this.ticketID = data.ticketID;
     this.carName = data.carName;
-    this.date = data.date;
+    this.date = new FormControl(new Date(data.date));
     this.time = data.time;
     this.employeeID = data.employeeID;
     this.fuelType = data.fuelType;
@@ -90,19 +91,16 @@ export class EditTicketComponent implements OnInit {
             let start = convertedArr[0] - 7;
             let end = (convertedArr[1] + 12)-7;
             for (let i = start; i < end; i++) {
-              this.timeArray.push(this.timeframes[i]);
-              
+              this.timeArray.push({ value: this.timeframes[i].value, viewValue: this.timeframes[i].viewValue});
             }
-            console.log(this.timeArray);
-
           }
-
         }
       });
     })
 
     this.form = this.fb.group({
-      employeeID: [this.employeeID]
+      employeeID: [this.employeeID],
+      time: [this.time]
     });
   }
 
@@ -113,9 +111,25 @@ export class EditTicketComponent implements OnInit {
     let selection = this.employees.find(data => data.id == this.employeeID);
     this.mechanicName = selection?.name;
     let seeStatus = this.statusArray.find(data => data.value == this.status);
-    console.log(this.date);
+    let pipe = new DatePipe('en-us');
+    console.log(this.date.value.toLocaleDateString());
     console.log(this.time);
   }
+
+  changeTimeArray() {
+    let currentTimeArr = this.employees.find(x => x.id == this.employeeID)?.schedule!;
+
+    this.timeArray = [];
+    let start = currentTimeArr[0] - 7;
+    let end = (currentTimeArr[1] + 12) - 7;
+    for (let i = start; i < end; i++) {
+      this.timeArray.push({ value: this.timeframes[i].value, viewValue: this.timeframes[i].viewValue });
+    }
+  }
+
+  // public onDate(event){
+  //   console.log(event);
+  // }
   
   updateData(): void {
     let selection = this.employees.find(data => data.id == this.employeeID);

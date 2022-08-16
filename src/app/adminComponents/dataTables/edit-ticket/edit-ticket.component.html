@@ -5,7 +5,7 @@
   <p>Mechanic ID: {{employeeID}}</p>
   <mat-form-field appearance="fill">
     <mat-label>Mechanic</mat-label>
-    <mat-select [(value)]="employeeID">
+    <mat-select (selectionChange)="changeTimeArray()" [(value)]="employeeID">
       <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -13,7 +13,8 @@
 
 <mat-form-field appearance="fill">
   <mat-label>Choose a date</mat-label>
-  <input [(ngModel)]="date" matInput [matDatepicker]="picker">
+  <input matInput [matDatepicker]="picker" [formControl]="date">
+  <!-- <input matInput [matDatepicker]="picker" (dateInput)="onDate($event.value)" [formControl]="date"> -->
   <mat-hint>MM/DD/YYYY</mat-hint>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
@@ -23,7 +24,10 @@
 <br>
 <mat-form-field appearance="outline">
   <mat-label>Input type time</mat-label>
-  <input [(ngModel)]="time" type="time" matInput name="week" min="09:00" max="18:00">
+  <!-- <input [(ngModel)]="time" type="time" matInput name="week" min="09:00" max="18:00"> -->
+  <mat-select [(value)]="time">
+    <mat-option [value]="option.value" *ngFor="let option of timeArray">{{ option.viewValue }}</mat-option>
+  </mat-select>
 </mat-form-field>
 <br>
   <mat-form-field class="example-full-width" appearance="fill">

@@ -58,7 +58,7 @@ import { EditpermissionsComponent } from './adminComponents/editpermissions/edit
 import { DataPermissionAdminComponent } from './adminComponents/dataTables/data-permission-admin/data-permission-admin.component';
 import { EditPermissionComponent } from './adminComponents/dataTables/edit-permission/edit-permission.component';
 import { ViewTicketDetailsAdminComponent } from './adminComponents/dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
-import { UserHomePageComponent } from './user-home-page/user-home-page.component';
+import { UserHomePageComponent } from './customerComponents/user-home-page/user-home-page.component';
 
 
 const config = {

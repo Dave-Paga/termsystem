@@ -81,7 +81,7 @@ export class AuthService {
           email: mail,
           password: pass,
           phone: cellP,
-          permission: perm,
+          permission: 0,
           timeframe: "7am - 6pm",
           days: "Mon - Fri"
         }
@@ -89,7 +89,7 @@ export class AuthService {
         this.router.navigate(['redirect']);
       })
       .catch((error) => {
-        window.alert(error.message);
+        window.alert("Password should be at least 6 characters.");
         this.errorMSG = "Please enter valid Email"
       });
   }

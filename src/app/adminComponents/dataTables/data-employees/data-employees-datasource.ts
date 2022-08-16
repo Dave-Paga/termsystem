@@ -24,16 +24,14 @@ export interface DataEmployeesItem {
  * (including sorting, pagination, and filtering).
  */
 export class DataEmployeesDataSource extends DataSource<DataEmployeesItem> {
-  data: DataEmployeesItem[];
+  data!: DataEmployeesItem[];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
   constructor(private array: any) {
     super();
     this.data = array;
-    this.data.forEach((value, index)=> {
-      if (value.permission != 1) this.data.splice(index, 1)
-    })
+    this.data = this.data.filter((x)=> x.permission === 1);
   }
 
   /**

@@ -27,7 +27,7 @@ import { EditpermissionsComponent } from './adminComponents/editpermissions/edit
 
 import { AuthUserGuard } from './services/guard/auth-user.guard';
 import { RedirectComponent } from './mainComponents/redirect/redirect.component';
-import { UserHomePageComponent } from './user-home-page/user-home-page.component';
+import { UserHomePageComponent } from './customerComponents/user-home-page/user-home-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
