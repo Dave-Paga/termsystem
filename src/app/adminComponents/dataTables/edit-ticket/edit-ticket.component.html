@@ -19,8 +19,7 @@
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
-<br>
-<br>
+
 
 <br>
 <mat-form-field appearance="outline">
@@ -73,10 +72,14 @@
       <mat-option [value]="option.value" *ngFor="let option of statusArray">{{ option.viewValue }}</mat-option>
     </mat-select>
   </mat-form-field>
-</mat-dialog-content>
- <br>
+  <br>
 
-<mat-dialog-actions>
+  <mat-dialog-actions>
     <button class="mat-raised-button" (click)="close()">Close</button>
     <button class="mat-raised-button mat-primary" (click)="updateData()">Save</button>
 </mat-dialog-actions>
+
+</mat-dialog-content>
+ 
+
+

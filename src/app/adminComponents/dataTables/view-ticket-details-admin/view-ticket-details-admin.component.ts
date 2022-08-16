@@ -18,7 +18,7 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
   customerPhone: string;
   employeeID: string;
   date: any;
-  time: string;
+  time: any;
   fuelType: string;
   mechanicName: string;
   price: number;
@@ -27,6 +27,20 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
   transmission: string;
   status: string;
   form: FormGroup;
+
+  timeframes = [
+    { value: 7, viewValue: "7:00 AM" },
+    { value: 8, viewValue: "8:00 AM"},
+    { value: 9, viewValue: "9:00 AM"},
+    { value: 10, viewValue: "10:00 AM"},
+    { value: 11, viewValue: "11:00 AM"},
+    { value: 12, viewValue: "12:00 NN"},
+    { value: 13, viewValue: "1:00 PM"},
+    { value: 14, viewValue: "2:00 PM"},
+    { value: 15, viewValue: "3:00 PM"},
+    { value: 16, viewValue: "4:00 PM"},
+    { value: 17, viewValue: "5:00 PM"},
+  ];
 
   constructor(private afs: AngularFirestore,
     private fb: FormBuilder,
@@ -48,8 +62,9 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
     this.transmission = data.transmission;
     this.status = data.status;
     let pipe = new DatePipe('en-us');
-    console.log(pipe.transform(this.date, 'mediumDate'))
     this.date = pipe.transform(this.date, 'mediumDate');
+    const realTime = this.timeframes[this.time -7];
+    this.time = realTime.viewValue;
 
     this.form = this.fb.group({
       ticketID: [this.ticketID],
