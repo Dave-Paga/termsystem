@@ -5,11 +5,11 @@
     <div class='card col-md-4 '>
       <div class='card-title'>
         <h2>
-          Current Cars
-          <small>You have 14 cars currently in service</small>
+          Pending Inquiry
+          <small>You currently have {{pendingInquiry.length}} pending inquiries</small>
         </h2>
         <div class='task-count'>
-          14
+          {{pendingInquiry.length}}
         </div>
       </div>
       <div class='card-flap flap1'>
@@ -82,10 +82,10 @@
       <div class='card-title'>
         <h2>
           Total Tickets
-          <small>Autoshop has total of 14 tickets</small>
+          <small>Autoshop has total of {{totalTickets}} tickets</small>
         </h2>
         <div class='task-count'>
-          14
+          {{totalTickets}}
         </div>
       </div>
       <div class='card-flap flap1'>
@@ -120,10 +120,10 @@
       <div class='card-title'>
         <h2>
           Employees
-          <small>Number of Total Employees</small>
+          <small> You {{totalEmployees.length}} Total Employees</small>
         </h2>
         <div class='task-count'>
-          15
+          {{totalEmployees.length}}
         </div>
       </div>
       <div class='card-flap flap1'>
@@ -158,10 +158,10 @@
       <div class='card-title'>
         <h2>
           Currently in Service
-          <small>Cars that are currenly in service</small>
+          <small>You {{currentlyServiced.length}} Cars that are currenly  in service</small>
         </h2>
         <div class='task-count'>
-          3
+          {{currentlyServiced.length}}
         </div>
       </div>
       <div class='card-flap flap1'>
@@ -196,10 +196,10 @@
       <div class='card-title'>
         <h2>
           Cars for Release 
-          <small>You have 1 car pending for Release</small>
+          <small>You have {{carRelease.length}} car pending for Release</small>
         </h2>
         <div class='task-count'>
-          24
+          {{carRelease.length}}
         </div>
       </div>
       <div class='card-flap flap1'>
@@ -231,7 +231,7 @@
       </div>
     </div>
   </div>
-  
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'>
-  </script>
+
+  <script src = 'adminpage.component.ts'> </script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
   
