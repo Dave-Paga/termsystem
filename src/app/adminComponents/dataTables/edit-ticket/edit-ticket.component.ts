@@ -8,6 +8,7 @@ interface employee {
   name: string;
   id: string;
   schedule: number[];
+  dateVal?: number;
 }
 
 interface valVar {
@@ -33,6 +34,7 @@ export class EditTicketComponent implements OnInit {
   transmission: string = '';
   ticketID: string = '';
   time: string = '';
+  unvailDate: number = 0;
 
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
@@ -84,10 +86,27 @@ export class EditTicketComponent implements OnInit {
         if(doc.permission == 1) {
           let rawTime = doc.timeframe.replace(/pm|am/g,'');
           let convertedArr = rawTime.split(' - ', 2).map(Number);
-          let obj = { name: doc.fullName, id: doc.uid, schedule: convertedArr};
+
+          let rawDate = doc.days.slice(-3);
+          let convDate;
+          
+          if (rawDate == "Fri") {
+            convDate = 0;
+          } else if (rawDate == "Sat") {
+            convDate = 6;
+          }
+
+          let obj = { 
+            name: doc.fullName, 
+            id: doc.uid, 
+            schedule: convertedArr,
+            dateVal: convDate
+          };
+          
           this.employees.push(obj);
 
           if (doc.uid == this.employeeID) {
+            this.unvailDate = convDate;
             let start = convertedArr[0] - 7;
             let end = (convertedArr[1] + 12)-7;
             for (let i = start; i < end; i++) {
@@ -116,9 +135,16 @@ export class EditTicketComponent implements OnInit {
     console.log(this.time);
   }
 
+  weekendsDatesFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+
+    return day !== this.unvailDate && day !== 0;
+  }
+
   changeTimeArray() {
     let currentTimeArr = this.employees.find(x => x.id == this.employeeID)?.schedule!;
-
+    let currentDate = this.employees.find(x => x.id == this.employeeID)?.dateVal!;
+    this.unvailDate = currentDate;
     this.timeArray = [];
     let start = currentTimeArr[0] - 7;
     let end = (currentTimeArr[1] + 12) - 7;
@@ -127,16 +153,14 @@ export class EditTicketComponent implements OnInit {
     }
   }
 
-  // public onDate(event){
-  //   console.log(event);
-  // }
+
   
   updateData(): void {
     let selection = this.employees.find(data => data.id == this.employeeID);
     this.mechanicName = selection?.name;
     this.afs.collection('tickets').doc(this.ticketID).update({
       carName: this.carName,
-      date: this.date,
+      date: this.date.value.toLocaleDateString(),
       time: this.time,
       employeeID: this.employeeID,
       fuelType: this.fuelType,
