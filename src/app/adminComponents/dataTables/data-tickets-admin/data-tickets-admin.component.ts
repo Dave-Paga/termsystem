@@ -53,8 +53,8 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   viewDialog(data): void {
 
     const dialogRef = this.dialog.open(ViewTicketDetailsAdminComponent, {
-      width: '600px',
-      height: '800px',
+      width: 'auto',
+      height: 'auto',
       data: data
     });
   }

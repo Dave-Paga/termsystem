@@ -21,6 +21,7 @@
 </mat-form-field>
 <br>
 <br>
+
 <br>
 <mat-form-field appearance="outline">
   <mat-label>Input type time</mat-label>
@@ -30,17 +31,42 @@
   </mat-select>
 </mat-form-field>
 <br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Car Name</mat-label>
+  <textarea matInput placeholder="Input Problem Details">{{carName}}</textarea>
+</mat-form-field>
+<br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Tranmission</mat-label>
+  <textarea matInput placeholder="Input Problem Details">{{transmission}}</textarea>
+</mat-form-field>
+<br>
+
+<mat-form-field class="example-full-width" appearance="fill">
+  <mat-label>Fuel Type</mat-label>
+  <textarea matInput placeholder="Input Problem Details">{{fuelType}}</textarea>
+</mat-form-field>
+<br>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Problem</mat-label>
     <textarea matInput placeholder="Input Problem Details">{{problem}}</textarea>
   </mat-form-field>
   <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Price</mat-label>
-    <input value={{price}} type="number"  matInput="number">
-    
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Solution</mat-label>
+    <textarea matInput placeholder="Input Problem Details">{{solution}}</textarea>
   </mat-form-field>
   <br>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Price</mat-label>
+    <input value={{price}} type="number"  matInput="number"> 
+  </mat-form-field>
+  <br>
+
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
     <mat-select [(value)]="status">
@@ -48,6 +74,7 @@
     </mat-select>
   </mat-form-field>
 </mat-dialog-content>
+ <br>
 
 <mat-dialog-actions>
     <button class="mat-raised-button" (click)="close()">Close</button>
