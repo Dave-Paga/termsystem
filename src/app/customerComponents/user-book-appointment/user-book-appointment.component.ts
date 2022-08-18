@@ -248,6 +248,17 @@ export class UserBookAppointmentComponent implements OnInit {
     });
   }
 
+  addEntry() {
+    
+    this.errorMSG = ""
+    this.afs.collection('tickets/').add(this.newTicket).then(docRef => {
+      const docID = docRef.id;
+      this.afs.doc('tickets/' + docID).update({
+        ticketID: docID
+      })
+    });
+  }
+
   addNewTicket() {
     let selection = this.employees.find(data => data.id == this.employeeID);
     this.mechanicName = selection?.name;
@@ -278,13 +289,7 @@ export class UserBookAppointmentComponent implements OnInit {
         newArr = newArr.filter((x) => x.status === "Pending Inquiry" && x.customerEmail === this.customerEmail);
         if (newArr.length <= 0) {
           this.viewDialog(this.newTicket);
-          this.errorMSG = ""
-          this.afs.collection('tickets/').add(this.newTicket).then(docRef => {
-            const docID = docRef.id;
-            this.afs.doc('tickets/' + docID).update({
-              ticketID: docID
-            })
-          });
+          // this.addEntry();
         } else {
           this.errorMSG = "Please settle previous appointment first."
         }
