@@ -11,7 +11,7 @@ import { BookAppointmentComponent } from './uncategorizedComponents/book-appoint
 import { DiagnoseVehicleCredentialsComponent } from './uncategorizedComponents/diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
 import { DiagnoseVehicleProblemComponent } from './uncategorizedComponents/diagnose-vehicle-problem/diagnose-vehicle-problem.component';
 import { DiagnoseVehicleFindingsComponent } from './uncategorizedComponents/diagnose-vehicle-findings/diagnose-vehicle-findings.component';
-import { RepairHistoryComponent } from './uncategorizedComponents/repair-history/repair-history.component';
+import { RepairHistoryComponent } from './customerComponents/repair-history/repair-history.component';
 import { ServiceComponentComponent } from './uncategorizedComponents/service-component/service-component.component';
 import { StaffComponent } from './staffComponents/staff/staff.component';
 import { HowsmyvehicleComponent } from './uncategorizedComponents/howsmyvehicle/howsmyvehicle.component';
@@ -29,6 +29,7 @@ import { AuthUserGuard } from './services/guard/auth-user.guard';
 import { RedirectComponent } from './mainComponents/redirect/redirect.component';
 import { UserHomePageComponent } from './customerComponents/user-home-page/user-home-page.component';
 import { UserBookAppointmentComponent } from './customerComponents/user-book-appointment/user-book-appointment.component';
+import { UserHowsmyComponent } from './customerComponents/user-howsmy/user-howsmy.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
@@ -56,7 +57,8 @@ const routes: Routes = [
   { path: 'ticketedit', component: TicketeditComponent},
   { path: 'editpermissions', component: EditpermissionsComponent},
   { path: 'UserHomePageComponent', component: UserHomePageComponent},
-  { path: 'UserBook', component: UserBookAppointmentComponent }
+  { path: 'UserBook', component: UserBookAppointmentComponent, canActivate: [AuthGuard] },
+  { path: 'UserHowsMy', component: UserHowsmyComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
