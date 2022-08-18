@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { exit } from 'process';
 import { AuthService } from 'src/app/services/auth.service';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
@@ -288,12 +289,13 @@ export class UserBookAppointmentComponent implements OnInit {
         let newArr = result;
         newArr = newArr.filter((x) => x.status === "Pending Inquiry" && x.customerEmail === this.customerEmail);
         if (newArr.length <= 0) {
+          this.errorMSG = ""
           this.viewDialog(this.newTicket);
           // this.addEntry();
         } else {
           this.errorMSG = "Please settle previous appointment first."
         }
-      })
+      });
       
       
     } else {
