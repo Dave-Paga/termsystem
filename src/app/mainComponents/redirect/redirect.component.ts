@@ -28,7 +28,7 @@ export class RedirectComponent implements OnInit {
     data.subscribe(val => { 
       perm = val.permission;
       if (perm == 0) {
-        this.router.navigate(['user']);
+        this.router.navigate(['UserHomePageComponent']);
       } else if (perm == 1) {
         this.router.navigate(['staff']);
       } else if (perm == 2) {

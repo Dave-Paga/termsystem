@@ -27,7 +27,8 @@ import { EditpermissionsComponent } from './adminComponents/editpermissions/edit
 
 import { AuthUserGuard } from './services/guard/auth-user.guard';
 import { RedirectComponent } from './mainComponents/redirect/redirect.component';
-import { UserHomePageComponent } from './user-home-page/user-home-page.component';
+import { UserHomePageComponent } from './customerComponents/user-home-page/user-home-page.component';
+import { UserBookAppointmentComponent } from './customerComponents/user-book-appointment/user-book-appointment.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
@@ -36,7 +37,7 @@ const routes: Routes = [
   { path: 'redirect', component: RedirectComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
-  { path: 'bookingAppointment', component: BookAppointmentComponent },
+  { path: 'bookingAppointment', component: BookAppointmentComponent, canActivate: [AuthGuard] },
   { path: 'diagnoseVehicleCredentials', component: DiagnoseVehicleCredentialsComponent},
   { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent},
   { path: 'DiagnoseVehicleFindingsComponent', component: DiagnoseVehicleFindingsComponent},
@@ -47,7 +48,6 @@ const routes: Routes = [
   { path: 'appointment', component: AppointmentComponent},
   { path: 'editappointment', component: EditappointmentComponent},
   { path: 'adminpage', component: AdminpageComponent},
-  { path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard]},
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   { path: 'SchedulingEmployeesViewComponent', component: SchedulingEmployeesViewComponent},
@@ -55,7 +55,8 @@ const routes: Routes = [
   { path: 'TicketViewViewComponent', component: TicketViewViewComponent},
   { path: 'ticketedit', component: TicketeditComponent},
   { path: 'editpermissions', component: EditpermissionsComponent},
-  {path: 'UserHomePageComponent', component: UserHomePageComponent}
+  { path: 'UserHomePageComponent', component: UserHomePageComponent},
+  { path: 'UserBook', component: UserBookAppointmentComponent }
 ];
 
 @NgModule({

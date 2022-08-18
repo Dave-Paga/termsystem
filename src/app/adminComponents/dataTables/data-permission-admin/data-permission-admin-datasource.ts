@@ -41,7 +41,6 @@ export class DataPermissionAdminDataSource extends DataSource<DataPermissionAdmi
         }
       })
     })
-    console.log(this.data);
   }
 
   /**
