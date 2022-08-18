@@ -2,7 +2,10 @@ import { DatePipe } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 interface employee {
   name: string;
@@ -100,7 +103,7 @@ export class UserBookAppointmentComponent implements OnInit {
   employees: employee[] = [];
 
 
-  constructor(private afs: AngularFirestore, public authService: AuthService) {
+  constructor(private afs: AngularFirestore, public authService: AuthService, public dialog: MatDialog, public router: Router) {
     this.minDate = new Date();
     const currentYear = new Date().getFullYear();
     this.maxDate = new Date(currentYear + 1, 11, 31);
@@ -155,6 +158,15 @@ export class UserBookAppointmentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginCheck()
+  }
+
+  loginCheck() {
+    this.authService.getPermission(this.authService.userData.uid).then(res => {
+      if (res != 0) {
+        this.router.navigate(['redirect']);
+      }
+    });
   }
 
   test() {
@@ -227,6 +239,15 @@ export class UserBookAppointmentComponent implements OnInit {
     }
   }
 
+  viewDialog(data): void {
+
+    const dialogRef = this.dialog.open(ConfirmModalComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: data
+    });
+  }
+
   addNewTicket() {
     let selection = this.employees.find(data => data.id == this.employeeID);
     this.mechanicName = selection?.name;
@@ -251,13 +272,25 @@ export class UserBookAppointmentComponent implements OnInit {
       }
 
       this.errorMSG = ""
+
+      this.afs.collection<any>('tickets/').valueChanges().subscribe( result => {
+        let newArr = result;
+        newArr = newArr.filter((x) => x.status === "Pending Inquiry" && x.customerEmail === this.customerEmail);
+        if (newArr.length <= 0) {
+          this.viewDialog(this.newTicket);
+          this.errorMSG = ""
+          this.afs.collection('tickets/').add(this.newTicket).then(docRef => {
+            const docID = docRef.id;
+            this.afs.doc('tickets/' + docID).update({
+              ticketID: docID
+            })
+          });
+        } else {
+          this.errorMSG = "Please settle previous appointment first."
+        }
+      })
       
-      this.afs.collection('tickets/').add(this.newTicket).then(docRef => {
-        const docID = docRef.id;
-        this.afs.doc('tickets/' + docID).update({
-          ticketID: docID
-        })
-      });
+      
     } else {
       this.errorMSG = "Please fill all inputs"
     }

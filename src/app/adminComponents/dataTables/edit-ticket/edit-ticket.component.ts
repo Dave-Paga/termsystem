@@ -36,6 +36,7 @@ export class EditTicketComponent implements OnInit {
   time: string = '';
   unvailDate: number = 0;
 
+
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
     { value: 8, viewValue: "8:00 AM"},

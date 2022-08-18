@@ -28,7 +28,7 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['ticketID', 'carName', 'customerName', 'customerPhone', 'date', 'time', 'mechanicName', 'price', 'problem', 'status', 'edit', 'view'];
+  displayedColumns = ['ticketID', 'carName', 'customerName', 'customerPhone', 'date', 'time', 'mechanicName', 'price', 'problem', 'status', 'edit', 'view', 'delete'];
   uid: string= 'test';
   perm: any= 1;
 
@@ -91,6 +91,10 @@ export class DataTicketsAdminComponent implements AfterViewInit {
       height: 'auto',
       data: data
     });
+  }
+
+  removeData(data): void {
+    this.afs.collection<any>('tickets/').doc(data.ticketID).delete();
   }
 
   ngAfterViewInit(): void {
