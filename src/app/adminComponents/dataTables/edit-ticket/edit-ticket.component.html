@@ -33,13 +33,13 @@
 
 <mat-form-field class="example-full-width" appearance="fill">
   <mat-label>Car Name</mat-label>
-  <textarea matInput placeholder="Input Problem Details">{{carName}}</textarea>
+  <textarea matInput [(ngModel)]="carName" placeholder="Input Problem Details">{{carName}}</textarea>
 </mat-form-field>
 <br>
 
 <mat-form-field class="example-full-width" appearance="fill">
   <mat-label>Tranmission</mat-label>
-  <textarea matInput placeholder="Input Problem Details">{{transmission}}</textarea>
+  <textarea matInput [(ngModel)]="transmission" placeholder="Input Problem Details">{{transmission}}</textarea>
 </mat-form-field>
 <br>
 
@@ -50,13 +50,13 @@
 <br>
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Problem</mat-label>
-    <textarea matInput placeholder="Input Problem Details">{{problem}}</textarea>
+    <textarea matInput [(ngModel)]="problem" placeholder="Input Problem Details">{{problem}}</textarea>
   </mat-form-field>
   <br>
 
   <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Solution</mat-label>
-    <textarea matInput placeholder="Input Problem Details">{{solution}}</textarea>
+    <textarea matInput [(ngModel)]="solution" placeholder="Input Problem Details">{{solution}}</textarea>
   </mat-form-field>
   <br>
 

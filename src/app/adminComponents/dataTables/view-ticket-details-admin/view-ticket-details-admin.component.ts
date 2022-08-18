@@ -41,6 +41,7 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
     { value: 16, viewValue: "4:00 PM"},
     { value: 17, viewValue: "5:00 PM"},
   ];
+  
 
   constructor(private afs: AngularFirestore,
     private fb: FormBuilder,

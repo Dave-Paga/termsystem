@@ -59,6 +59,7 @@ import { DataPermissionAdminComponent } from './adminComponents/dataTables/data-
 import { EditPermissionComponent } from './adminComponents/dataTables/edit-permission/edit-permission.component';
 import { ViewTicketDetailsAdminComponent } from './adminComponents/dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
 import { UserHomePageComponent } from './customerComponents/user-home-page/user-home-page.component';
+import { UserBookAppointmentComponent } from './customerComponents/user-book-appointment/user-book-appointment.component';
 
 
 const config = {
@@ -110,7 +111,8 @@ const config = {
     DataPermissionAdminComponent,
     EditPermissionComponent,
     ViewTicketDetailsAdminComponent,
-    UserHomePageComponent
+    UserHomePageComponent,
+    UserBookAppointmentComponent
   ],
   imports: [
     BrowserModule,
