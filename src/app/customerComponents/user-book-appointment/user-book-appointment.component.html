@@ -1,67 +1,85 @@
 <app-toolbar></app-toolbar>
-<div class="booking">
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Car Name</mat-label>
-        <textarea [(ngModel)]="carName" matInput placeholder="Input Problem Details"></textarea>
-    </mat-form-field>
-    <br>
-    
-    <mat-form-field appearance="fill">
-        <mat-label>Transmission</mat-label>
-        <mat-select [(value)]="transmission">
-            <mat-option [value]="option" *ngFor="let option of transArray">{{ option }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br>
-    
-    <mat-form-field appearance="fill">
-        <mat-label>Fuel Type</mat-label>
-        <mat-select [(value)]="fuelType">
-            <mat-option [value]="option" *ngFor="let option of gasType">{{ option }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br>
-    <mat-form-field appearance="fill">
-        <mat-label>Service Category</mat-label>
-        <mat-select (selectionChange)="changePrice()" [(value)]="problem">
-            <mat-option [value]="option" *ngFor="let option of service">{{ option }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br>
 
-    <mat-form-field appearance="fill">
-        <mat-label>Mechanic</mat-label>
-        <mat-select (selectionChange)="changeTimeArray()" [(value)]="employeeID">
-            <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br>
-    
-    <mat-form-field appearance="fill">
-        <mat-label>Choose a date</mat-label>
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <input matInput [matDatepicker]="picker" [formControl]="date" [matDatepickerFilter]="weekendsDatesFilter" [min]="minDate">
-        <!-- <input matInput [matDatepicker]="picker" (dateInput)="onDate($event.value)" [formControl]="date"> -->
-        
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-    
-    
-    <br>
-    <mat-form-field appearance="outline">
-        <mat-label>Input type time</mat-label>
-        <!-- <input [(ngModel)]="time" type="time" matInput name="week" min="09:00" max="18:00"> -->
-        <mat-select [(value)]="time">
-            <mat-option [value]="option.value" *ngFor="let option of timeArray">{{ option.viewValue }}</mat-option>
-        </mat-select>
-    </mat-form-field>
-    <br>
-    <h3>Price: Php {{price}}</h3>
-    <br>
-    <h5><b>*Disclaimer: Prices are only representative and are subject to change once the mechanic checks your vehicle.</b></h5>
-    
-    <button class="mat-raised-button" (click)="addNewTicket()">Book Appointment</button>
-    <p>{{errorMSG}}</p>
 
+<div class="main">
+    <div class="box">
+        <div class="lefttext">
+            <div class="textwrap">
+                
+                <div class="titleBooking">
+                    <h1 class= "special">
+                        User Booking Appointment
+                    </h1>
+                </div> 
+
+        <div class="booking">
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Car Name</mat-label>
+                <textarea [(ngModel)]="carName" matInput placeholder="Input Problem Details"></textarea>
+            </mat-form-field>
+            <br>
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Transmission</mat-label>
+                <mat-select [(value)]="transmission">
+                    <mat-option [value]="option" *ngFor="let option of transArray">{{ option }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Fuel Type</mat-label>
+                <mat-select [(value)]="fuelType">
+                    <mat-option [value]="option" *ngFor="let option of gasType">{{ option }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Service Category</mat-label>
+                <mat-select (selectionChange)="changePrice()" [(value)]="problem">
+                    <mat-option [value]="option" *ngFor="let option of service">{{ option }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Mechanic</mat-label>
+                <mat-select (selectionChange)="changeTimeArray()" [(value)]="employeeID">
+                    <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <input matInput [matDatepicker]="picker" [formControl]="date" [matDatepickerFilter]="weekendsDatesFilter" [min]="minDate">
+                <!-- <input matInput [matDatepicker]="picker" (dateInput)="onDate($event.value)" [formControl]="date"> -->
+                
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            
+            
+            <br>
+            <mat-form-field appearance="outline">
+                <mat-label>Input type time</mat-label>
+                <!-- <input [(ngModel)]="time" type="time" matInput name="week" min="09:00" max="18:00"> -->
+                <mat-select [(value)]="time">
+                    <mat-option [value]="option.value" *ngFor="let option of timeArray">{{ option.viewValue }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <h3 class="special">Price: Php {{price}}</h3>
+            <br>
+            <h5 class="special"><b>*Disclaimer: Prices are only representative and are subject to change once the mechanic checks your vehicle.</b></h5>
+            
+            <button class="mat-raised-button" (click)="addNewTicket()">Book Appointment</button>
+            <h1></h1>
+            <h3 class="special">{{errorMSG}}</h3>
+                </div>  
+            </div>
+        </div>
+    </div>
 </div>
