@@ -60,6 +60,7 @@ import { EditPermissionComponent } from './adminComponents/dataTables/edit-permi
 import { ViewTicketDetailsAdminComponent } from './adminComponents/dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
 import { UserHomePageComponent } from './customerComponents/user-home-page/user-home-page.component';
 import { UserBookAppointmentComponent } from './customerComponents/user-book-appointment/user-book-appointment.component';
+import { ConfirmModalComponent } from './customerComponents/confirm-modal/confirm-modal.component';
 
 
 const config = {
@@ -112,7 +113,8 @@ const config = {
     EditPermissionComponent,
     ViewTicketDetailsAdminComponent,
     UserHomePageComponent,
-    UserBookAppointmentComponent
+    UserBookAppointmentComponent,
+    ConfirmModalComponent
   ],
   imports: [
     BrowserModule,
@@ -136,6 +138,6 @@ const config = {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent]
+  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent, ConfirmModalComponent]
 })
 export class AppModule { }
