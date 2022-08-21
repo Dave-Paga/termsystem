@@ -1,92 +1,96 @@
 <p>editappointment works!</p>
 <app-toolbarstaff></app-toolbarstaff>
-<div class="container">
-	<section id="create-appointment">
-		<form name="create-appointment" id="create-appointment">
-			<fieldset>
-				<legend><strong>Mechanic</strong></legend>
-				<div class="form-group">
-					<input type="text" name="mechanicfirstname" placeholder="First Name" />
-					<input type="text" name="mechaniclastname" placeholder="Last" />
-					<input type="text" name="ID" placeholder="Employee ID" />
-					<input type="text" name="ticketID" placeholder="Ticket ID" />
-			</div>
-			</fieldset>
-			<fieldset>
-				<legend><strong>Service Type</strong></legend>
-				<div class="form-group">
-					<input type="text" name="title" placeholder="Car Name" />
-					<select name="transmission">
-						<option value="manual">Manual</option>
-						<option value="auto">Automatic</option>
-					</select>
-					<select name="fuel">
-						<option value="gas">Gas</option>
-						<option value="diesel">Diesel</option>
-					</select>
+<div class="main">
+	<h1 class="text">Edit Appointment</h1>
+	<div class="box">
+	<div class="container">
+		<section id="create-appointment">
+			<form name="create-appointment" id="create-appointment">
+				<fieldset>
+					<legend><strong class="smallText">Mechanic</strong></legend>
+					<div class="form-group">
+						<input type="text" name="mechanicfirstname" placeholder="First Name" />
+						<input type="text" name="mechaniclastname" placeholder="Last" />
+						<input type="text" name="ID" placeholder="Employee ID" />
+						<input type="text" name="ticketID" placeholder="Ticket ID" />
 				</div>
-				<div class="form-group">
-					<textarea name="problem" placeholder="Possible Issues"></textarea>
-					<textarea name="solution" placeholder="Possible Solutions"></textarea>
-				</div>
-				<div class="form-group">
-					<strong>Service Schedule</strong>
-					<input type="date" name="date-start" />
-					<input type="time" name="time-start" />
-				</div>
-				<div class="form-group">
-					<input type="text" name="location" placeholder="Branch" />
-				</div>
-				<div class="form-group">
-					<select name="method">
-						<option value="repair">Car Repair</option>
-						<option value="maintain">Maintenance </option>
-						<option value="tandb">Tires and Brakes</option>
-						<option value="oil">Oil Change</option>
-					</select>		
-				</div>
-				<div class="form-group">
-					<input type="text" name="plate" placeholder="Plate No." />
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend><strong>Customer Details</strong></legend>
-				<div class="form-group">
-					<input type="text" name="customerFirst" placeholder="First Name" />
-					<input type="text" name="customerLast" placeholder="Last Name" />
-					<input type="email" name="customerEmail" placeholder="E-Mail-Adress" />
-					<input type="number" name="customerPhone" placeholder="Phone Number" />
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend><strong>Current Status</strong></legend>
-				<div class="form-group">
-					<select name="alarm">
-						<option value="inquiry">Pending Inquiry</option>
-						<option value="pending Diagnosis">Pending Diagnosis</option>
-						<option value="undergoingDiagnosis">Undergoing Diagnosis</option>
-						<option value="undergoingProcess">Undergoing Repair/Maintenance</option>
-						<option value="pay">Pending Payment</option>
-						<option value="release">For Release</option>
-						
-					</select>
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend><strong>Price Details:</strong></legend>
-				<div class="form-group">
-					<strong>Price: </strong><input type="text" name="price" placeholder="Price" />
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend><strong>Confirm Changes</strong></legend>
-				<div class="form-group">
-					<button data-button-type="submit">Submit</button>
-				</div>
-			</fieldset>
-		</form>
+				</fieldset>
+				<fieldset>
+					<legend><strong class="smallText">Service Type</strong></legend>
+					<div class="form-group">
+						<input type="text" name="title" placeholder="Car Name" />
+						<select name="transmission">
+							<option value="manual">Manual</option>
+							<option value="auto">Automatic</option>
+						</select>
+						<select name="fuel">
+							<option value="gas">Gas</option>
+							<option value="diesel">Diesel</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<textarea name="problem" placeholder="Possible Issues"></textarea>
+						<textarea name="solution" placeholder="Possible Solutions"></textarea>
+					</div>
+					<div class="form-group">
+						<strong class="smallText">Service Schedule</strong>
+						<input type="date" name="date-start" />
+						<input type="time" name="time-start" />
+					</div>
+					<div class="form-group">
+						<input type="text" name="location" placeholder="Branch" />
+					</div>
+					<div class="form-group">
+						<select name="method">
+							<option value="repair">Car Repair</option>
+							<option value="maintain">Maintenance </option>
+							<option value="tandb">Tires and Brakes</option>
+							<option value="oil">Oil Change</option>
+						</select>		
+					</div>
+					<div class="form-group">
+						<input type="text" name="plate" placeholder="Plate No." />
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend><strong class="smallText">Customer Details</strong></legend>
+					<div class="form-group">
+						<input type="text" name="customerFirst" placeholder="First Name" />
+						<input type="text" name="customerLast" placeholder="Last Name" />
+						<input type="email" name="customerEmail" placeholder="E-Mail-Adress" />
+						<input type="number" name="customerPhone" placeholder="Phone Number" />
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend><strong class="smallText">Current Status</strong></legend>
+					<div class="form-group">
+						<select name="alarm">
+							<option value="inquiry">Pending Inquiry</option>
+							<option value="pending Diagnosis">Pending Diagnosis</option>
+							<option value="undergoingDiagnosis">Undergoing Diagnosis</option>
+							<option value="undergoingProcess">Undergoing Repair/Maintenance</option>
+							<option value="pay">Pending Payment</option>
+							<option value="release">For Release</option>
+							
+						</select>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend><strong class="smallText">Price Details:</strong></legend>
+					<div class="form-group">
+						<strong class="smallText">Price: </strong><input type="text" name="price" placeholder="Price" />
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend><strong class="smallText">Confirm Changes</strong></legend>
+					<div class="form-group">
+						<button class="special" data-button-type="submit">Submit</button>
+					</div>
+				</fieldset>
+			</form>
+			</section>
+		<section>
+			<textarea name="ics" style="float:right;" placeholder="type notes here"></textarea>
 		</section>
-	<section>
-		<textarea name="ics" style="float:right;" placeholder="type notes here"></textarea>
-	</section>
-</div>
+	</div>
+	</div>

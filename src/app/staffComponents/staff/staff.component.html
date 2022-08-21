@@ -7,55 +7,57 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   </head>
   <body>
-    <div class="page">
-        <h1>Current Vehicles List</h1>
-        <table>
-            <thead>
-            <tr>
-                <th>Ticket ID</th>            
-                <th>Make</th>
-                <th>Model</th>
-                <th>Year</th>
-                <th>Service Availed</th>
-            </tr>
-            </thead>
-            <tbody>
-                <tr class="filtered-row">
-                    <td ng-cloak ng-bind="ticketIDcar">202200178</td>
-                    <td ng-cloak ng-bind="make">Hyundai</td>
-                    <td ng-cloak ng-bind="model">Veloster</td>
-                    <td ng-cloak ng-bind="year">2022</td>
-                    <td ng-cloak ng-bind="item.End">Maintenance</td>
+    <div class="main">
+        <div class="page">
+            <h1 class="text">Current Vehicles List</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>Ticket ID</th>            
+                    <th>Make</th>
+                    <th>Model</th>
+                    <th>Year</th>
+                    <th>Service Availed</th>
                 </tr>
-                <tr class="filtered-row">
-                    <td ng-cloak ng-bind="ticketIDcar">202200178</td>
-                    <td ng-cloak ng-bind="make">Hyundai</td>
-                    <td ng-cloak ng-bind="model">Veloster</td>
-                    <td ng-cloak ng-bind="year">2022</td>
-                    <td ng-cloak ng-bind="item.End">Maintenance</td>
-                </tr>
-                <tr class="filtered-row">
-                    <td ng-cloak ng-bind="ticketIDcar">202200178</td>
-                    <td ng-cloak ng-bind="make">Hyundai</td>
-                    <td ng-cloak ng-bind="model">Veloster</td>
-                    <td ng-cloak ng-bind="year">2022</td>
-                    <td ng-cloak ng-bind="item.End">Maintenance</td>
-                </tr>
-                <tr class="filtered-row">
-                    <td ng-cloak ng-bind="ticketIDcar">202200178</td>
-                    <td ng-cloak ng-bind="make">Hyundai</td>
-                    <td ng-cloak ng-bind="model">Veloster</td>
-                    <td ng-cloak ng-bind="year">2022</td>
-                    <td ng-cloak ng-bind="item.End">Maintenance</td>
-                </tr>
-            </tbody>
-        </table>
-    
-    <h1></h1>
-    <h1></h1>
-    
-        <button md-button class="specialBtn" routerLink="/appointment">View More Details</button>
-    
+                </thead>
+                <tbody class="fill">
+                    <tr class="filtered-row">
+                        <td ng-cloak ng-bind="ticketIDcar">202200178</td>
+                        <td ng-cloak ng-bind="make">Hyundai</td>
+                        <td ng-cloak ng-bind="model">Veloster</td>
+                        <td ng-cloak ng-bind="year">2022</td>
+                        <td ng-cloak ng-bind="item.End">Maintenance</td>
+                    </tr>
+                    <tr class="filtered-row">
+                        <td ng-cloak ng-bind="ticketIDcar">202200178</td>
+                        <td ng-cloak ng-bind="make">Hyundai</td>
+                        <td ng-cloak ng-bind="model">Veloster</td>
+                        <td ng-cloak ng-bind="year">2022</td>
+                        <td ng-cloak ng-bind="item.End">Maintenance</td>
+                    </tr>
+                    <tr class="filtered-row">
+                        <td ng-cloak ng-bind="ticketIDcar">202200178</td>
+                        <td ng-cloak ng-bind="make">Hyundai</td>
+                        <td ng-cloak ng-bind="model">Veloster</td>
+                        <td ng-cloak ng-bind="year">2022</td>
+                        <td ng-cloak ng-bind="item.End">Maintenance</td>
+                    </tr>
+                    <tr class="filtered-row">
+                        <td ng-cloak ng-bind="ticketIDcar">202200178</td>
+                        <td ng-cloak ng-bind="make">Hyundai</td>
+                        <td ng-cloak ng-bind="model">Veloster</td>
+                        <td ng-cloak ng-bind="year">2022</td>
+                        <td ng-cloak ng-bind="item.End">Maintenance</td>
+                    </tr>
+                </tbody>
+            </table>
+        
+        <h1></h1>
+        <h1></h1>
+        
+            <button md-button class="special" routerLink="/appointment">View More Details</button>
+        
+        </div>
     </div>
   </body>
 </html>
