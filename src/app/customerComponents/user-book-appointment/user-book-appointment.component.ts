@@ -1,10 +1,8 @@
-import { DatePipe } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { exit } from 'process';
 import { AuthService } from 'src/app/services/auth.service';
 import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
@@ -246,6 +244,17 @@ export class UserBookAppointmentComponent implements OnInit {
       width: 'auto',
       height: 'auto',
       data: data
+    });
+  }
+
+  addEntry() {
+    
+    this.errorMSG = ""
+    this.afs.collection('tickets/').add(this.newTicket).then(docRef => {
+      const docID = docRef.id;
+      this.afs.doc('tickets/' + docID).update({
+        ticketID: docID
+      })
     });
   }
 

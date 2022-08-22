@@ -47,7 +47,7 @@ export class UserHowsmyComponent implements OnInit {
   progressValue!: any;
 
 
-  constructor(private afs: AngularFirestore, public router: Router, public authService: AuthService,) {
+  constructor(private afs: AngularFirestore, public router: Router, public authService: AuthService) {
     
     this.map.set("Pending Inquiry", 10);
     this.map.set("Pending Diagnosis", 20);

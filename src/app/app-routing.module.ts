@@ -58,7 +58,7 @@ const routes: Routes = [
   { path: 'TicketViewViewComponent', component: TicketViewViewComponent},
   { path: 'ticketedit', component: TicketeditComponent},
   { path: 'editpermissions', component: EditpermissionsComponent},
-  { path: 'UserHomePageComponent', component: UserHomePageComponent},
+  { path: 'UserHomePageComponent', component: UserHomePageComponent, canActivate: [AuthGuard] },
   { path: 'UserBook', component: UserBookAppointmentComponent, canActivate: [AuthGuard] },
   { path: 'UserHowsMy', component: UserHowsmyComponent, canActivate: [AuthGuard] },
   { path: 'LandingPageComponent', component: LandingPageComponent},

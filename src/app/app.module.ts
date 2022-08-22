@@ -65,6 +65,9 @@ import { ConfirmModalComponent } from './customerComponents/confirm-modal/confir
 import { UserHowsmyComponent } from './customerComponents/user-howsmy/user-howsmy.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LandingToolBarComponent } from './landing-tool-bar/landing-tool-bar.component';
+import { StaffAppointmentsComponent } from './staffComponents/staff-appointments/staff-appointments.component';
+import { ServicingStaffComponent } from './staffComponents/servicing-staff/servicing-staff.component';
+import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/edit-account-staff.component';
 
 
 const config = {
@@ -121,7 +124,10 @@ const config = {
     ConfirmModalComponent,
     UserHowsmyComponent,
     LandingPageComponent,
-    LandingToolBarComponent
+    LandingToolBarComponent,
+    StaffAppointmentsComponent,
+    ServicingStaffComponent,
+    EditAccountStaffComponent
   ],
   imports: [
     BrowserModule,
