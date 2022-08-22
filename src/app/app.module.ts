@@ -68,6 +68,7 @@ import { LandingToolBarComponent } from './landing-tool-bar/landing-tool-bar.com
 import { StaffAppointmentsComponent } from './staffComponents/staff-appointments/staff-appointments.component';
 import { ServicingStaffComponent } from './staffComponents/servicing-staff/servicing-staff.component';
 import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/edit-account-staff.component';
+import { EditAccountUserComponent } from './customerComponents/edit-account-user/edit-account-user.component';
 
 
 const config = {
@@ -127,7 +128,8 @@ const config = {
     LandingToolBarComponent,
     StaffAppointmentsComponent,
     ServicingStaffComponent,
-    EditAccountStaffComponent
+    EditAccountStaffComponent,
+    EditAccountUserComponent
   ],
   imports: [
     BrowserModule,

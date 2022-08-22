@@ -32,6 +32,7 @@ import { UserBookAppointmentComponent } from './customerComponents/user-book-app
 import { UserHowsmyComponent } from './customerComponents/user-howsmy/user-howsmy.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LandingToolBarComponent } from './landing-tool-bar/landing-tool-bar.component';
+import { EditAccountUserComponent } from './customerComponents/edit-account-user/edit-account-user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
@@ -62,7 +63,8 @@ const routes: Routes = [
   { path: 'UserBook', component: UserBookAppointmentComponent, canActivate: [AuthGuard] },
   { path: 'UserHowsMy', component: UserHowsmyComponent, canActivate: [AuthGuard] },
   { path: 'LandingPageComponent', component: LandingPageComponent},
-  { path: 'LandingToolBarComponent', component: LandingToolBarComponent}
+  { path: 'LandingToolBarComponent', component: LandingToolBarComponent},
+  { path: 'EditUser', component: EditAccountUserComponent}
 ];
 
 @NgModule({
