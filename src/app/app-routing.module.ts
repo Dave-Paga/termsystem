@@ -15,7 +15,7 @@ import { RepairHistoryComponent } from './customerComponents/repair-history/repa
 import { ServiceComponentComponent } from './uncategorizedComponents/service-component/service-component.component';
 import { StaffComponent } from './staffComponents/staff/staff.component';
 import { HowsmyvehicleComponent } from './uncategorizedComponents/howsmyvehicle/howsmyvehicle.component';
-import { AppointmentComponent } from './uncategorizedComponents/appointment/appointment.component';
+import { AppointmentComponent } from './staffComponents/appointment/appointment.component';
 import { EditappointmentComponent } from './uncategorizedComponents/editappointment/editappointment.component';
 import { AdminpageComponent } from './adminComponents/adminpage/adminpage.component';
 import { AuthGuard } from './services/guard/auth.guard';
