@@ -69,6 +69,7 @@ import { StaffAppointmentsComponent } from './staffComponents/staff-appointments
 import { ServicingStaffComponent } from './staffComponents/servicing-staff/servicing-staff.component';
 import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/edit-account-staff.component';
 import { EditAccountUserComponent } from './customerComponents/edit-account-user/edit-account-user.component';
+import { EditAccountComponent } from './mainComponents/edit-account/edit-account.component';
 
 
 const config = {
@@ -129,7 +130,8 @@ const config = {
     StaffAppointmentsComponent,
     ServicingStaffComponent,
     EditAccountStaffComponent,
-    EditAccountUserComponent
+    EditAccountUserComponent,
+    EditAccountComponent
   ],
   imports: [
     BrowserModule,

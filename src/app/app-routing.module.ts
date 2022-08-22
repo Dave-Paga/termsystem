@@ -33,6 +33,7 @@ import { UserHowsmyComponent } from './customerComponents/user-howsmy/user-howsm
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LandingToolBarComponent } from './landing-tool-bar/landing-tool-bar.component';
 import { EditAccountUserComponent } from './customerComponents/edit-account-user/edit-account-user.component';
+import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/edit-account-staff.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
@@ -64,7 +65,8 @@ const routes: Routes = [
   { path: 'UserHowsMy', component: UserHowsmyComponent, canActivate: [AuthGuard] },
   { path: 'LandingPageComponent', component: LandingPageComponent},
   { path: 'LandingToolBarComponent', component: LandingToolBarComponent},
-  { path: 'EditUser', component: EditAccountUserComponent}
+  { path: 'EditUser', component: EditAccountUserComponent},
+  { path: 'EditEmployee', component: EditAccountStaffComponent }
 ];
 
 @NgModule({
