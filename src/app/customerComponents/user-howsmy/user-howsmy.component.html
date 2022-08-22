@@ -1,2 +1,76 @@
 <app-toolbaruser></app-toolbaruser>
 <p>{{ticketID}}</p>
+<p>howsmyvehicle works!</p>
+<app-toolbar></app-toolbar>
+
+<p class="order-successful-text"> TICKET STATUS </p>
+<div class="main-div col-md-12 col-lg-12">
+  <div class="track-order-div col-md-8 col-lg-8 col-sm-12 col-xs-12">
+    <p class="track-your-order"> ENTER TICKET NUMBER </p>
+    <div class="order-status-div">
+        <input type="text" placeholder="Search..">
+      <p class="order-status-text"> {{status}} </p>
+      <p class="order-id"> TICKET ID: {{ticketID}}</p>
+      
+      <ul class="order-status-animation">
+        <li>
+          <div class="order-placed">
+          <img  src="https://cdn.zeplin.io/58e89cb1bcbb20c60457e08c/assets/E67E571F-0710-43B2-8D07-793788CE5A9E.png"/> 
+          <p> Service Availed </p>
+          </div>
+        </li>
+         <li> 
+           <div class="fresh-food-being-prepared">
+          <img src="https://cdn.zeplin.io/58e89cb1bcbb20c60457e08c/assets/E67E571F-0710-43B2-8D07-793788CE5A9E.png"/> 
+          <p> Undergoing Diagnosis </p>
+           </div>
+        </li>
+         <li> 
+           <div>
+          <img src="https://cdn.zeplin.io/58e89cb1bcbb20c60457e08c/assets/E67E571F-0710-43B2-8D07-793788CE5A9E.png"/> 
+          <p> Repair/Maintenance Undergoing</p>
+           </div>
+        </li>
+         <li> 
+           <div>
+          <img src="https://cdn.zeplin.io/58e89cb1bcbb20c60457e08c/assets/E67E571F-0710-43B2-8D07-793788CE5A9E.png"/> 
+          <p> Order Done/ For Checkout </p>
+           </div>
+        </li>
+      </ul>
+      
+    </div>
+   
+    <div class="customer-details">
+      <h4 class="delivery-address"> Vehicle Details </h4>
+      <p class="delivery-text"> {{carName}}, {{fuelType}}, {{transmission}}  </p>
+      <h4 class="delivery-address"> Assigned Mechanic </h4>
+      <p class="delivery-text"> {{mechanicName}}</p>
+      <p class="delivery-address"> Service Details </p>
+      <p class="delivery-text"> Problem/Service: {{problem}}</p>
+      <p class="delivery-text"> Solution: {{solution}}</p>
+      <p class="delivery-address"> Schedule </p>
+      <p class="delivery-text">{{date}}, {{time}}</p>
+    </div>
+  </div>
+  <div class="col-md-4 col-lg-4 col-sm-12 col-xs-12">
+    <p class="arriving-in-header"> ESTIMATED FINISH </p>
+    <div class="arriving-in-details">
+      <ul>
+        <li>
+          <p class="delivery-time"> 1 hour</p> 
+        </li>
+      </ul>
+    </div>
+    <p class="order-information-header"> ORDER INFORMATION </p>
+    <div class="order-information-div">
+      <p class="orderId"> TICKET: {{ticketID}}</p>
+      <p class="ordered-time">ESTIMATED PRICE: {{price}} </p>
+      <p class="delivery-text"> NOTICE: Pircelist on offered Services
+        are subject to changes upon further diagnosis of mechanic and serve as estimates ONLY.
+      </p>
+    </div>
+    <div class="item-container-div">
+    </div>
+  </div>
+</div>

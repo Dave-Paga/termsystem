@@ -70,6 +70,8 @@ export class UserHowsmyComponent implements OnInit {
       this.solution = getFirst[0].solution;
       this.transmission = getFirst[0].transmission;
       this.status = getFirst[0].status;
+      const realTime = this.timeframes[this.time -7];
+      this.time = realTime.viewValue;
 
     })
     
