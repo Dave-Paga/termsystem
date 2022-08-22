@@ -30,6 +30,8 @@ import { RedirectComponent } from './mainComponents/redirect/redirect.component'
 import { UserHomePageComponent } from './customerComponents/user-home-page/user-home-page.component';
 import { UserBookAppointmentComponent } from './customerComponents/user-book-appointment/user-book-appointment.component';
 import { UserHowsmyComponent } from './customerComponents/user-howsmy/user-howsmy.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingToolBarComponent } from './landing-tool-bar/landing-tool-bar.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
@@ -58,7 +60,9 @@ const routes: Routes = [
   { path: 'editpermissions', component: EditpermissionsComponent},
   { path: 'UserHomePageComponent', component: UserHomePageComponent},
   { path: 'UserBook', component: UserBookAppointmentComponent, canActivate: [AuthGuard] },
-  { path: 'UserHowsMy', component: UserHowsmyComponent, canActivate: [AuthGuard] }
+  { path: 'UserHowsMy', component: UserHowsmyComponent, canActivate: [AuthGuard] },
+  { path: 'LandingPageComponent', component: LandingPageComponent},
+  { path: 'LandingToolBarComponent', component: LandingToolBarComponent}
 ];
 
 @NgModule({
