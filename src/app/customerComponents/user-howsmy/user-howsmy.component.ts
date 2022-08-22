@@ -43,7 +43,22 @@ export class UserHowsmyComponent implements OnInit {
     { value: 17, viewValue: "5:00 PM" },
   ];
 
+  map = new Map<string, number>();
+  progressValue!: any;
+
+
   constructor(private afs: AngularFirestore, public router: Router, public authService: AuthService,) {
+    
+    this.map.set("Pending Inquiry", 10);
+    this.map.set("Pending Diagnosis", 20);
+    this.map.set("Undergoing Diagnosis", 40);
+    this.map.set("Undergoing Repair/Maintenance",50);
+    this.map.set("Pending Payment",80);
+    this.map.set("For Release",100);
+
+      
+
+
 
     this.afs.collection<any>('users/').valueChanges().subscribe(result => {
       result.forEach(user => {
@@ -72,6 +87,7 @@ export class UserHowsmyComponent implements OnInit {
       this.status = getFirst[0].status;
       const realTime = this.timeframes[this.time -7];
       this.time = realTime.viewValue;
+      this.progressValue = this.map.get(this.status);
 
     })
     
