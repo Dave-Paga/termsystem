@@ -77,6 +77,8 @@ export class DataTicketsAdminComponent implements AfterViewInit {
       height: '600px',
       data: data
     });
+
+    dialogRef.afterClosed().subscribe(data => console.log(data))
   }
 
   applyFilter(event: Event) {
@@ -91,6 +93,8 @@ export class DataTicketsAdminComponent implements AfterViewInit {
       height: 'auto',
       data: data
     });
+
+    
   }
 
   removeData(data): void {

@@ -53,7 +53,6 @@ export class EditTicketComponent implements OnInit {
 
   timeArray: valVar[] = [];
 
-  form: FormGroup;
   employees: employee[] = [];
   statusArray: valVar[] = [
     { value: "Pending Inquiry", viewValue: 'Pending Inquiry'},
@@ -64,10 +63,12 @@ export class EditTicketComponent implements OnInit {
     { value: "For Release", viewValue: 'For Release'}
   ];
   
-  constructor(private afs: AngularFirestore,
+  constructor(
+    private afs: AngularFirestore,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditTicketComponent>,
-    @Inject(MAT_DIALOG_DATA) public data) {
+    @Inject(MAT_DIALOG_DATA) public data
+    ) {
     
     this.ticketID = data.ticketID;
     this.carName = data.carName;
@@ -118,10 +119,7 @@ export class EditTicketComponent implements OnInit {
       });
     })
 
-    this.form = this.fb.group({
-      employeeID: [this.employeeID],
-      time: [this.time]
-    });
+
   }
 
   ngOnInit(): void {
@@ -154,7 +152,9 @@ export class EditTicketComponent implements OnInit {
     }
   }
 
-
+  changed() {
+    console.log(this.carName)
+  }
   
   updateData(): void {
     let selection = this.employees.find(data => data.id == this.employeeID);
@@ -172,6 +172,7 @@ export class EditTicketComponent implements OnInit {
       status: this.status,
       transmission: this.transmission
     })
+    console.log(this.carName);
     this.dialogRef.close();
   }
 

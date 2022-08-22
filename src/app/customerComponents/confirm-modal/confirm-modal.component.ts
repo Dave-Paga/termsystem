@@ -29,7 +29,9 @@ export class ConfirmModalComponent implements OnInit {
       })
     });
     this.close();
+    this.dialogRef.close();
     this.router.navigate(['UserHomePageComponent']);
+    this.dialogRef.close();
   }
 
   close() {

@@ -10,11 +10,11 @@ import 'firebase/compat/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-edit-account-user',
-  templateUrl: './edit-account-user.component.html',
-  styleUrls: ['./edit-account-user.component.css']
+  selector: 'app-edit-account',
+  templateUrl: './edit-account.component.html',
+  styleUrls: ['./edit-account.component.css']
 })
-export class EditAccountUserComponent implements OnInit {
+export class EditAccountComponent implements OnInit {
   email!: string;
   fullName!: string;
   phone!: string;
@@ -25,12 +25,11 @@ export class EditAccountUserComponent implements OnInit {
   newPass: string = "";
   auth: any;
   userID!: string;
-  tickets: any;
   constructor(
     private afs: AngularFirestore,
     public authService: AuthService,
     public router: Router
-  ) {
+    ) {
 
     this.afs.collection<any>('users/').valueChanges().subscribe(result => {
       result.forEach(user => {
@@ -44,14 +43,9 @@ export class EditAccountUserComponent implements OnInit {
         }
       })
     });
+  }
 
-
-    this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
-      let arr = data
-      arr = arr.filter((x) => x.customerEmail == this.email);
-      this.tickets = arr
-
-    })
+  ngOnInit(): void {
   }
 
   apply() {
@@ -88,51 +82,51 @@ export class EditAccountUserComponent implements OnInit {
       }).catch((err) => {
         this.errorMSG = "Could not change name and phone number."
       });
-      this.updateData();
     }
 
-    if (
-      this.newPass != "" && this.confirmPass != ""
-    ){
-      if (this.oldPassword == this.password && this.newPass == this.confirmPass) {
-        this.afs.collection('users').doc(this.userID).update({
-          fullName: this.fullName,
-          phone: this.phone,
-          password: this.newPass
-        }).then(success => {
-          this.errorMSG = "Change password successful!"
-        }).catch((err) => {
-          this.errorMSG = "Change password unsuccessful!"
-        });
-        this.updateData();
-      }
+    if (this.oldPassword == this.password && this.newPass == this.confirmPass) {
+      this.afs.collection('users').doc(this.userID).update({
+        fullName: this.fullName,
+        phone: this.phone,
+        password: this.newPass
+      }).then(success => {
+        this.errorMSG = "Change password successful!"
+      }).catch((err) => {
+        this.errorMSG = "Change password unsuccessful!"
+      });
+
     }
   }
 
 
-  updateData(): void {
-    this.tickets.forEach((ticket) => {
-      this.afs.collection('tickets').doc(ticket.ticketID).update({
-        customerName: this.fullName,
-        customerPhone: this.phone
-      })
-    })
-  }
 
+  test() {
+    let currentUser = firebase.auth().currentUser;
+    const credentials = firebase.auth.EmailAuthProvider.credential(this.email, this.password);
 
-
-  ngOnInit(): void {
-    this.loginCheck();
-  }
-
-  loginCheck() {
-    this.authService.getPermission(this.authService.userData.uid).then(res => {
-      if (res != 0) {
-        this.router.navigate(['redirect']);
-      } else {
-        console.log(this.authService.userData.uid);
+    currentUser?.reauthenticateWithCredential(credentials).then(
+      success => {
+        if (this.newPass != this.confirmPass) {
+          this.errorMSG = "You did not confirm your password correctly."
+        } else if (this.newPass.length < 6) {
+          this.errorMSG = "Your password should be at least 6 characters long"
+        } else {
+          currentUser?.updatePassword(this.newPass).then((x) => {
+            this.errorMSG = "Change password successful!"
+          }).catch((x) => {
+            this.errorMSG = "Change password unsuccessful!"
+          });
+        }
+      },
+      error => {
+        console.log(error);
+        if (error.code === "auth/wrong-password") {
+          this.errorMSG = "Old Password is invalid"
+        }
       }
-    });
+    )
   }
+
+  
 
 }

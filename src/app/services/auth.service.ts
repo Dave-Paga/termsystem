@@ -62,8 +62,8 @@ export class AuthService {
         this.setUser(result.user);
       })
       .catch((error) => {
-        // window.alert(error.message);
-        this.errorMSG = this.getErrCode(error);
+        window.alert(error);
+        console.log(this.getErrCode(error))
       });
   }
 
@@ -180,7 +180,6 @@ export class AuthService {
           subscription.unsubscribe();
         }
       }).catch((error) => {
-        this.errorMSG = "Please enter valid Email"
       });
   }
 

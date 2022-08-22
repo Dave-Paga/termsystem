@@ -30,7 +30,7 @@ import { StaffComponent } from './staffComponents/staff/staff.component';
 import { HowsmyvehicleComponent } from './uncategorizedComponents/howsmyvehicle/howsmyvehicle.component';
 import { EmployeeComponent } from './staffComponents/employee/employee.component';
 import { AdminComponent } from './adminComponents/admin/admin.component';
-import { AppointmentComponent } from './uncategorizedComponents/appointment/appointment.component';
+import { AppointmentComponent } from './staffComponents/appointment/appointment.component';
 import { EditappointmentComponent } from './uncategorizedComponents/editappointment/editappointment.component';
 import { ToolbaradminComponent } from './adminComponents/toolbaradmin/toolbaradmin.component';
 import { AdminpageComponent } from './adminComponents/adminpage/adminpage.component';
@@ -66,9 +66,11 @@ import { UserHowsmyComponent } from './customerComponents/user-howsmy/user-howsm
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LandingToolBarComponent } from './landing-tool-bar/landing-tool-bar.component';
 import { StaffAppointmentsComponent } from './staffComponents/staff-appointments/staff-appointments.component';
-import { ServicingStaffComponent } from './staffComponents/servicing-staff/servicing-staff.component';
+
 import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/edit-account-staff.component';
 import { EditAccountUserComponent } from './customerComponents/edit-account-user/edit-account-user.component';
+import { EditAccountComponent } from './mainComponents/edit-account/edit-account.component';
+import { EditTicketStaffComponent } from './staffComponents/edit-ticket-staff/edit-ticket-staff.component';
 
 
 const config = {
@@ -127,9 +129,10 @@ const config = {
     LandingPageComponent,
     LandingToolBarComponent,
     StaffAppointmentsComponent,
-    ServicingStaffComponent,
     EditAccountStaffComponent,
-    EditAccountUserComponent
+    EditAccountUserComponent,
+    EditAccountComponent,
+    EditTicketStaffComponent
   ],
   imports: [
     BrowserModule,
@@ -154,6 +157,6 @@ const config = {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent, ConfirmModalComponent]
+  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent, ConfirmModalComponent, EditTicketStaffComponent]
 })
 export class AppModule { }

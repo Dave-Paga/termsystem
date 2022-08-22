@@ -1,25 +1,26 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-import { DataTicketsAdminItem } from 'src/app/adminComponents/dataTables/data-tickets-admin/data-tickets-admin-datasource';
+import { MatTable } from '@angular/material/table';
 import { AuthService } from 'src/app/services/auth.service';
-import { EditTicketStaffComponent } from '../edit-ticket-staff/edit-ticket-staff.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { DataTicketsAdminItem } from 'src/app/adminComponents/dataTables/data-tickets-admin/data-tickets-admin-datasource';
+import { Router } from '@angular/router';
+
 
 @Component({
-  selector: 'app-staff',
-  templateUrl: './staff.component.html',
-  styleUrls: ['./staff.component.css']
+  selector: 'app-appointment',
+  templateUrl: './appointment.component.html',
+  styleUrls: ['./appointment.component.css']
 })
-export class StaffComponent implements OnInit {
+export class AppointmentComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'date', 'customerName', 'customerPhone', 'price', 'problem', 'solution', 'status', 'edit'];
+  displayedColumns = ['ticketID', 'carName', 'date','customerName', 'customerPhone', 'price', 'problem', 'status','receive', 'delete'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   email!: string;
@@ -43,8 +44,7 @@ export class StaffComponent implements OnInit {
   constructor(
     private afs: AngularFirestore,
     public authService: AuthService,
-    public router: Router,
-    public dialog: MatDialog
+    public router: Router
   ) {
     this.afs.collection<any>('users/').valueChanges().subscribe(result => {
       result.forEach(user => {
@@ -65,12 +65,16 @@ export class StaffComponent implements OnInit {
       });
 
       arr = arr.filter((x) => x.employeeID == this.userID);
-      arr = arr.filter((x) => x.status != "Pending Inquiry");
+      arr = arr.filter((x) => x.status == "Pending Inquiry");
       console.log(arr);
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
 
     })
+  }
+
+  ngOnInit(): void {
+    this.loginCheck();
   }
 
   applyFilter(event: Event) {
@@ -80,26 +84,11 @@ export class StaffComponent implements OnInit {
 
   receiveTicket(data): void {
     this.afs.collection<any>('tickets/').doc(data.ticketID).update({
-      status: "Undergoing Repair/Maintenance"
-    });
+      status: "Pending Diagnosis"});
   }
 
   removeData(data): void {
     this.afs.collection<any>('tickets/').doc(data.ticketID).delete();
-  }
-
-
-  ngOnInit(): void {
-    this.loginCheck();
-  }
-
-  editDialog(data): void {
-
-    const dialogRef = this.dialog.open(EditTicketStaffComponent, {
-      width: 'auto',
-      height: 'auto',
-      data: data
-    });
   }
 
   loginCheck() {
@@ -111,4 +100,5 @@ export class StaffComponent implements OnInit {
       }
     });
   }
+
 }
