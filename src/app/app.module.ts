@@ -62,6 +62,8 @@ import { UserHomePageComponent } from './customerComponents/user-home-page/user-
 import { UserBookAppointmentComponent } from './customerComponents/user-book-appointment/user-book-appointment.component';
 import { ConfirmModalComponent } from './customerComponents/confirm-modal/confirm-modal.component';
 import { UserHowsmyComponent } from './customerComponents/user-howsmy/user-howsmy.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LandingToolBarComponent } from './landing-tool-bar/landing-tool-bar.component';
 
 
 const config = {
@@ -116,7 +118,9 @@ const config = {
     UserHomePageComponent,
     UserBookAppointmentComponent,
     ConfirmModalComponent,
-    UserHowsmyComponent
+    UserHowsmyComponent,
+    LandingPageComponent,
+    LandingToolBarComponent
   ],
   imports: [
     BrowserModule,
