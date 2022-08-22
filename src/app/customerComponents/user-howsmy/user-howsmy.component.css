@@ -1,18 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Luckiest+Guy&family=Montserrat:wght@700&family=Nosifer&family=Oswald:wght@400;600&family=Roboto:wght@100;300&family=Rubik+Glitch&display=swap');
+
 .order-successful-text {
     font-family: Oswald;
     font-size: 2.25em;
     font-weight: bold;
     color: #444444;
     padding: 20px;
+    text-align: center;
   }
-  .track-your-order {
-    padding-top: 20px;
-    padding-left: 0px;
-  }
-  .arriving-in-header{
-    padding-top: 20px;
-    padding-left: 0px;
-  }
+  
   .main-div {
     background-color: #f5f5f5;
   }
@@ -43,85 +39,25 @@
     text-align: center;
     color: #4a4a4a;
   }
-  .progress-bar {
-    width:60%;
-    height:1px;
-    background-color: #d55e57;
-  }
-  .order-received{
-    width:50px;
-    height:50px;
-        background: url(https://d30mle0t4iy75h.cloudfront.net/website/track-order-status-1.png);
-  }
-  .track-process {
-      position: relative;
-  }
-  .customer-details{
-    box-shadow: 0 2px 2px 0 rgba(181, 181, 181, 0.5);
-    padding-left:20px;
-    font-family: Lato;
-    font-size: 1em;
-    font-weight: 500;
-    background-color: #ffffff;
-    border-top: solid 1px #979797;
-    padding-top: 10px;
-  }
+ 
   .delivery-text{
-    font-family: Lato;
+    font-family: Oswald;
     font-size: 17px;
     font-weight: 500;
     color: #000000;
   }
   .delivery-address {
-    font-family: Lato;
-    font-size: 1em;
-    color: #4a4a4a;
-  }
-  .consumer-phonenumber {
-    font-family: Lato;
-    font-size: 1em;
+    font-family: Oswald,cursive;
+    font-size: 20px;
     color: #000000;
-   padding-bottom: 10px;
-  }
-  .arriving-in-details{
-    box-shadow: 0 2px 2px 0 rgba(181, 181, 181, 0.5);
-    background-color:#ffffff;
   }
   
-  .arriving-in-details li {
-    border-bottom: solid 1px #979797;
-  }
-  .arriving-in-details ul {
-    list-style-type: none;
-    padding: 0px;
-  }
-  .delivery-time {
-    font-family: Oswald;
-    font-size: 1.5em;
-    font-weight: 500;
-    color: #000000;
-    text-align:center;
-    padding:5px;
-  }
-  .delivery-boy-num {
-     font-family: OpenSans;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: center;
-    color: #cb352b;
-    padding: 5px;
-  }
-  .live-tracking-btn {
-    font-family: OpenSans;
-    font-size: 1.5em;
-    font-weight: bold;
-    color: #cb352b;
-    text-align:center;
-    padding: 5px;
-  }
+  
+
+  
   .order-information-header{
-    font-family: Lato;
-    font-size: 1em;
+    font-family: Oswald;
+    font-size: 20px;
     font-weight: 500;
     color: #000000;
     margin-top: 20px;
@@ -134,94 +70,25 @@
     font-family: Lato;
     font-size: 1em;
     font-weight: bold;
-    color: #4a4a4a;
+    color: #000000;
     padding-top:10px;
     padding-left: 15px;
   }
   .ordered-time{
      font-family: Lato;
      font-size: 1em;
-     color: #4a4a4a;
+     color: #000000;
      padding-top:5px;
      padding-left:15px;
     padding-bottom: 5px;
   }
-  .item-container-div {
-    box-shadow: 0 2px 2px 0 rgba(181, 181, 181, 0.5);
-    background-color: #ffffff;
-  }
-  .item-container-div ul {
-    list-style-type: none;
-    padding:0px;
-  }
-  .item-container-div li {
-    border-bottom:solid 1px #979797;
-  }
-  .item-container-div p {
-    font-family: Lato;
-    font-size: 1em;
-    color: #000000;
-    padding: 0px;
-    margin:0px;
-  }
-  .item-container-div quantity {
-    font-family: Lato;
-    font-size: 0.1em;
-    color: #787878;
-  }
-  .item-list-div{
-    padding-top:5px;
-    padding-left: 15px;
-    padding-bottom: 5px;
-  }
-  .combo-item {
-    display:block;
-    margin-left: 5px;
-  }
-  .order-status-animation{
-    list-style-type: none;   
-    padding: 0px;
-    width: 100%;
-    display: table;
-    table-layout: fixed;
-  }
-  .order-status-animation img {
-    width: 50px;
-  }
-  .order-status-animation p{
-    font-family: Lato;
-    font-size: 1em;
-    margin-top: 10px;
-    color: #ce453b;
-    word-break: break-word;
-  }
   
-  .order-status-animation li {
-  /*   display: inline-block;
-    padding-left: 10%; */
-     display: table-cell;
+  .mat-progress-bar
+  {
     width: auto;
-    text-align: center;
+    height: 40px;
+    border-radius:100px;
+    margin-left: 5%;
+    margin-right: 5%;  
+    
   }
-  .order-status-animation li:first-child {
-    padding-left: 0px;
-  }
-  
-  @media screen and (max-width:640px) {
-    .order-status-animation p{ 
-      font-size: 0.9em;
-    }
-  }  
-  .order-status-animation li {
-    position: relative;
-  }
-  
-  /* .order-placed:after{
-      position: absolute;
-      left: calc(90% - 60px);
-      top:20px;
-      content: " ";
-      width: 160px;
-      height: 1px;
-      border: solid 1px #cb352b;
-  } */

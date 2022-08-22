@@ -9,6 +9,7 @@ import { HomeComponent } from './mainComponents/home/home.component';
 import { ToolbarComponent } from './mainComponents/toolbar/toolbar.component';
 import { ToolbarstaffComponent } from './staffComponents/toolbarstaff/toolbarstaff.component';
 import { ToolbaruserComponent } from './customerComponents/toolbaruser/toolbaruser.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AuthService } from './services/auth.service';
 
@@ -137,6 +138,7 @@ const config = {
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
