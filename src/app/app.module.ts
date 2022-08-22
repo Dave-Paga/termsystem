@@ -70,6 +70,7 @@ import { StaffAppointmentsComponent } from './staffComponents/staff-appointments
 import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/edit-account-staff.component';
 import { EditAccountUserComponent } from './customerComponents/edit-account-user/edit-account-user.component';
 import { EditAccountComponent } from './mainComponents/edit-account/edit-account.component';
+import { EditTicketStaffComponent } from './staffComponents/edit-ticket-staff/edit-ticket-staff.component';
 
 
 const config = {
@@ -130,7 +131,8 @@ const config = {
     StaffAppointmentsComponent,
     EditAccountStaffComponent,
     EditAccountUserComponent,
-    EditAccountComponent
+    EditAccountComponent,
+    EditTicketStaffComponent
   ],
   imports: [
     BrowserModule,
@@ -155,6 +157,6 @@ const config = {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent, ConfirmModalComponent]
+  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent, ConfirmModalComponent, EditTicketStaffComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 <h3 mat-dialog-title> Change Ticket</h3>
-<mat-dialog-content [formGroup]="form">
+<mat-dialog-content>
 
 <!-- Display time, date, transmission, fuelType -->
   <p>Mechanic ID: {{employeeID}}</p>
@@ -62,7 +62,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Price</mat-label>
-    <input value={{price}} type="number"  matInput="number"> 
+    <input value={{price}} [(ngModel)]="price" type="number"  matInput="number"> 
   </mat-form-field>
   <br>
 

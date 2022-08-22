@@ -20,7 +20,7 @@ export class AppointmentComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'date', 'mechanicName', 'price', 'problem', 'status'];
+  displayedColumns = ['ticketID', 'carName', 'date','customerName', 'customerPhone', 'price', 'problem', 'status','receive', 'delete'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   email!: string;
@@ -65,6 +65,7 @@ export class AppointmentComponent implements OnInit {
       });
 
       arr = arr.filter((x) => x.employeeID == this.userID);
+      arr = arr.filter((x) => x.status == "Pending Inquiry");
       console.log(arr);
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
@@ -73,11 +74,31 @@ export class AppointmentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginCheck();
   }
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  receiveTicket(data): void {
+    this.afs.collection<any>('tickets/').doc(data.ticketID).update({
+      status: "Pending Diagnosis"});
+  }
+
+  removeData(data): void {
+    this.afs.collection<any>('tickets/').doc(data.ticketID).delete();
+  }
+
+  loginCheck() {
+    this.authService.getPermission(this.authService.userData.uid).then(res => {
+      if (res != 1) {
+        this.router.navigate(['redirect']);
+      } else {
+        console.log(this.authService.userData.uid);
+      }
+    });
   }
 
 }

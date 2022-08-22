@@ -60,12 +60,12 @@
     <ng-container matColumnDef="view">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>View More Details</th>
       <td mat-cell *matCellDef="let row">
-        <button mat-raised-button color="primary" (click)="viewDialog(row)" md-button class="specialBtn">View More</button>
+        <button mat-raised-button color="primary" (click)="viewDialog(row)" md-button class="specialBtn">View</button>
       </td>
     </ng-container>
     
     <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit Ticket</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit</th>
       <td mat-cell *matCellDef="let row">
         <button mat-raised-button color="primary" (click)="openDialog(row)" md-button class="specialBtn">Edit</button>
       </td>
@@ -74,7 +74,7 @@
     <ng-container matColumnDef="delete">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Delete Ticket</th>
       <td mat-cell *matCellDef="let row">
-        <button mat-raised-button color="primary" (click)="removeData(row)" md-button class="specialBtn">DELETE</button>
+        <button mat-raised-button color="primary" (click)="removeData(row)" md-button class="specialBtn">Delete</button>
       </td>
     </ng-container>
 
