@@ -52,10 +52,10 @@
             <div class='card-title'>
               <h2>
                 Current Cars
-                <small>You have 14 cars currently in service</small>
+                <small>You have {{currentlyServiced.length}} cars currently in service</small>
               </h2>
               <div class='task-count'>
-                14
+                {{currentlyServiced.length}}
               </div>
             </div>
             <div class='card-flap flap1'>
@@ -89,11 +89,11 @@
           <div class='card col-md-4 '>
             <div class='card-title'>
               <h2>
-                Appointments
-                <small>You have 5 total appointments today</small>
+                Pending Inquiries 
+                <small>You have {{pendingInquiry.length}} pending inquiries</small>
               </h2>
               <div class='task-count'>
-                5
+                {{pendingInquiry.length}}
               </div>
             </div>
             <div class='card-flap flap1'>
@@ -128,10 +128,10 @@
             <div class='card-title'>
               <h2>
                 Total Tickets
-                <small>You've made a total of 14 tickets</small>
+                <small>You've made a total of {{totalTickets}} tickets</small>
               </h2>
               <div class='task-count'>
-                14
+                {{totalTickets}}
               </div>
             </div>
             <div class='card-flap flap1'>
@@ -165,11 +165,11 @@
           <div class='card col-md-4 '>
             <div class='card-title'>
               <h2>
-                Your Mechanic
-                <small>Number of Mechanics In Contact with You</small>
+                Cars for Release
+                <small>You have {{forRelease.length}} cars for release</small>
               </h2>
               <div class='task-count'>
-                15
+                {{forRelease.length}}
               </div>
             </div>
             <div class='card-flap flap1'>

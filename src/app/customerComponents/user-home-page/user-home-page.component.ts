@@ -13,6 +13,11 @@ export class UserHomePageComponent implements OnInit {
   customerName!: string;
   customerPhone!: string;
   ticketArray: any;
+  totalTickets!: any;
+  currentlyServiced!: any;
+  pendingInquiry!: any;
+  forRelease!: any;
+
 
   timeframes = {
     7: "7:00 AM",
@@ -41,15 +46,18 @@ export class UserHomePageComponent implements OnInit {
 
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
       let arr = data
-      arr.forEach((value, index) => {
-        let converted = this.timeframes[arr[index].time];
-        arr[index].convTime = converted;
-      });
+      
+      
 
       arr = arr.filter((x) => x.customerEmail == this.customerEmail);
       
       // Ticket object array
       this.ticketArray = arr
+      this.totalTickets = this.ticketArray.length;
+      this.currentlyServiced = this.ticketArray.filter((x)=> x.status === "Undergoing Repair/Maintenance");
+      this.pendingInquiry = this.ticketArray.filter((x)=> x.status === "Pending Inquiry");
+      this.forRelease = this.ticketArray.filter((x)=> x.status === "For Release");
+
 
     })
   }
