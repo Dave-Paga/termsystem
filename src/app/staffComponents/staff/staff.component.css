@@ -90,6 +90,7 @@ h1.text{
 
 .mat-elevation-z8{
   margin: 20px -16px 0px -95px;
+  display: inline-block;
 }
 
 .filter{
