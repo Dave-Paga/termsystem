@@ -7,7 +7,7 @@ import { HomeComponent } from './mainComponents/home/home.component';
 import { LoginComponent } from './mainComponents/login/login.component';
 import { SignupComponent } from './mainComponents/signup/signup.component';
 import { UserComponent } from './customerComponents/user/user.component';
-import { BookAppointmentComponent } from './uncategorizedComponents/book-appointment/book-appointment.component';
+import { BookAppointmentComponent } from './mainComponents/book-appointment/book-appointment.component';
 import { DiagnoseVehicleCredentialsComponent } from './uncategorizedComponents/diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
 import { DiagnoseVehicleProblemComponent } from './uncategorizedComponents/diagnose-vehicle-problem/diagnose-vehicle-problem.component';
 import { DiagnoseVehicleFindingsComponent } from './uncategorizedComponents/diagnose-vehicle-findings/diagnose-vehicle-findings.component';
@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'redirect', component: RedirectComponent, canActivate: [AuthGuard] },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
-  { path: 'bookingAppointment', component: BookAppointmentComponent, canActivate: [AuthGuard] },
+  { path: 'bookingAppointment', component: BookAppointmentComponent},
   { path: 'diagnoseVehicleCredentials', component: DiagnoseVehicleCredentialsComponent},
   { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent},
   { path: 'DiagnoseVehicleFindingsComponent', component: DiagnoseVehicleFindingsComponent},
