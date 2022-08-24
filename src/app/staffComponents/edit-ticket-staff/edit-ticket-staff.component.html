@@ -1,6 +1,8 @@
 <h3 mat-dialog-title> Change Ticket</h3>
 <mat-dialog-content>
 
+    <div class="container">
+
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Car Name</mat-label>
         <textarea matInput [(ngModel)]="carName" placeholder="Input Problem Details">{{carName}}</textarea>
@@ -45,8 +47,8 @@
     <br>
 
     <mat-dialog-actions>
-        <button class="mat-raised-button" (click)="close()">Close</button>
         <button class="mat-raised-button mat-primary" (click)="updateData()">Save</button>
+        <button class="mat-raised-button" (click)="close()">Close</button> 
     </mat-dialog-actions>
-
+</div>
 </mat-dialog-content>

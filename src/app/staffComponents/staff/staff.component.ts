@@ -96,7 +96,7 @@ export class StaffComponent implements OnInit {
   editDialog(data): void {
 
     const dialogRef = this.dialog.open(EditTicketStaffComponent, {
-      width: 'auto',
+      width: '400px',
       height: 'auto',
       data: data
     });

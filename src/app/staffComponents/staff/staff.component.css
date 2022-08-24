@@ -51,6 +51,8 @@ h1.text{
   color: black;
   text-align: center;
   margin: 0px 0px 10px 0px;
+  transform: translateY(45%);
+
 }
 
 .special{
@@ -84,4 +86,14 @@ h1.text{
 
 .fill{
   background-color: white;
+}
+
+.mat-elevation-z8{
+  margin: 20px -16px 0px -95px;
+  display: inline-block;
+}
+
+.filter{
+  transform: translateX(40%);
+
 }
