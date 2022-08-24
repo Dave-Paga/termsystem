@@ -27,7 +27,7 @@ import { DiagnoseVehicleFindingsComponent } from './uncategorizedComponents/diag
 import { RepairHistoryComponent } from './customerComponents/repair-history/repair-history.component';
 import { ServiceComponentComponent } from './uncategorizedComponents/service-component/service-component.component';
 import { StaffComponent } from './staffComponents/staff/staff.component';
-import { HowsmyvehicleComponent } from './uncategorizedComponents/howsmyvehicle/howsmyvehicle.component';
+import { HowsmyvehicleComponent } from './mainComponents/howsmyvehicle/howsmyvehicle.component';
 import { EmployeeComponent } from './staffComponents/employee/employee.component';
 import { AdminComponent } from './adminComponents/admin/admin.component';
 import { AppointmentComponent } from './staffComponents/appointment/appointment.component';

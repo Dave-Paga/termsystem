@@ -1,0 +1,10 @@
+<app-toolbar></app-toolbar>
+
+<mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Input Ticket</mat-label>
+    <textarea [(ngModel)]="ticketID" matInput placeholder="Ticket ID"></textarea>
+</mat-form-field>
+<h4>{{errorMSG}}</h4>
+<button class="specialButton" (click)="search()">Search Ticket</button>
+
+<p class="delivery-text"> {{carName}}, {{fuelType}}, {{transmission}} </p>
