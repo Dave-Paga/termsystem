@@ -95,10 +95,7 @@ export class UserBookAppointmentComponent implements OnInit {
     "Tune-up"
   ]
 
-
-
   timeArray: valVar[] = [];
-
   employees: employee[] = [];
 
 
