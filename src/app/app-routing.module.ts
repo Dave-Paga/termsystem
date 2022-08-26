@@ -8,7 +8,7 @@ import { LoginComponent } from './mainComponents/login/login.component';
 import { SignupComponent } from './mainComponents/signup/signup.component';
 import { UserComponent } from './customerComponents/user/user.component';
 import { BookAppointmentComponent } from './mainComponents/book-appointment/book-appointment.component';
-import { DiagnoseVehicleCredentialsComponent } from './uncategorizedComponents/diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
+import { DiagnoseVehicleCredentialsComponent } from './mainComponents/diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
 import { DiagnoseVehicleProblemComponent } from './uncategorizedComponents/diagnose-vehicle-problem/diagnose-vehicle-problem.component';
 import { DiagnoseVehicleFindingsComponent } from './uncategorizedComponents/diagnose-vehicle-findings/diagnose-vehicle-findings.component';
 import { RepairHistoryComponent } from './customerComponents/repair-history/repair-history.component';
