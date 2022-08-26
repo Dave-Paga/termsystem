@@ -1,5 +1,15 @@
 <app-toolbar></app-toolbar>
 
+<h1 class= "special">
+    Check Vehicle Status
+</h1>    
+
+<p class = "special">
+Input the ticket number to find out the current status of your vehicle along with it's other details. 
+An example of the ticket ID is: "ll0n3G7DeSTG1aMMcO3X". 
+
+</p>
+
 <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Input Ticket</mat-label>
     <textarea [(ngModel)]="ticketID" matInput placeholder="Ticket ID"></textarea>
@@ -7,4 +17,4 @@
 <h4>{{errorMSG}}</h4>
 <button class="specialButton" (click)="search()">Search Ticket</button>
 
-<p class="delivery-text"> {{carName}}, {{fuelType}}, {{transmission}} </p>
+<p class="delivery-text"> {{carName}}, {{fuelType}}, {{transmission}}, {{status}} </p>
