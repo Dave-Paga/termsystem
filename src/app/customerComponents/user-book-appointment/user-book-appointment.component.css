@@ -18,7 +18,7 @@ body{
 .main{
     margin: 10px 0px 0px 0px;
     justify-content: center;
-    height: 75rem;
+    height: 100rem;
     background-color: rgb(255, 232, 232);
 }
 
@@ -148,7 +148,7 @@ h1.special{
 
   .box{
     width: 500px;
-    height: 90%;
+    height: 65%;
     background: white;
     text-align: center;
     margin:auto;
@@ -158,4 +158,127 @@ h1.special{
     vertical-align:center;
     color: rgb(0, 0, 0);
     font-family: 'Oswald', cursive;
+  }
+
+  .smallBox{
+    padding-top: 1%;
+    width: 500px;
+    height: 19%;
+    background: white;
+    text-align: center;
+    margin:auto;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    transform: translateY(5%);
+    vertical-align:center;
+    color: rgb(0, 0, 0);
+    font-family: 'Oswald', cursive;
+  }
+
+  /*message*/
+
+.appointment-section .schedule-column {
+    position: relative;
+  }
+  .appointment-section .schedule-column .inner-outer {
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+  .appointment-section .schedule-column .inner-outer:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 347px;
+    height: 268px;
+    background: url(https://i.ibb.co/gjZ1NFM/pattern-Appoinment.png) no-repeat;
+  }
+  .appointment-section .schedule-column .inner-column {
+    position: relative;
+    padding: 25px 30px;
+    border: 2px solid #FC7373;
+    background-color: #fff;
+  }
+  .appointment-section .schedule-column h2 {
+    position: relative;
+    color: #252525;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4em;
+    margin-bottom: 15px;
+  }
+  .appointment-section .schedule-column .time-list {
+    position: relative;
+  }
+  .appointment-section .schedule-column .time-list li {
+    position: relative;
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  .appointment-section .schedule-column .time-list li:last-child {
+    margin-bottom: 0;
+  }
+  .appointment-section .schedule-column .time-list li strong {
+    color: #222;
+    font-weight: 700;
+  }
+  .appointment-section .schedule-column .time-list .closed {
+    position: relative;
+    color: #FC7373;
+  }
+  
+  .appointment-section .schedule-column {
+    position: relative;
+  }
+  .appointment-section .schedule-column .inner-outer {
+    position: relative;
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+  .appointment-section .schedule-column .inner-outer:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    width: 347px;
+    height: 268px;
+    background: url(https://i.ibb.co/gjZ1NFM/pattern-Appoinment.png) no-repeat;
+  }
+  .appointment-section .schedule-column .inner-column {
+    position: relative;
+    padding: 25px 30px;
+    border: 2px solid #FC7373;
+    background-color: #fff;
+  }
+  .appointment-section .schedule-column h2 {
+    font-family: 'Oswald', cursive;
+    position: relative;
+    color: #252525;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4em;
+    margin-bottom: 15px;
+  }
+  .appointment-section .schedule-column .time-list {
+    position: relative;
+  }
+  .appointment-section .schedule-column .time-list li {
+    font-family: 'Oswald', cursive;
+    position: relative;
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+  .appointment-section .schedule-column .time-list li:last-child {
+    margin-bottom: 0;
+  }
+  .appointment-section .schedule-column .time-list li strong {
+    color: #222;
+    font-weight: 700;
+  }
+  .appointment-section .schedule-column .time-list .closed {
+    position: relative;
+    color: #FC7373;
   }
