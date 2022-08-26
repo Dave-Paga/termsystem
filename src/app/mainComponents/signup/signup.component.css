@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Luckiest+Guy&family=Montserrat:wght@700&family=Nosifer&family=Oswald:wght@400;600&family=Roboto:wght@100;300&family=Rubik+Glitch&display=swap');
+body{
+   margin: 0;
+}
+*{
+    box-sizing: border-box;
+
+}
+
+.titleBooking{
+    margin: -1% 0px 0px 55px;
+}
+
+.booking{
+    margin: 11% 0px 0px 55px;
+}
+
+.main{
+    margin: 10px 0px 0px 0px;
+    justify-content: center;
+    height: 75rem;
+    background-color: rgb(255, 232, 232);
+    transform: translateY(1%);
+}
+
+.lefttext{
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    display:flex;
+    float: center ;   
+    margin: 8% 0px 0px -1%;
+    text-align: center;
+}
+.lefttext .textwrap{
+    margin: 7% 80px 0px 0px; /*margin ng text*/
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+.lefttext .textwrap h1{
+    width: 100%;
+    overflow-wrap: break-word;
+    font-size: 40px;
+    font-family: 'Oswald', cursive;
+    padding: 0;
+    color: black;
+    justify-content: center;
+    text-align: center;
+    margin: 0 ;
+}
+.lefttext .textwrap p{
+    margin: 0px 20px 0px 20px;
+    font-size: 20px;
+    font-family: 'Arial';
+    padding: 0;
+    color: black;
+    justify-content: center;
+    text-align: center;
+}
+.specialButton{
+    font-size: 20px;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(255, 115, 115);
+    color: whitesmoke;
+    font-family: 'Oswald', cursive;
+    justify-content: center;
+    text-align: center;
+}
+.specialButton:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(46, 46, 46);
+}
+#navicon{
+    margin-left: 100px;
+    font-size: 20px;
+}
+.aboutus .leftaboutus{
+    text-align: center;
+    float: left;
+}
+
+@media screen and (max-width: 600px) {
+    .lefttext{
+
+        padding: 0;
+        display: flex;
+        width: 100%;
+        margin-top: -10%;
+    }
+    .rightimage{
+        display: flex;
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+h1.special{
+    justify-content: center;
+    width: 100%;
+    overflow-wrap: break-word;
+    font-size: 43px;
+    font-family: 'Oswald', cursive;
+    padding: 0;
+    color: black;
+    text-align: center;
+    margin: 0px 0px 0px 0;
+    transform: translateY(45%);
+  }
+
+  h5.special{
+    width: 100%;
+    overflow-wrap: break-word;
+    font-size: 18px;
+    font-family: 'Oswald', cursive;
+    padding: 0;
+    color: black;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+  }
+
+  h3.special{
+    width: 100%;
+    margin: 75px 0px 0px 0px;
+    transform: translateY(50%);
+    overflow-wrap: break-word;
+    font-size: 23px;
+    font-family: 'Oswald', cursive;
+    padding: 0;
+    color: black;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+  }
+
+  h4.special{
+    width: 100%;
+    margin: 75px 0px 0px 0px;
+    transform: translateY(50%);
+    overflow-wrap: break-word;
+    font-size: 18px;
+    font-family: 'Oswald', cursive;
+    padding: 0;
+    color: black;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+  }
+
+  p.special{
+    width: 100%;
+    overflow-wrap: break-word;
+    font-size: 18px;
+    font-family: 'Oswald', cursive;
+    padding: 0;
+    color: black;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+  }
+
+  .box{
+    width: 500px;
+    height: 60%;
+    background: white;
+    text-align: center;
+    margin:auto;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    transform: translateY(5%);
+    vertical-align:center;
+    color: rgb(0, 0, 0);
+    font-family: 'Oswald', cursive;
+  }
+
+  .edit-user{
+    margin: 50px 0px 0px -20;
+  }
+
+  .input{
+    vertical-align:center;
+    margin: 45px 0px 0px 0px;
+  }
