@@ -42,7 +42,9 @@ export class DiagnoseVehicleCredentialsComponent implements OnInit {
 
   yes() {
     this.currentItem = this.knowledgeBase.find(x => x[0] == this.currentItem[2]);
-    if (this.currentItem[3] == String) {
+
+    console.log(this.currentItem[1].typeOf)
+    if (this.currentItem.length == 5) {
       this.book = false;
       this.answer = true;
     } else if (this.currentItem.length == 2) {
@@ -56,9 +58,10 @@ export class DiagnoseVehicleCredentialsComponent implements OnInit {
   no() {
     this.currentItem = this.knowledgeBase.find(x =>  x[0] == this.currentItem[3]);
 
-    if (this.currentItem[3].typeof == String) {
+    if (this.currentItem.length == 5) {
       this.book = false;
       this.answer = true;
+      this.diagnose = false;
     } else if (this.currentItem.length == 2) {
       this.diagnose = false;
       this.answer = true;
@@ -68,7 +71,11 @@ export class DiagnoseVehicleCredentialsComponent implements OnInit {
   }
 
   restart() {
-
+    this.start = false;
+    this.answer = true;
+    this.diagnose = true;
+    this.book = true;
+    this.problem = ''
   }
 
   bookAppointment() {

@@ -32,7 +32,6 @@ export class ConfirmModalComponent implements OnInit {
     this.dialogRef.close();
     this.router.navigate(['UserHomePageComponent']);
     this.dialogRef.close();
-    location.reload();
   }
 
   close() {
