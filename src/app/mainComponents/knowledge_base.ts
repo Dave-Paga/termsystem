@@ -10,10 +10,10 @@ export var Knowledge = {
         // "", key, key
         // "", "PROBLEM", 1000
 
-        [0,"Does the car start?", 1, 2],
-        [1,"Is there steam coming out of the system?",3,4],
-        [2, "Wait for 15 seconds and restart again, Does the car start?", 3, 19],
-        [3, "Is there steam coming out of the system?", 4, 5],
+        [0,"Does the car start?", 4, 2],
+        // [1,"Is there steam coming out of the system?",3,4],
+        [2, "Wait for 15 seconds and restart again, Does the car start?", 4, 19],
+        // [3, "Is there steam coming out of the system?", 4, 5],
         [4, "Is the steam coming out of the hood?", 6, 7],
 
         [5, "No additional repair needed"],
@@ -33,7 +33,7 @@ export var Knowledge = {
         [18, "Check A/C",-1, "Problem", 1000], //ask
         [19, "Does your car come with a F.A.S.T key and have you equipped it?", 20, 21],
 
-        [20, "Does it now start?", 3, 22],
+        [20, "Does it now start?", 4, 22],
 
         [21, "Does your car have 'Smart Entry System' or a CVT/Automatic Transmission? \
         If yes, have you made sure the gear selector is in the 'P' position, and preseed the engine switch while pressing on the brakes? \
