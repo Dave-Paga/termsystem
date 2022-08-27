@@ -27,6 +27,24 @@
         <div class="booking">
 
             <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Full Name</mat-label>
+                <textarea [(ngModel)]="customerName" matInput placeholder="Input Full Name"></textarea>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <textarea [(ngModel)]="customerEmail" matInput placeholder="Input Your Email"></textarea>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Phone Number</mat-label>
+                <input matInput [(ngModel)]="customerPhone" (keypress)="numberOnly($event)" type="text">
+            </mat-form-field>
+            <br>
+
+            <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Car Name</mat-label>
                 <textarea [(ngModel)]="carName" matInput placeholder="Input Problem Details"></textarea>
             </mat-form-field>
