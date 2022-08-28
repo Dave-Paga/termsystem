@@ -15,7 +15,15 @@ export class EmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.loginCheck()
+  }
 
+  loginCheck() {
+    this.authService.getPermission(this.authService.userData.uid).then(res => {
+      if (res != 1) {
+        this.router.navigate(['redirect']);
+      }
+    });
   }
 
   logOut() {

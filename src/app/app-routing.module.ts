@@ -36,37 +36,51 @@ import { EditAccountUserComponent } from './customerComponents/edit-account-user
 import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/edit-account-staff.component';
 
 const routes: Routes = [
+  //Main
   { path: '', component: HomeComponent, canActivate: [AuthUserGuard] },
   { path: 'login', component: LoginComponent, canActivate: [AuthUserGuard] },
   { path: 'signup', component: SignupComponent, canActivate: [AuthUserGuard] },
   { path: 'redirect', component: RedirectComponent, canActivate: [AuthGuard] },
-  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
-  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'howsmy', component: HowsmyvehicleComponent },
   { path: 'bookingAppointment', component: BookAppointmentComponent},
   { path: 'diagnoseVehicleCredentials', component: DiagnoseVehicleCredentialsComponent},
-  { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent},
-  { path: 'DiagnoseVehicleFindingsComponent', component: DiagnoseVehicleFindingsComponent},
-  { path: 'RepairHistoryComponent', component: RepairHistoryComponent},
-  { path: 'service', component: ServiceComponentComponent},
-  { path: 'staff', component: StaffComponent},
-  { path: 'howsmy', component: HowsmyvehicleComponent},
-  { path: 'appointment', component: AppointmentComponent},
-  { path: 'editappointment', component: EditappointmentComponent},
-  { path: 'adminpage', component: AdminpageComponent},
-  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard]},
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
-  { path: 'SchedulingEmployeesViewComponent', component: SchedulingEmployeesViewComponent},
-  { path: 'SchedulingEmployeesEditComponent',component: SchedulingEmployeesEditComponent},
-  { path: 'TicketViewViewComponent', component: TicketViewViewComponent},
-  { path: 'ticketedit', component: TicketeditComponent},
-  { path: 'editpermissions', component: EditpermissionsComponent},
-  { path: 'UserHomePageComponent', component: UserHomePageComponent, canActivate: [AuthGuard] },
+  
+
+  //Admin
+  { path: 'TicketViewViewComponent', component: TicketViewViewComponent, canActivate: [AuthGuard] },
+  { path: 'adminpage', component: AdminpageComponent, canActivate: [AuthGuard] },
+  { path: 'editpermissions', component: EditpermissionsComponent, canActivate: [AuthGuard] },
+  { path: 'SchedulingEmployeesViewComponent', component: SchedulingEmployeesViewComponent, canActivate: [AuthGuard] },
+  
+
+  //Staff
+  { path: 'appointment', component: AppointmentComponent, canActivate: [AuthGuard] },
+  { path: 'EditEmployee', component: EditAccountStaffComponent, canActivate: [AuthGuard] },
+  { path: 'ticketedit', component: TicketeditComponent, canActivate: [AuthGuard] },
+  
+  { path: 'staff', component: StaffComponent, canActivate: [AuthGuard] },
+
+  //Customer
+  { path: 'EditUser', component: EditAccountUserComponent, canActivate: [AuthGuard] },
+  { path: 'RepairHistoryComponent', component: RepairHistoryComponent, canActivate: [AuthGuard] },
   { path: 'UserBook', component: UserBookAppointmentComponent, canActivate: [AuthGuard] },
+  { path: 'UserHomePageComponent', component: UserHomePageComponent, canActivate: [AuthGuard] },
   { path: 'UserHowsMy', component: UserHowsmyComponent, canActivate: [AuthGuard] },
+
+  //Deprecated
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  { path: 'employee', component: EmployeeComponent, canActivate: [AuthGuard] },
+  { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'service', component: ServiceComponentComponent},
+  { path: 'editappointment', component: EditappointmentComponent},
+  { path: 'DiagnoseVehicleProblemComponent', component: DiagnoseVehicleProblemComponent },
+  { path: 'DiagnoseVehicleFindingsComponent', component: DiagnoseVehicleFindingsComponent },
+  
+  //Uncategorized
   { path: 'LandingPageComponent', component: LandingPageComponent},
-  { path: 'LandingToolBarComponent', component: LandingToolBarComponent},
-  { path: 'EditUser', component: EditAccountUserComponent},
-  { path: 'EditEmployee', component: EditAccountStaffComponent }
+  { path: 'LandingToolBarComponent', component: LandingToolBarComponent}
+  
+  
 ];
 
 @NgModule({

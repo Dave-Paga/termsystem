@@ -14,12 +14,12 @@ export class AdminComponent implements OnInit {
     public router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.loginCheck()
-  }
-
   logOut() {
     this.authService.SignOut();
+  }
+
+  ngOnInit(): void {
+    this.loginCheck()
   }
 
   loginCheck() {
