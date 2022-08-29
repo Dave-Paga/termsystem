@@ -18,7 +18,7 @@ body{
 .main{
     margin: 10px 0px 0px 0px;
     justify-content: center;
-    height: 100rem;
+    height: 130rem;
     background-color: rgb(255, 232, 232);
 }
 
@@ -61,4 +61,52 @@ body{
     font-size: 24px;
     margin-top: 10px;
   
+}
+
+
+.box{
+    width: 500px;
+    height: 65%;
+    background: white;
+    text-align: center;
+    margin:auto;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    transform: translateY(5%);
+    vertical-align:center;
+    color: rgb(0, 0, 0);
+    font-family: 'Oswald', cursive;
+  }
+
+  .smallBox{
+    padding-top: 1%;
+    width: 500px;
+    height: 16%;
+    background: white;
+    text-align: center;
+    margin:auto;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    transform: translateY(5%);
+    vertical-align:center;
+    color: rgb(0, 0, 0);
+    font-family: 'Oswald', cursive;
+  }
+
+  .specialButton{
+    font-size: 24px;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(255, 115, 115);
+    color: whitesmoke;
+    font-family: 'Oswald', cursive;
+    justify-content: center;
+    text-align: center;
+}
+.specialButton:hover{
+    color: rgb(255, 255, 255);
+    background-color: rgb(46, 46, 46);
 }
