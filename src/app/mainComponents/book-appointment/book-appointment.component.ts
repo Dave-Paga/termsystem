@@ -194,7 +194,7 @@ export class BookAppointmentComponent implements OnInit {
     let selection = this.employees.find(data => data.id == this.employeeID);
     this.mechanicName = selection?.name;
 
-    if (this.employeeID && this.date && this.time && this.fuelType && this.problem) {
+    if (this.customerEmail && this.customerName && this.customerPhone && this.employeeID && this.date && this.time && this.fuelType && this.problem) {
       this.newTicket = {
         ticketID: "Sample",
         carName: this.carName,

@@ -21,7 +21,7 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserComponent } from './customerComponents/user/user.component';
 import { BookAppointmentComponent } from './mainComponents/book-appointment/book-appointment.component';
-import { DiagnoseVehicleCredentialsComponent } from './uncategorizedComponents/diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
+import { DiagnoseVehicleCredentialsComponent } from './mainComponents/diagnose-vehicle-credentials/diagnose-vehicle-credentials.component';
 import { DiagnoseVehicleProblemComponent } from './uncategorizedComponents/diagnose-vehicle-problem/diagnose-vehicle-problem.component';
 import { DiagnoseVehicleFindingsComponent } from './uncategorizedComponents/diagnose-vehicle-findings/diagnose-vehicle-findings.component';
 import { RepairHistoryComponent } from './customerComponents/repair-history/repair-history.component';
@@ -65,7 +65,6 @@ import { ConfirmModalComponent } from './customerComponents/confirm-modal/confir
 import { UserHowsmyComponent } from './customerComponents/user-howsmy/user-howsmy.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LandingToolBarComponent } from './landing-tool-bar/landing-tool-bar.component';
-import { StaffAppointmentsComponent } from './staffComponents/staff-appointments/staff-appointments.component';
 
 import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/edit-account-staff.component';
 import { EditAccountUserComponent } from './customerComponents/edit-account-user/edit-account-user.component';
@@ -128,7 +127,6 @@ const config = {
     UserHowsmyComponent,
     LandingPageComponent,
     LandingToolBarComponent,
-    StaffAppointmentsComponent,
     EditAccountStaffComponent,
     EditAccountUserComponent,
     EditTicketStaffComponent

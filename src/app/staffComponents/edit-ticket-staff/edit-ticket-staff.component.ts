@@ -2,6 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 interface valVar {
   value: any;
@@ -38,6 +40,8 @@ export class EditTicketStaffComponent implements OnInit {
   ];
 
   constructor(
+    public authService: AuthService,
+    public router: Router,
     private afs: AngularFirestore,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<EditTicketStaffComponent>,
@@ -74,6 +78,15 @@ export class EditTicketStaffComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginCheck()
+  }
+
+  loginCheck() {
+    this.authService.getPermission(this.authService.userData.uid).then(res => {
+      if (res != 1) {
+        this.router.navigate(['redirect']);
+      }
+    });
   }
 
 }

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
+import { ConfirmModalComponent } from 'src/app/customerComponents/confirm-modal/confirm-modal.component';
+import { Knowledge } from "src/app/mainComponents/knowledge_base"
 import { AuthService } from 'src/app/services/auth.service';
-import { ConfirmModalComponent } from '../confirm-modal/confirm-modal.component';
 
 interface employee {
   name: string;
@@ -23,7 +26,7 @@ interface ticketInterface {
   carName: string;
   customerEmail: string;
   customerName: string;
-  customerPhone: string;
+  customerPhone: number;
   employeeID: string;
   date: string;
   time: string;
@@ -37,11 +40,22 @@ interface ticketInterface {
 }
 
 @Component({
-  selector: 'app-user-book-appointment',
-  templateUrl: './user-book-appointment.component.html',
-  styleUrls: ['./user-book-appointment.component.css']
+  selector: 'app-diagnose-vehicle-credentials',
+  templateUrl: './diagnose-vehicle-credentials.component.html',
+  styleUrls: ['./diagnose-vehicle-credentials.component.css']
 })
-export class UserBookAppointmentComponent implements OnInit {
+export class DiagnoseVehicleCredentialsComponent implements OnInit {
+  
+  knowledgeBase: any;
+  appointProblem: string = '';
+  start: boolean = false;
+  answer: boolean = true;
+  diagnose: boolean = true;
+  book: boolean = true;
+  hideBook: boolean = true;
+  hideUser: boolean = false;
+  currentItem: any;
+
   carName: string = '';
   date: FormControl;
   employeeID: string = '';
@@ -57,11 +71,9 @@ export class UserBookAppointmentComponent implements OnInit {
   unvailDate: number = 0;
   customerEmail!: string;
   customerName!: string;
-  customerPhone!: string;
+  customerPhone!: number;
   newTicket?: ticketInterface;
   errorMSG: string = '';
-
-
 
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
@@ -98,23 +110,38 @@ export class UserBookAppointmentComponent implements OnInit {
   timeArray: valVar[] = [];
   employees: employee[] = [];
 
+  loggedIn = new BehaviorSubject<boolean>(false);
+  loggedIn$ = this.loggedIn.asObservable();
 
-  constructor(private afs: AngularFirestore, public authService: AuthService, public dialog: MatDialog, public router: Router) {
+  constructor(private afs: AngularFirestore, public authService: AuthService, public dialog: MatDialog, public router: Router,
+    public afAuth: AngularFireAuth) {
+
+    this.afAuth.onAuthStateChanged((user) => {
+      if (user) {
+        this.afs.collection<any>('users/').valueChanges().subscribe(result => {
+          result.forEach(user => {
+            if (user.uid == this.authService.userData.uid) {
+              this.customerEmail = user.email;
+              this.customerName = user.fullName;
+              this.customerPhone = user.phone;
+            }
+          })
+        })
+        this.hideUser = true;
+        console.log("logged in")
+      } else {
+        // not logged in
+        this.hideUser = false;
+        console.log("not logged in")
+      }
+    });
+
+    this.knowledgeBase = Knowledge;
+
     this.minDate = new Date();
     const currentYear = new Date().getFullYear();
     this.maxDate = new Date(currentYear + 1, 11, 31);
     this.date = new FormControl(new Date());
-    console.log(this.authService.userData.uid);
-
-    this.afs.collection<any>('users/').valueChanges().subscribe(result => {
-      result.forEach(user => {
-        if (user.uid == this.authService.userData.uid){
-          this.customerEmail = user.email;
-          this.customerName = user.fullName;
-          this.customerPhone = user.phone;
-        }
-      })
-    })
 
     this.afs.collection<any>('users').valueChanges().subscribe(result => {
       result.forEach(doc => {
@@ -153,60 +180,13 @@ export class UserBookAppointmentComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-    this.loginCheck()
-  }
-
-  loginCheck() {
-    this.authService.getPermission(this.authService.userData.uid).then(res => {
-      if (res != 0) {
-        this.router.navigate(['redirect']);
-      }
-    });
-  }
-
-  test() {
-    console.log(`
-      Customer Email: ${this.customerEmail}
-      Customer Name: ${this.customerName}
-      Customer Phone: ${this.customerPhone}
-    `)
-
-    let selection = this.employees.find(data => data.id == this.employeeID);
-    this.mechanicName = selection?.name;
-
-    if (this.employeeID && this.date && this.time && this.fuelType && this.problem) {
-      this.newTicket = {
-        ticketID: "Sample",
-        carName: this.carName,
-        customerEmail: this.customerEmail,
-        customerName: this.customerName,
-        customerPhone: this.customerPhone,
-        employeeID: this.employeeID,
-        date: this.date.value.toLocaleDateString(),
-        time: this.time,
-        fuelType: this.fuelType,
-        mechanicName: this.mechanicName,
-        price: this.price,
-        problem: this.problem,
-        solution: "",
-        transmission: this.transmission,
-        status: "Pending Inquiry",
-      }
-
-      this.errorMSG = ""
-    } else {
-      this.errorMSG = "Please fill all inputs"
-    }
-
-    console.log(this.newTicket)
-  }
 
   weekendsDatesFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
 
     return day !== this.unvailDate && day !== 0;
   }
+
 
   changeTimeArray() {
     let currentTimeArr = this.employees.find(x => x.id == this.employeeID)?.schedule!;
@@ -221,20 +201,6 @@ export class UserBookAppointmentComponent implements OnInit {
     this.date = new FormControl(new Date());
   }
 
-  changePrice() {
-    if (this.problem == "Car Repair") {
-      this.price = 1000
-    } else if (this.problem == "Maintenance") {
-      this.price = 2500
-    } else if (this.problem == "Tune-up") {
-      this.price = 1500
-    } else if (this.problem == "Oil Change") {
-      this.price = 1000
-    } else if (this.problem == "Tire and Brakes") {
-      this.price = 5000
-    }
-  }
-
   viewDialog(data): void {
 
     const dialogRef = this.dialog.open(ConfirmModalComponent, {
@@ -244,22 +210,11 @@ export class UserBookAppointmentComponent implements OnInit {
     });
   }
 
-  addEntry() {
-    
-    this.errorMSG = ""
-    this.afs.collection('tickets/').add(this.newTicket).then(docRef => {
-      const docID = docRef.id;
-      this.afs.doc('tickets/' + docID).update({
-        ticketID: docID
-      })
-    });
-  }
-
   addNewTicket() {
     let selection = this.employees.find(data => data.id == this.employeeID);
     this.mechanicName = selection?.name;
 
-    if (this.employeeID && this.date && this.time && this.fuelType && this.problem) {
+    if (this.customerEmail && this.customerName && this.customerPhone && this.employeeID && this.date && this.time && this.fuelType && this.problem) {
       this.newTicket = {
         ticketID: "Sample",
         carName: this.carName,
@@ -277,10 +232,11 @@ export class UserBookAppointmentComponent implements OnInit {
         transmission: this.transmission,
         status: "Pending Inquiry",
       }
+      console.log(this.customerPhone)
 
       this.errorMSG = ""
 
-      this.afs.collection<any>('tickets/').valueChanges().subscribe( result => {
+      this.afs.collection<any>('tickets/').valueChanges().subscribe(result => {
         let newArr = result;
         newArr = newArr.filter((x) => x.status === "Pending Inquiry" && x.customerEmail === this.customerEmail);
         if (newArr.length <= 0) {
@@ -291,12 +247,82 @@ export class UserBookAppointmentComponent implements OnInit {
           this.errorMSG = "Please settle previous appointment first."
         }
       });
-      
-      
+
+
     } else {
       this.errorMSG = "Please fill all inputs"
     }
 
+  }
+
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+
+  ngOnInit(): void {
+  }
+
+  initiate(value:string ) {
+      this.knowledgeBase = Knowledge[value];
+      this.currentItem = this.knowledgeBase[0];
+      this.appointProblem = this.currentItem[1];
+      this.answer = false;
+      this.start = true;
+  }
+
+  yes() {
+    this.currentItem = this.knowledgeBase.find(x => x[0] == this.currentItem[2]);
+
+    console.log(this.currentItem[1].typeOf)
+    if (this.currentItem.length == 5) {
+      this.book = false;
+      this.answer = true;
+      this.diagnose = false;
+    } else if (this.currentItem.length == 2) {
+      this.diagnose = false;
+      this.answer = true;
+    }
+
+    this.appointProblem = this.currentItem[1];
+  }
+
+  no() {
+    this.currentItem = this.knowledgeBase.find(x =>  x[0] == this.currentItem[3]);
+
+    if (this.currentItem.length == 5) {
+      this.book = false;
+      this.answer = true;
+      this.diagnose = false;
+    } else if (this.currentItem.length == 2) {
+      this.diagnose = false;
+      this.answer = true;
+    }
+
+    this.appointProblem = this.currentItem[1];
+  }
+
+  restart() {
+    this.start = false;
+    this.answer = true;
+    this.diagnose = true;
+    this.book = true;
+    this.appointProblem = ''
+  }
+
+  bookAppointment() {
+    this.start = true;
+    this.answer = true;
+    this.diagnose = true;
+    this.book = true;
+    this.hideBook = false
+    this.appointProblem = '';
+    this.problem = this.currentItem[3];
+    this.price = this.currentItem[4];
   }
 
 }

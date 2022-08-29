@@ -63,6 +63,15 @@ export class UserHomePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginCheck()
+  }
+
+  loginCheck() {
+    this.authService.getPermission(this.authService.userData.uid).then(res => {
+      if (res != 0) {
+        this.router.navigate(['redirect']);
+      }
+    });
   }
 
 }

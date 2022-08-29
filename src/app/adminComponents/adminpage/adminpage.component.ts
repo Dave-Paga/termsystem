@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class AdminpageComponent implements OnInit {
   totalEmployees!: any;
   totalUsers!: any;
 
-  constructor(private afs: AngularFirestore, public authService: AuthService) {
+  constructor(private afs: AngularFirestore, public authService: AuthService,
+    public router: Router) {
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
       // Ticket object array
       this.ticketArray = data;
@@ -40,6 +42,15 @@ export class AdminpageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginCheck()
+  }
+
+  loginCheck() {
+    this.authService.getPermission(this.authService.userData.uid).then(res => {
+      if (res != 2) {
+        this.router.navigate(['redirect']);
+      }
+    });
   }
 
 }

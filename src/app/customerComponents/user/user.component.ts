@@ -14,11 +14,19 @@ export class UserComponent implements OnInit {
     public router: Router
   ) { }
 
-  ngOnInit(): void {
-    console.log(this.authService.userData);
+  logOut() {
+    this.authService.SignOut();
   }
 
-  logOut() {
-    this.authService.SignOut()
+  ngOnInit(): void {
+    this.loginCheck()
+  }
+
+  loginCheck() {
+    this.authService.getPermission(this.authService.userData.uid).then(res => {
+      if (res != 0) {
+        this.router.navigate(['redirect']);
+      }
+    });
   }
 }
