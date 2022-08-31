@@ -1,48 +1,62 @@
 <app-toolbar></app-toolbar>
 
-<h1 class= "special">
-    Check Vehicle Status
-</h1>    
 
-<p class = "special">
-Input the ticket number to find out the current status of your vehicle along with it's other details. 
-An example of the ticket ID is: "ll0n3G7DeSTG1aMMcO3X". 
+<div class="main" *ngIf="!hideResult">    
+  <div class="box" *ngIf="!hideResult">
+    <h1 class= "special">
+          Check Vehicle Status
+      </h1>    
 
-</p>
-
-<mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Input Ticket</mat-label>
-    <textarea [(ngModel)]="ticketID" matInput placeholder="Ticket ID"></textarea>
-</mat-form-field>
-<h4>{{errorMSG}}</h4>
-<button class="specialButton" (click)="search()">Search Ticket</button>
-
-<div class = "result" *ngIf="hideResult" >
-
-    <p class="order-status-text"> {{status}} </p>
-    <mat-progress-bar mode="determinate" [value] = "progressValue" color ="warn" ></mat-progress-bar>
-
-    <div class="customer-details">
-        <h4 class="delivery-address">Customer Details </h4>
-        <p class="delivery-text"> {{customerName}}, {{customerPhone}}, {{customerEmail}}  </p>
-        <h4 class="delivery-address"> Vehicle Details </h4>
-        <p class="delivery-text"> {{carName}}, {{fuelType}}, {{transmission}}  </p>
-        <h4 class="delivery-address"> Assigned Mechanic </h4>
-        <p class="delivery-text"> {{mechanicName}}</p>
-        <h4 class="delivery-address"> Service Details </h4>
-        <p class="delivery-text"> Problem/Service: {{problem}}</p>
-        <p class="delivery-text"> Solution: {{solution}}</p>
-        <h4 class="delivery-address"> Schedule Details </h4>
-        <p class="delivery-text">{{date}}, {{time}}</p>
-      </div>
-    
-      <p class="order-information-header"> ORDER INFORMATION </p>
-      <p class="orderId"> TICKET: {{ticketID}}</p>
-      <p class="ordered-time">ESTIMATED PRICE: {{price}} PHP </p>
-      <p class="delivery-text"> NOTICE: Pricelist on offered Services
-        are subject to changes upon further diagnosis of mechanic and serve as estimates ONLY.
+      <p class = "special">
+      <br>
+      Input the ticket number to find out the current status of your vehicle
+      <br>
+     along with its other details.
+      <br><br>
+      An example of the ticket ID is: "ll0n3G7DeSTG1aMMcO3X". 
       </p>
 
-
+      <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Input Ticket</mat-label>
+          <textarea [(ngModel)]="ticketID" matInput placeholder="Ticket ID"></textarea>
+      </mat-form-field>
+      <h4>{{errorMSG}}</h4>
+      <button class="specialButton" (click)="search()">Search Ticket</button>
+    </div>
 
 </div>
+
+
+
+    <!--information-->
+
+    <div class="mainTwo"*ngIf="hideResult">
+      <div class = "result" *ngIf="hideResult">
+
+        <br>
+
+          <p class="order-status-text"> {{status}} </p>
+          <mat-progress-bar mode="determinate" [value] = "progressValue" color ="warn" ></mat-progress-bar>
+
+          <div class="customer-details">
+              <h4 class="delivery-address">Customer Details </h4>
+              <p class="delivery-text"> {{customerName}}, {{customerPhone}}, {{customerEmail}}  </p>
+              <h4 class="delivery-address"> Vehicle Details </h4>
+              <p class="delivery-text"> {{carName}}, {{fuelType}}, {{transmission}}  </p>
+              <h4 class="delivery-address"> Assigned Mechanic </h4>
+              <p class="delivery-text"> {{mechanicName}}</p>
+              <h4 class="delivery-address"> Service Details </h4>
+              <p class="delivery-text"> Problem/Service: {{problem}}</p>
+              <p class="delivery-text"> Solution: {{solution}}</p>
+              <h4 class="delivery-address"> Schedule Details </h4>
+              <p class="delivery-text">{{date}}, {{time}}</p>
+            </div>
+          
+            <p class="order-information-header"> ORDER INFORMATION </p>
+            <p class="orderId"> TICKET: {{ticketID}}</p>
+            <p class="ordered-time">ESTIMATED PRICE: {{price}} PHP </p>
+            <p class="delivery-text"> NOTICE: Pricelist on offered Services
+              are subject to changes upon further diagnosis of mechanic and serve as estimates ONLY.
+            </p>      
+      </div>
+
