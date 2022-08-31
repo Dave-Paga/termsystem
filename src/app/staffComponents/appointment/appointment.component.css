@@ -85,7 +85,7 @@ h3.text{
 
 .main{
   margin: 100px 90px 0px -120px;
-  width: 1500px;
+  width: 1700px;
   text-align: center;
   justify-content: center;
   height: 51rem;
@@ -102,5 +102,11 @@ h3.text{
   justify-content: center;
   margin: 0px 0px 10px 0px;
   font-family: 'Oswald', cursive;
+}
+
+.mat-elevation-z8
+{
+  transform: translateX(4%);
+  width: 100%;
 }
 

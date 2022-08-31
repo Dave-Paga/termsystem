@@ -48,3 +48,61 @@ h1.special{
     color: rgb(255, 255, 255);
     background-color: rgb(46, 46, 46);
 }
+
+.delivery-text{
+  font-family: Oswald;
+  font-size: 17px;
+  font-weight: 500;
+  color: #000000;
+}
+.delivery-address {
+  font-family: Oswald;
+  font-size: 20px;
+  color: #000000;
+}
+
+.order-information-header{
+  font-family: Oswald;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000;
+  margin-top: 20px;
+}
+
+.orderId{
+  font-family: Lato;
+  font-size: 1em;
+  font-weight: bold;
+  color: #000000;
+  padding-top:10px;
+  padding-left: 15px;
+}
+
+.ordered-time{
+  font-family: Lato;
+  font-size: 1em;
+  color: #000000;
+  padding-top:5px;
+  padding-left:15px;
+ padding-bottom: 5px;
+}
+
+.mat-progress-bar
+  {
+    width: auto;
+    height: 40px;
+    border-radius:100px;
+    margin-left: 5%;
+    margin-right: 5%;  
+    margin-top: 5%;
+  }
+
+  .order-status-text {
+    text-align:center;
+    margin-top: 10px;
+    font-family: Oswald;
+    font-size: 2.25em;
+    font-weight: bold;
+    text-align: center;
+    color: #d55e57
+  }

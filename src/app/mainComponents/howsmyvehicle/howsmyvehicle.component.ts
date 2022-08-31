@@ -28,6 +28,7 @@ export class HowsmyvehicleComponent implements OnInit {
   transmission!: string;
   status!: string;
   errorMSG: string = '';
+  hideResult: boolean = false;
 
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
@@ -67,7 +68,7 @@ export class HowsmyvehicleComponent implements OnInit {
 
       if (getTicket.length) {
         this.errorMSG = "Ticket found!"
-
+        this.hideResult = true;
         this.customerName = getTicket[0].customerName;
         this.customerPhone = getTicket[0].customerPhone;
         this.customerEmail = getTicket[0].customerEmail;
