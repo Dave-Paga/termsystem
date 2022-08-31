@@ -100,8 +100,8 @@ export var Knowledge = {
     "chassis": [
         [0, "Does the vehicle pulls heavily to one side when driving on a level road?", 1, 2],
         [1, "There is improper wheel alignment.",-1, "Wheel alignment", 300], //Problem
-        [2, "Are there strange noises related to the suspension system?", 3, 4],
-        [3, "These are caused by worn out or damaged suspension bushings", "PROBLEM", 1000],
+        [2, "Are there strange noises related to the suspension system?", 3,4],
+        [3, "These are caused by worn out or damaged suspension bushings", -1, "Suspension problem", 700], //Problem
         [4, "Check the other categories."]
     ],
 
