@@ -84,7 +84,7 @@
             <mat-form-field appearance="fill">
                 <mat-label>Choose a date</mat-label>
                 <mat-hint>MM/DD/YYYY</mat-hint>
-                <input matInput [matDatepicker]="picker" [formControl]="date" [matDatepickerFilter]="weekendsDatesFilter" [min]="minDate">
+                <input (dateInput)="onDate($event.value)" matInput [matDatepicker]="picker" [formControl]="date" [matDatepickerFilter]="weekendsDatesFilter" [min]="minDate">
                 <!-- <input matInput [matDatepicker]="picker" (dateInput)="onDate($event.value)" [formControl]="date"> -->
                 
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

@@ -60,6 +60,7 @@ export class UserBookAppointmentComponent implements OnInit {
   customerPhone!: string;
   newTicket?: ticketInterface;
   errorMSG: string = '';
+  ticketArr: any;
 
 
 
@@ -96,6 +97,7 @@ export class UserBookAppointmentComponent implements OnInit {
   ]
 
   timeArray: valVar[] = [];
+  timeArrBackUp: valVar[] = [];
   employees: employee[] = [];
 
 
@@ -114,7 +116,12 @@ export class UserBookAppointmentComponent implements OnInit {
           this.customerPhone = user.phone;
         }
       })
-    })
+    });
+
+    this.afs.collection<any>('tickets').valueChanges().subscribe(result => {
+      this.ticketArr = result
+    });
+
 
     this.afs.collection<any>('users').valueChanges().subscribe(result => {
       result.forEach(doc => {
@@ -204,8 +211,31 @@ export class UserBookAppointmentComponent implements OnInit {
 
   weekendsDatesFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
+    const date = (d || new Date()).toLocaleDateString();
 
-    return day !== this.unvailDate && day !== 0;
+    let empTickets = this.ticketArr.filter(x => x.employeeID == this.employeeID);
+    let empFilter = empTickets.filter(x => x.date == date);
+    let prevent = true;
+    // max daily inquiries
+    if (empFilter.length > 2) {
+      prevent = false;
+    }
+
+    return day !== this.unvailDate && day !== 0 && prevent
+  }
+
+  onDate(dateVal) {
+    const date = dateVal.toLocaleDateString();
+
+    let empTickets = this.ticketArr.filter(x => x.employeeID == this.employeeID);
+    let empFilter = empTickets.filter(x => x.date == date);
+    this.timeArray = this.timeArrBackUp;
+
+    empFilter.forEach(x =>
+      this.timeArray = this.timeArray.filter(y =>
+        y.value !== x.time
+      )
+    )
   }
 
   changeTimeArray() {
@@ -218,6 +248,7 @@ export class UserBookAppointmentComponent implements OnInit {
     for (let i = start; i < end; i++) {
       this.timeArray.push({ value: this.timeframes[i].value, viewValue: this.timeframes[i].viewValue });
     }
+    this.timeArrBackUp = this.timeArray;
     this.date = new FormControl(new Date());
   }
 

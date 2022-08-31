@@ -27,11 +27,13 @@ export class ConfirmModalComponent implements OnInit {
       this.afs.doc('tickets/' + docID).update({
         ticketID: docID
       })
+      this.close();
+      this.dialogRef.close();
+      this.router.navigate(['redirect']);
     });
-    this.close();
-    this.dialogRef.close();
-    this.router.navigate(['UserHomePageComponent']);
-    this.dialogRef.close();
+    
+    
+
   }
 
   close() {

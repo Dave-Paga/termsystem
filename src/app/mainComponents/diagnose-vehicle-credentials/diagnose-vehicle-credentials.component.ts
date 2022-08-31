@@ -74,6 +74,7 @@ export class DiagnoseVehicleCredentialsComponent implements OnInit {
   customerPhone!: number;
   newTicket?: ticketInterface;
   errorMSG: string = '';
+  ticketArr: any;
 
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
@@ -108,6 +109,7 @@ export class DiagnoseVehicleCredentialsComponent implements OnInit {
   ]
 
   timeArray: valVar[] = [];
+  timeArrBackUp: valVar[] = [];
   employees: employee[] = [];
 
   loggedIn = new BehaviorSubject<boolean>(false);
@@ -142,6 +144,10 @@ export class DiagnoseVehicleCredentialsComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     this.maxDate = new Date(currentYear + 1, 11, 31);
     this.date = new FormControl(new Date());
+
+    this.afs.collection<any>('tickets').valueChanges().subscribe(result => {
+      this.ticketArr = result
+    });
 
     this.afs.collection<any>('users').valueChanges().subscribe(result => {
       result.forEach(doc => {
@@ -183,10 +189,32 @@ export class DiagnoseVehicleCredentialsComponent implements OnInit {
 
   weekendsDatesFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
+    const date = (d || new Date()).toLocaleDateString();
 
-    return day !== this.unvailDate && day !== 0;
+    let empTickets = this.ticketArr.filter(x => x.employeeID == this.employeeID);
+    let empFilter = empTickets.filter(x => x.date == date);
+    let prevent = true;
+    // max daily inquiries
+    if (empFilter.length > 2) {
+      prevent = false;
+    }
+
+    return day !== this.unvailDate && day !== 0 && prevent
   }
 
+  onDate(dateVal) {
+    const date = dateVal.toLocaleDateString();
+
+    let empTickets = this.ticketArr.filter(x => x.employeeID == this.employeeID);
+    let empFilter = empTickets.filter(x => x.date == date);
+    this.timeArray = this.timeArrBackUp;
+
+    empFilter.forEach(x =>
+      this.timeArray = this.timeArray.filter(y =>
+        y.value !== x.time
+      )
+    )
+  }
 
   changeTimeArray() {
     let currentTimeArr = this.employees.find(x => x.id == this.employeeID)?.schedule!;
@@ -198,6 +226,7 @@ export class DiagnoseVehicleCredentialsComponent implements OnInit {
     for (let i = start; i < end; i++) {
       this.timeArray.push({ value: this.timeframes[i].value, viewValue: this.timeframes[i].viewValue });
     }
+    this.timeArrBackUp = this.timeArray;
     this.date = new FormControl(new Date());
   }
 
@@ -278,7 +307,6 @@ export class DiagnoseVehicleCredentialsComponent implements OnInit {
   yes() {
     this.currentItem = this.knowledgeBase.find(x => x[0] == this.currentItem[2]);
 
-    console.log(this.currentItem[1].typeOf)
     if (this.currentItem.length == 5) {
       this.book = false;
       this.answer = true;
