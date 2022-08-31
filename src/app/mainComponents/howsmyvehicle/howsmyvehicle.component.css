@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Luckiest+Guy&family=Montserrat:wght@700&family=Nosifer&family=Oswald:wght@400;600&family=Roboto:wght@100;300&family=Rubik+Glitch&display=swap');
 .mat-form-field {
     padding-top: -100px;
     margin-top: -10px;
@@ -5,27 +6,26 @@
 }
 
 h1.special{
-    justify-content: center;
-    width: 100%;
-    overflow-wrap: break-word;
-    font-size: 50px;
-    font-family: 'Oswald';
-    padding-top: 70;
-    padding-bottom: 40px;
-    color: black;
-    text-align: center;
-    margin: 0;
-  }
+  justify-content: center;  
+  text-align: center;
+  width: 100%;
+  overflow-wrap: break-word;
+  font-size: 43px;
+  font-family: 'Oswald', cursive;
+  padding: 0;
+  color: black;
+  margin: 70 0 0 4;
+}
 
-  p.special{
+p.special{
     width: 100%;
     overflow-wrap: break-word;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Oswald', cursive;
     padding-bottom: 40;
     color: black;
-    justify-content: left;
-    text-align: left;
+    justify-content: center;
+    text-align: center;
     margin: 0;
   }
 
@@ -56,7 +56,7 @@ h1.special{
   color: #000000;
 }
 .delivery-address {
-  font-family: Oswald;
+  font-family: Oswald, cursive;
   font-size: 20px;
   color: #000000;
 }
@@ -106,3 +106,68 @@ h1.special{
     text-align: center;
     color: #d55e57
   }
+
+  .main{
+    margin: 10px 0px 0px 0px;
+    justify-content: center;
+    height: 38rem;
+    background-color: rgb(255, 232, 232);
+}
+
+
+.box{
+  width: 500px;
+  height: 80%;
+  background: white;
+  text-align: center;
+  margin:auto;
+  margin-top: 6%;
+  margin-bottom: 5%;
+  transform: translateY(5%);
+  vertical-align:center;
+  color: rgb(0, 0, 0);
+  font-family: 'Oswald', cursive;
+}
+
+.example-full-width{
+  width:80%;
+}
+
+.box{
+  width: 500px;
+  height: 80%;
+  background: white;
+  text-align: center;
+  margin:auto;
+  margin-top: 6%;
+  margin-bottom: 5%;
+  transform: translateY(5%);
+  vertical-align:center;
+  color: rgb(0, 0, 0);
+  font-family: 'Oswald', cursive;
+}
+
+.example-full-width{
+  width:80%;
+}
+
+.mainTwo{
+  margin: 10px 0px 0px 0px;
+  justify-content: center;
+  height: 85rem;
+  background-color: rgb(255, 232, 232);
+}
+
+.result{
+  width: 500px;
+  height: 75%;
+  background: white;
+  text-align: center;
+  margin:auto;
+  margin-top: 6%;
+  margin-bottom: 5%;
+  transform: translateY(5%);
+  vertical-align:center;
+  color: rgb(0, 0, 0);
+  font-family: 'Oswald', cursive;
+}
