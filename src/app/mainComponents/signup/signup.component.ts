@@ -16,11 +16,14 @@ export class SignupComponent implements OnInit {
   email: string = '';
   password: string = '';
   phone: string = '';
+  confirmPass: string = '';
 
   constructor(
     public authService: AuthService,
     private router: Router
-  ) { }
+  ) {
+    this.errorMSG = this.authService.errorMSG
+  }
   ngOnInit() {
   }
 
@@ -30,20 +33,25 @@ export class SignupComponent implements OnInit {
     
     const permission = 0
     if (this.fullName && this.email && this.phone && this.password) {
-
-      //check if email already exists
-      firebase.auth().fetchSignInMethodsForEmail(this.email)
-        .then((signInMethods) => {
-          //email exists
-          if (signInMethods.length) {
-            this.errorMSG = "Email is already registered"
-          } else {
-            // register user
-            this.authService.SignUp(this.fullName, this.email, this.phone, this.password, permission);
-          }
-        }).catch((error) => {
-          this.errorMSG = "Please enter valid Email"
-        });
+      if (this.password == this.confirmPass) {
+        //check if email already exists
+        firebase.auth().fetchSignInMethodsForEmail(this.email)
+          .then((signInMethods) => {
+            //email exists
+            if (signInMethods.length) {
+              this.errorMSG = "Email is already registered"
+            } else {
+              // register user
+              this.authService.SignUp(this.fullName, this.email, this.phone, this.password, permission);
+              console.log(this.authService.errorMSG);
+            }
+          }).catch((error) => {
+            this.errorMSG = "Please enter valid Email"
+          });
+      } else {
+        this.errorMSG = "Passwords do not match"
+      }
+      
     } else {
       this.errorMSG = "Please fill all fields"
     }  

@@ -21,8 +21,11 @@
     
     <h3 class="special"> Password </h3>
     
-    <input class="input" type="text" placeholder="enter password" name="password" [(ngModel)]="password"
+    <input class="input" type="password" placeholder="enter password" name="password" [(ngModel)]="password"
           required>
+    
+    <h3 class="special">Confirm Password </h3>
+    <input class="input" type="password" placeholder="confirm password" [(ngModel)]="confirmPass" required>
     <h1></h1>
     
     <button md-button class="specialButton" 
