@@ -70,6 +70,7 @@ import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/
 import { EditAccountUserComponent } from './customerComponents/edit-account-user/edit-account-user.component';
 
 import { EditTicketStaffComponent } from './staffComponents/edit-ticket-staff/edit-ticket-staff.component';
+import { TicketIDModalComponent } from './mainComponents/ticket-id-modal/ticket-id-modal.component';
 
 
 const config = {
@@ -129,7 +130,8 @@ const config = {
     LandingToolBarComponent,
     EditAccountStaffComponent,
     EditAccountUserComponent,
-    EditTicketStaffComponent
+    EditTicketStaffComponent,
+    TicketIDModalComponent
   ],
   imports: [
     BrowserModule,
@@ -154,6 +156,6 @@ const config = {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent, ConfirmModalComponent, EditTicketStaffComponent]
+  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent, ConfirmModalComponent, EditTicketStaffComponent, TicketIDModalComponent]
 })
 export class AppModule { }

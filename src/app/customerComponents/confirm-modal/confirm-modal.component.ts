@@ -1,9 +1,10 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { TicketIDModalComponent } from 'src/app/mainComponents/ticket-id-modal/ticket-id-modal.component';
 
 @Component({
   selector: 'app-confirm-modal',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 export class ConfirmModalComponent implements OnInit {
   newTicket: any;
 
-  constructor(private afs: AngularFirestore, public dialogRef: MatDialogRef<ConfirmModalComponent>, @Inject(MAT_DIALOG_DATA) public data, public router: Router) {
+  constructor(private afs: AngularFirestore, public dialogRef: MatDialogRef<ConfirmModalComponent>, @Inject(MAT_DIALOG_DATA) public data, public router: Router, public dialog: MatDialog) {
     this.newTicket = data;
 
   }
@@ -29,11 +30,22 @@ export class ConfirmModalComponent implements OnInit {
       })
       this.close();
       this.dialogRef.close();
-      this.router.navigate(['redirect']);
+
+      let ticket = {
+        ticketID: docID
+      }
+      this.viewDialog(ticket);
     });
     
-    
+  }
 
+  viewDialog(data): void {
+
+    const dialogRef = this.dialog.open(TicketIDModalComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: data
+    });
   }
 
   close() {

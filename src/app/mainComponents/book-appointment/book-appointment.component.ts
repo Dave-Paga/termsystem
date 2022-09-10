@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ConfirmModalComponent } from 'src/app/customerComponents/confirm-modal/confirm-modal.component';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -43,7 +44,7 @@ interface ticketInterface {
   styleUrls: ['./book-appointment.component.css']
 })
 
-export class BookAppointmentComponent implements OnInit {
+export class BookAppointmentComponent implements OnInit, OnDestroy {
 
   carName: string = '';
   date: FormControl;
@@ -64,6 +65,7 @@ export class BookAppointmentComponent implements OnInit {
   newTicket?: ticketInterface;
   errorMSG: string = '';
   ticketArr: any;
+  ticketSub?: Subscription;
 
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
@@ -151,6 +153,10 @@ export class BookAppointmentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    this.ticketSub?.unsubscribe();
   }
 
   weekendsDatesFilter = (d: Date | null): boolean => {
@@ -246,7 +252,7 @@ export class BookAppointmentComponent implements OnInit {
 
       this.errorMSG = ""
 
-      this.afs.collection<any>('tickets/').valueChanges().subscribe(result => {
+      this.ticketSub = this.afs.collection<any>('tickets/').valueChanges().subscribe(result => {
         let newArr = result;
         newArr = newArr.filter((x) => x.status === "Pending Inquiry" && x.customerEmail === this.customerEmail);
         if (newArr.length <= 0) {
