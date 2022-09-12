@@ -1,5 +1,5 @@
 .full-width-table {
-  width: 90%;
+  width: 100%;
   margin: 20px auto;
 }
 
@@ -10,4 +10,9 @@
 
 .mat-elevation-z8{
   background-color: white;
+}
+
+.mat-cell {
+  padding-right: 10px;
+  width: auto;
 }
