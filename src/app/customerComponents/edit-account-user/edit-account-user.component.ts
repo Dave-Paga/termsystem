@@ -26,6 +26,7 @@ export class EditAccountUserComponent implements OnInit {
   auth: any;
   userID!: string;
   tickets: any;
+  editPass: boolean = true;
   constructor(
     private afs: AngularFirestore,
     public authService: AuthService,
@@ -38,7 +39,7 @@ export class EditAccountUserComponent implements OnInit {
           this.email = user.email;
           this.fullName = user.fullName;
           this.phone = user.phone;
-          this.password = user.password;
+          // this.password = user.password;
           this.userID = user.uid;
           this.oldPassword = user.password;
         }
@@ -54,61 +55,56 @@ export class EditAccountUserComponent implements OnInit {
     })
   }
 
-  apply() {
-    if (this.newPass || this.confirmPass) {
-      let currentUser = firebase.auth().currentUser;
-      const credentials = firebase.auth.EmailAuthProvider.credential(this.email, this.password);
-
-      currentUser?.reauthenticateWithCredential(credentials).then(
-        success => {
-          if (this.newPass != this.confirmPass) {
-            this.errorMSG = "You did not confirm your password correctly."
-          } else if (this.newPass.length < 6) {
-            this.errorMSG = "Your password should be at least 6 characters long"
-          } else {
-            currentUser?.updatePassword(this.newPass).then((x) => {
-            }).catch((x) => {
-
-            });
-          }
-        },
-        error => {
-          console.log(error);
-          if (error.code === "auth/wrong-password") {
-            this.errorMSG = "Old Password is invalid"
-          }
-        }
-      )
-    } else {
-      this.afs.collection('users').doc(this.userID).update({
-        fullName: this.fullName,
-        phone: this.phone
-      }).then(success => {
-        this.errorMSG = "Name and phone number successfully changed."
-      }).catch((err) => {
-        this.errorMSG = "Could not change name and phone number."
-      });
-      this.updateData();
-    }
-
-    if (
-      this.newPass != "" && this.confirmPass != ""
-    ){
-      if (this.oldPassword == this.password && this.newPass == this.confirmPass) {
-        this.afs.collection('users').doc(this.userID).update({
-          fullName: this.fullName,
-          phone: this.phone,
-          password: this.newPass
-        }).then(success => {
-          this.errorMSG = "Change password successful!"
-        }).catch((err) => {
-          this.errorMSG = "Change password unsuccessful!"
-        });
-        this.updateData();
-      }
-    }
+  updateDetails() {
+    this.afs.collection('users').doc(this.userID).update({
+      fullName: this.fullName,
+      phone: this.phone
+    }).then(success => {
+      this.errorMSG = "Name and phone number successfully changed."
+    }).catch((err) => {
+      this.errorMSG = "Could not change name and phone number."
+    });
+    this.updateData();
   }
 
+  updatePass() {
+    if (this.password && this.password == this.oldPassword) {
+      if (this.newPass == this.confirmPass && this.newPass && this.confirmPass) {
+        if (this.confirmPass.length >= 6) {
+          let currentUser = firebase.auth().currentUser;
+          const credentials = firebase.auth.EmailAuthProvider.credential(this.email, this.password);
+          currentUser?.reauthenticateWithCredential(credentials).then(
+            success => {
+              currentUser?.updatePassword(this.newPass).then((x) => {
+                this.afs.collection('users').doc(this.userID).update({
+                  password: this.newPass
+                }).then(success => {
+                  this.errorMSG = "Password successfully changed";
+                  this.password = "";
+                  this.newPass = "";
+                  this.confirmPass = "";
+                })
+              }).catch((x) => {
+                this.errorMSG = x
+              });
+            },
+            error => {
+              console.log(error);
+              if (error.code === "auth/wrong-password") {
+                this.errorMSG = "Old Password is invalid"
+              }
+            }
+          )
+        } else {
+          this.errorMSG = "Your password should be at least 6 characters long"
+        }
+      } else {
+        this.errorMSG = "You did not confirm your password correctly."
+      }
+    } else {
+      this.errorMSG = "Please input correct old password."
+    }
+  }
 
   updateData(): void {
     this.tickets.forEach((ticket) => {
@@ -119,6 +115,17 @@ export class EditAccountUserComponent implements OnInit {
     })
   }
 
+  change(num: number) {
+    this.errorMSG = "";
+    if (num == 1) {
+      this.editPass = false;
+    } else {
+      this.editPass = true;
+      this.password = "";
+      this.newPass = "";
+      this.confirmPass = "";
+    }
+  }
 
 
   ngOnInit(): void {
