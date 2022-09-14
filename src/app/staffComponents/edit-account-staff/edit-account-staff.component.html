@@ -10,7 +10,7 @@
             </h1>
         </div>      
 
-        <div class="edit-user">
+        <div class="edit-user" *ngIf="editPass">
             <mat-form-field class="example-full-width" appearance="fill">
                 <mat-label>Full Name</mat-label>
                 <textarea [(ngModel)]="fullName" matInput placeholder="Input Full Name">{{fullName}}</textarea>
@@ -21,29 +21,31 @@
                 <mat-label>Phone Number</mat-label>
                 <textarea [(ngModel)]="phone" matInput placeholder="Input Phone Number">{{phone}}</textarea>
             </mat-form-field>
-            <br>
+            <br><br>
 
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Password</mat-label>
-                <textarea [(ngModel)]="password" matInput placeholder="Input Password">{{password}}</textarea>
-            </mat-form-field>
-            <br>
-
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>New Password</mat-label>
-                <textarea [(ngModel)]="newPass" matInput placeholder="Input New Password"></textarea>
-            </mat-form-field>
-            <br>
-
-            <mat-form-field class="example-full-width" appearance="fill">
-                <mat-label>Confirm New Password</mat-label>
-                <textarea [(ngModel)]="confirmPass" matInput placeholder="Confirm New Password"></textarea>
-            </mat-form-field>
-            <br>
-
-            <button class="specialButton" (click)="apply()">Apply Edits</button>
+            <button class="specialButton" (click)="updateDetails()">Apply Edits</button>
+            <button class="specialButton" (click)="change(1)">Edit Password</button>
             <h1></h1>
-            <h3 class="special">{{errorMSG}}</h3>
+            <!-- <h3 class="special">{{errorMSG}}</h3> -->
         </div>
+        <div *ngIf="!editPass">
+            <br><br><br>
+            <h3 class="special">Old Password</h3>
+            <br>
+            <input class="input" type="password" placeholder="enter password" name="password" [(ngModel)]="password">
+            <br><br><br>
+            <h3 class="special">New Password</h3>
+            <br>
+            <input class="input" type="password" placeholder="enter new password" [(ngModel)]="newPass">
+            <br><br><br>
+            <h3 class="special">Confirm New Password</h3>
+            <br>
+            <input class="input" type="password" placeholder="confirm new password" [(ngModel)]="confirmPass">
+            <br><br><br>
+            <button class="specialButton" (click)="updatePass()">Update Password</button>
+            <br><br>
+            <button class="specialButton" (click)="change(0)">Edit Account Details</button>
+        </div>
+        <h3 class="special">{{errorMSG}}</h3>
     </div>
 </div>
