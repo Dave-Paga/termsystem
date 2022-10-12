@@ -159,7 +159,7 @@ export class EditTicketComponent implements OnInit {
   updateData(): void {
     let selection = this.employees.find(data => data.id == this.employeeID);
     this.mechanicName = selection?.name;
-    this.afs.collection('tickets').doc(this.ticketID).update({
+    this.afs.collection('tickets').doc(String(this.ticketID)).update({
       carName: this.carName,
       date: this.date.value.toLocaleDateString(),
       time: this.time,

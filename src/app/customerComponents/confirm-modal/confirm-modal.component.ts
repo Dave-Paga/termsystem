@@ -13,9 +13,24 @@ import { TicketIDModalComponent } from 'src/app/mainComponents/ticket-id-modal/t
 })
 export class ConfirmModalComponent implements OnInit {
   newTicket: any;
+  lastTicketNum!: number;
+  ticketArr: any;
 
   constructor(private afs: AngularFirestore, public dialogRef: MatDialogRef<ConfirmModalComponent>, @Inject(MAT_DIALOG_DATA) public data, public router: Router, public dialog: MatDialog) {
     this.newTicket = data;
+    this.afs.collection<any>('tickets').valueChanges().subscribe(result => {
+      this.ticketArr = result;
+      
+      if (this.ticketArr.length == 0) {
+        this.lastTicketNum = 0;
+      } else {
+        let ticketIDs = this.ticketArr.map(x => x.ticketID);
+        this.lastTicketNum = Math.max(...ticketIDs.map(x=>x));
+      }
+    });
+
+
+
 
   }
 
@@ -23,8 +38,16 @@ export class ConfirmModalComponent implements OnInit {
   }
 
   addTicket() {
-    this.afs.collection('tickets/').add(this.newTicket).then(docRef => {
-      const docID = docRef.id;
+    if (Number.isNaN(this.lastTicketNum)) {
+      this.lastTicketNum = 1
+    } else {
+      this.lastTicketNum += 1;
+    }
+    
+    console.log(Number.isNaN(this.lastTicketNum));
+    let stringed = String(this.lastTicketNum);
+    this.afs.collection('tickets/').doc(stringed).set(this.newTicket).then(docRef => {
+      const docID = this.lastTicketNum + 1;
       this.afs.doc('tickets/' + docID).update({
         ticketID: docID
       })

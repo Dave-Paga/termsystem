@@ -28,7 +28,7 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['ticketID', 'carName', 'customerName', 'customerPhone', 'date', 'time', 'mechanicName', 'price', 'problem', 'status', 'edit', 'view', 'delete'];
+  displayedColumns = ['ticketID', 'date', 'time', 'mechanicName', 'price', 'problem', 'status', 'edit', 'delete'];
   uid: string= 'test';
   perm: any= 1;
 
@@ -47,8 +47,6 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   }
 
   constructor(private afs: AngularFirestore, public dialog: MatDialog, public authService: AuthService) {
-    // console.log(`UID ${this.authService.userData.uid}`);
-    // this.perm = this.loginCheck();
 
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
       // this.dataSource = new DataTicketsAdminDataSource(data, this.perm, this.uid);
@@ -73,8 +71,8 @@ export class DataTicketsAdminComponent implements AfterViewInit {
     // dialogConfig.height = '300px';
 
     const dialogRef = this.dialog.open(EditTicketComponent, {
-      width: '600px',
-      height: '600px',
+      width: '300px',
+      height: 'auto',
       data: data
     });
 
@@ -98,7 +96,7 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   }
 
   removeData(data): void {
-    this.afs.collection<any>('tickets/').doc(data.ticketID).delete();
+    this.afs.collection<any>('tickets/').doc(String(data.ticketID)).delete();
   }
 
   ngAfterViewInit(): void {

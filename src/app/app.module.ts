@@ -71,6 +71,7 @@ import { EditAccountUserComponent } from './customerComponents/edit-account-user
 
 import { EditTicketStaffComponent } from './staffComponents/edit-ticket-staff/edit-ticket-staff.component';
 import { TicketIDModalComponent } from './mainComponents/ticket-id-modal/ticket-id-modal.component';
+import { EditTicketAdminComponent } from './adminComponents/edit-ticket-admin/edit-ticket-admin.component';
 
 
 const config = {
@@ -131,7 +132,8 @@ const config = {
     EditAccountStaffComponent,
     EditAccountUserComponent,
     EditTicketStaffComponent,
-    TicketIDModalComponent
+    TicketIDModalComponent,
+    EditTicketAdminComponent
   ],
   imports: [
     BrowserModule,

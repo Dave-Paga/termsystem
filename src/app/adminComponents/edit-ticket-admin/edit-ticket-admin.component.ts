@@ -8,25 +8,21 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataTicketsAdminItem } from 'src/app/adminComponents/dataTables/data-tickets-admin/data-tickets-admin-datasource';
 import { Router } from '@angular/router';
-
+import { ViewTicketDetailsAdminComponent } from '../dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
 
 @Component({
-  selector: 'app-appointment',
-  templateUrl: './appointment.component.html',
-  styleUrls: ['./appointment.component.css']
+  selector: 'app-edit-ticket-admin',
+  templateUrl: './edit-ticket-admin.component.html',
+  styleUrls: ['./edit-ticket-admin.component.css']
 })
-export class AppointmentComponent implements OnInit {
+export class EditTicketAdminComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'date', 'status','receive', 'delete'];
+  displayedColumns = ['ticketID', 'carName', 'mechanicName', 'price', 'problem', 'status', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
-  email!: string;
-  fullName!: string;
-  phone!: string;
-  userID!: string;
   timeframes = {
     7: "7:00 AM",
     8: "8:00 AM",
@@ -41,21 +37,7 @@ export class AppointmentComponent implements OnInit {
     17: "5:00 PM",
   }
 
-  constructor(
-    private afs: AngularFirestore,
-    public authService: AuthService,
-    public router: Router
-  ) {
-    this.afs.collection<any>('users/').valueChanges().subscribe(result => {
-      result.forEach(user => {
-        if (user.uid == this.authService.userData.uid) {
-          this.email = user.email;
-          this.fullName = user.fullName;
-          this.phone = user.phone;
-          this.userID = user.uid;
-        }
-      })
-    });
+  constructor(private afs: AngularFirestore, public authService: AuthService, public router: Router, public dialog: MatDialog) {
 
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
       let arr = data
@@ -64,10 +46,6 @@ export class AppointmentComponent implements OnInit {
         arr[index].convTime = converted;
       });
 
-      arr = arr.filter((x) => x.employeeID == this.userID);
-      arr = arr.filter((x) => x.status == "Pending Inquiry");
-      console.log(arr);
-
       this.dataSource.data = arr as DataTicketsAdminItem[]
 
     })
@@ -75,6 +53,9 @@ export class AppointmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginCheck();
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    this.table.dataSource = this.dataSource;
   }
 
   applyFilter(event: Event) {
@@ -82,23 +63,29 @@ export class AppointmentComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  receiveTicket(data): void {
-    this.afs.collection<any>('tickets/').doc(String(data.ticketID)).update({
-      status: "Pending Diagnosis"});
+  loginCheck() {
+    this.authService.getPermission(this.authService.userData.uid).then(res => {
+      if (res != 2) {
+        this.router.navigate(['redirect']);
+      } else {
+      }
+    });
   }
 
   removeData(data): void {
     this.afs.collection<any>('tickets/').doc(String(data.ticketID)).delete();
   }
 
-  loginCheck() {
-    this.authService.getPermission(this.authService.userData.uid).then(res => {
-      if (res != 1) {
-        this.router.navigate(['redirect']);
-      } else {
-        console.log(this.authService.userData.uid);
-      }
+  viewDialog(data): void {
+
+    const dialogRef = this.dialog.open(ViewTicketDetailsAdminComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: data
     });
+
+
   }
+
 
 }

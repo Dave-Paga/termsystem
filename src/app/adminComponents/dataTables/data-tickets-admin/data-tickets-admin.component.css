@@ -27,3 +27,18 @@ h1.special{
   margin: 0px 0px 200px 70px;
   background-color: white;
 }
+
+.green {
+  background-color: green;
+}
+
+.noMech {
+  background-color: rgb(255, 160, 160);
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.SpecialTd {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
