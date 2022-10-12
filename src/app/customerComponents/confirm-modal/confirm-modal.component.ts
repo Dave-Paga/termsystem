@@ -13,19 +13,21 @@ import { TicketIDModalComponent } from 'src/app/mainComponents/ticket-id-modal/t
 })
 export class ConfirmModalComponent implements OnInit {
   newTicket: any;
-  lastTicketNum!: number;
+  randID: string = '';
   ticketArr: any;
 
   constructor(private afs: AngularFirestore, public dialogRef: MatDialogRef<ConfirmModalComponent>, @Inject(MAT_DIALOG_DATA) public data, public router: Router, public dialog: MatDialog) {
     this.newTicket = data;
     this.afs.collection<any>('tickets').valueChanges().subscribe(result => {
       this.ticketArr = result;
-      
-      if (this.ticketArr.length == 0) {
-        this.lastTicketNum = 0;
-      } else {
-        let ticketIDs = this.ticketArr.map(x => x.ticketID);
-        this.lastTicketNum = Math.max(...ticketIDs.map(x=>x));
+
+      //random ID generator
+      let randInt = Math.floor(Math.random() * 1000);
+      this.randID = "BR1-" + String(randInt);
+      let checkID = result.filter(x => x.ticketID == this.randID);
+      if (checkID.length >= 1) {
+        randInt = Math.floor(Math.random() * 1000);
+        this.randID = "BR1-" + String(randInt);
       }
     });
 
@@ -38,16 +40,11 @@ export class ConfirmModalComponent implements OnInit {
   }
 
   addTicket() {
-    if (Number.isNaN(this.lastTicketNum)) {
-      this.lastTicketNum = 1
-    } else {
-      this.lastTicketNum += 1;
-    }
-    
-    console.log(Number.isNaN(this.lastTicketNum));
-    let stringed = String(this.lastTicketNum);
-    this.afs.collection('tickets/').doc(stringed).set(this.newTicket).then(docRef => {
-      const docID = this.lastTicketNum + 1;
+    let currentID = this.randID;
+    this.afs.collection('tickets/').doc(currentID).set(this.newTicket).then(docRef => {
+      console.log(this.randID)
+      console.log(currentID);
+      const docID = currentID;
       this.afs.doc('tickets/' + docID).update({
         ticketID: docID
       })
@@ -59,11 +56,9 @@ export class ConfirmModalComponent implements OnInit {
       }
       this.viewDialog(ticket);
     });
-    
   }
 
   viewDialog(data): void {
-
     const dialogRef = this.dialog.open(TicketIDModalComponent, {
       width: 'auto',
       height: 'auto',

@@ -20,7 +20,7 @@ interface valVar {
 }
 
 interface ticketInterface {
-  ticketID: number;
+  ticketID: string;
   carName: string;
   customerEmail: string;
   customerName: string;
@@ -50,7 +50,7 @@ export class UserBookAppointmentComponent implements OnInit, OnDestroy {
   mechanicName?: string = '';
   price: number = 0;
   transmission: string = '';
-  ticketID: number = 0;
+  ticketID: string = '';
   problem: string = '';
   time: string = '';
   minDate: Date;
@@ -249,24 +249,13 @@ export class UserBookAppointmentComponent implements OnInit, OnDestroy {
     });
   }
 
-  addEntry() {
-    
-    this.errorMSG = ""
-    this.afs.collection('tickets/').add(this.newTicket).then(docRef => {
-      const docID = docRef.id;
-      this.afs.doc('tickets/' + docID).update({
-        ticketID: docID
-      })
-    });
-  }
-
   addNewTicket() {
     // let selection = this.employees.find(data => data.id == this.employeeID);
     // this.mechanicName = selection?.name;
 
     if (this.carName && this.date && this.time && this.fuelType && this.problem) {
       this.newTicket = {
-        ticketID: 0,
+        ticketID: "sample",
         carName: this.carName,
         customerEmail: this.customerEmail,
         customerName: this.customerName,

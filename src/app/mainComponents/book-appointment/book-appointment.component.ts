@@ -20,7 +20,7 @@ interface valVar {
 }
 
 interface ticketInterface {
-  ticketID: number;
+  ticketID: string;
   carName: string;
   customerEmail: string;
   customerName: string;
@@ -53,7 +53,7 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
   mechanicName?: string = '';
   price: number = 0;
   transmission: string = '';
-  ticketID: number = 0;
+  ticketID: string = '';
   problem: string = '';
   time: string = '';
   minDate: Date;
@@ -238,7 +238,7 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
 
     if (this.customerEmail && this.customerName && this.customerPhone && this.date && this.time && this.fuelType && this.problem) {
       this.newTicket = {
-        ticketID: 0,
+        ticketID: "sample",
         carName: this.carName,
         customerEmail: this.customerEmail,
         customerName: this.customerName,
