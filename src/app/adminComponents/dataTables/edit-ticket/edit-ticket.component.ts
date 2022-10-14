@@ -33,9 +33,12 @@ export class EditTicketComponent implements OnInit {
   status: string = '';
   transmission: string = '';
   service: string = '';
+  estimate: any;
+  start: any;
   ticketID: string = '';
   time: string = '';
   unvailDate: number = 0;
+  minDate: Date;
 
 
   timeframes = [
@@ -52,7 +55,19 @@ export class EditTicketComponent implements OnInit {
     { value: 17, viewValue: "5:00 PM"},
   ];
 
-  timeArray: valVar[] = [];
+  timeArray: valVar[] = [
+    { value: 7, viewValue: "7:00 AM" },
+    { value: 8, viewValue: "8:00 AM" },
+    { value: 9, viewValue: "9:00 AM" },
+    { value: 10, viewValue: "10:00 AM" },
+    { value: 11, viewValue: "11:00 AM" },
+    { value: 12, viewValue: "12:00 NN" },
+    { value: 13, viewValue: "1:00 PM" },
+    { value: 14, viewValue: "2:00 PM" },
+    { value: 15, viewValue: "3:00 PM" },
+    { value: 16, viewValue: "4:00 PM" },
+    { value: 17, viewValue: "5:00 PM" },
+  ];
 
   employees: employee[] = [];
   statusArray: valVar[] = [
@@ -83,6 +98,9 @@ export class EditTicketComponent implements OnInit {
     this.ticketID = data.ticketID;
     this.carName = data.carName;
     this.date = new FormControl(new Date(data.date));
+    this.minDate = new Date();
+    this.start = data.start;
+    this.estimate = new FormControl();
     this.time = data.time;
     this.employeeID = data.employeeID;
     this.fuelType = data.fuelType;
@@ -164,13 +182,18 @@ export class EditTicketComponent implements OnInit {
 
   
   updateData(): void {
-    if (this.employeeID != "No Mechanic" && this.service != "No Service") {
+
+    console.log(this.estimate.value.toLocaleDateString());
+    console.log(this.start)
+    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.estimate, this.start) {
       let selection = this.employees.find(data => data.id == this.employeeID);
       this.mechanicName = selection?.name;
       this.afs.collection('tickets').doc(String(this.ticketID)).update({
         employeeID: this.employeeID,
         mechanicName: this.mechanicName,
         service: this.service,
+        estimate: this.estimate.value.toLocaleDateString(),
+        start: this.start,
         status: "Undergoing Repair/Maintenance"
       })
       console.log(this.carName);

@@ -21,9 +21,10 @@ export class EditTicketAdminComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'mechanicName', 'price', 'problem', 'status', 'edit', 'view'];
+  displayedColumns = ['ticketID', 'service', 'status', 'estimate', 'price', 'edit', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
+
   timeframes = {
     7: "7:00 AM",
     8: "8:00 AM",
@@ -44,11 +45,34 @@ export class EditTicketAdminComponent implements OnInit {
       let arr = data
       arr.forEach((value, index) => {
         let converted = this.timeframes[arr[index].time];
+        let converted2 = this.timeframes[arr[index].start];
         arr[index].convTime = converted;
+        arr[index].convTime2 = converted2;
+
+        let curDate = new Date().toLocaleDateString();
+        let curHour = new Date().getHours();
+
+        // 1 = red, 2 =  yellow, 3 = green
+        if (value.estimate < curDate) {
+          arr[index].rowColor = 1;
+        } else if (value.estimate == curDate) {
+          let hoursLeft = value.start - curHour;
+          if (hoursLeft == 1) {
+            arr[index].rowColor = 2;
+          } else if (hoursLeft <= 0 ) {
+            arr[index].rowColor = 1;
+          }
+        }
+
+        if (value.status == "Pending Payment" || value.status == "For Release") {
+          arr[index].rowColor = 3;
+        }
+
+        
+
       });
 
       arr = arr.filter(x => x.mechanicName != "No Mechanic");
-
       this.dataSource.data = arr as DataTicketsAdminItem[]
 
     })
@@ -58,7 +82,7 @@ export class EditTicketAdminComponent implements OnInit {
     this.loginCheck();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    // this.table.dataSource = this.dataSource;
   }
 
   applyFilter(event: Event) {
@@ -88,14 +112,17 @@ export class EditTicketAdminComponent implements OnInit {
   }
 
   viewDialog(data): void {
-
     const dialogRef = this.dialog.open(ViewTicketDetailsAdminComponent, {
       width: 'auto',
       height: 'auto',
       data: data
     });
+  }
 
+  checkBG(row) {
+    if (row.status == "Pending Payment") {
 
+    }
   }
 
 

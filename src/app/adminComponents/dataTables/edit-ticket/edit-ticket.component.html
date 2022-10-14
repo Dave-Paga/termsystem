@@ -1,9 +1,9 @@
-<h3 mat-dialog-title> Change Ticket</h3>
+<h3 class="special">Assign Details</h3>
 <mat-dialog-content>
 
 <!-- Display time, date, transmission, fuelType -->
   <!-- <p>Mechanic ID: {{employeeID}}</p> -->
-  <mat-form-field appearance="fill">
+  <mat-form-field class="fill-container" appearance="fill">
     <mat-label>Mechanic</mat-label>
     <mat-select (selectionChange)="changeTimeArray()" [(value)]="employeeID">
       <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
@@ -11,23 +11,29 @@
   </mat-form-field>
 <br>
 
-<mat-form-field appearance="fill">
+<mat-form-field class="fill-container" appearance="fill">
   <mat-label>Service</mat-label>
   <mat-select [(value)]="service">
     <mat-option [value]="option.value" *ngFor="let option of serviceArray">{{ option.viewValue }}</mat-option>
   </mat-select>
 </mat-form-field>
-<br>
-
-<!-- <mat-form-field appearance="fill">
-  <mat-label>Choose a date</mat-label>
-  <input matInput [matDatepicker]="picker" [formControl]="date" [matDatepickerFilter]="weekendsDatesFilter">
+<h4 class="special">Release Schedule</h4>
+<mat-form-field class="fill-container" appearance="fill">
+  <mat-label>Choose date of release</mat-label>
+  <input matInput [matDatepicker]="picker" [formControl]="estimate" [matDatepickerFilter]="weekendsDatesFilter" [min]="minDate">
   <mat-hint>MM/DD/YYYY</mat-hint>
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 
+<mat-form-field appearance="outline">
+  <mat-label>Input type time</mat-label>
+  <mat-select [(value)]="start">
+    <mat-option [value]="option.value" *ngFor="let option of timeArray">{{ option.viewValue }}</mat-option>
+  </mat-select>
+</mat-form-field>
 
+<!-- 
 <br>
 <mat-form-field appearance="outline">
   <mat-label>Input type time</mat-label>

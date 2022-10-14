@@ -138,7 +138,10 @@
     cursor:pointer;
   }
 
-  .mat-primary.mat-raised-button {
+    .mat-flat-button.mat-primary,
+    .mat-raised-button.mat-primary,
+    .mat-fab.mat-primary,
+    .mat-mini-fab.mat-primary {
     color: rgb(255, 255, 255);
     background-color: rgb(255, 115, 115);
   }
@@ -149,4 +152,8 @@
   .mat-form-field.fill-container .mat-form-field-wrapper {
     margin-top: 5px;
     width: 100%;
+  }
+
+  .special {
+    font-family: 'Oswald', cursive;
   }

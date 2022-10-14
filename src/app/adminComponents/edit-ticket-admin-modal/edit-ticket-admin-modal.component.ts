@@ -20,7 +20,6 @@ interface val {
 })
 export class EditTicketAdminModalComponent implements OnInit {
   carName: string = '';
-  date: FormControl;
   employeeID: string = '';
   fuelType: string = '';
   mechanicName?: string = '';
@@ -31,12 +30,16 @@ export class EditTicketAdminModalComponent implements OnInit {
   transmission: string = '';
   service: string = '';
   jobs: string = '';
-  estimate: string = '';
   recommendation: string = '';
   start: string = '';
   ticketID: string = '';
   time: string = '';
   unvailDate: number = 0;
+  minDate: Date;
+  estimate: FormControl;
+  recommend: string = '';
+
+  
 
   statusArray: valVar[] = [
     { value: "Undergoing Repair/Maintenance", viewValue: 'Undergoing Repair/Maintenance' },
@@ -107,6 +110,21 @@ export class EditTicketAdminModalComponent implements OnInit {
     { value: "Check and Clean Brakes" }
   ]
 
+  timeArray: valVar[] = [
+    { value: 7, viewValue: "7:00 AM" },
+    { value: 8, viewValue: "8:00 AM" },
+    { value: 9, viewValue: "9:00 AM" },
+    { value: 10, viewValue: "10:00 AM" },
+    { value: 11, viewValue: "11:00 AM" },
+    { value: 12, viewValue: "12:00 NN" },
+    { value: 13, viewValue: "1:00 PM" },
+    { value: 14, viewValue: "2:00 PM" },
+    { value: 15, viewValue: "3:00 PM" },
+    { value: 16, viewValue: "4:00 PM" },
+    { value: 17, viewValue: "5:00 PM" },
+  ];
+
+
 
 
   constructor(private afs: AngularFirestore,
@@ -116,7 +134,8 @@ export class EditTicketAdminModalComponent implements OnInit {
     ) {
       this.ticketID = data.ticketID;
       this.carName = data.carName;
-      this.date = new FormControl(new Date(data.date));
+      this.minDate = new Date();
+      this.estimate = new FormControl(new Date(data.estimate));
       this.time = data.time;
       this.employeeID = data.employeeID;
       this.fuelType = data.fuelType;
@@ -126,21 +145,28 @@ export class EditTicketAdminModalComponent implements OnInit {
       this.service = data.service;
       this.status = data.status;
       this.jobs = data.jobs;
-      this.estimate = data.estimate;
       this.start = data.start;
+      this.recommend = data.recommend
       this.transmission = data.transmission;
 
       this.changeServices();
+
     }
 
   ngOnInit(): void {
   }
 
   updateData(): void {
-    console.log(this.jobs)
     this.afs.collection('tickets').doc(String(this.ticketID)).update({
-      jobs: this.jobs
-    })
+      jobs: this.jobs,
+      status: this.status,
+      start: this.start,
+      service: this.service,
+      estimate: this.estimate.value.toLocaleDateString(),
+      recommend: this.recommend,
+      price: this.price
+    });
+    this.dialogRef.close();
   }
 
   close() {
@@ -161,5 +187,12 @@ export class EditTicketAdminModalComponent implements OnInit {
       this.serviceCon = this.troubleshooting.map(x => ({ value: x.value }))
     }
   }
+
+  weekendsDatesFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+
+    return day !== this.unvailDate && day !== 0;
+  }
+
 
 }
