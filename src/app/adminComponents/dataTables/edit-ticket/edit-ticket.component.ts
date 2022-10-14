@@ -32,6 +32,7 @@ export class EditTicketComponent implements OnInit {
   solution: string = '';
   status: string = '';
   transmission: string = '';
+  service: string = '';
   ticketID: string = '';
   time: string = '';
   unvailDate: number = 0;
@@ -62,6 +63,15 @@ export class EditTicketComponent implements OnInit {
     { value: "Pending Payment", viewValue: 'Pending Payment'},
     { value: "For Release", viewValue: 'For Release'}
   ];
+
+  serviceArray: valVar[] = [
+    { value: "Check Brakes", viewValue: 'Check Brakes' },
+    { value: "Regular PMS", viewValue: 'Regular PMS' },
+    { value: "Minor PMS", viewValue: 'Minor PMS' },
+    { value: "Major PMS", viewValue: 'Major PMS' },
+    { value: "Troubleshooting", viewValue: 'Troubleshooting' }
+  ];
+
   
   constructor(
     private afs: AngularFirestore,
@@ -79,7 +89,7 @@ export class EditTicketComponent implements OnInit {
     this.mechanicName = data.mechanicName;
     this.price = data.price;
     this.problem = data.problem;
-    this.solution = data.solution;
+    this.service = data.service;
     this.status = data.status;
     this.transmission = data.transmission;
 
@@ -152,28 +162,20 @@ export class EditTicketComponent implements OnInit {
     }
   }
 
-  changed() {
-    console.log(this.carName)
-  }
   
   updateData(): void {
-    let selection = this.employees.find(data => data.id == this.employeeID);
-    this.mechanicName = selection?.name;
-    this.afs.collection('tickets').doc(String(this.ticketID)).update({
-      carName: this.carName,
-      date: this.date.value.toLocaleDateString(),
-      time: this.time,
-      employeeID: this.employeeID,
-      fuelType: this.fuelType,
-      mechanicName: this.mechanicName,
-      price: this.price,
-      problem: this.problem,
-      solution: this.solution,
-      status: this.status,
-      transmission: this.transmission
-    })
-    console.log(this.carName);
-    this.dialogRef.close();
+    if (this.employeeID != "No Mechanic" && this.service != "No Service") {
+      let selection = this.employees.find(data => data.id == this.employeeID);
+      this.mechanicName = selection?.name;
+      this.afs.collection('tickets').doc(String(this.ticketID)).update({
+        employeeID: this.employeeID,
+        mechanicName: this.mechanicName,
+        service: this.service,
+        status: "Undergoing Repair/Maintenance"
+      })
+      console.log(this.carName);
+      this.dialogRef.close();
+    }
   }
 
   close() {

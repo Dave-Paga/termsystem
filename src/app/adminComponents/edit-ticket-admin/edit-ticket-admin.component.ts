@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DataTicketsAdminItem } from 'src/app/adminComponents/dataTables/data-tickets-admin/data-tickets-admin-datasource';
 import { Router } from '@angular/router';
 import { ViewTicketDetailsAdminComponent } from '../dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
+import { EditTicketAdminModalComponent } from '../edit-ticket-admin-modal/edit-ticket-admin-modal.component';
 
 @Component({
   selector: 'app-edit-ticket-admin',
@@ -20,7 +21,7 @@ export class EditTicketAdminComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'mechanicName', 'price', 'problem', 'status', 'view'];
+  displayedColumns = ['ticketID', 'carName', 'mechanicName', 'price', 'problem', 'status', 'edit', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   timeframes = {
@@ -45,6 +46,8 @@ export class EditTicketAdminComponent implements OnInit {
         let converted = this.timeframes[arr[index].time];
         arr[index].convTime = converted;
       });
+
+      arr = arr.filter(x => x.mechanicName != "No Mechanic");
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
 
@@ -74,6 +77,14 @@ export class EditTicketAdminComponent implements OnInit {
 
   removeData(data): void {
     this.afs.collection<any>('tickets/').doc(String(data.ticketID)).delete();
+  }
+
+  editDialog(data): void {
+    const dialogRef = this.dialog.open(EditTicketAdminModalComponent, {
+      width: '500px',
+      height: 'auto',
+      data: data
+    });
   }
 
   viewDialog(data): void {

@@ -66,7 +66,7 @@ body{
 
 .box{
     width: 500px;
-    height: 65%;
+    height: 1500px;
     background: white;
     text-align: center;
     margin:auto;
@@ -109,4 +109,11 @@ body{
 .specialButton:hover{
     color: rgb(255, 255, 255);
     background-color: rgb(46, 46, 46);
+}
+
+.mat-form-field.fill-container,
+.mat-form-field.fill-container .mat-form-field-infix,
+.mat-form-field.fill-container .mat-form-field-flex,
+.mat-form-field.fill-container .mat-form-field-wrapper {
+    width: 100%;
 }

@@ -32,6 +32,7 @@
   ;  
 }
 
+
 .specialBtn:hover {
   color: rgb(255, 255, 255);
   background-color: rgb(46, 46, 46);
@@ -137,4 +138,15 @@
     cursor:pointer;
   }
 
-  
+  .mat-primary.mat-raised-button {
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 115, 115);
+  }
+
+  .mat-form-field.fill-container,
+  .mat-form-field.fill-container .mat-form-field-infix,
+  .mat-form-field.fill-container .mat-form-field-flex,
+  .mat-form-field.fill-container .mat-form-field-wrapper {
+    margin-top: 5px;
+    width: 100%;
+  }

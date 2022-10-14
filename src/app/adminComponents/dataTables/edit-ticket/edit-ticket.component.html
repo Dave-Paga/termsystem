@@ -11,6 +11,14 @@
   </mat-form-field>
 <br>
 
+<mat-form-field appearance="fill">
+  <mat-label>Service</mat-label>
+  <mat-select [(value)]="service">
+    <mat-option [value]="option.value" *ngFor="let option of serviceArray">{{ option.viewValue }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+
 <!-- <mat-form-field appearance="fill">
   <mat-label>Choose a date</mat-label>
   <input matInput [matDatepicker]="picker" [formControl]="date" [matDatepickerFilter]="weekendsDatesFilter">
@@ -73,8 +81,9 @@
   <br> -->
 
   <mat-dialog-actions>
-    <button class="mat-raised-button" (click)="close()">Close</button>
     <button class="mat-raised-button mat-primary" (click)="updateData()">Save</button>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+    
 </mat-dialog-actions>
 
 </mat-dialog-content>

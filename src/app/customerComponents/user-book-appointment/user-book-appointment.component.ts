@@ -32,7 +32,11 @@ interface ticketInterface {
   mechanicName?: string;
   price: number;
   problem: string;
-  solution: string;
+  service: string;
+  jobs: string;
+  estimate: any;
+  start: any;
+  recommend: string,
   transmission: string;
   status: string;
 }
@@ -267,7 +271,11 @@ export class UserBookAppointmentComponent implements OnInit, OnDestroy {
         mechanicName: "No Mechanic",
         price: this.price,
         problem: this.problem,
-        solution: "",
+        service: "No Service",
+        jobs: "",
+        estimate: "",
+        start: "",
+        recommend: "",
         transmission: this.transmission,
         status: "Pending Inquiry",
       }

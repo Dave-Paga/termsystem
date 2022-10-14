@@ -50,11 +50,9 @@ export class HowsmyvehicleComponent implements OnInit {
 
 
   constructor(private afs: AngularFirestore, public router: Router, public authService: AuthService) {
-    this.map.set("Pending Inquiry", 10);
-    this.map.set("Pending Diagnosis", 20);
-    this.map.set("Undergoing Diagnosis", 40);
+    this.map.set("Pending Inquiry", 25);
     this.map.set("Undergoing Repair/Maintenance", 50);
-    this.map.set("Pending Payment", 80);
+    this.map.set("Pending Payment", 75);
     this.map.set("For Release", 100);
   }
 

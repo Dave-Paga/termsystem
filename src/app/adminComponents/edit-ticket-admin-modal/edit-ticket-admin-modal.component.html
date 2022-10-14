@@ -1,0 +1,32 @@
+<h3 mat-dialog-title> Change Ticket</h3>
+<mat-dialog-content style="height: 100%;">
+    <h4>Service Category</h4>
+    <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Service Category</mat-label>
+        <mat-select (selectionChange)="changeServices()" [(value)]="service">
+            <mat-option [value]="option.value" *ngFor="let option of serviceArray">{{ option.viewValue }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <h4>Services</h4>
+    <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Services</mat-label>
+        <mat-select [(value)]="jobs" multiple>
+            <mat-option [value]="option.value" *ngFor="let option of serviceCon">{{ option.value }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <h4>Mechanic Recommendation</h4>
+    <mat-form-field class="fill-container"  appearance="fill">
+        <mat-label>Recommendations</mat-label>
+        <textarea  cdkTextareaAutosize cdkAutosizeMinRows="5" matInput [(ngModel)]="recommendation" placeholder="Input Recommendations">{{recommendation}}</textarea>
+    </mat-form-field>
+    <br>
+
+    
+
+    <mat-dialog-actions>
+        <button class="mat-raised-button mat-primary" (click)="updateData()">Save</button>
+        <button class="mat-raised-button" (click)="close()">Close</button>
+    </mat-dialog-actions>
+</mat-dialog-content>
