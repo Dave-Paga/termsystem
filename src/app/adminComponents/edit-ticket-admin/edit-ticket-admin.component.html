@@ -41,7 +41,7 @@
 
                 <ng-container matColumnDef="estimate">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Estimated Time</th>
-                    <td mat-cell *matCellDef="let row">{{row.estimate}} {{row.rowColor}} {{row.convTime2}}</td>
+                    <td mat-cell *matCellDef="let row">{{row.estimate}} {{row.convTime2}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="price">
@@ -77,7 +77,8 @@
                 <tr mat-row [ngClass]="{
                 'redBG': row.rowColor == 1,
                 'yellowBG': row.rowColor == 2,
-                'greenBG': row.rowColor == 3
+                'greenBG': row.rowColor == 3,
+                'blueBG': row.rowColor == 4
             }" *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
 

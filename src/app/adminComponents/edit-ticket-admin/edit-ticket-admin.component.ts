@@ -64,8 +64,10 @@ export class EditTicketAdminComponent implements OnInit {
           }
         }
 
-        if (value.status == "Pending Payment" || value.status == "For Release") {
+        if (value.status == "Pending Payment") {
           arr[index].rowColor = 3;
+        } else if (value.status == "For Release") {
+          arr[index].rowColor = 4;
         }
 
         

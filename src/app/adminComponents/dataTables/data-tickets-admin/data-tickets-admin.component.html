@@ -17,16 +17,6 @@
       <td mat-cell *matCellDef="let row">{{row.carName}}</td>
     </ng-container>
     
-    <!-- <ng-container matColumnDef="customerName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
-      <td mat-cell *matCellDef="let row">{{row.customerName}}</td>
-    </ng-container>
-    
-    <ng-container matColumnDef="customerPhone">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer Phone</th>
-      <td mat-cell *matCellDef="let row">{{row.customerPhone}}</td>
-    </ng-container> -->
-    
     <ng-container matColumnDef="date">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
       <td mat-cell *matCellDef="let row">{{row.date}}</td>
@@ -37,10 +27,19 @@
       <td mat-cell *matCellDef="let row">{{row.convTime}}</td>
     </ng-container>
     
-    <ng-container matColumnDef="mechanicName">
+    <!-- <ng-container matColumnDef="mechanicName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Mechanic</th>
       <td class="specialTd" mat-cell *matCellDef="let row" [ngClass]="{
       'noMech': row.mechanicName == 'No Mechanic'}">{{row.mechanicName}}</td>
+    </ng-container> -->
+    <ng-container matColumnDef="customerName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer</th>
+      <td mat-cell *matCellDef="let row">{{row.customerName}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="customerPhone">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone</th>
+      <td mat-cell *matCellDef="let row">{{row.customerPhone}}</td>
     </ng-container>
 
     <ng-container matColumnDef="service">
@@ -67,15 +66,15 @@
       <td mat-cell *matCellDef="let row">Php {{row.price}}</td>
     </ng-container>
 
-    <!-- <ng-container matColumnDef="view">
+    <ng-container matColumnDef="view">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
       <td mat-cell *matCellDef="let row">
         <button mat-raised-button color="primary" (click)="viewDialog(row)" md-button class="specialBtn">View</button>
       </td>
-    </ng-container> -->
+    </ng-container>
     
     <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Assign Technician</th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit Ticket</th>
       <td mat-cell *matCellDef="let row">
         <button mat-raised-button color="primary" (click)="openDialog(row)" md-button class="specialBtn">Assign</button>
       </td>

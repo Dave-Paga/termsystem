@@ -28,7 +28,7 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['ticketID', 'date', 'time', 'mechanicName', 'service', 'problem', 'edit', 'delete'];
+  displayedColumns = ['ticketID', 'date', 'time', 'customerName', 'customerPhone', 'problem', 'edit', 'view', 'delete'];
   uid: string= 'test';
   perm: any= 1;
 
@@ -49,26 +49,21 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   constructor(private afs: AngularFirestore, public dialog: MatDialog, public authService: AuthService) {
 
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
-      // this.dataSource = new DataTicketsAdminDataSource(data, this.perm, this.uid);
-      // this.dataSource.sort = this.sort;
-      // this.dataSource.paginator = this.paginator;
-      // this.table.dataSource = this.dataSource;
       let arr = data;
       arr.forEach((value, index) => {
         let converted = this.timeframes[arr[index].time];
         arr[index].convTime = converted;
+        // console.log(arr[index].date < new Date().toLocaleDateString());
       });
       arr = arr.filter(x => x.mechanicName == "No Mechanic");
-      this.dataSource.data = arr as DataTicketsAdminItem[]
+      this.dataSource.data = arr as DataTicketsAdminItem[];
+  
+      console.log(new Date().getMonth());
   
     })
   }
 
   openDialog(data): void {
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.data = data;
-    // dialogConfig.width = '350px';
-    // dialogConfig.height = '300px';
 
     const dialogRef = this.dialog.open(EditTicketComponent, {
       width: '300px',

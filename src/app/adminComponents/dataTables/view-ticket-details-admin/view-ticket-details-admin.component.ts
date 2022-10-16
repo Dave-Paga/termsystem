@@ -32,6 +32,8 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
   status: string;
   form: FormGroup;
 
+  hide: boolean = true;
+
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
     { value: 8, viewValue: "8:00 AM"},
@@ -76,8 +78,12 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
     const realTime = this.timeframes[this.time -7];
     this.time = realTime.viewValue;
     const realTime2 = this.timeframes[this.start-7];
-    console.log(realTime2.viewValue);
-    this.start = realTime2.viewValue;
+
+    if (this.start) {
+      this.start = realTime2.viewValue;
+    } else {
+      this.hide = false;
+    }
 
 
     this.form = this.fb.group({
