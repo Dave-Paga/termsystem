@@ -4,6 +4,14 @@
     margin-top: -10px;
     width: 100%;
 }
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  min-height: 100%;
+}
 
 h1.special{
   justify-content: center;  
@@ -55,10 +63,18 @@ p.special{
   font-weight: 500;
   color: #000000;
 }
+
+.delivery-text2 {
+  font-family: Oswald;
+  font-size: 17px;
+  font-weight: 500;
+  color: #000000;
+}
 .delivery-address {
   font-family: Oswald, cursive;
   font-size: 20px;
   color: #000000;
+  padding-top: 10px;
 }
 
 .order-information-header{
@@ -107,60 +123,65 @@ p.special{
     color: #d55e57
   }
 
-  .main{
-    margin: 10px 0px 0px 0px;
-    justify-content: center;
-    height: 38rem;
-    background-color: rgb(255, 232, 232);
-}
-
-
-.box{
-  width: 500px;
-  height: 80%;
-  background: white;
-  text-align: center;
-  margin:auto;
-  margin-top: 6%;
-  margin-bottom: 5%;
-  transform: translateY(5%);
-  vertical-align:center;
-  color: rgb(0, 0, 0);
-  font-family: 'Oswald', cursive;
-}
-
-.example-full-width{
-  width:80%;
-}
-
-.box{
-  width: 500px;
-  height: 80%;
-  background: white;
-  text-align: center;
-  margin:auto;
-  margin-top: 6%;
-  margin-bottom: 5%;
-  transform: translateY(5%);
-  vertical-align:center;
-  color: rgb(0, 0, 0);
-  font-family: 'Oswald', cursive;
-}
-
-.example-full-width{
-  width:80%;
-}
-
-.mainTwo{
-  margin: 10px 0px 0px 0px;
+.mainTwo {
+  margin: 0px;
   justify-content: center;
-  height: 85rem;
+  height: 1500px;
   background-color: rgb(255, 232, 232);
 }
 
+.main{
+  margin: 10px 0px 0px 0px;
+  justify-content: center;
+  height: 100%;
+  background-color: rgb(255, 232, 232);
+}
+
+
+/* .box{
+  width: 500px;
+  height: 80%;
+  background: white;
+  text-align: center;
+  margin:auto;
+  margin-top: 6%;
+  margin-bottom: 5%;
+  transform: translateY(5%);
+  vertical-align:center;
+  color: rgb(0, 0, 0);
+  font-family: 'Oswald', cursive;
+} */
+
+.example-full-width{
+  width:80%;
+}
+
+.box{
+  width: 500px;
+  height: 500px;
+  background: white;
+  text-align: center;
+  margin:auto;
+  border-radius: 25px;
+  box-shadow: 5px 10px rgb(255, 173, 173);
+  margin-top: 6%;
+  margin-bottom: 5%;
+  transform: translateY(5%);
+  vertical-align:center;
+  color: rgb(0, 0, 0);
+  font-family: 'Oswald', cursive;
+}
+
+.example-full-width{
+  width:80%;
+}
+
+
 .result{
   width: 500px;
-  height: 75%;
+  height: 1300px;
+  border-radius: 25px;
+  box-shadow: 5px 10px rgb(255, 173, 173);
   background: white;
   text-align: center;
   margin:auto;

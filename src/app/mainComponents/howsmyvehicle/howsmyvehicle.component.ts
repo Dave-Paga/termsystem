@@ -18,6 +18,11 @@ export class HowsmyvehicleComponent implements OnInit {
   customerName!: string;
   customerPhone!: string;
   employeeID!: string;
+  estimate!: any;
+  start: any;
+  recommend!: string;
+  jobs!: string;
+  service!: string;
   date: any;
   time: any;
   fuelType!: string;
@@ -82,9 +87,17 @@ export class HowsmyvehicleComponent implements OnInit {
         this.solution = getTicket[0].solution;
         this.transmission = getTicket[0].transmission;
         this.status = getTicket[0].status;
+
+        this.start = getTicket[0].start;
+        this.recommend = getTicket[0].recommend;
+        this.estimate = getTicket[0].estimate;
+        this.service = getTicket[0].service;
+        this.jobs = getTicket[0].jobs;
         
         const realTime = this.timeframes[this.time - 7];
         this.time = realTime.viewValue;
+        const realTime2 = this.timeframes[this.start - 7];
+        this.start = realTime2.viewValue;
         this.progressValue = this.map.get(this.status);
       } else {
         this.errorMSG = "Could not find ticket!"

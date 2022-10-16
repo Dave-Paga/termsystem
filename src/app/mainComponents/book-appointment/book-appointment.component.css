@@ -72,6 +72,8 @@ body{
     margin:auto;
     margin-top: 6%;
     margin-bottom: 5%;
+    border-radius: 25px;
+    box-shadow: 5px 10px rgb(255, 173, 173);
     transform: translateY(5%);
     vertical-align:center;
     color: rgb(0, 0, 0);
@@ -87,6 +89,8 @@ body{
     margin:auto;
     margin-top: 6%;
     margin-bottom: 5%;
+    border-radius: 25px;
+    box-shadow: 5px 10px rgb(255, 173, 173);
     transform: translateY(5%);
     vertical-align:center;
     color: rgb(0, 0, 0);

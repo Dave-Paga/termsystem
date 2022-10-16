@@ -9,10 +9,27 @@
     text-align: center;
   }
   
-  .main-div {
-    background-color: #f5f5f5;
+ .mainTwo {
+   margin: 0px;
+   justify-content: center;
+   height: 1500px;
+   background-color: rgb(255, 232, 232);
+ }
+  .result {
+    width: 500px;
+    height: 1300px;
+    border-radius: 25px;
+    box-shadow: 5px 10px rgb(255, 173, 173);
+    background: white;
+    text-align: center;
+    margin: auto;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    transform: translateY(5%);
+    vertical-align: center;
+    color: rgb(0, 0, 0);
+    font-family: 'Oswald', cursive;
   }
- 
   .order-status-div {
       background-color: #ffffff;
       box-shadow: 0 2px 2px 0 rgba(181, 181, 181, 0.5);

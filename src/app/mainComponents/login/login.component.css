@@ -170,6 +170,8 @@ h1.special{
     background: white;
     text-align: center;
     margin:auto;
+    border-radius: 25px;
+    box-shadow: 5px 10px rgb(255, 173, 173);
     margin-top: 6%;
     margin-bottom: 5%;
     transform: translateY(5%);
