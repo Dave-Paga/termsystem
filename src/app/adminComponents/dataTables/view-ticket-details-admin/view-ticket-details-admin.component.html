@@ -14,7 +14,14 @@
     <p>Problem: {{problem}}</p>
     <div *ngIf="hide">
         <p>Service Category: {{service}}</p>
-        <p>Services: {{jobs}}</p>
+        <p>Services:</p>
+
+        <ul>
+            <div >
+                <li *ngFor="let item of jobs[0]">{{item}}</li>
+            </div>
+        </ul>
+
         <h4>Mechanic Recommendation</h4>
         <p>{{recommend}}</p>
         <h4>Estimated Completion</h4>
