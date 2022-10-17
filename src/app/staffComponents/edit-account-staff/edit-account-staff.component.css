@@ -2,10 +2,7 @@
 body{
    margin: 0;
 }
-*{
-    box-sizing: border-box;
 
-}
 .input {
     font-size: 13pt;
 }
@@ -20,7 +17,7 @@ body{
 .main{
     margin: 90px 0px 0px 0px;
     justify-content: center;
-    height: 55rem;
+    height: 100%;
     background-color: rgb(255, 232, 232);
 }
 
@@ -152,10 +149,12 @@ h1.special{
 
   .box{
     width: 500px;
-    height: 85%;
+    height: 800px;
     background: white;
     text-align: center;
     margin:auto;
+    border-radius: 25px;
+    box-shadow: 5px 10px rgb(255, 173, 173);
     margin-top: 6%;
     margin-bottom: 5%;
     transform: translateY(5%);

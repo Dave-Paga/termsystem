@@ -1,0 +1,33 @@
+div.horizontalgap {
+    float: left;
+    overflow: hidden;
+    height: 1px;
+    width: 0px;
+}
+
+.toolbar {
+    display: flex;
+    margin-left: auto;
+    padding-right: 50px;
+    padding: auto;
+    justify-content: flex-end;
+}
+
+.btn1 {
+    font-size: 20px;
+    font-family: 'Oswald', cursive;
+    padding: auto;
+}
+
+.btn1:hover {
+    background-color: rgb(255, 115, 115);
+    color: white;
+    transition: 0.7s;
+}
+
+.img {
+    margin-right: 20px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+}
