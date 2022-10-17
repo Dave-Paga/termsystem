@@ -48,7 +48,14 @@
           <h4 class="delivery-address"> Service Details </h4>
           <p class="delivery-text2"> <b>Problem:</b> {{problem}}</p>
           <p class="delivery-text2"> <b>Service:</b> {{service}}</p>
-          <p class="delivery-text2"> <b>Services Done:</b> {{jobs}}</p>
+          <p class="delivery-text2"> <b>Services Done:</b> </p>
+          
+          <ul>
+            <div *ngFor="let item of jobs">
+              <li>{{item}}</li>
+            </div>
+          </ul>
+          
           <p class="delivery-text2"> <b>Mechanic Recommendation:</b> {{recommend}}</p>
           <h4 class="delivery-address"> Schedule Details </h4>
           <p class="delivery-text">{{date}}, {{time}}</p>

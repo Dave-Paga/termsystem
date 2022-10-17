@@ -1,0 +1,25 @@
+ul {
+    display: grid;
+    text-align: left;
+    grid-template-columns: 3fr 3fr;
+    list-style-position: inside;
+}
+
+p {
+padding-left: 30px;
+}
+
+.special {
+    font-size: 20px;
+}
+
+.mat-dialog-actions {
+    display: flex;
+    justify-content: right;
+}
+
+.title {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 26px;
+}

@@ -26,7 +26,7 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
   start: any;
   estimate: string;
   service: string;
-  jobs: any;
+  jobs: any[];
   transmission: string;
   recommend: string; 
   status: string;
@@ -85,7 +85,6 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
       this.hide = false;
     }
 
-
     this.form = this.fb.group({
       ticketID: [this.ticketID],
       carName: [this.carName],
@@ -100,8 +99,6 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
       price: [this.price],
       problem: [this.problem],
       service: [this.service],
-      jobs: [this.jobs],
-
       transmission: [this.transmission],
       status: [this.status]
     });
