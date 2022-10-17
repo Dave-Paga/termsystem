@@ -42,3 +42,11 @@ h1.special{
   text-align: center !important;
   vertical-align: middle !important;
 }
+
+.yellowBG {
+  background-color: rgb(255, 196, 86);
+}
+
+.redBG {
+  background-color: rgb(255, 93, 93);
+}

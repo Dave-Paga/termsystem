@@ -1,8 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { TicketIDModalComponent } from 'src/app/mainComponents/ticket-id-modal/ticket-id-modal.component';
 

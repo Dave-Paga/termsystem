@@ -9,6 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { DataTicketsAdminDataSource, DataTicketsAdminItem } from './data-tickets-admin-datasource';
 import { ViewTicketDetailsAdminComponent } from '../view-ticket-details-admin/view-ticket-details-admin.component';
 import { MatTableDataSource } from '@angular/material/table';
+import { DeleteModalComponent } from 'src/app/mainComponents/delete-modal/delete-modal.component';
 
 
 
@@ -54,24 +55,29 @@ export class DataTicketsAdminComponent implements AfterViewInit {
         let converted = this.timeframes[arr[index].time];
         arr[index].convTime = converted;
         // console.log(arr[index].date < new Date().toLocaleDateString());
+        let dateSplit = arr[index].date.split("/");
+        let curSplit = new Date().toLocaleDateString().split("/");
+        let dateDif = Number(dateSplit[1]) - Number(curSplit[1]);
+
+        // 1 = red, 2 = yellow
+        if (arr[index].date < new Date().toLocaleDateString()) {
+          arr[index].rowColor = 1;
+        } else if (curSplit[0] == dateSplit[0] && dateDif <= 1) {
+          arr[index].rowColor = 2
+        }
       });
       arr = arr.filter(x => x.mechanicName == "No Mechanic");
       this.dataSource.data = arr as DataTicketsAdminItem[];
-  
-      console.log(new Date().getMonth());
   
     })
   }
 
   openDialog(data): void {
-
     const dialogRef = this.dialog.open(EditTicketComponent, {
       width: '300px',
       height: 'auto',
       data: data
     });
-
-    dialogRef.afterClosed().subscribe(data => console.log(data))
   }
 
   applyFilter(event: Event) {
@@ -87,7 +93,15 @@ export class DataTicketsAdminComponent implements AfterViewInit {
       data: data
     });
 
-    
+  }
+
+  deleteDialog(data): void {
+
+    const dialogRef = this.dialog.open(DeleteModalComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: data
+    });
   }
 
   removeData(data): void {
