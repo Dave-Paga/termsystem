@@ -166,3 +166,8 @@ body {
   .special {
     font-family: 'Oswald', cursive;
   }
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: right;
+}

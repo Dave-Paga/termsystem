@@ -1,22 +1,22 @@
-<h3 mat-dialog-title> Ticket Details</h3>
+<h1 mat-dialog-title class="title"> <b>Ticket Details</b> </h1>
 <mat-dialog-content class="special" [formGroup]="form">
 
-    <h4> Ticket ID: {{ticketID}} </h4>
+    <h4>TICKET ID: {{ticketID}}</h4>
 
     <div *ngIf="hide">
-        <h4> Empoloyee Information</h4>
-        <p><b>Mechanic:</b> {{mechanicName}}</p>
-        <p><b>Mechanic ID:</b> {{employeeID}}</p>
+        <h4>EMPLOYEE INFORMATION</h4>
+        <p><b>MECHANIC:</b> {{mechanicName}}</p>
+        <p><b>MECHANIC ID:</b> {{employeeID}}</p>
     </div>
 
-    <h4>Vehicle Information</h4>
-    <p><b>Car Name:</b> {{carName}}</p>
-    <p><b>Fuel Type:</b> {{fuelType}}</p>
-    <p><b>Transmission:</b> {{transmission}}</p>
-    <p><b>Problem:</b> {{problem}}</p>
+    <h4>VEHICLE INFORMATION</h4>
+    <p><b>CAR NAME:</b> {{carName}}</p>
+    <p><b>FUEL TYPE:</b> {{fuelType}}</p>
+    <p><b>TRANSMISSION:</b> {{transmission}}</p>
+    <p><b>PROBLEM:</b> {{problem}}</p>
     <div *ngIf="hide">
-        <p><b>Service Category:</b> {{service}}</p>
-        <p><b>Services:</b></p>
+        <p><b>SERVICE CATEGORY:</b> {{service}}</p>
+        <p><b>SERVICES:</b></p>
 
         <ul>
             <div >
@@ -24,19 +24,19 @@
             </div>
         </ul>
 
-        <h4>Mechanic Recommendation</h4>
+        <h4>MECHANIC RECOMMENDATION</h4>
         <p>{{recommend}}</p>
-        <h4>Estimated Completion</h4>
-        <p><b>Time:</b> {{start}}</p>
-        <p><b>Date:</b> {{estimate}}</p>
+        <h4>ESTIMATED COMPLETION</h4>
+        <p><b>TIME:</b> {{start}}</p>
+        <p><b>DATE:</b> {{estimate}}</p>
     </div>
-    <h4>Customer Information</h4>
-    <p><b>Customer Name:</b> {{customerName}}</p>
-    <p><b>Phone:</b> {{customerPhone}}</p>
-    <p><b>Email:</b> {{customerEmail}}</p>
-    <h4><b>Status:</b> {{status}}</h4>
+    <h4>CUSTOMER INFORMATION</h4>
+    <p><b>CUSTOMER NAME:</b> {{customerName}}</p>
+    <p><b>PHONE:</b> {{customerPhone}}</p>
+    <p><b>EMAIL:</b> {{customerEmail}}</p>
+    <h4><b>STATUS:</b> {{status}}</h4>
     <div *ngIf="hide">
-        <h4>Price:{{price}}</h4>
+        <h4>PRICE: {{price}}</h4>
     </div>
 
 
