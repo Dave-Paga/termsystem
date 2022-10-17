@@ -25,14 +25,18 @@ interface ticketInterface {
   customerEmail: string;
   customerName: string;
   customerPhone: number;
-  employeeID: string;
+  employeeID?: string;
   date: string;
   time: string;
   fuelType: string;
   mechanicName?: string;
   price: number;
   problem: string;
-  solution: string;
+  service: string;
+  jobs: string;
+  estimate: any;
+  start: any;
+  recommend: string,
   transmission: string;
   status: string;
 }
@@ -107,49 +111,50 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
     private afs: AngularFirestore, public authService: AuthService, public dialog: MatDialog, public router: Router
   ) {
     this.minDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() + 1);
     const currentYear = new Date().getFullYear();
     this.maxDate = new Date(currentYear + 1, 11, 31);
-    this.date = new FormControl(new Date());
+    this.date = new FormControl();
 
     this.afs.collection<any>('tickets').valueChanges().subscribe(result => {
       this.ticketArr = result
     });
 
-    this.afs.collection<any>('users').valueChanges().subscribe(result => {
-      result.forEach(doc => {
-        if (doc.permission == 1) {
-          let rawTime = doc.timeframe.replace(/pm|am/g, '');
-          let convertedArr = rawTime.split(' - ', 2).map(Number);
+    // this.afs.collection<any>('users').valueChanges().subscribe(result => {
+    //   result.forEach(doc => {
+    //     if (doc.permission == 1) {
+    //       let rawTime = doc.timeframe.replace(/pm|am/g, '');
+    //       let convertedArr = rawTime.split(' - ', 2).map(Number);
 
-          let rawDate = doc.days.slice(-3);
-          let convDate;
+    //       let rawDate = doc.days.slice(-3);
+    //       let convDate;
 
-          if (rawDate == "Fri") {
-            convDate = 0;
-          } else if (rawDate == "Sat") {
-            convDate = 6;
-          }
+    //       if (rawDate == "Fri") {
+    //         convDate = 0;
+    //       } else if (rawDate == "Sat") {
+    //         convDate = 6;
+    //       }
 
-          let obj = {
-            name: doc.fullName,
-            id: doc.uid,
-            schedule: convertedArr,
-            dateVal: convDate
-          };
+    //       let obj = {
+    //         name: doc.fullName,
+    //         id: doc.uid,
+    //         schedule: convertedArr,
+    //         dateVal: convDate
+    //       };
 
-          this.employees.push(obj);
+    //       this.employees.push(obj);
 
-          if (doc.uid == this.employeeID) {
-            this.unvailDate = convDate;
-            let start = convertedArr[0] - 7;
-            let end = (convertedArr[1] + 12) - 7;
-            for (let i = start; i < end; i++) {
-              this.timeArray.push({ value: this.timeframes[i].value, viewValue: this.timeframes[i].viewValue });
-            }
-          }
-        }
-      });
-    })
+    //       if (doc.uid == this.employeeID) {
+    //         this.unvailDate = convDate;
+    //         let start = convertedArr[0] - 7;
+    //         let end = (convertedArr[1] + 12) - 7;
+    //         for (let i = start; i < end; i++) {
+    //           this.timeArray.push({ value: this.timeframes[i].value, viewValue: this.timeframes[i].viewValue });
+    //         }
+    //       }
+    //     }
+    //   });
+    // })
   }
 
   ngOnInit(): void {
@@ -163,11 +168,12 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
     const day = (d || new Date()).getDay();
     const date = (d || new Date()).toLocaleDateString();
 
-    let empTickets = this.ticketArr.filter(x => x.employeeID == this.employeeID);
-    let empFilter = empTickets.filter(x => x.date == date);
+    // let empTickets = this.ticketArr.filter(x => x.employeeID == this.employeeID);
+    // let empFilter = empTickets.filter(x => x.date == date);
+    let dayFilter = this.ticketArr.filter(x => x.date == date);
     let prevent = true;
     // max daily inquiries
-    if (empFilter.length > 2) {
+    if (dayFilter.length > 3) {
       prevent = false;
     }
 
@@ -175,47 +181,52 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
   }
 
   onDate(dateVal) {
+    this.changeTimeArray();
     const date = dateVal.toLocaleDateString();
+    let currentDate = dateVal.getDay();
 
-    let empTickets = this.ticketArr.filter(x => x.employeeID == this.employeeID);
-    let empFilter = empTickets.filter(x => x.date == date);
+    // let empTickets = this.ticketArr.filter(x => x.employeeID == this.employeeID);
+    // let empFilter = empTickets.filter(x => x.date == date);
+
+    let ticketFilter = this.ticketArr.filter(x => x.date == date);
     this.timeArray = this.timeArrBackUp;
 
-    empFilter.forEach(x => 
+    ticketFilter.forEach(x => 
       this.timeArray = this.timeArray.filter(y => 
         y.value !== x.time
       )
     )
+    
   }
 
 
   changeTimeArray() {
-    let currentTimeArr = this.employees.find(x => x.id == this.employeeID)?.schedule!;
-    let currentDate = this.employees.find(x => x.id == this.employeeID)?.dateVal!;
-    this.unvailDate = currentDate;
+    // let currentTimeArr = this.employees.find(x => x.id == this.employeeID)?.schedule!;
+    // let currentDate = this.employees.find(x => x.id == this.employeeID)?.dateVal!;
+    // this.unvailDate = currentDate;
     this.timeArray = [];
-    let start = currentTimeArr[0] - 7;
-    let end = (currentTimeArr[1] + 12) - 7;
-    for (let i = start; i < end; i++) {
+    // let start = currentTimeArr[0] - 7;
+    // let end = (currentTimeArr[1] + 12) - 7;
+    for (let i = 0; i < 11; i++) {
       this.timeArray.push({ value: this.timeframes[i].value, viewValue: this.timeframes[i].viewValue });
     };
     this.timeArrBackUp = this.timeArray;
-    this.date = new FormControl(new Date());
+    // this.date = new FormControl(new Date());
   }
 
-  changePrice() {
-    if (this.problem == "Car Repair") {
-      this.price = 1000
-    } else if (this.problem == "Maintenance") {
-      this.price = 2500
-    } else if (this.problem == "Tune-up") {
-      this.price = 1500
-    } else if (this.problem == "Oil Change") {
-      this.price = 1000
-    } else if (this.problem == "Tire and Brakes") {
-      this.price = 5000
-    }
-  }
+  // changePrice() {
+  //   if (this.problem == "Car Repair") {
+  //     this.price = 1000
+  //   } else if (this.problem == "Maintenance") {
+  //     this.price = 2500
+  //   } else if (this.problem == "Tune-up") {
+  //     this.price = 1500
+  //   } else if (this.problem == "Oil Change") {
+  //     this.price = 1000
+  //   } else if (this.problem == "Tire and Brakes") {
+  //     this.price = 5000
+  //   }
+  // }
 
   viewDialog(data): void {
 
@@ -227,43 +238,46 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
   }
 
   addNewTicket() {
-    let selection = this.employees.find(data => data.id == this.employeeID);
-    this.mechanicName = selection?.name;
+    // let selection = this.employees.find(data => data.id == this.employeeID);
+    // this.mechanicName = selection?.name;
 
-    if (this.customerEmail && this.customerName && this.customerPhone && this.employeeID && this.date && this.time && this.fuelType && this.problem) {
+    if (this.customerEmail && this.customerName && this.customerPhone && this.date && this.time && this.fuelType && this.problem) {
       this.newTicket = {
-        ticketID: "Sample",
+        ticketID: "sample",
         carName: this.carName,
         customerEmail: this.customerEmail,
         customerName: this.customerName,
         customerPhone: this.customerPhone,
-        employeeID: this.employeeID,
+        employeeID: "No Mechanic",
         date: this.date.value.toLocaleDateString(),
         time: this.time,
         fuelType: this.fuelType,
-        mechanicName: this.mechanicName,
+        mechanicName: "No Mechanic",
         price: this.price,
         problem: this.problem,
-        solution: "",
+        service: "No Service",
+        jobs: "",
+        estimate: "",
+        start: "",
+        recommend: "",
         transmission: this.transmission,
         status: "Pending Inquiry",
       }
-      console.log(this.customerPhone)
 
-      this.errorMSG = ""
+      this.errorMSG = "";
+      this.viewDialog(this.newTicket);
 
-      this.ticketSub = this.afs.collection<any>('tickets/').valueChanges().subscribe(result => {
-        let newArr = result;
-        newArr = newArr.filter((x) => x.status === "Pending Inquiry" && x.customerEmail === this.customerEmail);
-        if (newArr.length <= 0) {
-          this.errorMSG = ""
-          this.viewDialog(this.newTicket);
-          // this.addEntry();
-        } else {
-          this.errorMSG = "Please settle previous appointment first."
-        }
-      });
-
+      // this.ticketSub = this.afs.collection<any>('tickets/').valueChanges().subscribe(result => {
+      //   let newArr = result;
+      //   newArr = newArr.filter((x) => x.status === "Pending Inquiry" && x.customerEmail === this.customerEmail);
+      //   if (newArr.length <= 0) {
+      //     this.errorMSG = ""
+      //     this.viewDialog(this.newTicket);
+      //     // this.addEntry();
+      //   } else {
+      //     this.errorMSG = "Please settle previous appointment first."
+      //   }
+      // });
 
     } else {
       this.errorMSG = "Please fill all inputs"

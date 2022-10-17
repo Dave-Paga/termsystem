@@ -32,9 +32,13 @@ export class EditTicketComponent implements OnInit {
   solution: string = '';
   status: string = '';
   transmission: string = '';
+  service: string = '';
+  estimate: any;
+  start: any;
   ticketID: string = '';
   time: string = '';
   unvailDate: number = 0;
+  minDate: Date;
 
 
   timeframes = [
@@ -51,7 +55,19 @@ export class EditTicketComponent implements OnInit {
     { value: 17, viewValue: "5:00 PM"},
   ];
 
-  timeArray: valVar[] = [];
+  timeArray: valVar[] = [
+    { value: 7, viewValue: "7:00 AM" },
+    { value: 8, viewValue: "8:00 AM" },
+    { value: 9, viewValue: "9:00 AM" },
+    { value: 10, viewValue: "10:00 AM" },
+    { value: 11, viewValue: "11:00 AM" },
+    { value: 12, viewValue: "12:00 NN" },
+    { value: 13, viewValue: "1:00 PM" },
+    { value: 14, viewValue: "2:00 PM" },
+    { value: 15, viewValue: "3:00 PM" },
+    { value: 16, viewValue: "4:00 PM" },
+    { value: 17, viewValue: "5:00 PM" },
+  ];
 
   employees: employee[] = [];
   statusArray: valVar[] = [
@@ -62,6 +78,15 @@ export class EditTicketComponent implements OnInit {
     { value: "Pending Payment", viewValue: 'Pending Payment'},
     { value: "For Release", viewValue: 'For Release'}
   ];
+
+  serviceArray: valVar[] = [
+    { value: "Check Brakes", viewValue: 'Check Brakes' },
+    { value: "Regular PMS", viewValue: 'Regular PMS' },
+    { value: "Minor PMS", viewValue: 'Minor PMS' },
+    { value: "Major PMS", viewValue: 'Major PMS' },
+    { value: "Troubleshooting", viewValue: 'Troubleshooting' }
+  ];
+
   
   constructor(
     private afs: AngularFirestore,
@@ -73,13 +98,16 @@ export class EditTicketComponent implements OnInit {
     this.ticketID = data.ticketID;
     this.carName = data.carName;
     this.date = new FormControl(new Date(data.date));
+    this.minDate = new Date();
+    this.start = data.start;
+    this.estimate = new FormControl();
     this.time = data.time;
     this.employeeID = data.employeeID;
     this.fuelType = data.fuelType;
     this.mechanicName = data.mechanicName;
     this.price = data.price;
     this.problem = data.problem;
-    this.solution = data.solution;
+    this.service = data.service;
     this.status = data.status;
     this.transmission = data.transmission;
 
@@ -152,28 +180,25 @@ export class EditTicketComponent implements OnInit {
     }
   }
 
-  changed() {
-    console.log(this.carName)
-  }
   
   updateData(): void {
-    let selection = this.employees.find(data => data.id == this.employeeID);
-    this.mechanicName = selection?.name;
-    this.afs.collection('tickets').doc(this.ticketID).update({
-      carName: this.carName,
-      date: this.date.value.toLocaleDateString(),
-      time: this.time,
-      employeeID: this.employeeID,
-      fuelType: this.fuelType,
-      mechanicName: this.mechanicName,
-      price: this.price,
-      problem: this.problem,
-      solution: this.solution,
-      status: this.status,
-      transmission: this.transmission
-    })
-    console.log(this.carName);
-    this.dialogRef.close();
+
+    console.log(this.estimate.value.toLocaleDateString());
+    console.log(this.start)
+    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.estimate, this.start) {
+      let selection = this.employees.find(data => data.id == this.employeeID);
+      this.mechanicName = selection?.name;
+      this.afs.collection('tickets').doc(String(this.ticketID)).update({
+        employeeID: this.employeeID,
+        mechanicName: this.mechanicName,
+        service: this.service,
+        estimate: this.estimate.value.toLocaleDateString(),
+        start: this.start,
+        status: "Undergoing Repair/Maintenance"
+      })
+      console.log(this.carName);
+      this.dialogRef.close();
+    }
   }
 
   close() {

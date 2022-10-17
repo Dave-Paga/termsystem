@@ -20,7 +20,7 @@ export class AppointmentComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'date','customerName', 'customerPhone', 'price', 'problem', 'status','receive', 'delete'];
+  displayedColumns = ['ticketID', 'carName', 'date', 'status','receive', 'delete'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   email!: string;
@@ -83,12 +83,12 @@ export class AppointmentComponent implements OnInit {
   }
 
   receiveTicket(data): void {
-    this.afs.collection<any>('tickets/').doc(data.ticketID).update({
+    this.afs.collection<any>('tickets/').doc(String(data.ticketID)).update({
       status: "Pending Diagnosis"});
   }
 
   removeData(data): void {
-    this.afs.collection<any>('tickets/').doc(data.ticketID).delete();
+    this.afs.collection<any>('tickets/').doc(String(data.ticketID)).delete();
   }
 
   loginCheck() {

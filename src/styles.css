@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
 .btn1 {
   color : rgb(49, 46, 46);
   background-color: rgba(255, 255, 255, 0.96);
@@ -31,6 +40,7 @@
   justify-content: flex-end;
   ;  
 }
+
 
 .specialBtn:hover {
   color: rgb(255, 255, 255);
@@ -137,4 +147,22 @@
     cursor:pointer;
   }
 
-  
+    .mat-flat-button.mat-primary,
+    .mat-raised-button.mat-primary,
+    .mat-fab.mat-primary,
+    .mat-mini-fab.mat-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(255, 115, 115);
+  }
+
+  .mat-form-field.fill-container,
+  .mat-form-field.fill-container .mat-form-field-infix,
+  .mat-form-field.fill-container .mat-form-field-flex,
+  .mat-form-field.fill-container .mat-form-field-wrapper {
+    margin-top: 5px;
+    width: 100%;
+  }
+
+  .special {
+    font-family: 'Oswald', cursive;
+  }

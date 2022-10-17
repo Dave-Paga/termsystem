@@ -1,0 +1,56 @@
+<h3 class="special"> Change Ticket</h3>
+<mat-dialog-content>
+    <h4 class= "special">Status</h4>
+    <mat-form-field  class="fill-container" appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select [(value)]="status">
+            <mat-option [value]="option.value" *ngFor="let option of statusArray">{{ option.viewValue }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Choose date of release</mat-label>
+        <input matInput [matDatepicker]="picker" [formControl]="estimate" [matDatepickerFilter]="weekendsDatesFilter"
+            [min]="minDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    
+    <mat-form-field  class="fill-container" appearance="outline">
+        <mat-label>Input type time</mat-label>
+        <mat-select [(value)]="start">
+            <mat-option [value]="option.value" *ngFor="let option of timeArray">{{ option.viewValue }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <h4 class= "special">Service Category</h4>
+    <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Service Category</mat-label>
+        <mat-select (selectionChange)="changeServices()" [(value)]="service">
+            <mat-option [value]="option.value" *ngFor="let option of serviceArray">{{ option.viewValue }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Services</mat-label>
+        <mat-select [(value)]="jobs" multiple>
+            <mat-option [value]="option.value" *ngFor="let option of serviceCon">{{ option.value }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <h4 class= "special">Mechanic Recommendation</h4>
+    <mat-form-field class="fill-container"  appearance="fill">
+        <mat-label>Recommendations</mat-label>
+        <textarea  cdkTextareaAutosize cdkAutosizeMinRows="5" matInput [(ngModel)]="recommend" placeholder="Input Recommendations">{{recommend}}</textarea>
+    </mat-form-field>
+    <h4 class= "special">Price</h4>
+    <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Php</mat-label>
+        <input type="number" matInput #postalCode maxlength="6" placeholder="Input price" [(ngModel)]="price" >
+        
+    </mat-form-field>
+
+    <mat-dialog-actions>
+        <button class="mat-raised-button mat-primary" (click)="updateData()">Save</button>
+        <button class="mat-raised-button" (click)="close()">Close</button>
+    </mat-dialog-actions>
+</mat-dialog-content>

@@ -12,8 +12,8 @@
       Input the ticket number to find out the current status of your vehicle
       <br>
      along with its other details.
-      <br><br>
-      An example of the ticket ID is: "ll0n3G7DeSTG1aMMcO3X". 
+    <br><br>
+    An example of the ticket ID is: "BR1-51".
       </p>
 
       <mat-form-field class="example-full-width" appearance="fill">
@@ -30,33 +30,39 @@
 
     <!--information-->
 
-    <div class="mainTwo"*ngIf="hideResult">
-      <div class = "result" *ngIf="hideResult">
+<div class="mainTwo"*ngIf="hideResult">
+  <div class = "result" *ngIf="hideResult">
 
-        <br>
+    <br>
 
-          <p class="order-status-text"> {{status}} </p>
-          <mat-progress-bar mode="determinate" [value] = "progressValue" color ="warn" ></mat-progress-bar>
+      <p class="order-status-text"> {{status}} </p>
+      <mat-progress-bar mode="determinate" [value] = "progressValue" color ="warn" ></mat-progress-bar>
 
-          <div class="customer-details">
-              <h4 class="delivery-address">Customer Details </h4>
-              <p class="delivery-text"> {{customerName}}, {{customerPhone}}, {{customerEmail}}  </p>
-              <h4 class="delivery-address"> Vehicle Details </h4>
-              <p class="delivery-text"> {{carName}}, {{fuelType}}, {{transmission}}  </p>
-              <h4 class="delivery-address"> Assigned Mechanic </h4>
-              <p class="delivery-text"> {{mechanicName}}</p>
-              <h4 class="delivery-address"> Service Details </h4>
-              <p class="delivery-text"> Problem/Service: {{problem}}</p>
-              <p class="delivery-text"> Solution: {{solution}}</p>
-              <h4 class="delivery-address"> Schedule Details </h4>
-              <p class="delivery-text">{{date}}, {{time}}</p>
-            </div>
-          
-            <p class="order-information-header"> ORDER INFORMATION </p>
-            <p class="orderId"> TICKET: {{ticketID}}</p>
-            <p class="ordered-time">ESTIMATED PRICE: {{price}} PHP </p>
-            <p class="delivery-text"> NOTICE: Pricelist on offered Services
-              are subject to changes upon further diagnosis of mechanic and serve as estimates ONLY.
-            </p>      
+      <div class="customer-details">
+          <h4 class="delivery-address">Customer Details </h4>
+          <p class="delivery-text"> {{customerName}}</p>
+          <h4 class="delivery-address"> Vehicle Details </h4>
+          <p class="delivery-text"> {{carName}}, {{fuelType}}, {{transmission}}  </p>
+          <h4 class="delivery-address"> Assigned Mechanic </h4>
+          <p class="delivery-text"> {{mechanicName}}</p>
+          <h4 class="delivery-address"> Service Details </h4>
+          <p class="delivery-text2"> <b>Problem:</b> {{problem}}</p>
+          <p class="delivery-text2"> <b>Service:</b> {{service}}</p>
+          <p class="delivery-text2"> <b>Services Done:</b> {{jobs}}</p>
+          <p class="delivery-text2"> <b>Mechanic Recommendation:</b> {{recommend}}</p>
+          <h4 class="delivery-address"> Schedule Details </h4>
+          <p class="delivery-text">{{date}}, {{time}}</p>
+
+          <h4 class="delivery-address"> Release Schedule </h4>
+          <p class="delivery-text">{{estimate}}, {{start}}</p>
       </div>
+      
+        <p class="order-information-header"> ORDER INFORMATION </p>
+        <p class="orderId"> TICKET: {{ticketID}}</p>
+        <p class="ordered-time">ESTIMATED PRICE: {{price}} PHP </p>
+        <p class="delivery-text"> NOTICE: Pricelist on offered Services
+          are subject to changes upon further diagnosis of mechanic and serve as estimates ONLY.
+        </p>      
+  </div>
+</div>
 

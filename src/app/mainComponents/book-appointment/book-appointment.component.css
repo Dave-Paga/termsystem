@@ -66,12 +66,14 @@ body{
 
 .box{
     width: 500px;
-    height: 65%;
+    height: 1500px;
     background: white;
     text-align: center;
     margin:auto;
     margin-top: 6%;
     margin-bottom: 5%;
+    border-radius: 25px;
+    box-shadow: 5px 10px rgb(255, 173, 173);
     transform: translateY(5%);
     vertical-align:center;
     color: rgb(0, 0, 0);
@@ -87,6 +89,8 @@ body{
     margin:auto;
     margin-top: 6%;
     margin-bottom: 5%;
+    border-radius: 25px;
+    box-shadow: 5px 10px rgb(255, 173, 173);
     transform: translateY(5%);
     vertical-align:center;
     color: rgb(0, 0, 0);
@@ -109,4 +113,11 @@ body{
 .specialButton:hover{
     color: rgb(255, 255, 255);
     background-color: rgb(46, 46, 46);
+}
+
+.mat-form-field.fill-container,
+.mat-form-field.fill-container .mat-form-field-infix,
+.mat-form-field.fill-container .mat-form-field-flex,
+.mat-form-field.fill-container .mat-form-field-wrapper {
+    width: 100%;
 }

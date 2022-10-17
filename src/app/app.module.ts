@@ -71,6 +71,9 @@ import { EditAccountUserComponent } from './customerComponents/edit-account-user
 
 import { EditTicketStaffComponent } from './staffComponents/edit-ticket-staff/edit-ticket-staff.component';
 import { TicketIDModalComponent } from './mainComponents/ticket-id-modal/ticket-id-modal.component';
+import { EditTicketAdminComponent } from './adminComponents/edit-ticket-admin/edit-ticket-admin.component';
+import { EditTicketAdminModalComponent } from './adminComponents/edit-ticket-admin-modal/edit-ticket-admin-modal.component';
+import { DeleteModalComponent } from './mainComponents/delete-modal/delete-modal.component';
 
 
 const config = {
@@ -131,7 +134,10 @@ const config = {
     EditAccountStaffComponent,
     EditAccountUserComponent,
     EditTicketStaffComponent,
-    TicketIDModalComponent
+    TicketIDModalComponent,
+    EditTicketAdminComponent,
+    EditTicketAdminModalComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,
@@ -156,6 +162,6 @@ const config = {
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent, ConfirmModalComponent, EditTicketStaffComponent, TicketIDModalComponent]
+  entryComponents: [EditEmployeeComponent, EditTicketComponent, EditPermissionComponent, ViewTicketDetailsAdminComponent, ConfirmModalComponent, EditTicketStaffComponent, TicketIDModalComponent, EditTicketAdminModalComponent, DeleteModalComponent]
 })
 export class AppModule { }

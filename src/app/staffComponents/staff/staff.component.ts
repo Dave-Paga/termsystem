@@ -19,7 +19,7 @@ export class StaffComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'date', 'customerName', 'customerPhone', 'price', 'problem', 'solution', 'status', 'edit'];
+  displayedColumns = ['ticketID', 'carName', 'customerName', 'problem', 'solution', 'price', 'status', 'edit'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   email!: string;

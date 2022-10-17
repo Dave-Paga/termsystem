@@ -1,6 +1,6 @@
 .full-width-table {
   width: 95%;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 h1.special{
@@ -15,10 +15,19 @@ h1.special{
   margin: 0;
 }
 
-.filter{
+.special {
+  margin: 0px 0px 9px 0px;
   text-align: center;
+  height: 30px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border: 0;
+  border-radius: 5px;
+  background-color: rgb(255, 115, 115);
+  color: whitesmoke;
+  font-family: 'Oswald', cursive;
   justify-content: center;
-  margin: 0px 0px 2px 0px;
 }
 
 .mat-elevation-z8{
@@ -26,4 +35,36 @@ h1.special{
   justify-content: center;
   margin: 0px 0px 200px 70px;
   background-color: white;
+}
+
+.green {
+  background-color: green;
+}
+
+.noMech {
+  background-color: rgb(255, 160, 160);
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.SpecialTd {
+  text-align: center !important;
+  vertical-align: middle !important;
+}
+
+.yellowBG {
+  background-color: rgb(255, 196, 86);
+}
+
+.redBG {
+  background-color: rgb(255, 93, 93);
+}
+
+.date-block {
+  display: flex;
+  justify-content: right;
+}
+
+.date-block__list {
+  margin-right: 15px;
 }

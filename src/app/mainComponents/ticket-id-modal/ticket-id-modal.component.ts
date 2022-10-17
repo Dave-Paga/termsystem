@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./ticket-id-modal.component.css']
 })
 export class TicketIDModalComponent implements OnInit {
-  ticketID: string;
+  ticketID: number;
 
   constructor(
     private afs: AngularFirestore, public dialogRef: MatDialogRef<TicketIDModalComponent>, @Inject(MAT_DIALOG_DATA) public data, public router: Router

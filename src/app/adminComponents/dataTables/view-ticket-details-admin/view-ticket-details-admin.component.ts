@@ -23,10 +23,16 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
   mechanicName: string;
   price: number;
   problem: string;
-  solution: string;
+  start: any;
+  estimate: string;
+  service: string;
+  jobs: any;
   transmission: string;
+  recommend: string; 
   status: string;
   form: FormGroup;
+
+  hide: boolean = true;
 
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
@@ -55,17 +61,30 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
     this.employeeID = data.employeeID;
     this.date = data.date;
     this.time = data.time;
+    this.recommend = data.recommend
+    this.start = data.start;
     this.fuelType = data.fuelType;
     this.mechanicName = data.mechanicName;
     this.price = data.price;
     this.problem = data.problem;
-    this.solution = data.solution;
+    this.service = data.service;
+    this.estimate = data.estimate;
+    this.jobs = [data.jobs];
     this.transmission = data.transmission;
     this.status = data.status;
     let pipe = new DatePipe('en-us');
     this.date = pipe.transform(this.date, 'mediumDate');
+
     const realTime = this.timeframes[this.time -7];
     this.time = realTime.viewValue;
+    const realTime2 = this.timeframes[this.start-7];
+
+    if (this.start) {
+      this.start = realTime2.viewValue;
+    } else {
+      this.hide = false;
+    }
+
 
     this.form = this.fb.group({
       ticketID: [this.ticketID],
@@ -80,7 +99,9 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
       mechanicName: [this.mechanicName],
       price: [this.price],
       problem: [this.problem],
-      solution: [this.solution],
+      service: [this.service],
+      jobs: [this.jobs],
+
       transmission: [this.transmission],
       status: [this.status]
     });

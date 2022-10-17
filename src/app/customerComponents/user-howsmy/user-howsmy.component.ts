@@ -19,6 +19,11 @@ export class UserHowsmyComponent implements OnInit {
   customerName!: string;
   customerPhone!: string;
   employeeID!: string;
+  estimate!: any;
+  start: any;
+  recommend!: string;
+  jobs!: string;
+  service!: string;
   date: any;
   time: any;
   fuelType!: string;
@@ -28,6 +33,8 @@ export class UserHowsmyComponent implements OnInit {
   solution!: string;
   transmission!: string;
   status!: string;
+  errorMSG: string = '';
+  hideResult: boolean = false;
 
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
@@ -49,17 +56,11 @@ export class UserHowsmyComponent implements OnInit {
 
   constructor(private afs: AngularFirestore, public router: Router, public authService: AuthService) {
     
-    this.map.set("Pending Inquiry", 10);
-    this.map.set("Pending Diagnosis", 20);
-    this.map.set("Undergoing Diagnosis", 40);
-    this.map.set("Undergoing Repair/Maintenance",50);
-    this.map.set("Pending Payment",80);
-    this.map.set("For Release",100);
-
+    this.map.set("Pending Inquiry", 25);
+    this.map.set("Undergoing Repair/Maintenance", 50);
+    this.map.set("Pending Payment", 75);
+    this.map.set("For Release", 100);
       
-
-
-
     this.afs.collection<any>('users/').valueChanges().subscribe(result => {
       result.forEach(user => {
         if (user.uid == this.authService.userData.uid) {
@@ -85,8 +86,17 @@ export class UserHowsmyComponent implements OnInit {
       this.solution = getFirst[0].solution;
       this.transmission = getFirst[0].transmission;
       this.status = getFirst[0].status;
-      const realTime = this.timeframes[this.time -7];
+
+      this.start = getFirst[0].start;
+      this.recommend = getFirst[0].recommend;
+      this.estimate = getFirst[0].estimate;
+      this.service = getFirst[0].service;
+      this.jobs = getFirst[0].jobs;
+
+      const realTime = this.timeframes[this.time - 7];
       this.time = realTime.viewValue;
+      const realTime2 = this.timeframes[this.start - 7];
+      this.start = realTime2.viewValue;
       this.progressValue = this.map.get(this.status);
 
     })
