@@ -1,20 +1,22 @@
 <h3 mat-dialog-title> Ticket Details</h3>
-<mat-dialog-content [formGroup]="form">
+<mat-dialog-content class="special" [formGroup]="form">
 
     <h4> Ticket ID: {{ticketID}} </h4>
+
     <div *ngIf="hide">
         <h4> Empoloyee Information</h4>
-        <p>Mechanic: {{mechanicName}}</p>
-        <p>Mechanic ID: {{employeeID}}</p>
+        <p><b>Mechanic:</b> {{mechanicName}}</p>
+        <p><b>Mechanic ID:</b> {{employeeID}}</p>
     </div>
+
     <h4>Vehicle Information</h4>
-    <p>Car Name: {{carName}}</p>
-    <p>Fuel Type: {{fuelType}}</p>
-    <p>Transmission: {{transmission}}</p>
-    <p>Problem: {{problem}}</p>
+    <p><b>Car Name:</b> {{carName}}</p>
+    <p><b>Fuel Type:</b> {{fuelType}}</p>
+    <p><b>Transmission:</b> {{transmission}}</p>
+    <p><b>Problem:</b> {{problem}}</p>
     <div *ngIf="hide">
-        <p>Service Category: {{service}}</p>
-        <p>Services:</p>
+        <p><b>Service Category:</b> {{service}}</p>
+        <p><b>Services:</b></p>
 
         <ul>
             <div >
@@ -25,14 +27,14 @@
         <h4>Mechanic Recommendation</h4>
         <p>{{recommend}}</p>
         <h4>Estimated Completion</h4>
-        <p>Time: {{start}}</p>
-        <p>Date: {{estimate}}</p>
+        <p><b>Time:</b> {{start}}</p>
+        <p><b>Date:</b> {{estimate}}</p>
     </div>
     <h4>Customer Information</h4>
-    <p>Customer Name:{{customerName}}</p>
-    <p>Phone: {{customerPhone}}</p>
-    <p>Email: {{customerEmail}}</p>
-    <h4>Status: {{status}}</h4>
+    <p><b>Customer Name:</b> {{customerName}}</p>
+    <p><b>Phone:</b> {{customerPhone}}</p>
+    <p><b>Email:</b> {{customerEmail}}</p>
+    <h4><b>Status:</b> {{status}}</h4>
     <div *ngIf="hide">
         <h4>Price:{{price}}</h4>
     </div>
