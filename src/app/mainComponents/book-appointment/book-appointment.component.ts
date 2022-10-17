@@ -111,6 +111,7 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
     private afs: AngularFirestore, public authService: AuthService, public dialog: MatDialog, public router: Router
   ) {
     this.minDate = new Date();
+    this.minDate.setDate(this.minDate.getDate() + 1);
     const currentYear = new Date().getFullYear();
     this.maxDate = new Date(currentYear + 1, 11, 31);
     this.date = new FormControl();

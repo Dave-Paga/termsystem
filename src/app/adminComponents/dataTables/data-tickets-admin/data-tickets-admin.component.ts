@@ -10,6 +10,7 @@ import { DataTicketsAdminDataSource, DataTicketsAdminItem } from './data-tickets
 import { ViewTicketDetailsAdminComponent } from '../view-ticket-details-admin/view-ticket-details-admin.component';
 import { MatTableDataSource } from '@angular/material/table';
 import { DeleteModalComponent } from 'src/app/mainComponents/delete-modal/delete-modal.component';
+import { FormGroup, FormControl } from '@angular/forms';
 
 
 
@@ -32,6 +33,26 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   displayedColumns = ['ticketID', 'date', 'time', 'customerName', 'customerPhone', 'problem', 'edit', 'view', 'delete'];
   uid: string= 'test';
   perm: any= 1;
+
+  range = new FormGroup({
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
+  });
+
+  get fromDate() {
+    if (this.range.get('fromDate')?.value) {
+      return this.range.get('fromDate')?.value.toLocaleDateString();
+    } else {
+      return false
+    }
+  }
+  get toDate() {
+    if (this.range.get('toDate')?.value) {
+      return this.range.get('toDate')?.value.toLocaleDateString();
+    } else {
+      return false
+    }
+  }
 
   timeframes = {
     7: "7:00 AM",
@@ -68,7 +89,17 @@ export class DataTicketsAdminComponent implements AfterViewInit {
       });
       arr = arr.filter(x => x.mechanicName == "No Mechanic");
       this.dataSource.data = arr as DataTicketsAdminItem[];
-  
+
+      this.dataSource.filterPredicate = (data, filter) => {
+        if (this.fromDate && this.toDate) {
+          return data.date >= this.fromDate && data.date <= this.toDate;
+        } else if (this.fromDate && this.toDate == false) {
+          return data.date >= this.fromDate;
+        } else if (this.fromDate == false && this.toDate) {
+          return data.date <= this.toDate;
+        }
+        return true;
+      }
     })
   }
 
@@ -83,6 +114,16 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  startFilter() {
+    // console.log(dateVal.toLocaleDateString());
+    this.dataSource.filter = '' + Math.random();
+    // this.dataSource.filter = dateVal.toLocaleDateString();
+  }
+  resetFilter() {
+    this.dataSource.filter = '';
+    this.range.reset();
   }
 
   viewDialog(data): void {

@@ -10,6 +10,7 @@ import { DataTicketsAdminItem } from 'src/app/adminComponents/dataTables/data-ti
 import { Router } from '@angular/router';
 import { ViewTicketDetailsAdminComponent } from '../dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
 import { EditTicketAdminModalComponent } from '../edit-ticket-admin-modal/edit-ticket-admin-modal.component';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-ticket-admin',
@@ -21,9 +22,29 @@ export class EditTicketAdminComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'service', 'status', 'estimate', 'price', 'edit', 'view'];
+  displayedColumns = ['ticketID','date', 'service', 'status', 'estimate', 'price', 'edit', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
+
+  range = new FormGroup({
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
+  });
+
+  get fromDate() { 
+    if (this.range.get('fromDate')?.value) {
+      return this.range.get('fromDate')?.value.toLocaleDateString();
+    } else {
+      return false
+    } 
+  }
+  get toDate() { 
+    if (this.range.get('toDate')?.value) {
+      return this.range.get('toDate')?.value.toLocaleDateString(); 
+    } else {
+      return false
+    } 
+  }
 
   timeframes = {
     7: "7:00 AM",
@@ -40,6 +61,8 @@ export class EditTicketAdminComponent implements OnInit {
   }
 
   constructor(private afs: AngularFirestore, public authService: AuthService, public router: Router, public dialog: MatDialog) {
+
+    
 
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
       let arr = data
@@ -69,13 +92,21 @@ export class EditTicketAdminComponent implements OnInit {
         } else if (value.status == "For Release") {
           arr[index].rowColor = 4;
         }
-
-        
-
       });
 
       arr = arr.filter(x => x.mechanicName != "No Mechanic");
-      this.dataSource.data = arr as DataTicketsAdminItem[]
+      this.dataSource.data = arr as DataTicketsAdminItem[];
+      
+      this.dataSource.filterPredicate = (data, filter) => {
+        if (this.fromDate && this.toDate) {
+          return data.date >= this.fromDate && data.date <= this.toDate;
+        } else if (this.fromDate && this.toDate == false) {
+          return data.date >= this.fromDate;
+        } else if (this.fromDate == false && this.toDate) {
+          return data.date <= this.toDate;
+        }
+        return true;
+      }
 
     })
   }
@@ -90,6 +121,16 @@ export class EditTicketAdminComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  startFilter() {
+    // console.log(dateVal.toLocaleDateString());
+    this.dataSource.filter = '' + Math.random();
+    // this.dataSource.filter = dateVal.toLocaleDateString();
+  }
+  resetFilter() {
+    this.dataSource.filter = '';
+    this.range.reset();
   }
 
   loginCheck() {
@@ -121,11 +162,6 @@ export class EditTicketAdminComponent implements OnInit {
     });
   }
 
-  checkBG(row) {
-    if (row.status == "Pending Payment") {
-
-    }
-  }
 
 
 }
