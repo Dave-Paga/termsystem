@@ -2,28 +2,27 @@
 <mat-dialog-content class="special" [formGroup]="form">
 
     <h4>TICKET ID: {{ticketID}}</h4>
-
     <div *ngIf="hide">
         <h4>EMPLOYEE INFORMATION</h4>
         <p><b>MECHANIC:</b> {{mechanicName}}</p>
         <p><b>MECHANIC ID:</b> {{employeeID}}</p>
     </div>
-
     <h4>VEHICLE INFORMATION</h4>
     <p><b>CAR NAME:</b> {{carName}}</p>
     <p><b>FUEL TYPE:</b> {{fuelType}}</p>
     <p><b>TRANSMISSION:</b> {{transmission}}</p>
     <p><b>PROBLEM:</b> {{problem}}</p>
+    <p><b>PLATE:</b> {{plate}}</p>
     <div *ngIf="hide">
+        <p><b>ENGINE NUMBER:</b> {{engine}}</p>
+        <p><b>VIN:</b> {{vin}}</p>
         <p><b>SERVICE CATEGORY:</b> {{service}}</p>
         <p><b>SERVICES:</b></p>
-
         <ul>
-            <div >
+            <div>
                 <li *ngFor="let item of jobs[0]">{{item}}</li>
             </div>
         </ul>
-
         <h4>MECHANIC RECOMMENDATION</h4>
         <p>{{recommend}}</p>
         <h4>ESTIMATED COMPLETION</h4>
@@ -38,8 +37,6 @@
     <div *ngIf="hide">
         <h4>PRICE: {{price}}</h4>
     </div>
-
-
 </mat-dialog-content>
 
 <mat-dialog-actions>

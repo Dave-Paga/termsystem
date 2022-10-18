@@ -23,6 +23,32 @@
         </mat-select>
     </mat-form-field>
 
+    <h4 class="special">Vehicle Details</h4>
+
+    <mat-form-field appearance="fill" class="fill-container">
+        <mat-label>Car Name</mat-label>
+        <textarea [(ngModel)]="carName" matInput placeholder="2018 Honda Civic"></textarea>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" class="fill-container">
+        <mat-label>Plate Number</mat-label>
+        <textarea [(ngModel)]="plate" matInput placeholder="AKA1023"></textarea>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field appearance="fill" class="fill-container">
+        <mat-label>Vehicle Identification Number</mat-label>
+        <textarea [(ngModel)]="vin" matInput placeholder="4S3BMHB68B3286050"></textarea>
+    </mat-form-field>
+    <br>
+    
+    <mat-form-field appearance="fill" class="fill-container">
+        <mat-label>Engine Number</mat-label>
+        <textarea [(ngModel)]="engine" matInput placeholder="52WVC10338"></textarea>
+    </mat-form-field>
+    <br>
+
     <h4 class= "special">Service Category</h4>
     <mat-form-field class="fill-container" appearance="fill">
         <mat-label>Service Category</mat-label>

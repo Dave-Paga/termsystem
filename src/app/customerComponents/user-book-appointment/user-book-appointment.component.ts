@@ -191,7 +191,7 @@ export class UserBookAppointmentComponent implements OnInit, OnDestroy {
     let dayFilter = this.ticketArr.filter(x => x.date == date);
     let prevent = true;
     // max daily inquiries
-    if (dayFilter.length > 3) {
+    if (dayFilter.length > 9) {
       prevent = false;
     }
 

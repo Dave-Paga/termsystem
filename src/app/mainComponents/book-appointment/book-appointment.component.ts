@@ -22,6 +22,7 @@ interface valVar {
 interface ticketInterface {
   ticketID: string;
   carName: string;
+  plate: string;
   customerEmail: string;
   customerName: string;
   customerPhone: number;
@@ -39,6 +40,7 @@ interface ticketInterface {
   recommend: string,
   transmission: string;
   status: string;
+
 }
 
 
@@ -51,6 +53,7 @@ interface ticketInterface {
 export class BookAppointmentComponent implements OnInit, OnDestroy {
 
   carName: string = '';
+  plate: string = '';
   date: FormControl;
   employeeID: string = '';
   fuelType: string = '';
@@ -173,7 +176,7 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
     let dayFilter = this.ticketArr.filter(x => x.date == date);
     let prevent = true;
     // max daily inquiries
-    if (dayFilter.length > 3) {
+    if (dayFilter.length > 9) {
       prevent = false;
     }
 
@@ -245,6 +248,7 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
       this.newTicket = {
         ticketID: "sample",
         carName: this.carName,
+        plate: this.plate,
         customerEmail: this.customerEmail,
         customerName: this.customerName,
         customerPhone: this.customerPhone,

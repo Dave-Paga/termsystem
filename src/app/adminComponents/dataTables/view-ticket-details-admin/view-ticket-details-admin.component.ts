@@ -13,6 +13,9 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
 
   ticketID: string;
   carName: string;
+  plate: string;
+  vin: string;
+  engine: string;
   customerEmail: string;
   customerName: string;
   customerPhone: string;
@@ -55,6 +58,9 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data) {
     this.ticketID = data.ticketID;
     this.carName = data.carName;
+    this.plate = data.plate;
+    this.vin = data.vin;
+    this.engine = data.engine;
     this.customerEmail = data.customerEmail;
     this.customerName = data.customerName;
     this.customerPhone = data.customerPhone;
