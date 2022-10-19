@@ -4,10 +4,29 @@
   <h1 class="special"> Repair History</h1>
   <div class="page">
     <div class="filter">
-      <mat-form-field appearance="standard">
+      <!-- <mat-form-field appearance="standard">
         <mat-label>Filter</mat-label>
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-      </mat-form-field>
+      </mat-form-field> -->
+
+      <form class="date-block" [formGroup]="range">
+        <div class="date-block__list">
+          <mat-form-field>
+            <input matInput [matDatepicker]="fromDate" placeholder="From Date" formControlName="fromDate">
+            <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+            <mat-datepicker #fromDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="date-block__list">
+          <mat-form-field>
+            <input matInput [matDatepicker]="toDate" placeholder="To Date" formControlName="toDate">
+            <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+            <mat-datepicker #toDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <button mat-button color="primary" class="special1" (click)="startFilter()">Submit</button>
+        <button mat-button color="primary" class="special1" (click)="resetFilter()">Reset</button>
+      </form>
     </div>
 
     <div class="mat-elevation-z8">

@@ -115,7 +115,11 @@ export class EditTicketAdminComponent implements OnInit {
     this.loginCheck();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    // this.table.dataSource = this.dataSource;
+    this.table.dataSource = this.dataSource;
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event) {

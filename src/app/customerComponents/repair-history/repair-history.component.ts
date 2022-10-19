@@ -9,6 +9,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DataTicketsAdminItem } from 'src/app/adminComponents/dataTables/data-tickets-admin/data-tickets-admin-datasource';
 import { Router } from '@angular/router';
 import { ViewTicketDetailsAdminComponent } from 'src/app/adminComponents/dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-repair-history',
@@ -26,6 +27,26 @@ export class RepairHistoryComponent implements OnInit {
   customerEmail!: string;
   customerName!: string;
   customerPhone!: string;
+
+  range = new FormGroup({
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
+  });
+
+  get fromDate() {
+    if (this.range.get('fromDate')?.value) {
+      return this.range.get('fromDate')?.value.toLocaleDateString();
+    } else {
+      return false
+    }
+  }
+  get toDate() {
+    if (this.range.get('toDate')?.value) {
+      return this.range.get('toDate')?.value.toLocaleDateString();
+    } else {
+      return false
+    }
+  }
 
   timeframes = {
     7: "7:00 AM",
@@ -65,6 +86,18 @@ export class RepairHistoryComponent implements OnInit {
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
 
+
+      this.dataSource.filterPredicate = (data, filter) => {
+        if (this.fromDate && this.toDate) {
+          return data.date >= this.fromDate && data.date <= this.toDate;
+        } else if (this.fromDate && this.toDate == false) {
+          return data.date >= this.fromDate;
+        } else if (this.fromDate == false && this.toDate) {
+          return data.date <= this.toDate;
+        }
+        return true;
+      }
+
     })
   }
 
@@ -75,9 +108,23 @@ export class RepairHistoryComponent implements OnInit {
     this.table.dataSource = this.dataSource;
   }
 
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  startFilter() {
+    // console.log(dateVal.toLocaleDateString());
+    this.dataSource.filter = '' + Math.random();
+    // this.dataSource.filter = dateVal.toLocaleDateString();
+  }
+  resetFilter() {
+    this.dataSource.filter = '';
+    this.range.reset();
   }
 
   loginCheck() {

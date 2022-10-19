@@ -44,7 +44,7 @@ h1.special{
   overflow-wrap: break-word;
   font-size: 50px;
   font-family: 'Oswald', cursive;
-  padding: 0;
+  padding-top: 20px;
   color: black;
   text-align: center;
   margin: 0;
@@ -53,4 +53,33 @@ h1.special{
 .filter{
   text-align: center;
   justify-content: center;
+}
+
+.special1 {
+  margin: 0px 0px 9px 0px;
+  text-align: center;
+  height: 30px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-left: 10px;
+  border: 0;
+  border-radius: 5px;
+  background-color: rgb(255, 115, 115);
+  color: whitesmoke;
+  font-family: 'Oswald', cursive;
+  justify-content: center;
+}
+
+.special1:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(46, 46, 46);
+}
+
+.date-block {
+  display: flex;
+  justify-content: right;
+}
+
+.date-block__list {
+  margin-right: 15px;
 }
