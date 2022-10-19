@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataTicketsAdminItem } from 'src/app/adminComponents/dataTables/data-tickets-admin/data-tickets-admin-datasource';
 import { Router } from '@angular/router';
+import { ViewTicketDetailsAdminComponent } from 'src/app/adminComponents/dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
 
 @Component({
   selector: 'app-repair-history',
@@ -19,7 +20,7 @@ export class RepairHistoryComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'date', 'mechanicName', 'price', 'problem', 'status'];
+  displayedColumns = ['ticketID', 'carName', 'date', 'mechanicName', 'price', 'problem', 'status', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   customerEmail!: string;
@@ -40,7 +41,7 @@ export class RepairHistoryComponent implements OnInit {
     17: "5:00 PM",
   }
 
-  constructor(private afs: AngularFirestore, public authService: AuthService, public router: Router) {
+  constructor(private afs: AngularFirestore, public authService: AuthService, public router: Router, public dialog: MatDialog) {
     this.afs.collection<any>('users/').valueChanges().subscribe(result => {
       result.forEach(user => {
         if (user.uid == this.authService.userData.uid) {
@@ -59,6 +60,7 @@ export class RepairHistoryComponent implements OnInit {
       });
 
       arr = arr.filter((x) => x.customerEmail == this.customerEmail);
+      arr
       console.log(arr);
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
@@ -85,6 +87,14 @@ export class RepairHistoryComponent implements OnInit {
       } else {
         console.log(this.authService.userData.uid);
       }
+    });
+  }
+
+  viewDialog(data): void {
+    const dialogRef = this.dialog.open(ViewTicketDetailsAdminComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: data
     });
   }
 

@@ -2,7 +2,6 @@
 
 <div class="main">
   <h1 class="special"> Repair History</h1>
-
   <div class="page">
     <div class="filter">
       <mat-form-field appearance="standard">
@@ -10,11 +9,9 @@
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
       </mat-form-field>
     </div>
-    
-      <h1></h1>
-    
+
     <div class="mat-elevation-z8">
-      <table mat-table  [dataSource]="dataSource" class="full-width-table" matSort aria-label="Elements">
+      <table mat-table  [dataSource]="dataSource" matSort aria-label="Elements">
         <ng-container matColumnDef="ticketID">
           <th mat-header-cell *matHeaderCellDef mat-sort-header >Ticket Id</th>
           <td mat-cell *matCellDef="let row">{{row.ticketID}}</td>
@@ -28,11 +25,6 @@
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Date Availed</th>
           <td mat-cell *matCellDef="let row">{{row.date}}</td>
-        </ng-container>
-    
-        <ng-container matColumnDef="customerPhone">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer Phone</th>
-          <td mat-cell *matCellDef="let row">{{row.customerPhone}}</td>
         </ng-container>
 
         <ng-container matColumnDef="problem">
@@ -52,14 +44,13 @@
     
         <ng-container matColumnDef="price">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
-          <td mat-cell *matCellDef="let row">Php {{row.price}}</td>
+          <td mat-cell *matCellDef="let row">Php {{row.price | number}}</td>
         </ng-container>
     
         <ng-container matColumnDef="view">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>View More Details</th>
           <td mat-cell *matCellDef="let row">
-            <button mat-raised-button color="primary" md-button class="specialBtn">View
-              More</button>
+            <button mat-raised-button color="primary" (click)="viewDialog(row)" md-button class="specialBtn">View</button>
           </td>
         </ng-container>
     

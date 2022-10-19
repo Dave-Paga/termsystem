@@ -8,46 +8,32 @@ body {
     letter-spacing: 0.2px;
     font: 13px Arial, Helvetica,"Lucida Grande", serif;
     color: #000;
-  }
-  h1 { font-size: 2em; }
-  .page {
-    width: 850px;
-    margin: 2rem auto;
-    color: #333;
-  }
-  .page table {
-    border: 1px solid #ddd;
-    padding: .3rem;
-    width: 100%;
-    margin: 0;
-    margin-top: -20%;
-    border-collapse: collapse;
-  }
-  .page table th {
-    justify-content: center;
-    background-color: #ddd;
-    text-align: center;
-    padding: .8rem;
-  }
-  .page table tr {
-    border-bottom: 1px solid #ddd;
-    padding: .8rem;
-    text-align: center;
-  }
-  .page table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  .page table td {
-    padding: .8rem;
-    margin: 0;
-    text-align: center;
-  }
+}
 
+h1 { 
+  font-size: 2em;
+}
+.page {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333;
+}
+
+.table1 {
+  width: 80%;
+  align-items: center;
+}
+
+.mat-table {
+  width: 100%;
+  margin: 0;
+}
 .main{
     margin: 55px 0px 0px 0px;
-    width: 1550px;
+    width: 100%;
     justify-content: center;
-    height: 43rem;
+    height: 100%;
     background-color: rgb(255, 232, 232); 
     background-image: linear-gradient(170deg, rgb(255, 232, 232) 0%, rgb(255, 232, 232) 60%, white 60.1%);
 }
@@ -67,5 +53,4 @@ h1.special{
 .filter{
   text-align: center;
   justify-content: center;
-  margin: 0px 0px 200px 0px;
 }

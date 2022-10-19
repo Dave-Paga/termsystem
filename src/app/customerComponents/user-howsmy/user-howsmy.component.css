@@ -17,7 +17,8 @@
  }
   .result {
     width: 500px;
-    height: 1400px;
+    height: auto;
+    padding-bottom: 20px;
     border-radius: 25px;
     box-shadow: 5px 10px rgb(255, 173, 173);
     background: white;
