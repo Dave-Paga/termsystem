@@ -116,6 +116,11 @@ export class DataTicketsAdminDataSource extends DataSource<DataTicketsAdminItem>
       switch (this.sort?.active) {
         case 'ticketID': return compare(a.ticketID, b.ticketID, isAsc);
         case 'carName': return compare(+a.carName, +b.carName, isAsc);
+        case 'date': return compare(+a.date, +b.date, isAsc);
+        case 'customerName': return compare(+a.customerName, +b.customerName, isAsc);
+        case 'customerPhone': return compare(+a.customerPhone, +b.customerPhone, isAsc);
+        case 'problem': return compare(+a.problem, +b.problem, isAsc);
+        case 'time': return compare(+a.time, +b.time, isAsc);
         default: return 0;
       }
     });

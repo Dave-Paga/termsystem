@@ -23,6 +23,9 @@ interface valVar {
 })
 export class EditTicketComponent implements OnInit {
   carName: string = '';
+  engine: string = '';
+  vin: string = '';
+  plate: string = '';
   date: FormControl;
   employeeID: string = '';
   fuelType: string = '';
@@ -80,11 +83,12 @@ export class EditTicketComponent implements OnInit {
   ];
 
   serviceArray: valVar[] = [
-    { value: "Check Brakes", viewValue: 'Check Brakes' },
     { value: "Regular PMS", viewValue: 'Regular PMS' },
     { value: "Minor PMS", viewValue: 'Minor PMS' },
     { value: "Major PMS", viewValue: 'Major PMS' },
-    { value: "Troubleshooting", viewValue: 'Troubleshooting' }
+    { value: "Troubleshooting", viewValue: 'Troubleshooting' },
+    { value: "General Repair", viewValue: 'General Repair' },
+    { value: "Body Repair", viewValue: 'Detailing' }
   ];
 
   
@@ -97,6 +101,7 @@ export class EditTicketComponent implements OnInit {
     
     this.ticketID = data.ticketID;
     this.carName = data.carName;
+    this.plate =  data.plate;
     this.date = new FormControl(new Date(data.date));
     this.minDate = new Date();
     this.start = data.start;
@@ -183,14 +188,16 @@ export class EditTicketComponent implements OnInit {
   
   updateData(): void {
 
-    console.log(this.estimate.value.toLocaleDateString());
-    console.log(this.start)
-    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.estimate, this.start) {
+    console.log(this.vin);
+    console.log(this.engine);
+    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.estimate, this.start, this.vin, this.engine) {
       let selection = this.employees.find(data => data.id == this.employeeID);
       this.mechanicName = selection?.name;
       this.afs.collection('tickets').doc(String(this.ticketID)).update({
         employeeID: this.employeeID,
         mechanicName: this.mechanicName,
+        vin: this.vin,
+        engine: this.engine,
         service: this.service,
         estimate: this.estimate.value.toLocaleDateString(),
         start: this.start,

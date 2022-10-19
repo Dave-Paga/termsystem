@@ -18,7 +18,7 @@ body{
 .main{
     margin: 10px 0px 0px 0px;
     justify-content: center;
-    height: 130rem;
+    height: 2200px;
     background-color: rgb(255, 232, 232);
 }
 
@@ -66,7 +66,7 @@ body{
 
 .box{
     width: 500px;
-    height: 1500px;
+    height: 1600px;
     background: white;
     text-align: center;
     margin:auto;

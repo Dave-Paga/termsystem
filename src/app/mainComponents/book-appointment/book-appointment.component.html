@@ -11,19 +11,7 @@
                         Booking Appointment
                     </h1>                    
                 </div> 
-
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
-                <h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1><h1></h1>
                 
-
         <div class="booking">
             <h2 class="special">Customer Details</h2>
             <mat-form-field  appearance="fill" class="fill-container">
@@ -43,10 +31,17 @@
                 <input matInput [(ngModel)]="customerPhone" (keypress)="numberOnly($event)" type="text">
             </mat-form-field>
             <br>
+            
             <h2 class="special">Car Details</h2>
             <mat-form-field appearance="fill" class="fill-container">
-                <mat-label>Car Name</mat-label>
-                <textarea [(ngModel)]="carName" matInput placeholder="Input Car Name"></textarea>
+                <mat-label>Car Model and Year</mat-label>
+                <textarea [(ngModel)]="carName" matInput placeholder="2018 Honda Civic"></textarea>
+            </mat-form-field>
+            <br>
+
+            <mat-form-field appearance="fill" class="fill-container">
+                <mat-label>Plate Number</mat-label>
+                <textarea [(ngModel)]="plate" matInput placeholder="AKA1023"></textarea>
             </mat-form-field>
             <br>
             
@@ -65,6 +60,7 @@
                 </mat-select>
             </mat-form-field>
             <br>
+
             <mat-form-field appearance="fill" class="fill-container">
                 <mat-label>Problem Details</mat-label>
                 <textarea cdkTextareaAutosize cdkAutosizeMinRows="5" [(ngModel)]="problem" matInput placeholder="Input car problem"></textarea>

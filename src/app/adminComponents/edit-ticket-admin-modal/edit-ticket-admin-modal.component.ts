@@ -20,6 +20,9 @@ interface val {
 })
 export class EditTicketAdminModalComponent implements OnInit {
   carName: string = '';
+  engine: string = '';
+  vin: string = '';
+  plate: string = '';
   employeeID: string = '';
   fuelType: string = '';
   mechanicName?: string = '';
@@ -48,11 +51,12 @@ export class EditTicketAdminModalComponent implements OnInit {
   ];
 
   serviceArray: valVar[] = [
-    { value: "Check Brakes", viewValue: 'Check Brakes' },
     { value: "Regular PMS", viewValue: 'Regular PMS' },
     { value: "Minor PMS", viewValue: 'Minor PMS' },
     { value: "Major PMS", viewValue: 'Major PMS' },
-    { value: "Troubleshooting", viewValue: 'Troubleshooting' }
+    { value: "Troubleshooting", viewValue: 'Troubleshooting' },
+    { value: "General Repair", viewValue: 'General Repair' },
+    { value: "Body Repair", viewValue: 'Detailing' }
   ];
 
   checkBrakes: val[] = [
@@ -103,7 +107,7 @@ export class EditTicketAdminModalComponent implements OnInit {
     { value: "Engine Wash" },
     { value: "Foam Wash with Car Buffing" },
     { value: "Engine Overhauling" },
-    { value: "Transmission Overhauling" },
+    { value: "Transmission Overhauling" }
   ]
 
   serviceCon: val[] = [
@@ -134,6 +138,9 @@ export class EditTicketAdminModalComponent implements OnInit {
     ) {
       this.ticketID = data.ticketID;
       this.carName = data.carName;
+      this.plate = data.plate;
+      this.vin = data.vin;
+      this.engine = data.engine;
       this.minDate = new Date();
       this.estimate = new FormControl(new Date(data.estimate));
       this.time = data.time;
@@ -158,6 +165,10 @@ export class EditTicketAdminModalComponent implements OnInit {
 
   updateData(): void {
     this.afs.collection('tickets').doc(String(this.ticketID)).update({
+      carName: this.carName,
+      vin: this.vin,
+      engine: this.engine,
+      plate: this.plate,
       jobs: this.jobs,
       status: this.status,
       start: this.start,
@@ -174,18 +185,59 @@ export class EditTicketAdminModalComponent implements OnInit {
   }
 
   changeServices() {
-    this.serviceCon = [];
-    if (this.service == "Check Brakes") {
-      this.serviceCon = this.checkBrakes.map(x => ({ value: x.value }))
-    } else if (this.service == "Regular PMS") {
-      this.serviceCon = this.regularPMS.map(x => ({ value: x.value }))
-    } else if (this.service == "Minor PMS") {
-      this.serviceCon = this.minorPMS.map(x => ({ value: x.value }))
-    } else if (this.service == "Major PMS") {
-      this.serviceCon = this.majorPMS.map(x => ({ value: x.value }))
-    } else if (this.service == "Troubleshooting") {
-      this.serviceCon = this.troubleshooting.map(x => ({ value: x.value }))
-    }
+    this.serviceCon = [
+      { value: "Change Oil" },
+      { value: "Replace Fuel Filter" },
+      { value: "Clean Air Filter" },
+      { value: "Check and Clean Brakes" },
+      { value: "Change All Fluids" },
+      { value: "Regrease All Fittings" },
+      { value: "Repack Wheel Bearings" },
+      { value: "Replace Necessary Worn Parts" },
+      { value: "Check All Bulbs" },
+      { value: "Check Suspensions" },
+      { value: "Replace Necessary Brake Pads" },
+      { value: "Check Electrical" },
+      { value: "Check Fuel Line" },
+      { value: "Check Engine Management" },
+      { value: "Use Diagnostic Tools" },
+      { value: "Check Suspension" },
+      { value: "Check Transmission" },
+      { value: "Check Sensors" },
+      { value: "Check Tires" },
+      { value: "Check Aircon Servicing" },
+      { value: "Repair for Dents" },
+      { value: "Body Paint Washover" },
+      { value: "Undercoating" },
+      { value: "Car Exterior/Interior Detailing" },
+      { value: "Engine Wash" },
+      { value: "Foam Wash with Car Buffing" },
+      { value: "Engine Overhauling" },
+      { value: "Engine Tune Up" },
+      { value: "Engine Troubleshooting" },
+      { value: "Transmission Pull Down" },
+      { value: "Clutch Assembly Replacing" },
+      { value: "Battery Replacement" },
+      { value: "Check Relays and Fuse" },
+      { value: "Check Charging System" },
+      { value: "Body Repair" },
+      { value: "Engine Bay Detailing" },
+      { value: "Car Polish" },
+      { value: "Accident Repair" },
+      { value: "Transmission Overhauling" }
+    ];
+    
+    // if (this.service == "Check Brakes") {
+    //   this.serviceCon = this.checkBrakes.map(x => ({ value: x.value }))
+    // } else if (this.service == "Regular PMS") {
+    //   this.serviceCon = this.regularPMS.map(x => ({ value: x.value }))
+    // } else if (this.service == "Minor PMS") {
+    //   this.serviceCon = this.minorPMS.map(x => ({ value: x.value }))
+    // } else if (this.service == "Major PMS") {
+    //   this.serviceCon = this.majorPMS.map(x => ({ value: x.value }))
+    // } else if (this.service == "Troubleshooting") {
+    //   this.serviceCon = this.troubleshooting.map(x => ({ value: x.value }))
+    // }
   }
 
   weekendsDatesFilter = (d: Date | null): boolean => {

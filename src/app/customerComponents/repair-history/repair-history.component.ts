@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataTicketsAdminItem } from 'src/app/adminComponents/dataTables/data-tickets-admin/data-tickets-admin-datasource';
 import { Router } from '@angular/router';
+import { ViewTicketDetailsAdminComponent } from 'src/app/adminComponents/dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-repair-history',
@@ -19,12 +21,32 @@ export class RepairHistoryComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'date', 'mechanicName', 'price', 'problem', 'status'];
+  displayedColumns = ['ticketID', 'carName', 'date', 'mechanicName', 'price', 'problem', 'status', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   customerEmail!: string;
   customerName!: string;
   customerPhone!: string;
+
+  range = new FormGroup({
+    fromDate: new FormControl(),
+    toDate: new FormControl(),
+  });
+
+  get fromDate() {
+    if (this.range.get('fromDate')?.value) {
+      return this.range.get('fromDate')?.value.toLocaleDateString();
+    } else {
+      return false
+    }
+  }
+  get toDate() {
+    if (this.range.get('toDate')?.value) {
+      return this.range.get('toDate')?.value.toLocaleDateString();
+    } else {
+      return false
+    }
+  }
 
   timeframes = {
     7: "7:00 AM",
@@ -40,7 +62,7 @@ export class RepairHistoryComponent implements OnInit {
     17: "5:00 PM",
   }
 
-  constructor(private afs: AngularFirestore, public authService: AuthService, public router: Router) {
+  constructor(private afs: AngularFirestore, public authService: AuthService, public router: Router, public dialog: MatDialog) {
     this.afs.collection<any>('users/').valueChanges().subscribe(result => {
       result.forEach(user => {
         if (user.uid == this.authService.userData.uid) {
@@ -59,9 +81,22 @@ export class RepairHistoryComponent implements OnInit {
       });
 
       arr = arr.filter((x) => x.customerEmail == this.customerEmail);
+      arr
       console.log(arr);
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
+
+
+      this.dataSource.filterPredicate = (data, filter) => {
+        if (this.fromDate && this.toDate) {
+          return data.date >= this.fromDate && data.date <= this.toDate;
+        } else if (this.fromDate && this.toDate == false) {
+          return data.date >= this.fromDate;
+        } else if (this.fromDate == false && this.toDate) {
+          return data.date <= this.toDate;
+        }
+        return true;
+      }
 
     })
   }
@@ -73,9 +108,23 @@ export class RepairHistoryComponent implements OnInit {
     this.table.dataSource = this.dataSource;
   }
 
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  startFilter() {
+    // console.log(dateVal.toLocaleDateString());
+    this.dataSource.filter = '' + Math.random();
+    // this.dataSource.filter = dateVal.toLocaleDateString();
+  }
+  resetFilter() {
+    this.dataSource.filter = '';
+    this.range.reset();
   }
 
   loginCheck() {
@@ -85,6 +134,14 @@ export class RepairHistoryComponent implements OnInit {
       } else {
         console.log(this.authService.userData.uid);
       }
+    });
+  }
+
+  viewDialog(data): void {
+    const dialogRef = this.dialog.open(ViewTicketDetailsAdminComponent, {
+      width: 'auto',
+      height: 'auto',
+      data: data
     });
   }
 

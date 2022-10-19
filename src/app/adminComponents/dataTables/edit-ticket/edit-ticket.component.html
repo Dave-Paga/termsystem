@@ -5,7 +5,7 @@
   <!-- <p>Mechanic ID: {{employeeID}}</p> -->
   <mat-form-field class="fill-container" appearance="fill">
     <mat-label>Mechanic</mat-label>
-    <mat-select (selectionChange)="changeTimeArray()" [(value)]="employeeID">
+    <mat-select [(value)]="employeeID">
       <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
     </mat-select>
   </mat-form-field>
@@ -17,6 +17,26 @@
     <mat-option [value]="option.value" *ngFor="let option of serviceArray">{{ option.viewValue }}</mat-option>
   </mat-select>
 </mat-form-field>
+
+<h4 class="special">Car Details</h4>
+<mat-form-field appearance="fill" class="fill-container">
+  <mat-label>Plate Number</mat-label>
+  <textarea [(ngModel)]="plate" matInput placeholder="AKA1023"></textarea>
+</mat-form-field>
+<br>
+
+<mat-form-field appearance="fill" class="fill-container">
+  <mat-label>Vehicle Identification Number</mat-label>
+  <textarea [(ngModel)]="vin" matInput placeholder="4S3BMHB68B3286050"></textarea>
+</mat-form-field>
+<br>
+
+<mat-form-field appearance="fill" class="fill-container">
+  <mat-label>Engine Number</mat-label>
+  <textarea [(ngModel)]="engine" matInput placeholder="52WVC10338"></textarea>
+</mat-form-field>
+<br>
+
 <h4 class="special">Release Schedule</h4>
 <mat-form-field class="fill-container" appearance="fill">
   <mat-label>Choose date of release</mat-label>
@@ -42,41 +62,6 @@
   </mat-select>
 </mat-form-field>
 <br>
-
-<mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Car Name</mat-label>
-  <textarea matInput [(ngModel)]="carName" placeholder="Input Problem Details">{{carName}}</textarea>
-</mat-form-field>
-<br>
-
-<mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Tranmission</mat-label>
-  <textarea matInput [(ngModel)]="transmission" placeholder="Input Problem Details">{{transmission}}</textarea>
-</mat-form-field>
-<br>
-
-<mat-form-field class="example-full-width" appearance="fill">
-  <mat-label>Fuel Type</mat-label>
-  <textarea matInput placeholder="Input Problem Details">{{fuelType}}</textarea>
-</mat-form-field>
-<br>
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Problem</mat-label>
-    <textarea matInput [(ngModel)]="problem" placeholder="Input Problem Details">{{problem}}</textarea>
-  </mat-form-field>
-  <br>
-
-  <mat-form-field class="example-full-width" appearance="fill">
-    <mat-label>Solution</mat-label>
-    <textarea matInput [(ngModel)]="solution" placeholder="Input Problem Details">{{solution}}</textarea>
-  </mat-form-field>
-  <br>
-
-  <mat-form-field appearance="fill">
-    <mat-label>Price</mat-label>
-    <input value={{price}} [(ngModel)]="price" type="number"  matInput="number"> 
-  </mat-form-field>
-  <br>
 
   <mat-form-field appearance="fill">
     <mat-label>Status</mat-label>
