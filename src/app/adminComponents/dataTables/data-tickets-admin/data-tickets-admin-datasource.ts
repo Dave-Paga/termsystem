@@ -7,6 +7,11 @@ import { filter } from 'rxjs/operators';
 
 // TODO: Replace this with your own data model type
 export interface DataTicketsAdminItem {
+  plate: any;
+  vin: any;
+  engine: any;
+  service: any;
+  jobs: any;
   ticketID: string;
   carName: string;
   customerEmail: string;

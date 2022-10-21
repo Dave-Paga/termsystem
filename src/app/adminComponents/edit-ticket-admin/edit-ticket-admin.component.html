@@ -2,11 +2,13 @@
 <div class="main">
     <div class="page">
         <h1 class="text">Edit Tickets</h1>
-            <!-- <mat-form-field appearance="standard">
-                <mat-label>Filter</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
-            </mat-form-field> -->
+            
                 <form class="date-block" [formGroup]="range">
+
+                    <mat-form-field class="filter">
+                        <input matInput [ngModel]="globalFilter" (ngModelChange)="applyFilter($event)" formControlName="filter" placeholder="Filter">
+                    </mat-form-field>
+
                     <div class="date-block__list">
                         <mat-form-field>
                             <input matInput [matDatepicker]="fromDate" placeholder="From Date" formControlName="fromDate">

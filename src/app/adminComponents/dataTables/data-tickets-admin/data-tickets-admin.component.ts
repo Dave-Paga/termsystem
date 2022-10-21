@@ -29,14 +29,21 @@ export class DataTicketsAdminComponent implements AfterViewInit {
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
 
+  filteredValues = {
+    carName: '', customerName: '', customerEmail: '',
+    ticketID: '', status: ''
+  };
+
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['ticketID', 'date', 'time', 'customerName', 'customerPhone', 'problem', 'edit', 'view', 'delete'];
   uid: string= 'test';
   perm: any= 1;
+  globalFilter = '';
 
   range = new FormGroup({
     fromDate: new FormControl(),
     toDate: new FormControl(),
+    filter: new FormControl()
   });
 
   get fromDate() {
@@ -90,17 +97,52 @@ export class DataTicketsAdminComponent implements AfterViewInit {
       arr = arr.filter(x => x.mechanicName == "No Mechanic");
       this.dataSource.data = arr as DataTicketsAdminItem[];
 
-      this.dataSource.filterPredicate = (data, filter) => {
-        if (this.fromDate && this.toDate) {
-          return data.date >= this.fromDate && data.date <= this.toDate;
-        } else if (this.fromDate && this.toDate == false) {
-          return data.date >= this.fromDate;
-        } else if (this.fromDate == false && this.toDate) {
-          return data.date <= this.toDate;
-        }
-        return true;
-      }
     })
+  }
+
+  ngOnInit(): void {
+    this.loginCheck();
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    // this.table.dataSource = this.dataSource;
+    this.getFormsValue();
+
+  }
+
+  getFormsValue() {
+    this.dataSource.filterPredicate = (data, filter: string): boolean => {
+      // 'ticketID','date', 'service', 'status', 'estimate', 'price', 'edit', 'view'
+      let globalMatch = !this.globalFilter
+      let col1 = data.ticketID.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      let col2 = data.carName.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      let col3 = data.customerPhone.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      let col4 = data.customerName.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      let col6 = data.plate.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      let col7 = data.problem.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      let col8 = data.status.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      let col10 = data.transmission.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      let col13 = data.fuelType.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      let col14 = data.jobs.toString().trim().toLowerCase().indexOf(this.globalFilter.toLowerCase()) !== -1;
+      //search all fields
+      if (this.globalFilter) {
+        globalMatch = col1 || col2 || col3 || col4 || col6 || col7 || col8 || col10 || col13 || col14;
+      }
+
+      if (!globalMatch) {
+        return false;
+      }
+
+      if (this.fromDate && this.toDate) {
+        return data.date >= this.fromDate && data.date <= this.toDate;
+      } else if (this.fromDate && this.toDate == false) {
+        return data.date >= this.fromDate;
+      } else if (this.fromDate == false && this.toDate) {
+        return data.date <= this.toDate;
+      }
+      return true
+      //DATE 
+
+    }
   }
 
   openDialog(data): void {
@@ -111,11 +153,12 @@ export class DataTicketsAdminComponent implements AfterViewInit {
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(filter) {
+    // const filterValue = (event.target as HTMLInputElement).value;
+    // this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.globalFilter = filter;
+    this.dataSource.filter = JSON.stringify(this.filteredValues);
   }
-
   startFilter() {
     // console.log(dateVal.toLocaleDateString());
     this.dataSource.filter = '' + Math.random();
