@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { ViewTicketDetailsAdminComponent } from '../dataTables/view-ticket-details-admin/view-ticket-details-admin.component';
 import { EditTicketAdminModalComponent } from '../edit-ticket-admin-modal/edit-ticket-admin-modal.component';
 import { FormControl, FormGroup } from '@angular/forms';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-edit-ticket-admin',
@@ -32,7 +33,6 @@ export class EditTicketAdminComponent implements OnInit {
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   globalFilter = '';
-
   range = new FormGroup({
     fromDate: new FormControl(),
     toDate: new FormControl(),
@@ -172,8 +172,12 @@ export class EditTicketAdminComponent implements OnInit {
     // this.dataSource.filter = dateVal.toLocaleDateString();
   }
   resetFilter() {
+    this.range.setValue({
+      filter: "",
+      fromDate: '',
+      toDate: ''
+    });
     this.dataSource.filter = '';
-    this.range.reset();
   }
 
   loginCheck() {

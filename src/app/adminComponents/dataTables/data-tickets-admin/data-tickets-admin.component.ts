@@ -165,8 +165,12 @@ export class DataTicketsAdminComponent implements AfterViewInit {
     // this.dataSource.filter = dateVal.toLocaleDateString();
   }
   resetFilter() {
+    this.range.setValue({
+      filter: "",
+      fromDate: '',
+      toDate: ''
+    });
     this.dataSource.filter = '';
-    this.range.reset();
   }
 
   viewDialog(data): void {
