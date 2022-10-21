@@ -244,7 +244,7 @@ export class BookAppointmentComponent implements OnInit, OnDestroy {
     // let selection = this.employees.find(data => data.id == this.employeeID);
     // this.mechanicName = selection?.name;
 
-    if (this.customerEmail && this.customerName && this.customerPhone && this.date && this.time && this.fuelType && this.problem) {
+    if (this.plate && this.customerEmail && this.customerName && this.customerPhone && this.date && this.time && this.fuelType && this.problem) {
       this.newTicket = {
         ticketID: "sample",
         carName: this.carName,

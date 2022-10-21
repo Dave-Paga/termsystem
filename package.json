@@ -24,6 +24,7 @@
     "@syncfusion/ej2-angular-inputs": "^20.1.55",
     "firebase": "^9.8.4",
     "ngx-mat-select-search": "^5.0.0",
+    "ngx-print": "^1.2.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
