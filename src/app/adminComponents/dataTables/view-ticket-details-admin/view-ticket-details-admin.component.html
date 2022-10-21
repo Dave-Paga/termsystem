@@ -1,44 +1,46 @@
-<h1 mat-dialog-title class="title"> <b>Ticket Details</b> </h1>
-<mat-dialog-content class="special" [formGroup]="form">
-
-    <h4>TICKET ID: {{ticketID}}</h4>
-    <div *ngIf="hide">
-        <h4>EMPLOYEE INFORMATION</h4>
-        <p><b>MECHANIC:</b> {{mechanicName}}</p>
-        <p><b>MECHANIC ID:</b> {{employeeID}}</p>
-    </div>
-    <h4>VEHICLE INFORMATION</h4>
-    <p><b>CAR NAME:</b> {{carName}}</p>
-    <p><b>FUEL TYPE:</b> {{fuelType}}</p>
-    <p><b>TRANSMISSION:</b> {{transmission}}</p>
-    <p><b>PROBLEM:</b> {{problem}}</p>
-    <p><b>PLATE:</b> {{plate}}</p>
-    <div *ngIf="hide">
-        <p><b>ENGINE NUMBER:</b> {{engine}}</p>
-        <p><b>VIN:</b> {{vin}}</p>
-        <p><b>SERVICE CATEGORY:</b> {{service}}</p>
-        <p><b>SERVICES:</b></p>
-        <ul>
-            <div>
-                <li *ngFor="let item of jobs[0]">{{item}}</li>
-            </div>
-        </ul>
-        <h4>MECHANIC RECOMMENDATION</h4>
-        <p>{{recommend}}</p>
-        <h4>ESTIMATED COMPLETION</h4>
-        <p><b>TIME:</b> {{start}}</p>
-        <p><b>DATE:</b> {{estimate}}</p>
-    </div>
-    <h4>CUSTOMER INFORMATION</h4>
-    <p><b>CUSTOMER NAME:</b> {{customerName}}</p>
-    <p><b>PHONE:</b> {{customerPhone}}</p>
-    <p><b>EMAIL:</b> {{customerEmail}}</p>
-    <h4><b>STATUS:</b> {{status}}</h4>
-    <div *ngIf="hide">
-        <h4>PRICE: Php {{price | number}}</h4>
-    </div>
-</mat-dialog-content>
-
+<div id="print-section">
+    <h1 mat-dialog-title class="title"> <b>Ticket Details</b> </h1>
+    <mat-dialog-content class="special" [formGroup]="form">
+    
+        <h4>TICKET ID: {{ticketID}}</h4>
+        <div *ngIf="hide">
+            <h4>EMPLOYEE INFORMATION</h4>
+            <p><b>MECHANIC:</b> {{mechanicName}}</p>
+            <p><b>MECHANIC ID:</b> {{employeeID}}</p>
+        </div>
+        <h4>VEHICLE INFORMATION</h4>
+        <p><b>CAR NAME:</b> {{carName}}</p>
+        <p><b>FUEL TYPE:</b> {{fuelType}}</p>
+        <p><b>TRANSMISSION:</b> {{transmission}}</p>
+        <p><b>PROBLEM:</b> {{problem}}</p>
+        <p><b>PLATE:</b> {{plate}}</p>
+        <div *ngIf="hide">
+            <p><b>ENGINE NUMBER:</b> {{engine}}</p>
+            <p><b>VIN:</b> {{vin}}</p>
+            <p><b>SERVICE CATEGORY:</b> {{service}}</p>
+            <p><b>SERVICES:</b></p>
+            <ul>
+                <div>
+                    <li *ngFor="let item of jobs[0]">{{item}}</li>
+                </div>
+            </ul>
+            <h4>MECHANIC RECOMMENDATION</h4>
+            <p>{{recommend}}</p>
+            <h4>ESTIMATED COMPLETION</h4>
+            <p><b>TIME:</b> {{start}}</p>
+            <p><b>DATE:</b> {{estimate}}</p>
+        </div>
+        <h4>CUSTOMER INFORMATION</h4>
+        <p><b>CUSTOMER NAME:</b> {{customerName}}</p>
+        <p><b>PHONE:</b> {{customerPhone}}</p>
+        <p><b>EMAIL:</b> {{customerEmail}}</p>
+        <h4><b>STATUS:</b> {{status}}</h4>
+        <div *ngIf="hide">
+            <h4>PRICE: Php {{price | number}}</h4>
+        </div>
+    </mat-dialog-content>
+</div>
 <mat-dialog-actions>
+    <button class="mat-raised-button mat-primary" printSectionId="print-section" ngxPrint>Print</button>
     <button class="mat-raised-button" (click)="close()">Close</button>
 </mat-dialog-actions>

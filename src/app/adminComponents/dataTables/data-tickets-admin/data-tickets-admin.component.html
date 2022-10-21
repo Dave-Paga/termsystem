@@ -6,6 +6,13 @@
   </mat-form-field> -->
 
   <form class="date-block" [formGroup]="range">
+
+    <mat-form-field class="filter2">
+      <input matInput [ngModel]="globalFilter" (ngModelChange)="applyFilter($event)" formControlName="filter"
+        placeholder="Filter">
+    </mat-form-field>
+
+
     <div class="date-block__list">
       <mat-form-field>
         <input matInput [matDatepicker]="fromDate" placeholder="From Date" formControlName="fromDate">

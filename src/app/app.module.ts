@@ -74,6 +74,7 @@ import { TicketIDModalComponent } from './mainComponents/ticket-id-modal/ticket-
 import { EditTicketAdminComponent } from './adminComponents/edit-ticket-admin/edit-ticket-admin.component';
 import { EditTicketAdminModalComponent } from './adminComponents/edit-ticket-admin-modal/edit-ticket-admin-modal.component';
 import { DeleteModalComponent } from './mainComponents/delete-modal/delete-modal.component';
+import { NgxPrintModule } from 'ngx-print';
 
 
 const config = {
@@ -159,6 +160,7 @@ const config = {
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressBarModule,
+    NgxPrintModule
   ],
   providers: [],
   bootstrap: [AppComponent],

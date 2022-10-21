@@ -56,7 +56,7 @@ export class EditTicketAdminModalComponent implements OnInit {
     { value: "Major PMS", viewValue: 'Major PMS' },
     { value: "Troubleshooting", viewValue: 'Troubleshooting' },
     { value: "General Repair", viewValue: 'General Repair' },
-    { value: "Body Repair", viewValue: 'Detailing' }
+    { value: "Detailing", viewValue: 'Detailing' }
   ];
 
   checkBrakes: val[] = [

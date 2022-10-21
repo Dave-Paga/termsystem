@@ -30,10 +30,14 @@ h1.special{
   justify-content: center;
 }
 
+.special:hover {
+  color: rgb(255, 255, 255);
+  background-color: rgb(46, 46, 46);
+}
+
 .mat-elevation-z8{
   text-align: center;
   justify-content: center;
-  margin: 0px 0px 200px 70px;
   background-color: white;
 }
 
@@ -67,4 +71,11 @@ h1.special{
 
 .date-block__list {
   margin-right: 15px;
+}
+
+.filter2 {
+  padding-left: 10px;
+  padding-bottom: 20px;
+  text-align: left;
+  margin-right: auto;
 }

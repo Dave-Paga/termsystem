@@ -105,17 +105,11 @@ h3.text {
     background-color: white;
 }
 
-.filter2 {
-    padding-left: 10px;
-    padding-bottom: 10px;
-    margin-left: auto;
-}
-
 .filter {
-    display: flex;
-    text-align: center;
-    margin: 0px 0px 10px 0px;
-    font-family: 'Oswald', cursive;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    text-align: left;
+    margin-right: auto;
 }
 
 filter:last-of-type {
