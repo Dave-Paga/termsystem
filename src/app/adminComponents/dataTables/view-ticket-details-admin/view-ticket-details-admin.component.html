@@ -20,9 +20,7 @@
             <p><b>SERVICE CATEGORY:</b> {{service}}</p>
             <p><b>SERVICES:</b></p>
             <ul>
-                <div>
-                    <li *ngFor="let item of jobs[0]">{{item}}</li>
-                </div>
+                <li *ngFor="let item of jobs[0]">{{item}}</li>
             </ul>
             <h4>MECHANIC RECOMMENDATION</h4>
             <p>{{recommend}}</p>
@@ -40,6 +38,7 @@
         </div>
     </mat-dialog-content>
 </div>
+
 <mat-dialog-actions>
     <button class="mat-raised-button mat-primary" printSectionId="print-section" ngxPrint>Print</button>
     <button class="mat-raised-button" (click)="close()">Close</button>
