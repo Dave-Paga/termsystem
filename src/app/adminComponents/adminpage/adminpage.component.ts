@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Chart, registerables } from 'chart.js';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -19,8 +20,11 @@ export class AdminpageComponent implements OnInit {
   totalEmployees!: any;
   totalUsers!: any;
 
+  chart1: any;
+
   constructor(private afs: AngularFirestore, public authService: AuthService,
     public router: Router) {
+    Chart.register(...registerables);
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
       // Ticket object array
       this.ticketArray = data;
@@ -42,7 +46,8 @@ export class AdminpageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginCheck()
+    this.loginCheck();
+    this.createChart();
   }
 
   loginCheck() {
@@ -53,4 +58,33 @@ export class AdminpageComponent implements OnInit {
     });
   }
 
+  createChart() {
+
+    this.chart1 = new Chart("MyChart", {
+      type: 'bar', //this denotes tha type of chart
+
+      data: {// values on X-Axis
+        labels: ['2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
+          '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',],
+        datasets: [
+          {
+            label: "Sales",
+            data: ['467', '576', '572', '79', '92',
+              '574', '573', '576'],
+            backgroundColor: 'blue'
+          },
+          {
+            label: "Profit",
+            data: ['542', '542', '536', '327', '17',
+              '0.00', '538', '541'],
+            backgroundColor: 'limegreen'
+          }
+        ]
+      },
+      options: {
+        aspectRatio: 2.5
+      }
+
+    });
+  }
 }
