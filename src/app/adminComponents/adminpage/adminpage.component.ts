@@ -21,6 +21,10 @@ export class AdminpageComponent implements OnInit {
   totalUsers!: any;
 
   chart1: any;
+  chart2: any;
+  chart3: any;
+  chart4: any;
+  chart5: any;
 
   constructor(private afs: AngularFirestore, public authService: AuthService,
     public router: Router) {
@@ -36,6 +40,7 @@ export class AdminpageComponent implements OnInit {
       // Perform data queries here
       
     })
+
     this.afs.collection<any>('users').valueChanges().subscribe(data => {
       this.userArray=data;
       this.totalEmployees = this.userArray.filter((x)=> x.permission === 1);
@@ -59,32 +64,85 @@ export class AdminpageComponent implements OnInit {
   }
 
   createChart() {
-
     this.chart1 = new Chart("MyChart", {
       type: 'bar', //this denotes tha type of chart
-
       data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
-          '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',],
+        labels: ['Check-Brakes', 'Regular PMS', 'Minor PMS', 'Major PMS', 'Minor Troubleshooting', 'Major Troubleshooting'],
         datasets: [
           {
-            label: "Sales",
-            data: ['467', '576', '572', '79', '92',
-              '574', '573', '576'],
-            backgroundColor: 'blue'
-          },
-          {
-            label: "Profit",
-            data: ['542', '542', '536', '327', '17',
-              '0.00', '538', '541'],
-            backgroundColor: 'limegreen'
+            label: "Revenue in Php",
+            data: ['10250', '30000', '50000', '80000', '70000',
+              '90000'],
+            backgroundColor: 'lightblue'
           }
         ]
-      },
-      options: {
-        aspectRatio: 2.5
       }
-
     });
+
+ 
+
+    this.chart2 = new Chart("chart2", {
+      type: 'bar',
+      data: {
+        labels: ['Check-Brakes', 'Regular PMS', 'Minor PMS', 'Major PMS', 'Minor Troubleshooting', 'Major Troubleshooting'],
+        datasets: [
+          {
+            label: "Times Requested",
+            data: ['10', '3', '2', '4', '2',
+              '1'],
+            backgroundColor: 'lightgreen'
+          }
+        ]
+      }
+    });
+
+    this.chart3 = new Chart("chart3", {
+      type: 'doughnut',
+      data: {
+        labels: ['Check-Brakes', 'Regular PMS', 'Minor PMS', 'Major PMS', 'Minor Troubleshooting', 'Major Troubleshooting'],
+        datasets: [
+          {
+            label: "Hours",
+            data: ['1', '2', '3', '5', '4',
+              '5'],
+            backgroundColor: ['green','blue','yellow','orange','red','purple']
+          }
+        ]
+      }
+    });
+
+
+    this.chart4 = new Chart("chart4", {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+      'August', 'September', 'October', 'November', 'December'],
+        datasets: [
+          {
+            label: "Hours",
+            data: ['30', '45', '26', '37', '28', '40', '25', '20', '31', '36', '', ''],
+            backgroundColor: ['orange']
+          }
+        ]
+      }
+    });
+
+    this.chart5 = new Chart("chart5", {
+      type: 'pie',
+      data: {
+        labels: ['New Customers', 'Returning Customers'],
+        datasets: [
+          {
+            label: "Customers",
+            data: [225, 109],
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)'
+            ]
+          }
+        ]
+      }
+    });
+
   }
 }

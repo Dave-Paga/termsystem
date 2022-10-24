@@ -11,13 +11,36 @@
 
 body {
     background: #ffb4b4;
+    font-family: 'Oswald', cursive;
 }
 
 .main {
   margin-top: 100px;
   height: 100%;
-  /* background-color: rgb(255, 232, 232); */
+  background-color: rgb(255, 232, 232);
 }
+
+.numbers-container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-left: auto;
+    margin-right: auto;
+  margin-bottom: 20px;
+}
+
+.numbers {
+  width: auto;
+  padding-top: 5px;
+  padding-left: 10px;
+  height: 80px;
+  background: white;
+  margin-left: 10px;
+  border-radius: 10px;
+  box-shadow: 5px 10px rgb(255, 173, 173);
+  flex-grow: 4;
+}
+
 .chart-container1 {
   max-width: 80%;
   margin-left: auto;
@@ -25,6 +48,29 @@ body {
   background: white;
   border-radius: 10px;
     box-shadow: 5px 10px rgb(255, 173, 173);
+}
+
+.chart-container2 {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  max-width: 80%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 5px 10px rgb(255, 173, 173);
+}
+
+.chartbox {
+  flex-basis: calc(50%);
+  max-height: 500px;
+}
+
+.chartCanvas {
+  padding: 10px;
+  max-height: 300px;
 }
 
 .chart1 {
@@ -43,3 +89,13 @@ h1.special {
   color: black;
   margin: 70 0 0 4;
 }
+
+h2,h4 {
+  font-family: 'Oswald', cursive;
+  margin: 0;
+}
+
+.title {
+  padding: 10px 0 0 20px;
+}
+
