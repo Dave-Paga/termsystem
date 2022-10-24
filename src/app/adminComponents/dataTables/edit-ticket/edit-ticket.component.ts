@@ -83,15 +83,15 @@ export class EditTicketComponent implements OnInit {
   ];
 
   serviceArray: valVar[] = [
-    { value: "Regular PMS", viewValue: 'Regular PMS' },
-    { value: "Minor PMS", viewValue: 'Minor PMS' },
-    { value: "Major PMS", viewValue: 'Major PMS' },
-    { value: "Troubleshooting", viewValue: 'Troubleshooting' },
-    { value: "General Repair", viewValue: 'General Repair' },
-    { value: "Detailing", viewValue: 'Detailing' }
+    { value: "Check Brakes (1 hour)", viewValue: 'Check Brakes (1 hour)' },
+    { value: "Regular PMS (2 hours)", viewValue: 'Regular PMS (2 hours)' },
+    { value: "Minor PMS (3 hours)", viewValue: 'Minor PMS (3 hours)' },
+    { value: "Major PMS (5 hours)", viewValue: 'Major PMS (5 hours)' },
+    { value: "Minor Troubleshooting (3 hours)", viewValue: 'Minor Troubleshooting (3 hours)' },
+    { value: "Major Troubleshooting (5 hours)", viewValue: 'Major Troubleshooting (5 hours)' }
   ];
 
-  
+
   constructor(
     private afs: AngularFirestore,
     private fb: FormBuilder,
@@ -190,7 +190,7 @@ export class EditTicketComponent implements OnInit {
 
     console.log(this.vin);
     console.log(this.engine);
-    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.estimate, this.start, this.vin, this.engine) {
+    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.estimate && this.start && this.vin && this.engine) {
       let selection = this.employees.find(data => data.id == this.employeeID);
       this.mechanicName = selection?.name;
       this.afs.collection('tickets').doc(String(this.ticketID)).update({
