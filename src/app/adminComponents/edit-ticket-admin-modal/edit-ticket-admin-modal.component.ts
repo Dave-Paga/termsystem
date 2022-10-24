@@ -9,6 +9,14 @@ interface valVar {
   viewValue: string;
 }
 
+
+interface employee {
+  name: string;
+  id: string;
+  schedule: number[];
+  dateVal?: number;
+}
+
 interface val {
   value: any;
 }
@@ -43,7 +51,7 @@ export class EditTicketAdminModalComponent implements OnInit {
   recommend: string = '';
 
   
-
+  employees: employee[] = [];
   statusArray: valVar[] = [
     { value: "Undergoing Repair/Maintenance", viewValue: 'Undergoing Repair/Maintenance' },
     { value: "Pending Payment", viewValue: 'Pending Payment' },
@@ -58,6 +66,20 @@ export class EditTicketAdminModalComponent implements OnInit {
   //   { value: "General Repair", viewValue: 'General Repair' },
   //   { value: "Detailing", viewValue: 'Detailing' }
   // ];
+
+  timeframes = [
+    { value: 7, viewValue: "7:00 AM" },
+    { value: 8, viewValue: "8:00 AM" },
+    { value: 9, viewValue: "9:00 AM" },
+    { value: 10, viewValue: "10:00 AM" },
+    { value: 11, viewValue: "11:00 AM" },
+    { value: 12, viewValue: "12:00 NN" },
+    { value: 13, viewValue: "1:00 PM" },
+    { value: 14, viewValue: "2:00 PM" },
+    { value: 15, viewValue: "3:00 PM" },
+    { value: 16, viewValue: "4:00 PM" },
+    { value: 17, viewValue: "5:00 PM" },
+  ];
 
   serviceArray: valVar[] = [
     { value: "Check Brakes (1 hour)", viewValue: 'Check Brakes (1 hour)' },
@@ -166,6 +188,43 @@ export class EditTicketAdminModalComponent implements OnInit {
       this.transmission = data.transmission;
 
       this.changeServices();
+
+    this.afs.collection<any>('users').valueChanges().subscribe(result => {
+      result.forEach(doc => {
+        if (doc.permission == 1) {
+          let rawTime = doc.timeframe.replace(/pm|am/g, '');
+          let convertedArr = rawTime.split(' - ', 2).map(Number);
+
+          let rawDate = doc.days.slice(-3);
+          let convDate;
+
+          if (rawDate == "Fri") {
+            convDate = 0;
+          } else if (rawDate == "Sat") {
+            convDate = 6;
+          }
+
+          let obj = {
+            name: doc.fullName,
+            id: doc.uid,
+            schedule: convertedArr,
+            dateVal: convDate
+          };
+
+          this.employees.push(obj);
+
+          if (doc.uid == this.employeeID) {
+            this.unvailDate = convDate;
+            let start = convertedArr[0] - 7;
+            let end = (convertedArr[1] + 12) - 7;
+            for (let i = start; i < end; i++) {
+              this.timeArray.push({ value: this.timeframes[i].value, viewValue: this.timeframes[i].viewValue });
+            }
+          }
+        }
+      });
+    })
+
 
     }
 

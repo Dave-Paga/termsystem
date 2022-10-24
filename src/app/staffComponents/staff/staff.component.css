@@ -15,6 +15,7 @@ h1 { font-size: 2em; }
   width: 850px;
   margin: 2rem auto;
   color: #333;
+  
 }
 .page table {
   border: 1px solid #ddd;
@@ -76,7 +77,6 @@ h1.text{
 }
 
 .main{
-  margin: 100px -16px 0px -50px;
   width: auto;
   justify-content: center;
   height: 43rem;
@@ -96,4 +96,29 @@ h1.text{
 .filter{
   transform: translateX(40%);
 
+}
+
+.yellowBG {
+  background-color: rgb(255, 196, 86);
+}
+
+.redBG {
+  background-color: rgb(255, 108, 108);
+}
+
+.greenBG {
+  background-color: rgb(91, 255, 86);
+}
+
+.blueBG {
+  background-color: rgb(121, 212, 255);
+}
+
+.date-block {
+  display: flex;
+  justify-content: right;
+}
+
+.date-block__list {
+  margin-right: 15px;
 }

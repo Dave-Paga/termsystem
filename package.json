@@ -11,7 +11,6 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.0",
-    "@angular/cdk": "^13.3.9",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
@@ -24,6 +23,7 @@
     "@syncfusion/ej2-angular-inputs": "^20.1.55",
     "firebase": "^9.8.4",
     "ngx-mat-select-search": "^5.0.0",
+    "ngx-material-timepicker": "^5.5.3",
     "ngx-print": "^1.2.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

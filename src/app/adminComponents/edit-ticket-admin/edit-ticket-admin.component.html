@@ -1,7 +1,7 @@
 <app-toolbaradmin></app-toolbaradmin>
 <div class="main">
     <div class="page">
-        <h1 class="text">Edit Tickets</h1>
+        <h1 class="text">Currently In Service</h1>
             
                 <form class="date-block" [formGroup]="range">
 
@@ -36,9 +36,9 @@
                     <td mat-cell *matCellDef="let row">{{row.ticketID}}</td>
                 </ng-container>
 
-                <ng-container matColumnDef="date">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Appointment Date</th>
-                    <td mat-cell *matCellDef="let row">{{row.date}}</td>
+                <ng-container matColumnDef="completion">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Time Completed</th>
+                    <td mat-cell *matCellDef="let row">{{row.completed}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="carName">
@@ -62,15 +62,14 @@
                 </ng-container>
 
                 <ng-container matColumnDef="estimate">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Estimated Release</th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Estimated Completion</th>
                     <td mat-cell *matCellDef="let row">{{row.estimate}}, {{row.convTime2}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="price">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Amount</th>
-                    <td mat-cell *matCellDef="let row">Php {{row.price}}</td>
+                    <td mat-cell *matCellDef="let row">Php {{row.price | number}}</td>
                 </ng-container>
-
 
                 <ng-container matColumnDef="edit">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit Ticket</th>

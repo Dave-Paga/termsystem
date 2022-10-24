@@ -19,7 +19,7 @@ export class StaffComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'customerName', 'problem', 'solution', 'price', 'status', 'edit'];
+  displayedColumns = ['ticketID', 'carName', 'problem', 'service', 'start', 'edit'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   email!: string;
@@ -38,6 +38,12 @@ export class StaffComponent implements OnInit {
     15: "3:00 PM",
     16: "4:00 PM",
     17: "5:00 PM",
+    18: "6:00 PM",
+    19: "7:00 PM",
+    20: "8:00 PM",
+    21: "9:00 PM",
+    22: "10:00 PM",
+    23: "11:00 PM",
   }
 
   constructor(
@@ -61,11 +67,27 @@ export class StaffComponent implements OnInit {
       let arr = data
       arr.forEach((value, index) => {
         let converted = this.timeframes[arr[index].time];
+        let converted2 = this.timeframes[arr[index].start];
         arr[index].convTime = converted;
+        arr[index].convTime2 = converted2;
+
+        let curDate = new Date().toLocaleDateString();
+        let curHour = new Date().getHours();
+
+        if (value.estimate < curDate) {
+          arr[index].rowColor = 1;
+        } else if (value.estimate == curDate) {
+          let hoursLeft = value.start - curHour;
+          if (hoursLeft == 1) {
+            arr[index].rowColor = 2;
+          } else if (hoursLeft <= 0) {
+            arr[index].rowColor = 1;
+          }
+        }
       });
 
       arr = arr.filter((x) => x.employeeID == this.userID);
-      arr = arr.filter((x) => x.status != "Pending Inquiry");
+      arr = arr.filter((x) => x.status == "Undergoing Repair/Maintenance");
       console.log(arr);
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
@@ -96,7 +118,7 @@ export class StaffComponent implements OnInit {
   editDialog(data): void {
 
     const dialogRef = this.dialog.open(EditTicketStaffComponent, {
-      width: '400px',
+      width: '500px',
       height: 'auto',
       data: data
     });
