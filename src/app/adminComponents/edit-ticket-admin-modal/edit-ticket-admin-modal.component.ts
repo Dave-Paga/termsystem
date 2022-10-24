@@ -50,13 +50,22 @@ export class EditTicketAdminModalComponent implements OnInit {
     { value: "For Release", viewValue: 'For Release' }
   ];
 
+  // serviceArray: valVar[] = [
+  //   { value: "Regular PMS", viewValue: 'Regular PMS' },
+  //   { value: "Minor PMS", viewValue: 'Minor PMS' },
+  //   { value: "Major PMS", viewValue: 'Major PMS' },
+  //   { value: "Troubleshooting", viewValue: 'Troubleshooting' },
+  //   { value: "General Repair", viewValue: 'General Repair' },
+  //   { value: "Detailing", viewValue: 'Detailing' }
+  // ];
+
   serviceArray: valVar[] = [
-    { value: "Regular PMS", viewValue: 'Regular PMS' },
-    { value: "Minor PMS", viewValue: 'Minor PMS' },
-    { value: "Major PMS", viewValue: 'Major PMS' },
-    { value: "Troubleshooting", viewValue: 'Troubleshooting' },
-    { value: "General Repair", viewValue: 'General Repair' },
-    { value: "Detailing", viewValue: 'Detailing' }
+    { value: "Check Brakes (1 hour)", viewValue: 'Check Brakes (1 hour)' },
+    { value: "Regular PMS (2 hours)", viewValue: 'Regular PMS (2 hours)' },
+    { value: "Minor PMS (3 hours)", viewValue: 'Minor PMS (3 hours)' },
+    { value: "Major PMS (5 hours)", viewValue: 'Major PMS (5 hours)' },
+    { value: "Minor Troubleshooting (3 hours)", viewValue: 'Minor Troubleshooting (3 hours)' },
+    { value: "Major Troubleshooting (5 hours)", viewValue: 'Major Troubleshooting (5 hours)' }
   ];
 
   checkBrakes: val[] = [

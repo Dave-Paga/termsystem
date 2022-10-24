@@ -147,7 +147,7 @@ export class DataTicketsAdminComponent implements AfterViewInit {
 
   openDialog(data): void {
     const dialogRef = this.dialog.open(EditTicketComponent, {
-      width: '300px',
+      width: '500px',
       height: 'auto',
       data: data
     });
