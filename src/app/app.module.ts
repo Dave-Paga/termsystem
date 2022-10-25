@@ -76,6 +76,7 @@ import { EditTicketAdminModalComponent } from './adminComponents/edit-ticket-adm
 import { DeleteModalComponent } from './mainComponents/delete-modal/delete-modal.component';
 import { NgxPrintModule } from 'ngx-print';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { MatIconModule } from '@angular/material/icon';
 
 
 const config = {
@@ -162,7 +163,8 @@ const config = {
     MatNativeDateModule,
     MatProgressBarModule,
     NgxPrintModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],

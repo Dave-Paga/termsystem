@@ -150,35 +150,35 @@ export class AdminpageComponent implements OnInit {
   printCanvas1() {
     html2canvas(document.querySelector('#canvas1')!).then(async (canvas: HTMLCanvasElement) => {
       const toImg = canvas.toDataURL();
-      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:100%'});
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
     });
   }
 
   printCanvas2() {
     html2canvas(document.querySelector('#canvas2')!).then(async (canvas: HTMLCanvasElement) => {
       const toImg = canvas.toDataURL();
-      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:100%'});
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
     });
   }
 
   printCanvas3() {
     html2canvas(document.querySelector('#canvas3')!).then(async (canvas: HTMLCanvasElement) => {
       const toImg = canvas.toDataURL();
-      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:100%'});
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
     });
   }
 
   printCanvas4() {
     html2canvas(document.querySelector('#canvas4')!).then(async (canvas: HTMLCanvasElement) => {
       const toImg = canvas.toDataURL();
-      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:100%'});
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
     });
   }
 
   printCanvas5() {
     html2canvas(document.querySelector('#canvas5')!).then(async (canvas: HTMLCanvasElement) => {
       const toImg = canvas.toDataURL();
-      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:100%'});
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
     });
   }
 }

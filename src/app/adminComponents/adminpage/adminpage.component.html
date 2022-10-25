@@ -1,6 +1,6 @@
 <app-toolbaradmin></app-toolbaradmin>
 <div class="main">
-  <h1 class="special">Autoshop Numbers</h1>
+  <h1 class="special">Autoshop Statistics</h1>
 
   <div class="numbers-container">
     <div class="numbers">
@@ -25,35 +25,37 @@
   </div>
 
   <div id="print-section">
-    <div class="chart-container1" id="canvas1">
-      <h2 class="title">Revenue for Each Service Category</h2>
-      <button class="printButton" (click)="printCanvas1()">Print</button>
-      <canvas class="chart1" id="MyChart">{{ chart1 }}</canvas>
+    <div class="chart-container1">
+      <div  id="canvas1">
+        <h2 class="title">Revenue for Each Service Category</h2>
+        <button class="printButton" (click)="printCanvas1()"><i class="material-icons">print</i></button>
+        <canvas class="chart1" id="MyChart">{{ chart1 }}</canvas>
+      </div>
     </div>
     
     <div class="chart-container2">
     
       <div class="chartbox" id="canvas2">
         <h2 class="title">Most Requested Service</h2>
-        <button class="printButton" (click)="printCanvas2()">Print</button>
+        <button class="printButton" (click)="printCanvas2()"><i class="material-icons">print</i></button>
         <canvas class="chartCanvas" id="chart2">{{ chart2 }}</canvas>
       </div>
     
       <div class="chartbox" id="canvas3">
         <h2 class="title">Average Hours per Category</h2>
-        <button class="printButton" (click)="printCanvas3()">Print</button>
+        <button class="printButton" (click)="printCanvas3()"><i class="material-icons">print</i></button>
         <canvas class="chartCanvas" id="chart3">{{ chart3 }}</canvas>
       </div>
     
       <div class="chartbox" id="canvas4">
         <h2 class="title">Appointments per Month</h2>
-        <button class="printButton" (click)="printCanvas4()">Print</button>
+        <button class="printButton" (click)="printCanvas4()"><i class="material-icons">print</i></button>
         <canvas class="chartCanvas" id="chart4">{{ chart4 }}</canvas>
       </div>
     
       <div class="chartbox" id="canvas5">
         <h2 class="title">New Customers vs. Returning Customers</h2>
-        <button class="printButton" (click)="printCanvas5()">Print</button>
+        <button class="printButton" (click)="printCanvas5()"><i class="material-icons">print</i></button>
         <canvas class="chartCanvas" id="chart5">{{ chart5 }}</canvas>
       </div>
   </div>

@@ -27,6 +27,7 @@ body {
   margin-left: auto;
     margin-right: auto;
   margin-bottom: 20px;
+  padding-top: 20px;
 }
 
 .numbers {
@@ -100,6 +101,12 @@ h2,h4 {
 }
 
 .printButton {
+  
+  all: unset;
+  cursor: pointer;
   margin-left: 90%;
 }
 
+.printButton:focus {
+  outline: orange 5px auto;
+}
