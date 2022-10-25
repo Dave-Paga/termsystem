@@ -24,10 +24,12 @@
     "@syncfusion/ej2-angular-inputs": "^20.1.55",
     "chart.js": "^3.9.1",
     "firebase": "^9.8.4",
+    "html2canvas": "^1.4.1",
     "ng2-charts": "^4.0.1",
     "ngx-mat-select-search": "^5.0.0",
     "ngx-material-timepicker": "^5.5.3",
     "ngx-print": "^1.2.1",
+    "print-js": "^1.6.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
