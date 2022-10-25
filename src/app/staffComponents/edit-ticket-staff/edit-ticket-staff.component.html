@@ -1,54 +1,34 @@
-<h3 mat-dialog-title> Change Ticket</h3>
+<h3 class="special">Edit Job Order</h3>
 <mat-dialog-content>
-
-    <div class="container">
-
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Car Name</mat-label>
-        <textarea matInput [(ngModel)]="carName" placeholder="Input Problem Details">{{carName}}</textarea>
-    </mat-form-field>
-    <br>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Transmission</mat-label>
-        <textarea matInput [(ngModel)]="transmission" placeholder="Input Problem Details">{{transmission}}</textarea>
-    </mat-form-field>
-    <br>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Fuel Type</mat-label>
-        <textarea matInput placeholder="Input Problem Details">{{fuelType}}</textarea>
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Problem</mat-label>
-        <textarea matInput [(ngModel)]="problem" placeholder="Input Problem Details">{{problem}}</textarea>
-    </mat-form-field>
-    <br>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Solution</mat-label>
-        <textarea matInput [(ngModel)]="solution" placeholder="Input Problem Details">{{solution}}</textarea>
-    </mat-form-field>
-    <br>
-
-    <mat-form-field appearance="fill">
-        <mat-label>Price</mat-label>
-        <input value={{price}} [(ngModel)]="price" type="number" matInput="number">
-    </mat-form-field>
-    <br>
-
-    <mat-form-field appearance="fill">
+    <h4 class="special">Status</h4>
+    <mat-form-field class="fill-container" appearance="fill">
         <mat-label>Status</mat-label>
         <mat-select [(value)]="status">
             <mat-option [value]="option.value" *ngFor="let option of statusArray">{{ option.viewValue }}</mat-option>
         </mat-select>
     </mat-form-field>
-    <br>
+    <h4 class="special">Services</h4>
+    <!-- <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Service Category</mat-label>
+        <mat-select (selectionChange)="changeServices()" [(value)]="service">
+            <mat-option [value]="option.value" *ngFor="let option of serviceArray">{{ option.viewValue }}</mat-option>
+        </mat-select>
+    </mat-form-field> -->
+    <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Services</mat-label>
+        <mat-select [(value)]="jobs" multiple>
+            <mat-option [value]="option.value" *ngFor="let option of serviceCon">{{ option.value }}</mat-option>
+        </mat-select>
+    </mat-form-field>
 
+    <h4 class="special">Mechanic Recommendation</h4>
+    <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Recommendations</mat-label>
+        <textarea cdkTextareaAutosize cdkAutosizeMinRows="5" matInput [(ngModel)]="recommend"
+            placeholder="Input Recommendations">{{recommend}}</textarea>
+    </mat-form-field>
     <mat-dialog-actions>
         <button class="mat-raised-button mat-primary" (click)="updateData()">Save</button>
-        <button class="mat-raised-button" (click)="close()">Close</button> 
+        <button class="mat-raised-button" (click)="close()">Close</button>
     </mat-dialog-actions>
-</div>
 </mat-dialog-content>

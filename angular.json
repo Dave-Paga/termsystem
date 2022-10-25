@@ -104,5 +104,8 @@
       }
     }
   },
-  "defaultProject": "TERMhome"
+  "defaultProject": "TERMhome",
+  "cli": {
+    "analytics": false
+  }
 }

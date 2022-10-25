@@ -1,6 +1,9 @@
+import * as printJS from 'print-js'
+import html2canvas from 'html2canvas';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { Chart, registerables } from 'chart.js';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -19,8 +22,15 @@ export class AdminpageComponent implements OnInit {
   totalEmployees!: any;
   totalUsers!: any;
 
+  chart1: any;
+  chart2: any;
+  chart3: any;
+  chart4: any;
+  chart5: any;
+
   constructor(private afs: AngularFirestore, public authService: AuthService,
     public router: Router) {
+    Chart.register(...registerables);
     this.afs.collection<any>('tickets').valueChanges().subscribe(data => {
       // Ticket object array
       this.ticketArray = data;
@@ -32,6 +42,7 @@ export class AdminpageComponent implements OnInit {
       // Perform data queries here
       
     })
+
     this.afs.collection<any>('users').valueChanges().subscribe(data => {
       this.userArray=data;
       this.totalEmployees = this.userArray.filter((x)=> x.permission === 1);
@@ -42,7 +53,8 @@ export class AdminpageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginCheck()
+    this.loginCheck();
+    this.createChart();
   }
 
   loginCheck() {
@@ -53,4 +65,120 @@ export class AdminpageComponent implements OnInit {
     });
   }
 
+  createChart() {
+    this.chart1 = new Chart("MyChart", {
+      type: 'bar', //this denotes tha type of chart
+      data: {// values on X-Axis
+        labels: ['Check-Brakes', 'Regular PMS', 'Minor PMS', 'Major PMS', 'Minor Troubleshooting', 'Major Troubleshooting'],
+        datasets: [
+          {
+            label: "Revenue in Php",
+            data: ['10250', '30000', '50000', '80000', '70000',
+              '90000'],
+            backgroundColor: 'lightblue'
+          }
+        ]
+      }
+    });
+
+ 
+
+    this.chart2 = new Chart("chart2", {
+      type: 'bar',
+      data: {
+        labels: ['Check-Brakes', 'Regular PMS', 'Minor PMS', 'Major PMS', 'Minor Troubleshooting', 'Major Troubleshooting'],
+        datasets: [
+          {
+            label: "Times Requested",
+            data: ['10', '3', '2', '4', '2',
+              '1'],
+            backgroundColor: 'lightgreen'
+          }
+        ]
+      }
+    });
+
+    this.chart3 = new Chart("chart3", {
+      type: 'doughnut',
+      data: {
+        labels: ['Check-Brakes', 'Regular PMS', 'Minor PMS', 'Major PMS', 'Minor Troubleshooting', 'Major Troubleshooting'],
+        datasets: [
+          {
+            label: "Hours",
+            data: ['1', '2', '3', '5', '4',
+              '5'],
+            backgroundColor: ['green','blue','yellow','orange','red','purple']
+          }
+        ]
+      }
+    });
+
+
+    this.chart4 = new Chart("chart4", {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+      'August', 'September', 'October', 'November', 'December'],
+        datasets: [
+          {
+            label: "Appointments",
+            data: ['30', '45', '26', '37', '28', '40', '25', '20', '31', '36', '', ''],
+            backgroundColor: ['orange']
+          }
+        ]
+      }
+    });
+
+    this.chart5 = new Chart("chart5", {
+      type: 'pie',
+      data: {
+        labels: ['New Customers', 'Returning Customers'],
+        datasets: [
+          {
+            label: "Customers",
+            data: [225, 109],
+            backgroundColor: [
+              'rgb(255, 99, 132)',
+              'rgb(54, 162, 235)'
+            ]
+          }
+        ]
+      }
+    });
+  }
+
+  printCanvas1() {
+    html2canvas(document.querySelector('#canvas1')!).then(async (canvas: HTMLCanvasElement) => {
+      const toImg = canvas.toDataURL();
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
+    });
+  }
+
+  printCanvas2() {
+    html2canvas(document.querySelector('#canvas2')!).then(async (canvas: HTMLCanvasElement) => {
+      const toImg = canvas.toDataURL();
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
+    });
+  }
+
+  printCanvas3() {
+    html2canvas(document.querySelector('#canvas3')!).then(async (canvas: HTMLCanvasElement) => {
+      const toImg = canvas.toDataURL();
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
+    });
+  }
+
+  printCanvas4() {
+    html2canvas(document.querySelector('#canvas4')!).then(async (canvas: HTMLCanvasElement) => {
+      const toImg = canvas.toDataURL();
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
+    });
+  }
+
+  printCanvas5() {
+    html2canvas(document.querySelector('#canvas5')!).then(async (canvas: HTMLCanvasElement) => {
+      const toImg = canvas.toDataURL();
+      printJS({printable: `${toImg}`, type: 'image', imageStyle: 'width:80%'});
+    });
+  }
 }

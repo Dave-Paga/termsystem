@@ -1,6 +1,15 @@
-<h3 class="special"> Change Ticket</h3>
+<h3 class="special">Edit Job Order</h3>
 <mat-dialog-content>
     <h4 class= "special">Status</h4>
+
+    <mat-form-field class="fill-container" appearance="fill">
+        <mat-label>Mechanic</mat-label>
+        <mat-select [(value)]="employeeID">
+            <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+
     <mat-form-field  class="fill-container" appearance="fill">
         <mat-label>Status</mat-label>
         <mat-select [(value)]="status">

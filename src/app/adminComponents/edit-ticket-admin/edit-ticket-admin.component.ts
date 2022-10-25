@@ -29,7 +29,7 @@ export class EditTicketAdminComponent implements OnInit {
   };
 
 
-  displayedColumns = ['ticketID','date', 'service', 'status', 'estimate', 'price', 'edit', 'view'];
+  displayedColumns = ['ticketID', 'estimate', 'service', 'status', 'completion', 'price', 'edit', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   globalFilter = '';
@@ -66,6 +66,12 @@ export class EditTicketAdminComponent implements OnInit {
     15: "3:00 PM",
     16: "4:00 PM",
     17: "5:00 PM",
+    18: "6:00 PM",
+    19: "7:00 PM",
+    20: "8:00 PM",
+    21: "9:00 PM",
+    22: "10:00 PM",
+    23: "11:00 PM",
   }
 
   constructor(private afs: AngularFirestore, public authService: AuthService, public router: Router, public dialog: MatDialog) {

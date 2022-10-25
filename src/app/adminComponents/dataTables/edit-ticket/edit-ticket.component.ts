@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+
 interface employee {
   name: string;
   id: string;
@@ -105,7 +106,7 @@ export class EditTicketComponent implements OnInit {
     this.date = new FormControl(new Date(data.date));
     this.minDate = new Date();
     this.start = data.start;
-    this.estimate = new FormControl();
+    // this.estimate = new FormControl();
     this.time = data.time;
     this.employeeID = data.employeeID;
     this.fuelType = data.fuelType;
@@ -151,8 +152,6 @@ export class EditTicketComponent implements OnInit {
         }
       });
     })
-
-
   }
 
   ngOnInit(): void {
@@ -188,9 +187,21 @@ export class EditTicketComponent implements OnInit {
   
   updateData(): void {
 
-    console.log(this.vin);
-    console.log(this.engine);
-    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.estimate && this.start && this.vin && this.engine) {
+    if (this.service == "Check Brakes (1 hour)") {
+      this.estimate = 1;
+    } else if (this.service == "Regular PMS (2 hours)") {
+      this.estimate = 2;
+    } else if (this.service == "Minor PMS (3 hours)") {
+      this.estimate = 3;
+    } else if (this.service == "Major PMS (5 hours)") {
+      this.estimate = 5;
+    } else if (this.service == "Minor Troubleshooting (3 hours)") {
+      this.estimate = 3;
+    } else if (this.service == "Major Troubleshooting (5 hours)") {
+      this.estimate = 5;
+    }
+
+    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.vin && this.engine) {
       let selection = this.employees.find(data => data.id == this.employeeID);
       this.mechanicName = selection?.name;
       this.afs.collection('tickets').doc(String(this.ticketID)).update({
@@ -199,11 +210,11 @@ export class EditTicketComponent implements OnInit {
         vin: this.vin,
         engine: this.engine,
         service: this.service,
-        estimate: this.estimate.value.toLocaleDateString(),
-        start: this.start,
+        // estimate: this.estimate.value.toLocaleDateString(),
+        estimate: this.estimate,
+        start: 0,
         status: "Undergoing Repair/Maintenance"
       })
-      console.log(this.carName);
       this.dialogRef.close();
     }
   }

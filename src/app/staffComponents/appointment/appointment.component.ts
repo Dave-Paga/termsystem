@@ -20,7 +20,7 @@ export class AppointmentComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'date', 'status','receive', 'delete'];
+  displayedColumns = ['ticketID', 'carName', 'date', 'service','receive'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   email!: string;
@@ -65,8 +65,8 @@ export class AppointmentComponent implements OnInit {
       });
 
       arr = arr.filter((x) => x.employeeID == this.userID);
-      arr = arr.filter((x) => x.status == "Pending Inquiry");
-      console.log(arr);
+      //table filter
+      arr = arr.filter((x) => x.start == 0);
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
 
@@ -83,8 +83,15 @@ export class AppointmentComponent implements OnInit {
   }
 
   receiveTicket(data): void {
+    
+    let time = new Date().getHours()
+    let newTime = Number(time) + Number(data.estimate);
+
     this.afs.collection<any>('tickets/').doc(String(data.ticketID)).update({
-      status: "Pending Diagnosis"});
+      start: newTime,
+      estimate: data.date,
+      status: "Undergoing Repair/Maintenance"
+    });
   }
 
   removeData(data): void {
