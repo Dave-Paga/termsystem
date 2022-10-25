@@ -119,7 +119,7 @@ export class AdminpageComponent implements OnInit {
       'August', 'September', 'October', 'November', 'December'],
         datasets: [
           {
-            label: "Hours",
+            label: "Appointments",
             data: ['30', '45', '26', '37', '28', '40', '25', '20', '31', '36', '', ''],
             backgroundColor: ['orange']
           }
@@ -143,6 +143,5 @@ export class AdminpageComponent implements OnInit {
         ]
       }
     });
-
   }
 }

@@ -24,33 +24,36 @@
     </div>
   </div>
 
-  <div class="chart-container1">
-    <h2 class="title">Revenue for Each Service Category</h2>
-    <canvas class="chart1" id="MyChart">{{ chart1 }}</canvas>
-  </div>
-  
-  <div class="chart-container2">
+  <div id="print-section">
+    <div class="chart-container1">
+      <h2 class="title">Revenue for Each Service Category</h2>
+      <canvas class="chart1" id="MyChart">{{ chart1 }}</canvas>
+    </div>
     
-    <div class="chartbox">
-      <h2 class="title">Most Requested Service</h2>
-      <canvas class="chartCanvas" id="chart2">{{ chart2 }}</canvas>
-    </div>
-
-    <div class="chartbox">
-      <h2 class="title">Average Hours per Category</h2>
-      <canvas class="chartCanvas" id="chart3">{{ chart3 }}</canvas>
-    </div>
-
-    <div class="chartbox">
-      <h2 class="title">Appointments per Month</h2>
-      <canvas class="chartCanvas" id="chart4">{{ chart4 }}</canvas>
-    </div>
-
-    <div class="chartbox">
-      <h2 class="title">New Customers vs. Returning Customers</h2>
-      <canvas class="chartCanvas" id="chart5">{{ chart5 }}</canvas>
-    </div>
-
+    <div class="chart-container2">
+    
+      <div class="chartbox">
+        <h2 class="title">Most Requested Service</h2>
+        <canvas class="chartCanvas" id="chart2">{{ chart2 }}</canvas>
+      </div>
+    
+      <div class="chartbox">
+        <h2 class="title">Average Hours per Category</h2>
+        <canvas class="chartCanvas" id="chart3">{{ chart3 }}</canvas>
+      </div>
+    
+      <div class="chartbox">
+        <h2 class="title">Appointments per Month</h2>
+        <canvas class="chartCanvas" id="chart4">{{ chart4 }}</canvas>
+      </div>
+    
+      <div class="chartbox">
+        <h2 class="title">New Customers vs. Returning Customers</h2>
+        <canvas class="chartCanvas" id="chart5">{{ chart5 }}</canvas>
+      </div>
+      <button class="mat-raised-button mat-primary" printSectionId="print-section" ngxPrint>Print</button>
+  </div>
+    
 
   </div>
 </div>
