@@ -14,6 +14,7 @@ interface valVar {
 interface val {
   value: any;
 }
+
 @Component({
   selector: 'app-edit-ticket-staff',
   templateUrl: './edit-ticket-staff.component.html',
@@ -178,12 +179,14 @@ export class EditTicketStaffComponent implements OnInit {
 
   updateData(): void {
     let time1 = new Date().toLocaleTimeString();
-    console.log(time1)
+    let date1 = new Date().toLocaleDateString();
+    let compString = date1 + ", " + time1;
+    console.log(compString)
     this.afs.collection('tickets').doc(String(this.ticketID)).update({
       jobs: this.jobs,
       status: this.status,
       recommend: this.recommend,
-      completed: time1
+      completed: compString
     });
     this.dialogRef.close();
   }

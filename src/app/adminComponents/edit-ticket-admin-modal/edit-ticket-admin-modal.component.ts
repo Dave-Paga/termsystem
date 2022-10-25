@@ -38,6 +38,7 @@ export class EditTicketAdminModalComponent implements OnInit {
   problem: string = '';
   solution: string = '';
   status: string = '';
+  oldStatus: string = '';
   transmission: string = '';
   service: string = '';
   jobs: string = '';
@@ -49,6 +50,7 @@ export class EditTicketAdminModalComponent implements OnInit {
   minDate: Date;
   estimate: FormControl;
   recommend: string = '';
+  completed: string = '';
 
   
   employees: employee[] = [];
@@ -182,10 +184,12 @@ export class EditTicketAdminModalComponent implements OnInit {
       this.problem = data.problem;
       this.service = data.service;
       this.status = data.status;
+      this.oldStatus = data.status;
       this.jobs = data.jobs;
       this.start = data.start;
-      this.recommend = data.recommend
+      this.recommend = data.recommend;
       this.transmission = data.transmission;
+      this.completed = data.completed;
 
       this.changeServices();
 
@@ -232,7 +236,16 @@ export class EditTicketAdminModalComponent implements OnInit {
   }
 
   updateData(): void {
+    let selection = this.employees.find(data => data.id == this.employeeID);
+    this.mechanicName = selection?.name;
+    let newComp = this.completed;
+    if (this.oldStatus != this.status && this.status == "Undergoing Repair/Maintenance") {
+      newComp = '';
+    }
+
     this.afs.collection('tickets').doc(String(this.ticketID)).update({
+      employeeID: this.employeeID,
+      mechanicName: this.mechanicName,
       carName: this.carName,
       vin: this.vin,
       engine: this.engine,
@@ -243,7 +256,8 @@ export class EditTicketAdminModalComponent implements OnInit {
       service: this.service,
       estimate: this.estimate.value.toLocaleDateString(),
       recommend: this.recommend,
-      price: this.price
+      price: this.price,
+      completed: newComp
     });
     this.dialogRef.close();
   }
