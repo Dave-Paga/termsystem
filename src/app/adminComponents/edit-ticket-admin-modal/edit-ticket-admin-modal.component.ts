@@ -57,7 +57,8 @@ export class EditTicketAdminModalComponent implements OnInit {
   statusArray: valVar[] = [
     { value: "Undergoing Repair/Maintenance", viewValue: 'Undergoing Repair/Maintenance' },
     { value: "Pending Payment", viewValue: 'Pending Payment' },
-    { value: "For Release", viewValue: 'For Release' }
+    { value: "For Release", viewValue: 'For Release' },
+    { value: "Completed", viewValue: 'Completed' }
   ];
 
   // serviceArray: valVar[] = [
@@ -256,7 +257,7 @@ export class EditTicketAdminModalComponent implements OnInit {
       service: this.service,
       estimate: this.estimate.value.toLocaleDateString(),
       recommend: this.recommend,
-      price: this.price,
+      // price: this.price,
       completed: newComp
     });
     this.dialogRef.close();

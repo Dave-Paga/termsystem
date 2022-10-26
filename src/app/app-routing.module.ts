@@ -35,6 +35,7 @@ import { LandingToolBarComponent } from './landing-tool-bar/landing-tool-bar.com
 import { EditAccountUserComponent } from './customerComponents/edit-account-user/edit-account-user.component';
 import { EditAccountStaffComponent } from './staffComponents/edit-account-staff/edit-account-staff.component';
 import { EditTicketAdminComponent } from './adminComponents/edit-ticket-admin/edit-ticket-admin.component';
+import { CompletedTableComponent } from './adminComponents/completed-table/completed-table.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,7 @@ const routes: Routes = [
   { path: 'editpermissions', component: EditpermissionsComponent, canActivate: [AuthGuard] },
   { path: 'SchedulingEmployeesViewComponent', component: SchedulingEmployeesViewComponent, canActivate: [AuthGuard] },
   { path: "editTicketAdmin", component: EditTicketAdminComponent, canActivate: [AuthGuard] },
+  { path: "completed", component: CompletedTableComponent},
   
 
   //Staff

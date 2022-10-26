@@ -77,6 +77,7 @@ import { DeleteModalComponent } from './mainComponents/delete-modal/delete-modal
 import { NgxPrintModule } from 'ngx-print';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatIconModule } from '@angular/material/icon';
+import { CompletedTableComponent } from './adminComponents/completed-table/completed-table.component';
 
 
 const config = {
@@ -140,7 +141,8 @@ const config = {
     TicketIDModalComponent,
     EditTicketAdminComponent,
     EditTicketAdminModalComponent,
-    DeleteModalComponent
+    DeleteModalComponent,
+    CompletedTableComponent
   ],
   imports: [
     BrowserModule,
