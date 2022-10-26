@@ -34,9 +34,7 @@ h1 { font-size: 2em; }
   padding: .8rem;
   text-align: center;
 }
-.page table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
+
 .page table td {
   padding: .8rem;
   margin: 0;
