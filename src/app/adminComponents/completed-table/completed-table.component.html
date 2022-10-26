@@ -1,31 +1,32 @@
 <app-toolbaradmin></app-toolbaradmin>
 <div class="main">
     <div class="page">
-        <h1 class="text">Currently In Service</h1>
-            
-                <form class="date-block" [formGroup]="range">
+        <h1 class="text">Completed Job Orders</h1>
 
-                    <mat-form-field class="filter">
-                        <input matInput [ngModel]="globalFilter" (ngModelChange)="applyFilter($event)" formControlName="filter" placeholder="Filter">
-                    </mat-form-field>
+        <form class="date-block" [formGroup]="range">
 
-                    <div class="date-block__list">
-                        <mat-form-field>
-                            <input matInput [matDatepicker]="fromDate" placeholder="From Date" formControlName="fromDate">
-                            <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
-                            <mat-datepicker #fromDate></mat-datepicker>
-                        </mat-form-field>
-                    </div>
-                    <div class="date-block__list">
-                        <mat-form-field>
-                            <input matInput [matDatepicker]="toDate" placeholder="To Date" formControlName="toDate">
-                            <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
-                            <mat-datepicker #toDate></mat-datepicker>
-                        </mat-form-field>
-                    </div>
-                    <button mat-button color="primary" class="special" (click)="startFilter()">Submit</button>
-                    <button mat-button color="primary" class="special" (click)="resetFilter()">Reset</button>
-                </form>
+            <mat-form-field class="filter">
+                <input matInput [ngModel]="globalFilter" (ngModelChange)="applyFilter($event)" formControlName="filter"
+                    placeholder="Filter">
+            </mat-form-field>
+
+            <div class="date-block__list">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="fromDate" placeholder="From Date" formControlName="fromDate">
+                    <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                    <mat-datepicker #fromDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <div class="date-block__list">
+                <mat-form-field>
+                    <input matInput [matDatepicker]="toDate" placeholder="To Date" formControlName="toDate">
+                    <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                    <mat-datepicker #toDate></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <button mat-button color="primary" class="special" (click)="startFilter()">Submit</button>
+            <button mat-button color="primary" class="special" (click)="resetFilter()">Reset</button>
+        </form>
         <h1></h1>
 
         <div class="mat-elevation-z8">
@@ -72,16 +73,18 @@
                 </ng-container>
 
                 <ng-container matColumnDef="edit">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Update Job Order</th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit Ticket</th>
                     <td mat-cell *matCellDef="let row">
-                        <button mat-raised-button color="primary" (click)="editDialog(row)" md-button class="specialBtn">Update</button>
+                        <button mat-raised-button color="primary" (click)="editDialog(row)" md-button
+                            class="specialBtn">Edit</button>
                     </td>
                 </ng-container>
 
                 <ng-container matColumnDef="view">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>View</th>
                     <td mat-cell *matCellDef="let row">
-                    <button mat-raised-button color="primary" (click)="viewDialog(row)" md-button class="specialBtn">View</button>
+                        <button mat-raised-button color="primary" (click)="viewDialog(row)" md-button
+                            class="specialBtn">View</button>
                     </td>
                 </ng-container>
 
@@ -94,7 +97,7 @@
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                
+
                 <tr mat-row [ngClass]="{
                 'redBG': row.rowColor == 1,
                 'yellowBG': row.rowColor == 2,
@@ -106,13 +109,6 @@
             <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="10"
                 [pageSizeOptions]="[5, 10, 20]" aria-label="Select page">
             </mat-paginator>
-        </div>
-
-        <div class="legends">
-            <p class="special1 legend">Red = Over estimated completion</p>
-            <p class="special1 yellowBG legend">Yellow = 1 hour left before completion</p>
-            <p class="special1 greenBG legend">Green = Pending Payment</p>
-            <p class="special1 blueBG legend" >Blue = For Release</p>
         </div>
     </div>
 </div>

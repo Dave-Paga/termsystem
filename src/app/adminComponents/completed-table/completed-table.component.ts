@@ -14,11 +14,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { filter } from 'rxjs';
 
 @Component({
-  selector: 'app-edit-ticket-admin',
-  templateUrl: './edit-ticket-admin.component.html',
-  styleUrls: ['./edit-ticket-admin.component.css']
+  selector: 'app-completed-table',
+  templateUrl: './completed-table.component.html',
+  styleUrls: ['./completed-table.component.css']
 })
-export class EditTicketAdminComponent implements OnInit {
+export class CompletedTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
@@ -29,7 +29,7 @@ export class EditTicketAdminComponent implements OnInit {
   };
 
 
-  displayedColumns = ['ticketID', 'estimate', 'service', 'status', 'completion', 'edit', 'view'];
+  displayedColumns = ['ticketID', 'carName', 'estimate', 'service', 'completion', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   globalFilter = '';
@@ -39,19 +39,19 @@ export class EditTicketAdminComponent implements OnInit {
     filter: new FormControl()
   });
 
-  get fromDate() { 
+  get fromDate() {
     if (this.range.get('fromDate')?.value) {
       return this.range.get('fromDate')?.value.toLocaleDateString();
     } else {
       return false
-    } 
+    }
   }
-  get toDate() { 
+  get toDate() {
     if (this.range.get('toDate')?.value) {
-      return this.range.get('toDate')?.value.toLocaleDateString(); 
+      return this.range.get('toDate')?.value.toLocaleDateString();
     } else {
       return false
-    } 
+    }
   }
 
   timeframes = {
@@ -87,26 +87,27 @@ export class EditTicketAdminComponent implements OnInit {
         let curHour = new Date().getHours();
 
         // 1 = red, 2 =  yellow, 3 = green
-        if (value.estimate < curDate) {
-          arr[index].rowColor = 1;
-        } else if (value.estimate == curDate) {
-          let hoursLeft = value.start - curHour;
-          if (hoursLeft == 1) {
-            arr[index].rowColor = 2;
-          } else if (hoursLeft <= 0 ) {
-            arr[index].rowColor = 1;
-          }
-        }
+        // if (value.estimate < curDate) {
+        //   arr[index].rowColor = 1;
+        // } else if (value.estimate == curDate) {
+        //   let hoursLeft = value.start - curHour;
+        //   if (hoursLeft == 1) {
+        //     arr[index].rowColor = 2;
+        //   } else if (hoursLeft <= 0) {
+        //     arr[index].rowColor = 1;
+        //   }
+        // }
 
-        if (value.status == "Pending Payment") {
-          arr[index].rowColor = 3;
-        } else if (value.status == "For Release") {
-          arr[index].rowColor = 4;
-        }
+        // if (value.status == "Pending Payment") {
+        //   arr[index].rowColor = 3;
+        // } else if (value.status == "For Release") {
+        //   arr[index].rowColor = 4;
+        // }
       });
 
       arr = arr.filter(x => x.mechanicName != "No Mechanic");
-      arr = arr.filter(x => x.status != "Completed");
+      arr = arr.filter(x => x.status == "Completed");
+      
       this.dataSource.data = arr as DataTicketsAdminItem[];
 
     })
@@ -118,7 +119,7 @@ export class EditTicketAdminComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     // this.table.dataSource = this.dataSource;
     this.getFormsValue();
-    
+
   }
 
   getFormsValue() {
@@ -147,7 +148,7 @@ export class EditTicketAdminComponent implements OnInit {
       if (!globalMatch) {
         return false;
       }
-      
+
       if (this.fromDate && this.toDate) {
         return data.date >= this.fromDate && data.date <= this.toDate;
       } else if (this.fromDate && this.toDate == false) {
@@ -157,7 +158,7 @@ export class EditTicketAdminComponent implements OnInit {
       }
       return true
       //DATE 
-      
+
     }
   }
 
@@ -215,7 +216,5 @@ export class EditTicketAdminComponent implements OnInit {
       data: data
     });
   }
-
-
 
 }
