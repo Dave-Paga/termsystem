@@ -87,6 +87,7 @@ export class StaffComponent implements OnInit {
       });
 
       arr = arr.filter((x) => x.employeeID == this.userID);
+      arr = arr.filter((x) => x.start != "");
       arr = arr.filter((x) => x.status == "Undergoing Repair/Maintenance");
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
