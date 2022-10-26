@@ -29,7 +29,7 @@ export class CompletedTableComponent implements OnInit {
   };
 
 
-  displayedColumns = ['ticketID', 'carName', 'estimate', 'service', 'status', 'completion', 'view'];
+  displayedColumns = ['ticketID', 'carName', 'estimate', 'service', 'completion', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   globalFilter = '';
