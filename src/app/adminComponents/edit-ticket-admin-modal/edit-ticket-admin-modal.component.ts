@@ -56,7 +56,6 @@ export class EditTicketAdminModalComponent implements OnInit {
   employees: employee[] = [];
   statusArray: valVar[] = [
     { value: "Undergoing Repair/Maintenance", viewValue: 'Undergoing Repair/Maintenance' },
-    { value: "Pending Payment", viewValue: 'Pending Payment' },
     { value: "For Release", viewValue: 'For Release' },
     { value: "Completed", viewValue: 'Completed' }
   ];
@@ -82,6 +81,12 @@ export class EditTicketAdminModalComponent implements OnInit {
     { value: 15, viewValue: "3:00 PM" },
     { value: 16, viewValue: "4:00 PM" },
     { value: 17, viewValue: "5:00 PM" },
+    { value: 18, viewValue: "6:00 PM"},
+    { value: 19, viewValue: "7:00 PM" },
+    { value: 20, viewValue: "8:00 PM" },
+    { value: 21, viewValue: "9:00 PM" },
+    { value: 22, viewValue: "10:00 PM" },
+    { value: 23, viewValue: "11:00 PM" }
   ];
 
   serviceArray: valVar[] = [
@@ -160,6 +165,12 @@ export class EditTicketAdminModalComponent implements OnInit {
     { value: 15, viewValue: "3:00 PM" },
     { value: 16, viewValue: "4:00 PM" },
     { value: 17, viewValue: "5:00 PM" },
+    { value: 18, viewValue: "6:00 PM" },
+    { value: 19, viewValue: "7:00 PM" },
+    { value: 20, viewValue: "8:00 PM" },
+    { value: 21, viewValue: "9:00 PM" },
+    { value: 22, viewValue: "10:00 PM" },
+    { value: 23, viewValue: "11:00 PM" }
   ];
 
 
@@ -237,9 +248,19 @@ export class EditTicketAdminModalComponent implements OnInit {
   }
 
   updateData(): void {
-    let selection = this.employees.find(data => data.id == this.employeeID);
-    this.mechanicName = selection?.name;
+    // let selection = this.employees.find(data => data.id == this.employeeID);
+    // this.mechanicName = selection?.name;
     let newComp = this.completed;
+
+    let selection: any[] = [];
+    for (let x = 0; x < this.employeeID.length; x++) {
+      for (let y = 0; y < this.employees.length; y++) {
+        console.log(this.employees[y].name)
+        if (this.employeeID[x] == this.employees[y].id) {
+          selection.push(this.employees[y].name);
+        }
+      }
+    }
     if (this.oldStatus != this.status && this.status == "Undergoing Repair/Maintenance") {
       newComp = '';
     }
@@ -256,9 +277,8 @@ export class EditTicketAdminModalComponent implements OnInit {
       start: this.start,
       service: this.service,
       estimate: this.estimate.value.toLocaleDateString(),
-      recommend: this.recommend,
+      recommend: this.recommend
       // price: this.price,
-      completed: newComp
     });
     this.dialogRef.close();
   }

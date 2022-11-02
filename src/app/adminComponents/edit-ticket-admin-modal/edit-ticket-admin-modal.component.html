@@ -4,7 +4,7 @@
 
     <mat-form-field class="fill-container" appearance="fill">
         <mat-label>Mechanic</mat-label>
-        <mat-select [(value)]="employeeID">
+        <mat-select [(value)]="employeeID" multiple>
             <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
         </mat-select>
     </mat-form-field>
@@ -16,6 +16,7 @@
             <mat-option [value]="option.value" *ngFor="let option of statusArray">{{ option.viewValue }}</mat-option>
         </mat-select>
     </mat-form-field>
+    
     <mat-form-field class="fill-container" appearance="fill">
         <mat-label>Choose date of release</mat-label>
         <input matInput [matDatepicker]="picker" [formControl]="estimate" [matDatepickerFilter]="weekendsDatesFilter"

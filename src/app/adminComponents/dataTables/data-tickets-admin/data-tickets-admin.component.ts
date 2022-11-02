@@ -86,9 +86,10 @@ export class DataTicketsAdminComponent implements AfterViewInit {
         let dateSplit = arr[index].date.split("/");
         let curSplit = new Date().toLocaleDateString().split("/");
         let dateDif = Number(dateSplit[1]) - Number(curSplit[1]);
-
+        let monthDif = Number(dateSplit[0]) - Number(curSplit[0]);
         // 1 = red, 2 = yellow
-        if (arr[index].date < new Date().toLocaleDateString()) {
+        // arr[index].date < new Date().toLocaleDateString()
+        if ((monthDif == 0 && dateDif <= 0 ) || monthDif < 0) {
           arr[index].rowColor = 1;
         } else if (curSplit[0] == dateSplit[0] && dateDif <= 1) {
           arr[index].rowColor = 2

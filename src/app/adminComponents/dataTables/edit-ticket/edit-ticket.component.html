@@ -5,18 +5,28 @@
   <!-- <p>Mechanic ID: {{employeeID}}</p> -->
   <mat-form-field class="fill-container" appearance="fill">
     <mat-label>Mechanic</mat-label>
-    <mat-select [(value)]="employeeID">
+    <mat-select [(value)]="employeeID" multiple>
       <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
     </mat-select>
   </mat-form-field>
 <br>
 
+<h4 class="special">Service Category</h4>
 <mat-form-field class="fill-container" appearance="fill">
   <mat-label>Service</mat-label>
   <mat-select [(value)]="service">
     <mat-option [value]="option.value" *ngFor="let option of serviceArray">{{ option.viewValue }}</mat-option>
   </mat-select>
 </mat-form-field>
+
+<h4 class="special">Jobs</h4>
+<mat-form-field class="fill-container" appearance="fill">
+  <mat-label>Jobs</mat-label>
+  <mat-select [(value)]="jobs" multiple>
+    <mat-option [value]="option.value" *ngFor="let option of serviceCon">{{ option.value }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
 
 <h4 class="special">Car Details</h4>
 <mat-form-field appearance="fill" class="fill-container">

@@ -12,6 +12,7 @@ import { ViewTicketDetailsAdminComponent } from '../dataTables/view-ticket-detai
 import { EditTicketAdminModalComponent } from '../edit-ticket-admin-modal/edit-ticket-admin-modal.component';
 import { FormControl, FormGroup } from '@angular/forms';
 import { filter } from 'rxjs';
+import { time } from 'console';
 
 @Component({
   selector: 'app-edit-ticket-admin',
@@ -29,7 +30,7 @@ export class EditTicketAdminComponent implements OnInit {
   };
 
 
-  displayedColumns = ['ticketID', 'estimate', 'service', 'status', 'completion', 'edit', 'view'];
+  displayedColumns = ['ticketID', 'estimate', 'service', 'status', 'completion', 'idle', 'edit', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   globalFilter = '';
@@ -86,8 +87,31 @@ export class EditTicketAdminComponent implements OnInit {
         let curDate = new Date().toLocaleDateString();
         let curHour = new Date().getHours();
 
+        if (arr[index].arrayDuration) {
+          let arrayTime = arr[index].arrayDuration;
+          let firstDate = arr[index].arrayDuration[0].toDate();
+          let lastDate = arr[index].arrayDuration[arr[index].arrayDuration.length - 1].toDate();
+          let idle = 0;
+          
+          if(arr[index].employeeQ.length <= 0) {
+            arr[index].completion = lastDate.toLocaleTimeString();
+          }
+
+          for (let x = 0; x <= arr[index].arrayDuration.length - 1; x++) {
+            if (x != 0 && x % 2 == 0) {
+              idle += arrayTime[x].toDate().valueOf() - arrayTime[x - 1].toDate().valueOf();
+            }
+          }
+
+          arr[index].idle = this.msToTime(idle)
+        }
+
+        let dateSplit = arr[index].date.split("/");
+        let curSplit = new Date().toLocaleDateString().split("/");
+        let dateDif = Number(dateSplit[1]) - Number(curSplit[1]);
+        let monthDif = Number(dateSplit[0]) - Number(curSplit[0]);
         // 1 = red, 2 =  yellow, 3 = green
-        if (value.estimate < curDate) {
+        if ((monthDif == 0 && dateDif <= 0) || monthDif < 0) {
           arr[index].rowColor = 1;
         } else if (value.estimate == curDate) {
           let hoursLeft = value.start - curHour;
@@ -103,6 +127,8 @@ export class EditTicketAdminComponent implements OnInit {
         } else if (value.status == "For Release") {
           arr[index].rowColor = 4;
         }
+
+
       });
 
       arr = arr.filter(x => x.mechanicName != "No Mechanic");
@@ -185,6 +211,23 @@ export class EditTicketAdminComponent implements OnInit {
       toDate: ''
     });
     this.dataSource.filter = '';
+  }
+
+  padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+  }
+
+  msToTime(duration: number) {
+    let seconds = Math.floor(duration / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+
+    seconds = seconds % 60;
+    minutes = minutes % 60;
+    hours = hours % 24;
+    return `${this.padTo2Digits(hours)}:${this.padTo2Digits(minutes)}:${this.padTo2Digits(
+      seconds,
+    )}`;
   }
 
   loginCheck() {

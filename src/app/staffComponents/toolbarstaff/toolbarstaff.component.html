@@ -5,11 +5,11 @@
     
     <h1></h1>
     
-    <button md-button class="btn1" routerLink="/staff">Current Vehicles</button>
+    <button md-button class="btn1" routerLink="/staff" [matBadge]="curBadge" [matBadgeHidden]="curBadgeHide" matBadgeColor="warn">Currently Servicing</button>
     
     <h1></h1>
 
-    <button md-button class="btn1" routerLink="/appointment">Receive Job Order</button>
+    <button md-button class="btn1" routerLink="/appointment" [matBadge]="appBadge" [matBadgeHidden]="appBadgeHide" matBadgeColor="warn">Receive Job Order</button>
 
     <button md-button class="btn1" routerLink="/EditEmployee"> Edit Account Details</button>
 

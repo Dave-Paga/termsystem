@@ -29,7 +29,7 @@ export class CompletedTableComponent implements OnInit {
   };
 
 
-  displayedColumns = ['ticketID', 'carName', 'estimate', 'service', 'completion', 'view'];
+  displayedColumns = ['ticketID', 'carName', 'estimate', 'service', 'completion', 'idle', 'view'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   globalFilter = '';
@@ -85,6 +85,25 @@ export class CompletedTableComponent implements OnInit {
 
         let curDate = new Date().toLocaleDateString();
         let curHour = new Date().getHours();
+
+        if (arr[index].arrayDuration) {
+          let arrayTime = arr[index].arrayDuration;
+          let firstDate = arr[index].arrayDuration[0].toDate();
+          let lastDate = arr[index].arrayDuration[arr[index].arrayDuration.length - 1].toDate();
+          let idle = 0;
+
+          if (arr[index].employeeQ.length <= 0) {
+            arr[index].completion = lastDate.toLocaleTimeString();
+          }
+
+          for (let x = 0; x <= arr[index].arrayDuration.length - 1; x++) {
+            if (x != 0 && x % 2 == 0) {
+              idle += arrayTime[x].toDate().valueOf() - arrayTime[x - 1].toDate().valueOf();
+            }
+          }
+
+          arr[index].idle = this.msToTime(idle)
+        }
 
         // 1 = red, 2 =  yellow, 3 = green
         // if (value.estimate < curDate) {
@@ -187,6 +206,24 @@ export class CompletedTableComponent implements OnInit {
     });
     this.dataSource.filter = '';
   }
+
+  padTo2Digits(num) {
+    return num.toString().padStart(2, '0');
+  }
+
+  msToTime(duration: number) {
+    let seconds = Math.floor(duration / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+
+    seconds = seconds % 60;
+    minutes = minutes % 60;
+    hours = hours % 24;
+    return `${this.padTo2Digits(hours)}:${this.padTo2Digits(minutes)}:${this.padTo2Digits(
+      seconds,
+    )}`;
+  }
+
 
   loginCheck() {
     this.authService.getPermission(this.authService.userData.uid).then(res => {

@@ -49,7 +49,7 @@ export class EditTicketStaffComponent implements OnInit {
 
   statusArray: valVar[] = [
     { value: "Undergoing Repair/Maintenance", viewValue: 'Undergoing Repair/Maintenance' },
-    { value: "Pending Payment", viewValue: 'Pending Payment' },
+    { value: "For Release", viewValue: 'For Release' },
   ];
 
   // serviceArray: valVar[] = [
@@ -184,7 +184,7 @@ export class EditTicketStaffComponent implements OnInit {
     console.log(compString)
     this.afs.collection('tickets').doc(String(this.ticketID)).update({
       jobs: this.jobs,
-      status: this.status,
+      // status: this.status,
       recommend: this.recommend,
       completed: compString
     });

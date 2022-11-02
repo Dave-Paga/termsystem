@@ -5,8 +5,14 @@
         <h4>TICKET ID: {{ticketID}}</h4>
         <div *ngIf="hide">
             <h4>EMPLOYEE INFORMATION</h4>
-            <p><b>MECHANIC:</b> {{mechanicName}}</p>
-            <p><b>MECHANIC ID:</b> {{employeeID}}</p>
+            <p><b>MECHANIC/S:</b></p>
+            <div>
+                <p *ngFor="let item of mechanicName">{{item}}</p>
+            </div>
+            <p><b>MECHANIC ID/S:</b> </p>
+            <div>
+                <p *ngFor="let item of employeeID">{{item}}</p>
+            </div>
         </div>
         <h4>VEHICLE INFORMATION</h4>
         <p><b>CAR NAME:</b> {{carName}}</p>
@@ -33,9 +39,6 @@
         <p><b>PHONE:</b> {{customerPhone}}</p>
         <p><b>EMAIL:</b> {{customerEmail}}</p>
         <h4><b>STATUS:</b> {{status}}</h4>
-        <div *ngIf="hide">
-            <h4>PRICE: Php {{price | number}}</h4>
-        </div>
     </mat-dialog-content>
 </div>
 

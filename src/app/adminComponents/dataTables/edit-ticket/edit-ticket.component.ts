@@ -12,6 +12,10 @@ interface employee {
   dateVal?: number;
 }
 
+interface val {
+  value: any;
+}
+
 interface valVar {
   value: any;
   viewValue: string;
@@ -28,15 +32,16 @@ export class EditTicketComponent implements OnInit {
   vin: string = '';
   plate: string = '';
   date: FormControl;
-  employeeID: string = '';
+  employeeID: any;
   fuelType: string = '';
-  mechanicName?: string = '';
+  mechanicName?: any;
   price: number = 0;
   problem: string = '';
   solution: string = '';
   status: string = '';
   transmission: string = '';
   service: string = '';
+  jobs: string = '';
   estimate: any;
   start: any;
   ticketID: string = '';
@@ -58,6 +63,11 @@ export class EditTicketComponent implements OnInit {
     { value: 16, viewValue: "4:00 PM"},
     { value: 17, viewValue: "5:00 PM"},
   ];
+
+  serviceCon: val[] = [
+    { value: "Check and Clean Brakes" }
+  ]
+
 
   timeArray: valVar[] = [
     { value: 7, viewValue: "7:00 AM" },
@@ -117,6 +127,8 @@ export class EditTicketComponent implements OnInit {
     this.status = data.status;
     this.transmission = data.transmission;
 
+    this.changeServices();
+
     this.afs.collection<any>('users').valueChanges().subscribe(result => {
       result.forEach(doc =>{
         if(doc.permission == 1) {
@@ -166,6 +178,62 @@ export class EditTicketComponent implements OnInit {
     console.log(this.time);
   }
 
+  changeServices() {
+    this.serviceCon = [
+      { value: "Change Oil" },
+      { value: "Replace Fuel Filter" },
+      { value: "Clean Air Filter" },
+      { value: "Check and Clean Brakes" },
+      { value: "Change All Fluids" },
+      { value: "Regrease All Fittings" },
+      { value: "Repack Wheel Bearings" },
+      { value: "Replace Necessary Worn Parts" },
+      { value: "Check All Bulbs" },
+      { value: "Check Suspensions" },
+      { value: "Replace Necessary Brake Pads" },
+      { value: "Check Electrical" },
+      { value: "Check Fuel Line" },
+      { value: "Check Engine Management" },
+      { value: "Use Diagnostic Tools" },
+      { value: "Check Suspension" },
+      { value: "Check Transmission" },
+      { value: "Check Sensors" },
+      { value: "Check Tires" },
+      { value: "Check Aircon Servicing" },
+      { value: "Repair for Dents" },
+      { value: "Body Paint Washover" },
+      { value: "Undercoating" },
+      { value: "Car Exterior/Interior Detailing" },
+      { value: "Engine Wash" },
+      { value: "Foam Wash with Car Buffing" },
+      { value: "Engine Overhauling" },
+      { value: "Engine Tune Up" },
+      { value: "Engine Troubleshooting" },
+      { value: "Transmission Pull Down" },
+      { value: "Clutch Assembly Replacing" },
+      { value: "Battery Replacement" },
+      { value: "Check Relays and Fuse" },
+      { value: "Check Charging System" },
+      { value: "Body Repair" },
+      { value: "Engine Bay Detailing" },
+      { value: "Car Polish" },
+      { value: "Accident Repair" },
+      { value: "Transmission Overhauling" }
+    ];
+
+    // if (this.service == "Check Brakes") {
+    //   this.serviceCon = this.checkBrakes.map(x => ({ value: x.value }))
+    // } else if (this.service == "Regular PMS") {
+    //   this.serviceCon = this.regularPMS.map(x => ({ value: x.value }))
+    // } else if (this.service == "Minor PMS") {
+    //   this.serviceCon = this.minorPMS.map(x => ({ value: x.value }))
+    // } else if (this.service == "Major PMS") {
+    //   this.serviceCon = this.majorPMS.map(x => ({ value: x.value }))
+    // } else if (this.service == "Troubleshooting") {
+    //   this.serviceCon = this.troubleshooting.map(x => ({ value: x.value }))
+    // }
+  }
+
   weekendsDatesFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
 
@@ -201,10 +269,28 @@ export class EditTicketComponent implements OnInit {
       this.estimate = 5;
     }
 
-    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.vin && this.engine) {
-      let selection = this.employees.find(data => data.id == this.employeeID);
-      this.mechanicName = selection?.name;
+    
+    
+    // this.mechanicName = selection?.name;
+    
+    if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.vin && this.engine && this.jobs) {
+      // let selection = this.employees.find(data => data.id == this.employeeID);
+      // this.mechanicName = selection?.name;
+      let selection: any[] = [];
+      for (let x = 0; x < this.employeeID.length; x++) {
+        for (let y = 0; y < this.employees.length; y++) {
+          console.log(this.employees[y].name)
+          if (this.employeeID[x] == this.employees[y].id) {
+            selection.push(this.employees[y].name);
+          }
+        }
+      }
+
+      this.mechanicName = selection;
+
       this.afs.collection('tickets').doc(String(this.ticketID)).update({
+        jobs: this.jobs,
+        employeeQ: this.employeeID,
         employeeID: this.employeeID,
         mechanicName: this.mechanicName,
         vin: this.vin,
@@ -213,6 +299,7 @@ export class EditTicketComponent implements OnInit {
         // estimate: this.estimate.value.toLocaleDateString(),
         estimate: this.estimate,
         start: 0,
+        curMech: "None",
         status: "Undergoing Repair/Maintenance"
       })
       this.dialogRef.close();
