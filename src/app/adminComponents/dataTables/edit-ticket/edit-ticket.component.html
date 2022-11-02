@@ -11,6 +11,7 @@
   </mat-form-field>
 <br>
 
+<h4 class="special">Service Category</h4>
 <mat-form-field class="fill-container" appearance="fill">
   <mat-label>Service</mat-label>
   <mat-select [(value)]="service">
@@ -18,8 +19,9 @@
   </mat-select>
 </mat-form-field>
 
+<h4 class="special">Jobs</h4>
 <mat-form-field class="fill-container" appearance="fill">
-  <mat-label>Services</mat-label>
+  <mat-label>Jobs</mat-label>
   <mat-select [(value)]="jobs" multiple>
     <mat-option [value]="option.value" *ngFor="let option of serviceCon">{{ option.value }}</mat-option>
   </mat-select>

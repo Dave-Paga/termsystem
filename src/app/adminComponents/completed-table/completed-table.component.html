@@ -39,7 +39,12 @@
 
                 <ng-container matColumnDef="completion">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Time Completed</th>
-                    <td mat-cell *matCellDef="let row">{{row.completed}}</td>
+                    <td mat-cell *matCellDef="let row">{{row.completion}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="idle">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Idle Time (hh:mm:ss)</th>
+                    <td mat-cell *matCellDef="let row">{{row.idle}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="carName">

@@ -39,16 +39,22 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
 
   timeframes = [
     { value: 7, viewValue: "7:00 AM" },
-    { value: 8, viewValue: "8:00 AM"},
-    { value: 9, viewValue: "9:00 AM"},
-    { value: 10, viewValue: "10:00 AM"},
-    { value: 11, viewValue: "11:00 AM"},
-    { value: 12, viewValue: "12:00 NN"},
-    { value: 13, viewValue: "1:00 PM"},
-    { value: 14, viewValue: "2:00 PM"},
-    { value: 15, viewValue: "3:00 PM"},
-    { value: 16, viewValue: "4:00 PM"},
-    { value: 17, viewValue: "5:00 PM"},
+    { value: 8, viewValue: "8:00 AM" },
+    { value: 9, viewValue: "9:00 AM" },
+    { value: 10, viewValue: "10:00 AM" },
+    { value: 11, viewValue: "11:00 AM" },
+    { value: 12, viewValue: "12:00 NN" },
+    { value: 13, viewValue: "1:00 PM" },
+    { value: 14, viewValue: "2:00 PM" },
+    { value: 15, viewValue: "3:00 PM" },
+    { value: 16, viewValue: "4:00 PM" },
+    { value: 17, viewValue: "5:00 PM" },
+    { value: 18, viewValue: "6:00 PM" },
+    { value: 19, viewValue: "7:00 PM" },
+    { value: 20, viewValue: "8:00 PM" },
+    { value: 21, viewValue: "9:00 PM" },
+    { value: 22, viewValue: "10:00 PM" },
+    { value: 23, viewValue: "11:00 PM" }
   ];
   
 
@@ -84,8 +90,8 @@ export class ViewTicketDetailsAdminComponent implements OnInit {
     const realTime = this.timeframes[this.time -7];
     this.time = realTime.viewValue;
     const realTime2 = this.timeframes[this.start-7];
-
-    if (this.start) {
+    console.log(this.start)
+    if (realTime2) {
       this.start = realTime2.viewValue;
     } else {
       this.hide = false;

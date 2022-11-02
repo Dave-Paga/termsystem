@@ -97,10 +97,8 @@ export class EditTicketAdminComponent implements OnInit {
             arr[index].completion = lastDate.toLocaleTimeString();
           }
 
-          console.log(firstDate.valueOf())
           for (let x = 0; x <= arr[index].arrayDuration.length - 1; x++) {
             if (x != 0 && x % 2 == 0) {
-              console.log(arrayTime[x].toDate())
               idle += arrayTime[x].toDate().valueOf() - arrayTime[x - 1].toDate().valueOf();
             }
           }
