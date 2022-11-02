@@ -211,11 +211,11 @@ export class UserBookAppointmentComponent implements OnInit, OnDestroy {
     let ticketFilter = this.ticketArr.filter(x => x.date == date);
     this.timeArray = this.timeArrBackUp;
 
-    ticketFilter.forEach(x =>
-      this.timeArray = this.timeArray.filter(y =>
-        y.value !== x.time
-      )
-    )
+    // ticketFilter.forEach(x =>
+    //   this.timeArray = this.timeArray.filter(y =>
+    //     y.value !== x.time
+    //   )
+    // )
 
   }
 

@@ -18,6 +18,14 @@
   </mat-select>
 </mat-form-field>
 
+<mat-form-field class="fill-container" appearance="fill">
+  <mat-label>Services</mat-label>
+  <mat-select [(value)]="jobs" multiple>
+    <mat-option [value]="option.value" *ngFor="let option of serviceCon">{{ option.value }}</mat-option>
+  </mat-select>
+</mat-form-field>
+<br>
+
 <h4 class="special">Car Details</h4>
 <mat-form-field appearance="fill" class="fill-container">
   <mat-label>Plate Number</mat-label>

@@ -49,7 +49,7 @@ export class EditTicketStaffComponent implements OnInit {
 
   statusArray: valVar[] = [
     { value: "Undergoing Repair/Maintenance", viewValue: 'Undergoing Repair/Maintenance' },
-    { value: "Pending Payment", viewValue: 'Pending Payment' },
+    { value: "For Release", viewValue: 'For Release' },
   ];
 
   // serviceArray: valVar[] = [
