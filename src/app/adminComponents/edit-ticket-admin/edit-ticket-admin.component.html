@@ -38,7 +38,12 @@
 
                 <ng-container matColumnDef="completion">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Time Completed</th>
-                    <td mat-cell *matCellDef="let row">{{row.completed}}</td>
+                    <td mat-cell *matCellDef="let row">{{row.completion}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="idle">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Idle Time (hh:mm:ss)</th>
+                    <td mat-cell *matCellDef="let row">{{row.idle}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="carName">
@@ -111,7 +116,6 @@
         <div class="legends">
             <p class="special1 legend">Red = Over estimated completion</p>
             <p class="special1 yellowBG legend">Yellow = 1 hour left before completion</p>
-            <p class="special1 greenBG legend">Green = Pending Payment</p>
             <p class="special1 blueBG legend" >Blue = For Release</p>
         </div>
     </div>

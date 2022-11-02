@@ -4,10 +4,10 @@
     <h1></h1>
     <!-- <button md-button class="btn1" routerLink="/SchedulingEmployeesViewComponent">View Schedule</button>
     <h1></h1> -->
-    <button md-button class="btn1" routerLink="/TicketViewViewComponent">View Appointments</button>
+    <button md-button class="btn1" routerLink="/TicketViewViewComponent" [matBadge]="appBadge" [matBadgeHidden]="appBadgeHide" matBadgeColor="warn">View Appointments</button>
     <h1></h1>
     
-    <button md-button class="btn1" routerLink="/editTicketAdmin">Currently In Service</button>
+    <button md-button class="btn1" routerLink="/editTicketAdmin" [matBadge]="curBadge" [matBadgeHidden]="curBadgeHide" matBadgeColor="warn">Currently In Service</button>
     <h1></h1>
     <button md-button class="btn1" routerLink="/completed">Completed Job Orders</button>
     <h1></h1>

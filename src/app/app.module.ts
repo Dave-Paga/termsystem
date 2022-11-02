@@ -51,6 +51,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatBadgeModule } from '@angular/material/badge'
 import { DataTicketsAdminComponent } from './adminComponents/dataTables/data-tickets-admin/data-tickets-admin.component';
 import { EditTicketComponent } from './adminComponents/dataTables/edit-ticket/edit-ticket.component';
 
@@ -166,7 +167,8 @@ const config = {
     MatProgressBarModule,
     NgxPrintModule,
     NgxMaterialTimepickerModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

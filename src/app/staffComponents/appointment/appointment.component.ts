@@ -8,6 +8,9 @@ import { AuthService } from 'src/app/services/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { DataTicketsAdminItem } from 'src/app/adminComponents/dataTables/data-tickets-admin/data-tickets-admin-datasource';
 import { Router } from '@angular/router';
+import { format } from 'path';
+import { arrayUnion } from '@angular/fire/firestore'
+import { formatDate } from '@angular/common';
 
 
 @Component({
@@ -64,9 +67,13 @@ export class AppointmentComponent implements OnInit {
         arr[index].convTime = converted;
       });
 
-      arr = arr.filter((x) => x.employeeID == this.userID);
+
+      // const list = first.filter(x => second.map(y => y.moduleId).includes(x.entityId));
+      let empIDList = arr.map(y => y.employeeID);
+      arr = arr.filter((x) => x.employeeQ.includes(this.userID));
+      arr = arr.filter((x) => x.curMech == "None");
       //table filter
-      arr = arr.filter((x) => x.start == 0);
+      // arr = arr.filter((x) => x.start == 0);
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
 
@@ -82,16 +89,44 @@ export class AppointmentComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  receiveTicket(data): void {
-    
-    let time = new Date().getHours()
-    let newTime = Number(time) + Number(data.estimate);
+  msToTime(duration:number) {
+    let milliseconds = Number((duration % 1000) / 100)
+    let seconds = Math.floor((duration / 1000) % 60);
+    let minutes = Math.floor((duration / (1000 * 60)) % 60);
+    let hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
 
-    this.afs.collection<any>('tickets/').doc(String(data.ticketID)).update({
-      start: newTime,
-      estimate: data.date,
-      status: "Undergoing Repair/Maintenance"
-    });
+    let hoursString = (hours < 10) ? "0" + hours : hours;
+    let minutesString = (minutes < 10) ? "0" + minutes : minutes;
+    let secondsString = (seconds < 10) ? "0" + seconds : seconds;
+
+    return hoursString + ":" + minutesString + ":" + secondsString;
+  }
+
+  receiveTicket(data): void {
+
+    let firstDate = new Date();
+    // let secondDate = new Date();
+    // secondDate.setDate(secondDate.getDate() + 1);
+
+    // let duration = secondDate.valueOf() - firstDate.valueOf();
+
+    if (!data.start) {
+      let time = new Date().getHours()
+      let newTime = Number(time) + Number(data.estimate);
+      this.afs.collection<any>('tickets/').doc(String(data.ticketID)).update({
+        start: newTime,
+        estimate: data.date,
+        curMech: this.authService.currentUserId,
+        status: "Undergoing Repair/Maintenance",
+        arrayDuration: arrayUnion(firstDate)
+      });
+    } else {
+      this.afs.collection<any>('tickets/').doc(String(data.ticketID)).update({
+        curMech: this.authService.currentUserId,
+        status: "Undergoing Repair/Maintenance",
+        arrayDuration: arrayUnion(firstDate)
+      });
+    }
   }
 
   removeData(data): void {
@@ -103,7 +138,6 @@ export class AppointmentComponent implements OnInit {
       if (res != 1) {
         this.router.navigate(['redirect']);
       } else {
-        console.log(this.authService.userData.uid);
       }
     });
   }

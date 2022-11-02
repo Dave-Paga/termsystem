@@ -5,7 +5,7 @@
   <!-- <p>Mechanic ID: {{employeeID}}</p> -->
   <mat-form-field class="fill-container" appearance="fill">
     <mat-label>Mechanic</mat-label>
-    <mat-select [(value)]="employeeID">
+    <mat-select [(value)]="employeeID" multiple>
       <mat-option [value]="option.id" *ngFor="let option of employees">{{ option.name }}</mat-option>
     </mat-select>
   </mat-form-field>

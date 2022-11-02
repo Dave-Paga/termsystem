@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { arrayUnion } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -19,7 +20,7 @@ export class StaffComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<DataTicketsAdminItem>;
 
-  displayedColumns = ['ticketID', 'carName', 'problem', 'service', 'start', 'edit'];
+  displayedColumns = ['ticketID', 'carName', 'problem', 'service', 'start', 'edit', 'finish'];
   uid: string = 'test';
   dataSource = new MatTableDataSource<DataTicketsAdminItem>();
   email!: string;
@@ -73,8 +74,13 @@ export class StaffComponent implements OnInit {
 
         let curDate = new Date().toLocaleDateString();
         let curHour = new Date().getHours();
+        let dateSplit = arr[index].date.split("/");
+        let curSplit = new Date().toLocaleDateString().split("/");
+        let dateDif = Number(dateSplit[1]) - Number(curSplit[1]);
+        let monthDif = Number(dateSplit[0]) - Number(curSplit[0]);
+        
 
-        if (value.estimate < curDate) {
+        if ((monthDif == 0 && dateDif <= 0) || monthDif < 0) {
           arr[index].rowColor = 1;
         } else if (value.estimate == curDate) {
           let hoursLeft = value.start - curHour;
@@ -86,8 +92,8 @@ export class StaffComponent implements OnInit {
         }
       });
 
-      arr = arr.filter((x) => x.employeeID == this.userID);
-      arr = arr.filter((x) => x.start != "");
+      arr = arr.filter((x) => x.curMech == this.userID);
+      // arr = arr.filter((x) => x.start != "");
       arr = arr.filter((x) => x.status == "Undergoing Repair/Maintenance");
 
       this.dataSource.data = arr as DataTicketsAdminItem[]
@@ -110,6 +116,26 @@ export class StaffComponent implements OnInit {
     this.afs.collection<any>('tickets/').doc(data.ticketID).delete();
   }
 
+  finishService(data): void {
+    let filterQueue = data.employeeQ.filter(x => x != this.authService.currentUserId);
+    let secondDate = new Date();
+    console.log(filterQueue);
+  
+    if (filterQueue.length <= 0) {
+      this.afs.collection<any>('tickets/').doc(data.ticketID).update({
+        curMech: "None",
+        employeeQ: filterQueue,
+        status: "For Release",
+        arrayDuration: arrayUnion(secondDate)
+      });
+    } else {
+      this.afs.collection<any>('tickets/').doc(data.ticketID).update({
+        curMech: "None",
+        employeeQ: filterQueue,
+        arrayDuration: arrayUnion(secondDate)
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.loginCheck();
@@ -129,7 +155,6 @@ export class StaffComponent implements OnInit {
       if (res != 1) {
         this.router.navigate(['redirect']);
       } else {
-        console.log(this.authService.userData.uid);
       }
     });
   }

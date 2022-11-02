@@ -184,7 +184,7 @@ export class EditTicketStaffComponent implements OnInit {
     console.log(compString)
     this.afs.collection('tickets').doc(String(this.ticketID)).update({
       jobs: this.jobs,
-      status: this.status,
+      // status: this.status,
       recommend: this.recommend,
       completed: compString
     });

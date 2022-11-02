@@ -32,9 +32,9 @@ export class EditTicketComponent implements OnInit {
   vin: string = '';
   plate: string = '';
   date: FormControl;
-  employeeID: string = '';
+  employeeID: any;
   fuelType: string = '';
-  mechanicName?: string = '';
+  mechanicName?: any;
   price: number = 0;
   problem: string = '';
   solution: string = '';
@@ -269,12 +269,28 @@ export class EditTicketComponent implements OnInit {
       this.estimate = 5;
     }
 
-    console.log(this.jobs)
+    
+    
+    // this.mechanicName = selection?.name;
+    
     if (this.employeeID != "No Mechanic" && this.service != "No Service" && this.vin && this.engine && this.jobs) {
-      let selection = this.employees.find(data => data.id == this.employeeID);
-      this.mechanicName = selection?.name;
+      // let selection = this.employees.find(data => data.id == this.employeeID);
+      // this.mechanicName = selection?.name;
+      let selection: any[] = [];
+      for (let x = 0; x < this.employeeID.length; x++) {
+        for (let y = 0; y < this.employees.length; y++) {
+          console.log(this.employees[y].name)
+          if (this.employeeID[x] == this.employees[y].id) {
+            selection.push(this.employees[y].name);
+          }
+        }
+      }
+
+      this.mechanicName = selection;
+
       this.afs.collection('tickets').doc(String(this.ticketID)).update({
         jobs: this.jobs,
+        employeeQ: this.employeeID,
         employeeID: this.employeeID,
         mechanicName: this.mechanicName,
         vin: this.vin,
@@ -283,6 +299,7 @@ export class EditTicketComponent implements OnInit {
         // estimate: this.estimate.value.toLocaleDateString(),
         estimate: this.estimate,
         start: 0,
+        curMech: "None",
         status: "Undergoing Repair/Maintenance"
       })
       this.dialogRef.close();
